@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Offerte — Stamgast Boombeheer</title>
+  <meta name="description" content="Neem contact op met Stamgast Boombeheer. Vraag een vrijblijvende offerte aan — Lode Jans reageert binnen 1 werkdag.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      background: var(--groen);
+      padding: 72px 0 56px;
+    }
+    .page-hero .breadcrumb { color: rgba(255,255,255,0.45); }
+    .page-hero .breadcrumb a { color: rgba(255,255,255,0.45); }
+    .page-hero .breadcrumb a:hover { color: #fff; }
+    .page-hero .breadcrumb .huidig { color: rgba(255,255,255,0.9); }
+    .page-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .page-hero h1 { font-size: 38px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 14px; }
+    .page-hero p { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 24px; }
+    .contact-items { display: flex; flex-direction: column; gap: 12px; }
+    .contact-item { display: flex; align-items: center; gap: 14px; }
+    .c-icoon {
+      width: 40px; height: 40px; background: rgba(255,255,255,0.12);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 20px; color: #fff; flex-shrink: 0;
+    }
+    .c-label { font-size: 12px; color: rgba(255,255,255,0.45); }
+    .c-waarde { font-size: 15px; font-weight: 500; color: #fff; }
+    .hero-belofte {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .hero-belofte p { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.7; }
+    .hero-belofte strong { color: #fff; }
+
+    /* Formulier + info grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--rand);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 72px;
+    }
+    .formulier-sectie {
+      padding: 48px 40px;
+      border-right: 1px solid var(--rand);
+    }
+    .formulier-sectie h2 { font-size: 20px; font-weight: 600; margin-bottom: 6px; }
+    .formulier-sectie > p { font-size: 14px; color: var(--tekst-muted); margin-bottom: 28px; line-height: 1.6; }
+
+    .formulier-rij {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .formulier-groep { margin-bottom: 16px; }
+    .formulier-groep label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--tekst-muted);
+      margin-bottom: 6px;
+    }
+    .formulier-groep input,
+    .formulier-groep select,
+    .formulier-groep textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--rand);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--tekst);
+      background: #fff;
+      transition: border-color 0.15s;
+      outline: none;
+    }
+    .formulier-groep input:focus,
+    .formulier-groep select:focus,
+    .formulier-groep textarea:focus {
+      border-color: var(--groen);
+      box-shadow: 0 0 0 3px rgba(42,92,63,0.1);
+    }
+    .formulier-groep textarea { min-height: 100px; resize: vertical; }
+
+    .dienst-checkboxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .dienst-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--tekst-muted);
+      cursor: pointer;
+    }
+    .dienst-checkbox input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--groen);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .btn-verzenden {
+      width: 100%;
+      background: var(--groen);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+      transition: background 0.15s;
+    }
+    .btn-verzenden:hover { background: #1e4430; }
+    .formulier-noot {
+      font-size: 12px;
+      color: var(--tekst-muted);
+      text-align: center;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    /* Info sectie */
+    .info-sectie { padding: 48px 40px; background: var(--achtergrond); }
+    .info-sectie h2 { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+
+    .werkgebied-kaart {
+      background: var(--groen-licht);
+      border-radius: 10px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .werkgebied-kaart i { font-size: 48px; color: var(--groen); opacity: 0.35; }
+
+    .regio-labels { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .regio-label {
+      background: #fff;
+      border: 1px solid var(--rand);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: var(--tekst-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .regio-label i { font-size: 12px; color: var(--groen); }
+
+    .verwacht-blok {
+      background: #fff;
+      border: 1px solid var(--rand);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .verwacht-blok h3 { font-size: 14px; font-weight: 600; margin-bottom: 14px; }
+    .verwacht-items { display: flex; flex-direction: column; gap: 10px; }
+    .verwacht-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--tekst-muted); line-height: 1.6; }
+    .v-num {
+      width: 22px; height: 22px; background: var(--groen); color: #fff;
+      border-radius: 50%; font-size: 11px; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+
+    .direct-contact { margin-bottom: 20px; }
+    .direct-contact h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+    .direct-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      background: #fff;
+      border: 1px solid var(--rand);
+      border-radius: 8px;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .direct-item i { font-size: 18px; color: var(--groen); }
+    .direct-item strong { flex: 1; }
+    .direct-item span { font-size: 12px; color: var(--tekst-muted); }
+
+    .social-sectie h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+    .social-knoppen { display: flex; gap: 10px; }
+    .social-knop-groot {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: #fff;
+      border: 1px solid var(--rand);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+      text-decoration: none;
+    }
+    .social-knop-groot:hover { border-color: var(--groen); }
+    .social-knop-groot i { font-size: 22px; color: var(--groen); }
+    .social-knop-groot .sk-label { font-size: 11px; color: var(--tekst-muted); }
+    .social-knop-groot .sk-naam { font-size: 13px; font-weight: 500; color: var(--tekst); }
+
+    @media (max-width: 900px) {
+      .page-hero-inner { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .formulier-sectie { border-right: none; border-bottom: 1px solid var(--rand); padding: 32px 24px; }
+      .info-sectie { padding: 32px 24px; }
+      .formulier-rij { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"><i class="ti ti-tree"></i></div>
+      <div class="nav-brand"><span>Stamgast</span> Boombeheer</div>
+    </a>
+    <div class="nav-links">
+      <a href="over-lode.html">Over Lode</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="aanpak.html">Onze aanpak</a>
+      <a href="referenties.html">Referenties</a>
+      <a href="contact.html" class="actief">Contact</a>
+    </div>
+    <a href="contact.html" class="nav-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="wrapper">
+    <div class="page-hero-inner">
+      <div>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="ti ti-chevron-right" style="font-size:13px;"></i>
+          <span class="huidig">Contact</span>
+        </div>
+        <h1>Neem contact op met Lode</h1>
+        <p>Vrijblijvend een offerte aanvragen, een vraag stellen of polsen of Lode in uw gemeente actief is — het kan allemaal.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="c-icoon"><i class="ti ti-phone"></i></div>
+            <div><div class="c-label">Telefoon</div><div class="c-waarde">0497 91 09 13</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icoon"><i class="ti ti-mail"></i></div>
+            <div><div class="c-label">E-mail</div><div class="c-waarde">stamgastboombeheer@gmail.com</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icoon"><i class="ti ti-map-pin"></i></div>
+            <div><div class="c-label">Werkgebied</div><div class="c-waarde">Oost- &amp; West-Vlaanderen</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="hero-belofte">
+          <p><strong>Wat u mag verwachten:</strong> Lode reageert doorgaans binnen 1 werkdag. Hij plant een gratis plaatsbezoek in en geeft u eerlijk advies — ook als dat betekent dat er niets moet gebeuren.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULIER + INFO -->
+<section class="sectie">
+  <div class="wrapper">
+    <div class="contact-grid">
+      <div class="formulier-sectie">
+        <h2>Vrijblijvende offerte aanvragen</h2>
+        <p>Vul het formulier in en Lode neemt zo snel mogelijk contact met u op.</p>
+
+        <div class="formulier-rij">
+          <div class="formulier-groep">
+            <label for="voornaam">Voornaam</label>
+            <input type="text" id="voornaam" placeholder="Jan">
+          </div>
+          <div class="formulier-groep">
+            <label for="achternaam">Achternaam</label>
+            <input type="text" id="achternaam" placeholder="Janssen">
+          </div>
+        </div>
+        <div class="formulier-rij">
+          <div class="formulier-groep">
+            <label for="telefoon">Telefoon</label>
+            <input type="tel" id="telefoon" placeholder="0471 00 00 00">
+          </div>
+          <div class="formulier-groep">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="jan@voorbeeld.be">
+          </div>
+        </div>
+        <div class="formulier-groep">
+          <label for="gemeente">Gemeente</label>
+          <input type="text" id="gemeente" placeholder="Gent, Aalst, Deinze...">
+        </div>
+        <div class="formulier-groep">
+          <label>Welke dienst(en) zoekt u?</label>
+          <div class="dienst-checkboxes">
+            <label class="dienst-checkbox"><input type="checkbox"> Snoeien</label>
+            <label class="dienst-checkbox"><input type="checkbox"> Aanplant</label>
+            <label class="dienst-checkbox"><input type="checkbox"> Ecologie &amp; beheer</label>
+            <label class="dienst-checkbox"><input type="checkbox"> Advies &amp; inspectie</label>
+            <label class="dienst-checkbox"><input type="checkbox"> Vellen &amp; demonteren</label>
+            <label class="dienst-checkbox"><input type="checkbox"> Stormschade</label>
+          </div>
+        </div>
+        <div class="formulier-groep">
+          <label for="beschrijving">Beschrijf kort uw situatie</label>
+          <textarea id="beschrijving" placeholder="Welke boom, wat is het probleem of de vraag, zijn er bijzonderheden..."></textarea>
+        </div>
+        <div class="formulier-groep">
+          <label for="urgentie">Hoe urgent is de vraag?</label>
+          <select id="urgentie">
+            <option>Niet dringend — op uw tempo</option>
+            <option>Binnen de maand</option>
+            <option>Dringend (stormschade, veiligheidsrisico)</option>
+          </select>
+        </div>
+        <button class="btn-verzenden" type="button">
+          <i class="ti ti-send"></i> Verstuur aanvraag
+        </button>
+        <p class="formulier-noot"><i class="ti ti-lock"></i> Uw gegevens worden enkel gebruikt voor deze aanvraag</p>
+      </div>
+
+      <div class="info-sectie">
+        <h2>Werkgebied</h2>
+        <div class="werkgebied-kaart"><i class="ti ti-map-2"></i></div>
+        <div class="regio-labels">
+          <div class="regio-label"><i class="ti ti-map-pin"></i> Gent</div>
+          <div class="regio-label"><i class="ti ti-map-pin"></i> Aalst</div>
+          <div class="regio-label"><i class="ti ti-map-pin"></i> Oudenaarde</div>
+          <div class="regio-label"><i class="ti ti-map-pin"></i> Deinze</div>
+          <div class="regio-label"><i class="ti ti-map-pin"></i> Kortrijk</div>
+          <div class="regio-label"><i class="ti ti-map-pin"></i> Brugge</div>
+          <div class="regio-label"><i class="ti ti-map-pin"></i> &amp; omstreken</div>
+        </div>
+
+        <div class="verwacht-blok">
+          <h3>Wat gebeurt er na uw aanvraag?</h3>
+          <div class="verwacht-items">
+            <div class="verwacht-item"><div class="v-num">1</div>Lode leest uw aanvraag en neemt contact op, doorgaans binnen 1 werkdag.</div>
+            <div class="verwacht-item"><div class="v-num">2</div>Samen plannen jullie een gratis plaatsbezoek in op een moment dat u past.</div>
+            <div class="verwacht-item"><div class="v-num">3</div>U krijgt eerlijk advies en, als er werk is, een duidelijke offerte zonder kleine lettertjes.</div>
+          </div>
+        </div>
+
+        <div class="direct-contact">
+          <h3>Liever direct contact?</h3>
+          <div class="direct-item">
+            <i class="ti ti-phone"></i>
+            <strong>0497 91 09 13</strong>
+            <span>Ma–vr, 8–18u</span>
+          </div>
+          <div class="direct-item">
+            <i class="ti ti-mail"></i>
+            <strong>stamgastboombeheer@gmail.com</strong>
+          </div>
+        </div>
+
+        <div class="social-sectie">
+          <h3>Volg Stamgast</h3>
+          <div class="social-knoppen">
+            <a href="https://www.facebook.com/stamgastboombeheer" target="_blank" class="social-knop-groot">
+              <i class="ti ti-brand-facebook"></i>
+              <div><div class="sk-label">Facebook</div><div class="sk-naam">stamgastboombeheer</div></div>
+            </a>
+            <a href="https://www.instagram.com/stamgastboombeheer" target="_blank" class="social-knop-groot">
+              <i class="ti ti-brand-instagram"></i>
+              <div><div class="sk-label">Instagram</div><div class="sk-naam">stamgastboombeheer</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrapper">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;">
+          <div class="nav-logo-mark" style="width:30px;height:30px;font-size:17px;"><i class="ti ti-tree"></i></div>
+          <div class="nav-brand" style="font-size:15px;"><span>Stamgast</span> Boombeheer</div>
+        </a>
+        <p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
+        <div class="footer-cert-badges"><span class="cert-badge">ETW</span><span class="cert-badge">VETCERT</span></div>
+        <div class="social-rij">
+          <a href="https://www.facebook.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-facebook"></i></a>
+          <a href="https://www.instagram.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <a href="over-lode.html">Over Lode</a>
+        <a href="diensten.html">Diensten</a>
+        <a href="aanpak.html">Onze aanpak</a>
+        <a href="referenties.html">Referenties</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>0497 91 09 13</p>
+        <p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
+        <p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+        <p style="margin-top:8px;font-size:13px;">BE 0678.719.886</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Stamgast Boombeheer — Lode Jans</span>
+      <span>Privacybeleid &nbsp;·&nbsp; Cookiebeleid</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

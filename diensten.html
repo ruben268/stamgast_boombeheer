@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diensten — Stamgast Boombeheer</title>
+  <meta name="description" content="Alle diensten van Stamgast Boombeheer: snoeien, aanplant, ecologie, advies, vellen en stormschade. Altijd eerlijk, altijd vakkundig.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      background: var(--achtergrond);
+      padding: 72px 0 56px;
+    }
+    .page-hero h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 14px; }
+    .page-hero p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; max-width: 540px; }
+
+    /* Uitgelichte diensten bovenaan */
+    .diensten-uitgelicht {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .dienst-groot {
+      background: var(--groen);
+      border-radius: var(--radius-groot);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dienst-groot-bg {
+      position: absolute;
+      right: -16px;
+      bottom: -16px;
+      font-size: 120px;
+      color: rgba(255,255,255,0.07);
+    }
+    .dienst-groot .tag-wit {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .dienst-groot h2 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 10px; }
+    .dienst-groot p { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 20px; }
+
+    .diensten-mid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .dienst-mid {
+      background: #fff;
+      border: 1px solid var(--rand);
+      border-radius: var(--radius-groot);
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: border-color 0.15s;
+    }
+    .dienst-mid:hover { border-color: var(--groen); }
+    .dienst-mid-icoon {
+      width: 44px; height: 44px; background: var(--achtergrond);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 22px; color: var(--groen);
+      flex-shrink: 0;
+    }
+    .dienst-mid h2 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
+    .dienst-mid p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
+    .dienst-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: var(--groen);
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    /* Klein raster */
+    .diensten-klein {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .dienst-klein {
+      background: #fff;
+      border: 1px solid var(--rand);
+      border-radius: var(--radius-groot);
+      padding: 24px;
+      transition: border-color 0.15s;
+    }
+    .dienst-klein:hover { border-color: var(--groen); }
+    .dienst-klein-icoon {
+      width: 40px; height: 40px; background: var(--achtergrond);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 20px; color: var(--groen);
+      margin-bottom: 14px;
+    }
+    .dienst-klein h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .dienst-klein p { font-size: 13px; color: var(--tekst-muted); line-height: 1.6; margin-bottom: 12px; }
+
+    /* Niet-doen blok */
+    .niet-doen {
+      background: var(--achtergrond);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 0;
+    }
+    .niet-doen h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .niet-doen > p { font-size: 15px; color: var(--tekst-muted); margin-bottom: 20px; }
+    .niet-list { display: flex; flex-direction: column; gap: 10px; }
+    .niet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--tekst-muted);
+      line-height: 1.6;
+    }
+    .niet-item i { font-size: 18px; color: #c0392b; flex-shrink: 0; margin-top: 1px; }
+
+    @media (max-width: 900px) {
+      .diensten-uitgelicht { grid-template-columns: 1fr; }
+      .diensten-klein { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .diensten-klein { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"><i class="ti ti-tree"></i></div>
+      <div class="nav-brand"><span>Stamgast</span> Boombeheer</div>
+    </a>
+    <div class="nav-links">
+      <a href="over-lode.html">Over Lode</a>
+      <a href="diensten.html" class="actief">Diensten</a>
+      <a href="aanpak.html">Onze aanpak</a>
+      <a href="referenties.html">Referenties</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="contact.html" class="nav-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="wrapper">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="ti ti-chevron-right" style="font-size:13px;"></i>
+      <span class="huidig">Diensten</span>
+    </div>
+    <h1>Wat kan Stamgast voor u doen?</h1>
+    <p>Van snoeien tot ecologisch beheer — altijd vakkundig, altijd in overleg. Lode werkt enkel wat nodig is, nooit meer.</p>
+  </div>
+</section>
+
+<section class="sectie">
+  <div class="wrapper">
+    <div class="sectie-label">Diensten</div>
+    <div class="sectie-titel">Alle diensten</div>
+    <p class="sectie-sub">Klik op een dienst voor meer informatie en voorbeelden uit de praktijk.</p>
+
+    <!-- Uitgelicht + mid -->
+    <div class="diensten-uitgelicht">
+      <div class="dienst-groot">
+        <div class="dienst-groot-bg"><i class="ti ti-scissors"></i></div>
+        <span class="tag-wit">Populairste dienst</span>
+        <h2>Snoeien</h2>
+        <p>Vakkundige snoeiwerken conform ETW-normen. Lode snoeiert enkel wat nodig is voor de gezondheid en veiligheid van uw boom — nooit puur voor het uitzicht.</p>
+        <a href="contact.html" class="btn-wit" style="font-size:14px;padding:9px 16px;">
+          <i class="ti ti-arrow-right"></i> Offerte aanvragen
+        </a>
+      </div>
+      <div class="diensten-mid">
+        <div class="dienst-mid">
+          <div class="dienst-mid-icoon"><i class="ti ti-leaf"></i></div>
+          <div>
+            <h2>Ecologie &amp; beheer</h2>
+            <p>Duurzame ingrepen voor waardevolle bomen. Stamgast's sterkste troef.</p>
+            <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
+          </div>
+        </div>
+        <div class="dienst-mid">
+          <div class="dienst-mid-icoon"><i class="ti ti-clipboard-list"></i></div>
+          <div>
+            <h2>Advies &amp; inspectie</h2>
+            <p>Onafhankelijk advies zonder verkoopsdoeleinden. Ook als er niets hoeft te gebeuren.</p>
+            <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klein raster -->
+    <div class="diensten-klein" style="margin-bottom:48px;">
+      <div class="dienst-klein">
+        <div class="dienst-klein-icoon"><i class="ti ti-plant"></i></div>
+        <span class="tag-grijs" style="margin-bottom:10px;display:inline-block;">Seizoensgebonden</span>
+        <h3>Aanplant</h3>
+        <p>De juiste boom op de juiste plek. Lode kijkt naar bodemgesteldheid, groeiruimte en uw wensen.</p>
+        <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
+      </div>
+      <div class="dienst-klein">
+        <div class="dienst-klein-icoon"><i class="ti ti-axe"></i></div>
+        <span class="tag-waarschuwing" style="margin-bottom:10px;display:inline-block;">Enkel indien nodig</span>
+        <h3>Vellen &amp; demonteren</h3>
+        <p>Wanneer vellen de enige of beste optie is — veilig en vakkundig uitgevoerd.</p>
+        <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
+      </div>
+      <div class="dienst-klein">
+        <div class="dienst-klein-icoon"><i class="ti ti-storm"></i></div>
+        <span class="tag-grijs" style="margin-bottom:10px;display:inline-block;">Urgente interventie</span>
+        <h3>Stormschade</h3>
+        <p>Snelle en veilige interventie na storm of windval. Veiligheid eerst, boom redden waar mogelijk.</p>
+        <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
+      </div>
+      <div class="dienst-klein">
+        <div class="dienst-klein-icoon"><i class="ti ti-analyze"></i></div>
+        <h3>Standplaatsverbetering</h3>
+        <p>Betere groeiomstandigheden voor uw boom — bodem, ruimte, waterhuishouding.</p>
+        <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
+      </div>
+      <div class="dienst-klein">
+        <div class="dienst-klein-icoon"><i class="ti ti-list-check"></i></div>
+        <h3>Inventarisatie</h3>
+        <p>Overzicht van al uw bomen met toestand, prioriteiten en aanbevelingen.</p>
+        <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
+      </div>
+      <div class="dienst-klein">
+        <div class="dienst-klein-icoon"><i class="ti ti-hammer"></i></div>
+        <h3>Atelier</h3>
+        <p>Hout dat vrijkomt bij werken wordt vakkundig verwerkt. Niets gaat verloren.</p>
+        <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
+      </div>
+    </div>
+
+    <!-- Niet-doen -->
+    <div class="niet-doen">
+      <h3>Wat Stamgast bewust niet doet</h3>
+      <p>Eerlijkheid betekent ook duidelijk zijn over wat niet past binnen onze filosofie.</p>
+      <div class="niet-list">
+        <div class="niet-item"><i class="ti ti-x"></i>Onnodige snoeiwerken uitvoeren omdat de klant erom vraagt, zonder dat het de boom ten goede komt</div>
+        <div class="niet-item"><i class="ti ti-x"></i>Te hard snoeien — wat de boom verzwakt en op lange termijn meer schade aanricht</div>
+        <div class="niet-item"><i class="ti ti-x"></i>Waardevolle bomen vellen als er een goed alternatief bestaat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="wrapper">
+  <div class="cta-balk">
+    <div>
+      <h2>Niet zeker welke dienst u nodig heeft?</h2>
+      <p>Lode komt langs, bekijkt uw situatie en geeft eerlijk advies — ook als er niets moet gebeuren.</p>
+    </div>
+    <a href="contact.html" class="btn-wit" style="white-space:nowrap;flex-shrink:0;">
+      <i class="ti ti-clipboard-text"></i> Offerte aanvragen
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrapper">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;">
+          <div class="nav-logo-mark" style="width:30px;height:30px;font-size:17px;"><i class="ti ti-tree"></i></div>
+          <div class="nav-brand" style="font-size:15px;"><span>Stamgast</span> Boombeheer</div>
+        </a>
+        <p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
+        <div class="footer-cert-badges"><span class="cert-badge">ETW</span><span class="cert-badge">VETCERT</span></div>
+        <div class="social-rij">
+          <a href="https://www.facebook.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-facebook"></i></a>
+          <a href="https://www.instagram.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Diensten</h4>
+        <a href="diensten.html">Snoeien</a>
+        <a href="diensten.html">Aanplant</a>
+        <a href="diensten.html">Ecologie &amp; beheer</a>
+        <a href="diensten.html">Advies &amp; inspectie</a>
+        <a href="diensten.html">Vellen &amp; demonteren</a>
+        <a href="diensten.html">Stormschade</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>0497 91 09 13</p>
+        <p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
+        <p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Stamgast Boombeheer — Lode Jans</span>
+      <span>Privacybeleid &nbsp;·&nbsp; Cookiebeleid</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

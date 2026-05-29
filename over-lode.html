@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over Lode — Stamgast Boombeheer</title>
+  <meta name="description" content="Lode Jans, gecertificeerd European Tree Worker (ETW) en VETCERT-houder. Oprichter van Stamgast Boombeheer — boomverzorging met eerlijkheid en passie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      background: var(--achtergrond);
+      padding: 72px 0 64px;
+    }
+    .page-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 56px;
+      align-items: center;
+    }
+    .page-hero h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+    .page-hero h1 em { color: var(--groen); font-style: normal; }
+    .page-hero p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; }
+
+    .lode-kaart {
+      background: #fff;
+      border: 1px solid var(--rand);
+      border-radius: var(--radius-groot);
+      overflow: hidden;
+    }
+    .lode-foto {
+      background: var(--groen);
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .lode-foto i { font-size: 80px; color: rgba(255,255,255,0.12); }
+    .lode-foto-label {
+      position: absolute; bottom: 14px; left: 14px;
+      background: rgba(255,255,255,0.15);
+      color: #fff; border-radius: 8px;
+      padding: 7px 12px; font-size: 13px;
+    }
+    .lode-info { padding: 20px; }
+    .lode-naam { font-size: 18px; font-weight: 600; margin-bottom: 2px; }
+    .lode-titel { font-size: 13px; color: var(--tekst-muted); margin-bottom: 14px; }
+    .lode-certs { display: flex; gap: 8px; }
+    .lode-contact-blok {
+      border-top: 1px solid var(--rand);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .contact-rij {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--tekst-muted);
+    }
+    .contact-rij i { font-size: 16px; color: var(--groen); }
+
+    /* Tijdlijn */
+    .tijdlijn {
+      position: relative;
+      padding-left: 32px;
+      border-left: 2px solid var(--groen-licht);
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .tl-item { position: relative; }
+    .tl-stip {
+      width: 12px; height: 12px; background: var(--groen);
+      border-radius: 50%; position: absolute;
+      left: -39px; top: 4px;
+    }
+    .tl-jaar { font-size: 12px; font-weight: 600; color: var(--groen); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .tl-titel { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .tl-tekst { font-size: 14px; color: var(--tekst-muted); line-height: 1.7; }
+
+    /* Waarden */
+    .waarden-raster {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .waarde-kaart {
+      border: 1px solid var(--rand);
+      border-radius: var(--radius-groot);
+      padding: 24px;
+      background: #fff;
+    }
+    .waarde-icoon {
+      width: 44px; height: 44px; background: var(--achtergrond);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 22px; color: var(--groen);
+      margin-bottom: 14px;
+    }
+    .waarde-kaart h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .waarde-kaart p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
+
+    /* Certificaten */
+    .cert-raster {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cert-kaart {
+      background: #fff;
+      border: 1px solid var(--rand);
+      border-radius: var(--radius-groot);
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .cert-badge-groot {
+      background: var(--groen);
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .cert-kaart h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .cert-kaart p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .page-hero-inner { grid-template-columns: 1fr; }
+      .waarden-raster { grid-template-columns: 1fr; }
+      .cert-raster { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"><i class="ti ti-tree"></i></div>
+      <div class="nav-brand"><span>Stamgast</span> Boombeheer</div>
+    </a>
+    <div class="nav-links">
+      <a href="over-lode.html" class="actief">Over Lode</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="aanpak.html">Onze aanpak</a>
+      <a href="referenties.html">Referenties</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="contact.html" class="nav-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="wrapper">
+    <div class="page-hero-inner">
+      <div>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="ti ti-chevron-right" style="font-size:13px;"></i>
+          <span class="huidig">Over Lode</span>
+        </div>
+        <h1>Een vakman met een <em>groot hart voor bomen</em></h1>
+        <p>Lode Jans is gecertificeerd boomverzorger en oprichter van Stamgast Boombeheer. Zijn aanpak is eenvoudig: eerlijk advies, vakkundige uitvoering, en altijd met respect voor de boom.</p>
+      </div>
+      <div class="lode-kaart">
+        <div class="lode-foto">
+          <i class="ti ti-user"></i>
+          <div class="lode-foto-label">📷 Foto van Lode in actie</div>
+        </div>
+        <div class="lode-info">
+          <div class="lode-naam">Lode Jans</div>
+          <div class="lode-titel">Oprichter &amp; gecertificeerd boomverzorger</div>
+          <div class="lode-certs">
+            <span class="tag" style="font-size:12px;">ETW sinds 2017</span>
+            <span class="tag" style="font-size:12px;">VETCERT</span>
+          </div>
+        </div>
+        <div class="lode-contact-blok">
+          <div class="contact-rij"><i class="ti ti-phone"></i> 0497 91 09 13</div>
+          <div class="contact-rij"><i class="ti ti-mail"></i> stamgastboombeheer@gmail.com</div>
+          <div class="contact-rij"><i class="ti ti-map-pin"></i> Oost- &amp; West-Vlaanderen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCOURS -->
+<section class="sectie">
+  <div class="wrapper">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
+      <div>
+        <div class="sectie-label">Parcours</div>
+        <div class="sectie-titel">Van passie tot vakmanschap</div>
+        <p class="sectie-sub">Hoe Lode uitgroeide tot een van de meest gedreven boomverzorgers in de regio.</p>
+      </div>
+      <div></div>
+    </div>
+    <div class="tijdlijn">
+      <div class="tl-item">
+        <div class="tl-stip"></div>
+        <div class="tl-jaar">Begin</div>
+        <div class="tl-titel">Eerste stappen in de sector</div>
+        <div class="tl-tekst">Lode bouwde jarenlange ervaring op in loondienst, waarbij hij het vak van alle kanten leerde kennen — van snoeien tot klimtechnieken op grote hoogte.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-stip"></div>
+        <div class="tl-jaar">Avontuur</div>
+        <div class="tl-titel">Een jaar snoeien in Nieuw-Zeeland</div>
+        <div class="tl-tekst">Een unieke ervaring die zijn kijk op boomverzorging verbreedde en zijn technische vaardigheden op een hoger niveau bracht.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-stip"></div>
+        <div class="tl-jaar">2017</div>
+        <div class="tl-titel">European Tree Worker certificaat</div>
+        <div class="tl-tekst">Lode behaalt het internationaal erkende ETW-certificaat — een garant voor kwalitatief en veilig werken in en rond bomen.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-stip"></div>
+        <div class="tl-jaar">Oprichting</div>
+        <div class="tl-titel">Stamgast Boombeheer is een feit</div>
+        <div class="tl-tekst">Na jaren in loondienst kiest Lode het ruime sop en start hij zijn eigen zaak — met een duidelijke visie: bomen verdienen eerlijke zorg, geen overbodige ingrepen.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-stip"></div>
+        <div class="tl-jaar">Later</div>
+        <div class="tl-titel">VETCERT — expertise voor veterane bomen</div>
+        <div class="tl-tekst">Met het VETCERT-certificaat kan Lode ook oude, waardevolle veterane bomen van de nodige specifieke zorg voorzien.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAARDEN -->
+<section class="sectie-sm achtergrond-licht">
+  <div class="wrapper">
+    <div class="sectie-label">Waarden</div>
+    <div class="sectie-titel">Waar Stamgast voor staat</div>
+    <p class="sectie-sub">Niet elke boomverzorger werkt hetzelfde. Dit zijn de principes die Lode dagelijks in de praktijk brengt.</p>
+    <div class="waarden-raster">
+      <div class="waarde-kaart">
+        <div class="waarde-icoon"><i class="ti ti-heart-handshake"></i></div>
+        <h3>Eerlijk advies, altijd</h3>
+        <p>Ook als dat betekent dat er niets moet gebeuren. Lode verkoopt geen werk dat niet nodig is — dat is zeldzaam in de sector.</p>
+      </div>
+      <div class="waarde-kaart">
+        <div class="waarde-icoon"><i class="ti ti-leaf"></i></div>
+        <h3>Ecologisch denken</h3>
+        <p>Behoud en duurzaam beheer staan centraal. Waardevolle bomen vellen of te hard snoeien is voor Lode geen optie als het niet strikt noodzakelijk is.</p>
+      </div>
+      <div class="waarde-kaart">
+        <div class="waarde-icoon"><i class="ti ti-tool"></i></div>
+        <h3>Vakkundige uitvoering</h3>
+        <p>Lode doet het werk zelf. Geen onderaannemers, geen halve maatregelen. Wat hij belooft, levert hij.</p>
+      </div>
+      <div class="waarde-kaart">
+        <div class="waarde-icoon"><i class="ti ti-messages"></i></div>
+        <h3>Heldere communicatie</h3>
+        <p>U weet altijd wat er gaat gebeuren en waarom. Geen vakjargon, geen verrassingen achteraf.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATEN -->
+<section class="sectie">
+  <div class="wrapper">
+    <div class="sectie-label">Certificaten</div>
+    <div class="sectie-titel">Erkend vakmanschap</div>
+    <p class="sectie-sub">Twee internationale certificaten die de kwaliteit en veiligheid van Lode's werk garanderen.</p>
+    <div class="cert-raster">
+      <div class="cert-kaart">
+        <div class="cert-badge-groot">ETW</div>
+        <div>
+          <h3>European Tree Worker</h3>
+          <p>Internationaal erkend certificaat voor professionele boomverzorging. Garandeert technische kennis, veiligheid en kwaliteit van uitvoering. Behaald in 2017.</p>
+        </div>
+      </div>
+      <div class="cert-kaart">
+        <div class="cert-badge-groot">VET</div>
+        <div>
+          <h3>VETCERT — veterane bomen</h3>
+          <p>Specifieke expertise voor oude en waardevolle veterane bomen. Lode kan deze bijzondere bomen de gespecialiseerde zorg geven die ze verdienen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="wrapper">
+  <div class="cta-balk">
+    <div>
+      <h2>Wil u met Lode samenwerken?</h2>
+      <p>Vraag vrijblijvend een offerte aan — Lode komt langs en geeft u eerlijk advies.</p>
+    </div>
+    <a href="contact.html" class="btn-wit" style="white-space:nowrap;flex-shrink:0;">
+      <i class="ti ti-clipboard-text"></i> Offerte aanvragen
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrapper">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;">
+          <div class="nav-logo-mark" style="width:30px;height:30px;font-size:17px;"><i class="ti ti-tree"></i></div>
+          <div class="nav-brand" style="font-size:15px;"><span>Stamgast</span> Boombeheer</div>
+        </a>
+        <p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
+        <div class="footer-cert-badges"><span class="cert-badge">ETW</span><span class="cert-badge">VETCERT</span></div>
+        <div class="social-rij">
+          <a href="https://www.facebook.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-facebook"></i></a>
+          <a href="https://www.instagram.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <a href="over-lode.html">Over Lode</a>
+        <a href="diensten.html">Diensten</a>
+        <a href="aanpak.html">Onze aanpak</a>
+        <a href="referenties.html">Referenties</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>0497 91 09 13</p>
+        <p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
+        <p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Stamgast Boombeheer — Lode Jans</span>
+      <span>Privacybeleid &nbsp;·&nbsp; Cookiebeleid</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
