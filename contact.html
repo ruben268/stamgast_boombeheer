@@ -4,234 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact & Offerte — Stamgast Boombeheer</title>
-  <meta name="description" content="Neem contact op met Stamgast Boombeheer. Vraag een vrijblijvende offerte aan — Lode Jans reageert binnen 1 werkdag.">
+  <meta name="description" content="Neem contact op met Stamgast Boombeheer. Vraag een vrijblijvende offerte aan — Lode Jans reageert binnen 3 werkdagen.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    .page-hero {
-      background: var(--groen);
-      padding: 72px 0 56px;
-    }
+    .page-hero { background: var(--groen); padding: 72px 0 56px; }
     .page-hero .breadcrumb { color: rgba(255,255,255,0.45); }
     .page-hero .breadcrumb a { color: rgba(255,255,255,0.45); }
     .page-hero .breadcrumb a:hover { color: #fff; }
     .page-hero .breadcrumb .huidig { color: rgba(255,255,255,0.9); }
-    .page-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-    }
+    .page-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .page-hero h1 { font-size: 38px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 14px; }
     .page-hero p { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 24px; }
     .contact-items { display: flex; flex-direction: column; gap: 12px; }
     .contact-item { display: flex; align-items: center; gap: 14px; }
-    .c-icoon {
-      width: 40px; height: 40px; background: rgba(255,255,255,0.12);
-      border-radius: 10px; display: flex; align-items: center;
-      justify-content: center; font-size: 20px; color: #fff; flex-shrink: 0;
-    }
+    .c-icoon { width: 40px; height: 40px; background: rgba(255,255,255,0.12); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; flex-shrink: 0; }
     .c-label { font-size: 12px; color: rgba(255,255,255,0.45); }
     .c-waarde { font-size: 15px; font-weight: 500; color: #fff; }
-    .hero-belofte {
+
+    /* Foto placeholder in hero */
+    .hero-foto-placeholder {
       background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 24px;
+      border-radius: 14px;
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 1.5px dashed rgba(255,255,255,0.25);
+      text-align: center;
+      padding: 24px;
     }
-    .hero-belofte p { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.7; }
-    .hero-belofte strong { color: #fff; }
+    .hero-foto-placeholder i { font-size: 48px; color: rgba(255,255,255,0.25); }
+    .hero-foto-placeholder span { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
 
     /* Formulier + info grid */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border: 1px solid var(--rand);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 72px;
-    }
-    .formulier-sectie {
-      padding: 48px 40px;
-      border-right: 1px solid var(--rand);
-    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rand); border-radius: 16px; overflow: hidden; margin-bottom: 72px; }
+    .formulier-sectie { padding: 48px 40px; border-right: 1px solid var(--rand); }
     .formulier-sectie h2 { font-size: 20px; font-weight: 600; margin-bottom: 6px; }
     .formulier-sectie > p { font-size: 14px; color: var(--tekst-muted); margin-bottom: 28px; line-height: 1.6; }
-
-    .formulier-rij {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
+    .formulier-rij { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .formulier-groep { margin-bottom: 16px; }
-    .formulier-groep label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--tekst-muted);
-      margin-bottom: 6px;
-    }
+    .formulier-groep label { display: block; font-size: 13px; font-weight: 500; color: var(--tekst-muted); margin-bottom: 6px; }
     .formulier-groep input,
     .formulier-groep select,
-    .formulier-groep textarea {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1px solid var(--rand);
-      border-radius: 8px;
-      font-size: 14px;
-      font-family: inherit;
-      color: var(--tekst);
-      background: #fff;
-      transition: border-color 0.15s;
-      outline: none;
-    }
+    .formulier-groep textarea { width: 100%; padding: 10px 14px; border: 1px solid var(--rand); border-radius: 8px; font-size: 14px; font-family: inherit; color: var(--tekst); background: #fff; transition: border-color 0.15s; outline: none; }
     .formulier-groep input:focus,
     .formulier-groep select:focus,
-    .formulier-groep textarea:focus {
-      border-color: var(--groen);
-      box-shadow: 0 0 0 3px rgba(42,92,63,0.1);
-    }
+    .formulier-groep textarea:focus { border-color: var(--groen); box-shadow: 0 0 0 3px rgba(42,92,63,0.1); }
     .formulier-groep textarea { min-height: 100px; resize: vertical; }
-
-    .dienst-checkboxes {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 6px;
-    }
-    .dienst-checkbox {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--tekst-muted);
-      cursor: pointer;
-    }
-    .dienst-checkbox input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--groen);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .btn-verzenden {
-      width: 100%;
-      background: var(--groen);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 13px;
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 20px;
-      transition: background 0.15s;
-    }
+    .dienst-checkboxes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+    .dienst-checkbox { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--tekst-muted); cursor: pointer; }
+    .dienst-checkbox input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--groen); cursor: pointer; flex-shrink: 0; }
+    .btn-verzenden { width: 100%; background: var(--groen); color: #fff; border: none; border-radius: 8px; padding: 13px; font-size: 15px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; transition: background 0.15s; }
     .btn-verzenden:hover { background: #1e4430; }
-    .formulier-noot {
-      font-size: 12px;
-      color: var(--tekst-muted);
-      text-align: center;
-      margin-top: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-    }
+    .formulier-noot { font-size: 12px; color: var(--tekst-muted); text-align: center; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
     /* Info sectie */
     .info-sectie { padding: 48px 40px; background: var(--achtergrond); }
     .info-sectie h2 { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
 
-    .werkgebied-kaart {
-      background: var(--groen-licht);
-      border-radius: 10px;
-      height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* SVG Kaart */
+    .kaart-wrapper {
+      background: #fff;
+      border: 1px solid var(--rand);
+      border-radius: 12px;
+      padding: 16px;
       margin-bottom: 16px;
+      overflow: hidden;
     }
-    .werkgebied-kaart i { font-size: 48px; color: var(--groen); opacity: 0.35; }
+    .kaart-svg { width: 100%; height: auto; display: block; }
 
     .regio-labels { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .regio-label {
-      background: #fff;
-      border: 1px solid var(--rand);
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 12px;
-      color: var(--tekst-muted);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
+    .regio-label { background: #fff; border: 1px solid var(--rand); border-radius: 20px; padding: 4px 12px; font-size: 12px; color: var(--tekst-muted); display: flex; align-items: center; gap: 4px; }
     .regio-label i { font-size: 12px; color: var(--groen); }
 
-    .verwacht-blok {
-      background: #fff;
-      border: 1px solid var(--rand);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
+    .verwacht-blok { background: #fff; border: 1px solid var(--rand); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
     .verwacht-blok h3 { font-size: 14px; font-weight: 600; margin-bottom: 14px; }
     .verwacht-items { display: flex; flex-direction: column; gap: 10px; }
     .verwacht-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--tekst-muted); line-height: 1.6; }
-    .v-num {
-      width: 22px; height: 22px; background: var(--groen); color: #fff;
-      border-radius: 50%; font-size: 11px; display: flex; align-items: center;
-      justify-content: center; flex-shrink: 0; margin-top: 1px;
-    }
+    .v-num { width: 22px; height: 22px; background: var(--groen); color: #fff; border-radius: 50%; font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
 
-    .direct-contact { margin-bottom: 20px; }
     .direct-contact h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
-    .direct-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 11px 14px;
-      background: #fff;
-      border: 1px solid var(--rand);
-      border-radius: 8px;
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
+    .direct-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; background: #fff; border: 1px solid var(--rand); border-radius: 8px; font-size: 14px; margin-bottom: 8px; }
     .direct-item i { font-size: 18px; color: var(--groen); }
     .direct-item strong { flex: 1; }
     .direct-item span { font-size: 12px; color: var(--tekst-muted); }
 
-    .social-sectie h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
-    .social-knoppen { display: flex; gap: 10px; }
-    .social-knop-groot {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
-      background: #fff;
-      border: 1px solid var(--rand);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: border-color 0.15s;
-      text-decoration: none;
-    }
-    .social-knop-groot:hover { border-color: var(--groen); }
-    .social-knop-groot i { font-size: 22px; color: var(--groen); }
-    .social-knop-groot .sk-label { font-size: 11px; color: var(--tekst-muted); }
-    .social-knop-groot .sk-naam { font-size: 13px; font-weight: 500; color: var(--tekst); }
-
     @media (max-width: 900px) {
       .page-hero-inner { grid-template-columns: 1fr; }
+      .hero-foto-placeholder { display: none; }
       .contact-grid { grid-template-columns: 1fr; }
       .formulier-sectie { border-right: none; border-bottom: 1px solid var(--rand); padding: 32px 24px; }
       .info-sectie { padding: 32px 24px; }
@@ -284,10 +150,10 @@
           </div>
         </div>
       </div>
-      <div>
-        <div class="hero-belofte">
-          <p><strong>Wat u mag verwachten:</strong> Lode reageert doorgaans binnen 1 werkdag. Hij plant een gratis plaatsbezoek in en geeft u eerlijk advies — ook als dat betekent dat er niets moet gebeuren.</p>
-        </div>
+      <!-- Foto placeholder -->
+      <div class="hero-foto-placeholder">
+        <i class="ti ti-photo"></i>
+        <span>Foto van Lode<br>toevoegen</span>
       </div>
     </div>
   </div>
@@ -300,26 +166,13 @@
       <div class="formulier-sectie">
         <h2>Vrijblijvende offerte aanvragen</h2>
         <p>Vul het formulier in en Lode neemt zo snel mogelijk contact met u op.</p>
-
         <div class="formulier-rij">
-          <div class="formulier-groep">
-            <label for="voornaam">Voornaam</label>
-            <input type="text" id="voornaam" placeholder="Jan">
-          </div>
-          <div class="formulier-groep">
-            <label for="achternaam">Achternaam</label>
-            <input type="text" id="achternaam" placeholder="Janssen">
-          </div>
+          <div class="formulier-groep"><label for="voornaam">Voornaam</label><input type="text" id="voornaam" placeholder="Jan"></div>
+          <div class="formulier-groep"><label for="achternaam">Achternaam</label><input type="text" id="achternaam" placeholder="Janssen"></div>
         </div>
         <div class="formulier-rij">
-          <div class="formulier-groep">
-            <label for="telefoon">Telefoon</label>
-            <input type="tel" id="telefoon" placeholder="0471 00 00 00">
-          </div>
-          <div class="formulier-groep">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" placeholder="jan@voorbeeld.be">
-          </div>
+          <div class="formulier-groep"><label for="telefoon">Telefoon</label><input type="tel" id="telefoon" placeholder="0471 00 00 00"></div>
+          <div class="formulier-groep"><label for="email">E-mail</label><input type="email" id="email" placeholder="jan@voorbeeld.be"></div>
         </div>
         <div class="formulier-groep">
           <label for="gemeente">Gemeente</label>
@@ -356,13 +209,73 @@
 
       <div class="info-sectie">
         <h2>Werkgebied</h2>
-        <div class="werkgebied-kaart"><i class="ti ti-map-2"></i></div>
+
+        <!-- SVG Kaart Oost- & West-Vlaanderen -->
+        <div class="kaart-wrapper">
+          <svg class="kaart-svg" viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- Achtergrond België (vereenvoudigd) -->
+            <rect width="340" height="220" fill="#F4F7F0" rx="4"/>
+
+            <!-- Andere provincies — lichtgrijs -->
+            <!-- Antwerpen -->
+            <path d="M160,20 L240,20 L255,40 L260,65 L230,70 L200,60 L175,65 L160,50 Z" fill="#e2e6ea" stroke="#fff" stroke-width="1.5"/>
+            <!-- Vlaams-Brabant -->
+            <path d="M175,65 L200,60 L230,70 L235,95 L210,105 L185,100 L170,85 Z" fill="#e2e6ea" stroke="#fff" stroke-width="1.5"/>
+            <!-- Limburg -->
+            <path d="M230,70 L260,65 L280,75 L285,100 L265,115 L240,110 L235,95 Z" fill="#e2e6ea" stroke="#fff" stroke-width="1.5"/>
+            <!-- Henegouwen -->
+            <path d="M100,130 L140,125 L160,135 L165,160 L145,175 L110,170 L90,155 Z" fill="#e2e6ea" stroke="#fff" stroke-width="1.5"/>
+            <!-- Namen -->
+            <path d="M160,135 L185,100 L210,105 L225,120 L220,150 L195,165 L165,160 Z" fill="#e2e6ea" stroke="#fff" stroke-width="1.5"/>
+            <!-- Luik -->
+            <path d="M240,110 L265,115 L285,100 L295,120 L280,145 L255,150 L225,140 L225,120 Z" fill="#e2e6ea" stroke="#fff" stroke-width="1.5"/>
+            <!-- Luxemburg -->
+            <path d="M220,150 L255,150 L280,145 L285,175 L260,195 L225,185 L210,165 Z" fill="#e2e6ea" stroke="#fff" stroke-width="1.5"/>
+            <!-- Brussel -->
+            <path d="M185,100 L210,105 L210,120 L190,120 L185,110 Z" fill="#e2e6ea" stroke="#fff" stroke-width="1.5"/>
+
+            <!-- WEST-VLAANDEREN — Stamgast groen -->
+            <path d="M20,55 L55,40 L90,35 L120,40 L140,55 L145,80 L135,105 L115,120 L90,125 L60,120 L35,105 L15,85 Z"
+              fill="#2A5C3F" stroke="#fff" stroke-width="2"/>
+
+            <!-- OOST-VLAANDEREN — iets lichter groen -->
+            <path d="M120,40 L160,30 L175,65 L170,85 L160,95 L140,100 L120,105 L100,100 L85,90 L85,70 L100,55 Z"
+              fill="#3a7a57" stroke="#fff" stroke-width="2"/>
+
+            <!-- Labels provincies -->
+            <text x="72" y="85" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#fff">West-</text>
+            <text x="72" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#fff">Vlaanderen</text>
+
+            <text x="130" y="75" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="600" fill="#fff">Oost-</text>
+            <text x="130" y="85" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="600" fill="#fff">Vl.</text>
+
+            <!-- Andere provincie labels -->
+            <text x="210" y="42" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#8a9099">Antwerpen</text>
+            <text x="205" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#8a9099">Vl.-Brab.</text>
+            <text x="255" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#8a9099">Limburg</text>
+            <text x="120" y="155" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#8a9099">Henegouwen</text>
+            <text x="193" y="138" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#8a9099">Namen</text>
+            <text x="260" y="133" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#8a9099">Luik</text>
+            <text x="248" y="173" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#8a9099">Luxemburg</text>
+
+            <!-- Gent pin -->
+            <circle cx="118" cy="72" r="4" fill="#fff" stroke="#2A5C3F" stroke-width="1.5"/>
+            <text x="124" y="70" font-family="Inter, sans-serif" font-size="7" fill="#fff" font-weight="500">Gent</text>
+
+            <!-- Brugge pin -->
+            <circle cx="52" cy="62" r="3.5" fill="#fff" stroke="#2A5C3F" stroke-width="1.5"/>
+            <text x="57" y="60" font-family="Inter, sans-serif" font-size="7" fill="#fff" font-weight="500">Brugge</text>
+
+            <!-- Legenda -->
+            <rect x="16" y="165" width="12" height="10" fill="#2A5C3F" rx="2"/>
+            <text x="32" y="174" font-family="Inter, sans-serif" font-size="8" fill="#5a6672">Werkgebied Stamgast</text>
+          </svg>
+        </div>
+
         <div class="regio-labels">
           <div class="regio-label"><i class="ti ti-map-pin"></i> Gent</div>
           <div class="regio-label"><i class="ti ti-map-pin"></i> Aalst</div>
-          <div class="regio-label"><i class="ti ti-map-pin"></i> Oudenaarde</div>
           <div class="regio-label"><i class="ti ti-map-pin"></i> Deinze</div>
-          <div class="regio-label"><i class="ti ti-map-pin"></i> Kortrijk</div>
           <div class="regio-label"><i class="ti ti-map-pin"></i> Brugge</div>
           <div class="regio-label"><i class="ti ti-map-pin"></i> &amp; omstreken</div>
         </div>
@@ -370,8 +283,8 @@
         <div class="verwacht-blok">
           <h3>Wat gebeurt er na uw aanvraag?</h3>
           <div class="verwacht-items">
-            <div class="verwacht-item"><div class="v-num">1</div>Lode leest uw aanvraag en neemt contact op, doorgaans binnen 1 werkdag.</div>
-            <div class="verwacht-item"><div class="v-num">2</div>Samen plannen jullie een gratis plaatsbezoek in op een moment dat u past.</div>
+            <div class="verwacht-item"><div class="v-num">1</div>Lode leest uw aanvraag en neemt contact op, doorgaans binnen 3 werkdagen.</div>
+            <div class="verwacht-item"><div class="v-num">2</div>Samen plannen jullie een plaatsbezoek in op een moment dat u past.</div>
             <div class="verwacht-item"><div class="v-num">3</div>U krijgt eerlijk advies en, als er werk is, een duidelijke offerte zonder kleine lettertjes.</div>
           </div>
         </div>
@@ -386,20 +299,6 @@
           <div class="direct-item">
             <i class="ti ti-mail"></i>
             <strong>stamgastboombeheer@gmail.com</strong>
-          </div>
-        </div>
-
-        <div class="social-sectie">
-          <h3>Volg Stamgast</h3>
-          <div class="social-knoppen">
-            <a href="https://www.facebook.com/stamgastboombeheer" target="_blank" class="social-knop-groot">
-              <i class="ti ti-brand-facebook"></i>
-              <div><div class="sk-label">Facebook</div><div class="sk-naam">stamgastboombeheer</div></div>
-            </a>
-            <a href="https://www.instagram.com/stamgastboombeheer" target="_blank" class="social-knop-groot">
-              <i class="ti ti-brand-instagram"></i>
-              <div><div class="sk-label">Instagram</div><div class="sk-naam">stamgastboombeheer</div></div>
-            </a>
           </div>
         </div>
       </div>

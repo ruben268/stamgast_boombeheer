@@ -4,180 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Referenties — Stamgast Boombeheer</title>
-  <meta name="description" content="Wat klanten zeggen over Stamgast Boombeheer. Reviews, videotestimonials en voorbeeldprojecten van Lode Jans.">
+  <meta name="description" content="Wat klanten zeggen over Stamgast Boombeheer. Reviews en voorbeeldprojecten van Lode Jans.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    .page-hero {
-      background: var(--achtergrond);
-      padding: 72px 0 56px;
-    }
-    .page-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 48px;
-      align-items: center;
-    }
-    .page-hero h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 14px; }
-    .page-hero p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; }
-    .score-kaart {
-      background: #fff;
-      border: 1px solid var(--rand);
-      border-radius: var(--radius-groot);
-      padding: 28px;
-      text-align: center;
-    }
-    .score-num { font-size: 56px; font-weight: 700; color: var(--groen); line-height: 1; }
+    /* Hero */
+    .page-hero { background: var(--groen); padding: 72px 0 56px; }
+    .page-hero .breadcrumb { color: rgba(255,255,255,0.5); }
+    .page-hero .breadcrumb a { color: rgba(255,255,255,0.5); }
+    .page-hero .breadcrumb a:hover { color: #fff; }
+    .page-hero .breadcrumb .huidig { color: rgba(255,255,255,0.9); }
+    .page-hero-inner { display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: center; }
+    .page-hero h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 14px; color: #fff; }
+    .page-hero p { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.7; }
+    .score-kaart { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius-groot); padding: 28px; text-align: center; }
+    .score-num { font-size: 56px; font-weight: 700; color: #fff; line-height: 1; }
     .score-sterren { color: #F0A500; font-size: 22px; margin: 8px 0; }
-    .score-label { font-size: 13px; color: var(--tekst-muted); }
-    .score-platform {
-      display: flex; align-items: center; justify-content: center; gap: 6px;
-      margin-top: 12px; font-size: 13px; color: var(--tekst-muted);
-    }
-    .score-platform i { font-size: 16px; color: var(--groen); }
+    .score-label { font-size: 13px; color: rgba(255,255,255,0.6); }
+    .score-platform { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.6); }
+    .score-platform i { font-size: 16px; color: rgba(255,255,255,0.8); }
 
-    /* Video sectie */
-    .video-sectie { background: var(--groen); padding: 64px 0; }
-    .video-sectie .sectie-label { color: rgba(255,255,255,0.5); }
-    .video-sectie .sectie-titel { color: #fff; }
-    .video-sectie .sectie-sub { color: rgba(255,255,255,0.7); }
-    .video-raster {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .video-kaart {
-      background: rgba(255,255,255,0.1);
-      border-radius: var(--radius-groot);
-      overflow: hidden;
-    }
-    .video-thumb {
-      height: 140px;
-      background: rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .video-play {
-      width: 48px; height: 48px; background: #fff;
-      border-radius: 50%; display: flex; align-items: center;
-      justify-content: center; color: var(--groen); font-size: 22px;
-      cursor: pointer;
-    }
-    .video-play i { margin-left: 3px; }
-    .video-duur {
-      position: absolute; bottom: 10px; right: 12px;
-      font-size: 12px; color: rgba(255,255,255,0.6);
-    }
-    .video-info { padding: 14px 16px; }
-    .video-naam { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 2px; }
-    .video-loc { font-size: 12px; color: rgba(255,255,255,0.5); }
-    .video-placeholder {
-      background: rgba(255,255,255,0.05);
-      border: 1.5px dashed rgba(255,255,255,0.2);
-      border-radius: var(--radius-groot);
-      height: 195px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      text-align: center;
-      padding: 24px;
-    }
-    .video-placeholder i { font-size: 28px; color: rgba(255,255,255,0.2); }
-    .video-placeholder p { font-size: 13px; color: rgba(255,255,255,0.4); }
-
-    /* Reviews */
-    .reviews-raster {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .review-kaart {
-      background: #fff;
-      border: 1px solid var(--rand);
-      border-radius: var(--radius-groot);
-      padding: 24px;
-    }
-    .review-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 14px;
-    }
-    .reviewer { display: flex; align-items: center; gap: 12px; }
-    .r-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--groen-licht); display: flex; align-items: center;
-      justify-content: center; font-size: 14px; font-weight: 600;
-      color: var(--groen); flex-shrink: 0;
-    }
-    .r-naam { font-size: 15px; font-weight: 600; }
-    .r-meta { font-size: 12px; color: var(--tekst-muted); }
-    .r-sterren { color: #F0A500; font-size: 15px; }
-    .review-dienst {
-      display: inline-block;
-      background: var(--achtergrond);
-      color: var(--groen);
-      border-radius: 4px;
-      padding: 3px 8px;
-      font-size: 11px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-    .review-tekst {
-      font-size: 14px;
-      color: var(--tekst-muted);
-      line-height: 1.7;
-      font-style: italic;
-    }
-
-    /* Projecten */
-    .project-raster {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .project-kaart {
-      border: 1px solid var(--rand);
-      border-radius: var(--radius-groot);
-      overflow: hidden;
-      background: #fff;
-    }
-    .project-afbeelding {
-      background: var(--groen-licht);
-      height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .project-afbeelding i { font-size: 40px; color: var(--groen); opacity: 0.35; }
-    .project-info { padding: 16px; }
-    .project-dienst {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--groen);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      margin-bottom: 4px;
-    }
-    .project-titel { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    /* Recent werk */
+    .project-raster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .project-kaart { border: 1px solid var(--rand); border-radius: var(--radius-groot); overflow: hidden; background: #fff; }
+    .project-afbeelding { background: var(--groen-licht); height: 160px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .project-afbeelding i { font-size: 40px; color: var(--groen); opacity: 0.3; }
+    .project-info { padding: 18px; }
+    .project-dienst { font-size: 11px; font-weight: 600; color: var(--groen); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+    .project-titel { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
     .project-loc { font-size: 12px; color: var(--tekst-muted); display: flex; align-items: center; gap: 4px; }
     .project-loc i { font-size: 12px; }
 
+    /* Reviews */
+    .reviews-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .review-kaart { background: #fff; border: 1px solid var(--rand); border-radius: var(--radius-groot); padding: 24px; }
+    .review-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .r-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--groen-licht); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--groen); flex-shrink: 0; }
+    .r-naam { font-size: 15px; font-weight: 600; }
+    .r-meta { font-size: 12px; color: var(--tekst-muted); }
+    .r-sterren { color: #F0A500; font-size: 15px; white-space: nowrap; }
+    .review-dienst { display: inline-block; background: var(--achtergrond); color: var(--groen); border-radius: 4px; padding: 3px 8px; font-size: 11px; font-weight: 500; margin-bottom: 10px; }
+    .review-tekst { font-size: 14px; color: var(--tekst-muted); line-height: 1.7; font-style: italic; }
+
     @media (max-width: 900px) {
       .page-hero-inner { grid-template-columns: 1fr; }
-      .video-raster { grid-template-columns: 1fr 1fr; }
-      .reviews-raster { grid-template-columns: 1fr; }
       .project-raster { grid-template-columns: 1fr 1fr; }
+      .reviews-raster { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
-      .video-raster { grid-template-columns: 1fr; }
       .project-raster { grid-template-columns: 1fr; }
     }
   </style>
@@ -201,6 +79,7 @@
   </div>
 </nav>
 
+<!-- 1. HERO — Wat klanten zeggen over Stamgast -->
 <section class="page-hero">
   <div class="wrapper">
     <div class="page-hero-inner">
@@ -223,43 +102,66 @@
   </div>
 </section>
 
-<!-- VIDEO TESTIMONIALS -->
-<section class="video-sectie">
+<!-- 2. RECENT WERK -->
+<section class="sectie achtergrond-licht">
   <div class="wrapper">
-    <div class="sectie-label">Videotestimonials</div>
-    <div class="sectie-titel">Klanten aan het woord</div>
-    <p class="sectie-sub">Korte video's opgenomen door klanten zelf. Authentiek en eerlijk.</p>
-    <div class="video-raster">
-      <div class="video-kaart">
-        <div class="video-thumb">
-          <div class="video-play"><i class="ti ti-player-play"></i></div>
-          <span class="video-duur">1:24</span>
-        </div>
-        <div class="video-info">
-          <div class="video-naam">Marie V.</div>
-          <div class="video-loc">Gent — Snoeien eiken</div>
+    <div class="sectie-label">Projecten</div>
+    <div class="sectie-titel">Recent werk</div>
+    <p class="sectie-sub">Een greep uit de projecten die Lode de voorbije maanden uitvoerde.</p>
+    <div class="project-raster">
+      <div class="project-kaart">
+        <div class="project-afbeelding"><i class="ti ti-photo"></i></div>
+        <div class="project-info">
+          <div class="project-dienst">Snoeien</div>
+          <div class="project-titel">Lindebomen tuin particulier</div>
+          <div class="project-loc"><i class="ti ti-map-pin"></i> Gent</div>
         </div>
       </div>
-      <div class="video-kaart">
-        <div class="video-thumb">
-          <div class="video-play"><i class="ti ti-player-play"></i></div>
-          <span class="video-duur">0:58</span>
-        </div>
-        <div class="video-info">
-          <div class="video-naam">Peter D.</div>
-          <div class="video-loc">Deinze — Stormschade</div>
+      <div class="project-kaart">
+        <div class="project-afbeelding"><i class="ti ti-photo"></i></div>
+        <div class="project-info">
+          <div class="project-dienst">Ecologie &amp; beheer</div>
+          <div class="project-titel">Veterane beuk bewaard</div>
+          <div class="project-loc"><i class="ti ti-map-pin"></i> Deinze</div>
         </div>
       </div>
-      <div class="video-placeholder">
-        <i class="ti ti-video-plus"></i>
-        <p>Meer videotestimonials volgen.<br>Heeft u met Stamgast samengewerkt?</p>
-        <a href="contact.html" style="color:rgba(255,255,255,0.6);font-size:13px;">Neem contact op <i class="ti ti-arrow-right"></i></a>
+      <div class="project-kaart">
+        <div class="project-afbeelding"><i class="ti ti-photo"></i></div>
+        <div class="project-info">
+          <div class="project-dienst">Stormschade</div>
+          <div class="project-titel">Spoedinterventie na storm</div>
+          <div class="project-loc"><i class="ti ti-map-pin"></i> Aalst</div>
+        </div>
+      </div>
+      <div class="project-kaart">
+        <div class="project-afbeelding"><i class="ti ti-photo"></i></div>
+        <div class="project-info">
+          <div class="project-dienst">Aanplant</div>
+          <div class="project-titel">Nieuwe haag &amp; bomen</div>
+          <div class="project-loc"><i class="ti ti-map-pin"></i> Oudenaarde</div>
+        </div>
+      </div>
+      <div class="project-kaart">
+        <div class="project-afbeelding"><i class="ti ti-photo"></i></div>
+        <div class="project-info">
+          <div class="project-dienst">Advies &amp; inspectie</div>
+          <div class="project-titel">Boomadvies groot domein</div>
+          <div class="project-loc"><i class="ti ti-map-pin"></i> Kortrijk</div>
+        </div>
+      </div>
+      <div class="project-kaart">
+        <div class="project-afbeelding"><i class="ti ti-photo"></i></div>
+        <div class="project-info">
+          <div class="project-dienst">Vellen</div>
+          <div class="project-titel">Veilig demonteren sierkers</div>
+          <div class="project-loc"><i class="ti ti-map-pin"></i> Gent</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
+<!-- 3. ERVARINGEN VAN KLANTEN -->
 <section class="sectie">
   <div class="wrapper">
     <div class="sectie-label">Reviews</div>
@@ -308,73 +210,14 @@
           <div class="r-sterren">★★★★★</div>
         </div>
         <span class="review-dienst">Ecologie &amp; beheer</span>
-        <p class="review-tekst">"Lode heeft onze oude beuk een tweede leven gegeven. Zijn kennis van veterane bomen is indrukwekkend. We zijn blij dat we niet te snel voor vellen gekozen hebben."</p>
+        <p class="review-tekst">"Lode heeft onze oude beuk een tweede leven gegeven. Zijn kennis van veterane bomen is indrukwekkend. Blij dat we niet te snel voor vellen kozen."</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTEN -->
-<section class="sectie-sm achtergrond-licht">
-  <div class="wrapper">
-    <div class="sectie-label">Projecten</div>
-    <div class="sectie-titel">Recent werk</div>
-    <p class="sectie-sub">Een greep uit de projecten die Lode de voorbije maanden uitvoerde.</p>
-    <div class="project-raster">
-      <div class="project-kaart">
-        <div class="project-afbeelding"><i class="ti ti-scissors"></i></div>
-        <div class="project-info">
-          <div class="project-dienst">Snoeien</div>
-          <div class="project-titel">Lindebomen tuin particulier</div>
-          <div class="project-loc"><i class="ti ti-map-pin"></i> Gent</div>
-        </div>
-      </div>
-      <div class="project-kaart">
-        <div class="project-afbeelding"><i class="ti ti-leaf"></i></div>
-        <div class="project-info">
-          <div class="project-dienst">Ecologie &amp; beheer</div>
-          <div class="project-titel">Veterane beuk bewaard</div>
-          <div class="project-loc"><i class="ti ti-map-pin"></i> Deinze</div>
-        </div>
-      </div>
-      <div class="project-kaart">
-        <div class="project-afbeelding"><i class="ti ti-storm"></i></div>
-        <div class="project-info">
-          <div class="project-dienst">Stormschade</div>
-          <div class="project-titel">Spoedinterventie na storm</div>
-          <div class="project-loc"><i class="ti ti-map-pin"></i> Aalst</div>
-        </div>
-      </div>
-      <div class="project-kaart">
-        <div class="project-afbeelding"><i class="ti ti-plant"></i></div>
-        <div class="project-info">
-          <div class="project-dienst">Aanplant</div>
-          <div class="project-titel">Nieuwe haag &amp; bomen</div>
-          <div class="project-loc"><i class="ti ti-map-pin"></i> Oudenaarde</div>
-        </div>
-      </div>
-      <div class="project-kaart">
-        <div class="project-afbeelding"><i class="ti ti-clipboard-list"></i></div>
-        <div class="project-info">
-          <div class="project-dienst">Inventarisatie</div>
-          <div class="project-titel">Boomadvies groot domein</div>
-          <div class="project-loc"><i class="ti ti-map-pin"></i> Kortrijk</div>
-        </div>
-      </div>
-      <div class="project-kaart">
-        <div class="project-afbeelding"><i class="ti ti-axe"></i></div>
-        <div class="project-info">
-          <div class="project-dienst">Vellen</div>
-          <div class="project-titel">Veilig demonteren sierkers</div>
-          <div class="project-loc"><i class="ti ti-map-pin"></i> Gent</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="wrapper" style="padding-top:16px;">
+<!-- 4. CTA -->
+<div class="wrapper">
   <div class="cta-balk">
     <div>
       <h2>Zelf een samenwerking starten?</h2>

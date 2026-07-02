@@ -4,137 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diensten — Stamgast Boombeheer</title>
-  <meta name="description" content="Alle diensten van Stamgast Boombeheer: snoeien, aanplant, ecologie, advies, vellen en stormschade. Altijd eerlijk, altijd vakkundig.">
+  <meta name="description" content="Alle diensten van Stamgast Boombeheer: snoeien, aanplant, advies, vellen en stormschade. Altijd eerlijk, altijd vakkundig.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    .page-hero {
-      background: var(--achtergrond);
-      padding: 72px 0 56px;
-    }
+    .page-hero { background: var(--achtergrond); padding: 72px 0 56px; }
     .page-hero h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 14px; }
     .page-hero p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; max-width: 540px; }
 
-    /* Uitgelichte diensten bovenaan */
-    .diensten-uitgelicht {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    .dienst-groot {
-      background: var(--groen);
-      border-radius: var(--radius-groot);
-      padding: 36px;
-      position: relative;
-      overflow: hidden;
-    }
-    .dienst-groot-bg {
-      position: absolute;
-      right: -16px;
-      bottom: -16px;
-      font-size: 120px;
-      color: rgba(255,255,255,0.07);
-    }
-    .dienst-groot .tag-wit {
-      background: rgba(255,255,255,0.2);
-      color: #fff;
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 500;
-      display: inline-block;
-      margin-bottom: 16px;
-    }
+    /* Uitgelichte diensten */
+    .diensten-uitgelicht { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .dienst-groot { background: var(--groen); border-radius: var(--radius-groot); padding: 36px; position: relative; overflow: hidden; }
+    .dienst-groot-bg { position: absolute; right: -16px; bottom: -16px; font-size: 120px; color: rgba(255,255,255,0.07); }
+    .dienst-groot .tag-wit { background: rgba(255,255,255,0.2); color: #fff; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 500; display: inline-block; margin-bottom: 16px; }
     .dienst-groot h2 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 10px; }
     .dienst-groot p { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 20px; }
-
-    .diensten-mid {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .dienst-mid {
-      background: #fff;
-      border: 1px solid var(--rand);
-      border-radius: var(--radius-groot);
-      padding: 24px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      transition: border-color 0.15s;
-    }
+    .diensten-mid { display: flex; flex-direction: column; gap: 16px; }
+    .dienst-mid { background: #fff; border: 1px solid var(--rand); border-radius: var(--radius-groot); padding: 24px; display: flex; gap: 16px; align-items: flex-start; transition: border-color 0.15s; }
     .dienst-mid:hover { border-color: var(--groen); }
-    .dienst-mid-icoon {
-      width: 44px; height: 44px; background: var(--achtergrond);
-      border-radius: 10px; display: flex; align-items: center;
-      justify-content: center; font-size: 22px; color: var(--groen);
-      flex-shrink: 0;
-    }
+    .dienst-mid-icoon { width: 44px; height: 44px; background: var(--achtergrond); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--groen); flex-shrink: 0; }
     .dienst-mid h2 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
     .dienst-mid p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
-    .dienst-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 13px;
-      color: var(--groen);
-      font-weight: 500;
-      margin-top: 8px;
-    }
+    .dienst-link { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: var(--groen); font-weight: 500; margin-top: 8px; }
 
-    /* Klein raster */
-    .diensten-klein {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .dienst-klein {
-      background: #fff;
-      border: 1px solid var(--rand);
-      border-radius: var(--radius-groot);
-      padding: 24px;
-      transition: border-color 0.15s;
-    }
+    /* Klein raster — nu 2 kolommen want minder items */
+    .diensten-klein { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .dienst-klein { background: #fff; border: 1px solid var(--rand); border-radius: var(--radius-groot); padding: 24px; transition: border-color 0.15s; }
     .dienst-klein:hover { border-color: var(--groen); }
-    .dienst-klein-icoon {
-      width: 40px; height: 40px; background: var(--achtergrond);
-      border-radius: 10px; display: flex; align-items: center;
-      justify-content: center; font-size: 20px; color: var(--groen);
-      margin-bottom: 14px;
-    }
+    .dienst-klein-icoon { width: 40px; height: 40px; background: var(--achtergrond); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--groen); margin-bottom: 14px; }
     .dienst-klein h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
     .dienst-klein p { font-size: 13px; color: var(--tekst-muted); line-height: 1.6; margin-bottom: 12px; }
 
+    /* Uitgelichte case */
+    .case-blok { margin-top: 56px; }
+    .case-blok-label { font-size: 11px; font-weight: 600; color: var(--groen); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .case-blok-titel { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
+    .case-blok-sub { font-size: 15px; color: var(--tekst-muted); margin-bottom: 28px; }
+    .case-kaart { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rand); border-radius: 16px; overflow: hidden; }
+    .case-foto { background: var(--groen); min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; position: relative; }
+    .case-foto i { font-size: 72px; color: rgba(255,255,255,0.15); }
+    .case-foto-label { position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); color: #fff; border-radius: 8px; padding: 8px 14px; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+    .case-foto-tag { position: absolute; top: 20px; left: 20px; background: var(--groen-licht); color: var(--groen-mid); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 500; }
+    .case-info { background: #fff; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+    .case-dienst { font-size: 11px; font-weight: 600; color: var(--groen); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .case-info h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; line-height: 1.3; }
+    .case-info p { font-size: 15px; color: var(--tekst-muted); line-height: 1.7; margin-bottom: 20px; }
+    .case-meta { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+    .case-meta-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--tekst-muted); }
+    .case-meta-item i { font-size: 16px; color: var(--groen); }
+
     /* Niet-doen blok */
-    .niet-doen {
-      background: var(--achtergrond);
-      border-radius: 16px;
-      padding: 40px;
-      margin-bottom: 0;
-    }
+    .niet-doen { background: var(--achtergrond); border-radius: 16px; padding: 40px; margin-bottom: 0; }
     .niet-doen h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
     .niet-doen > p { font-size: 15px; color: var(--tekst-muted); margin-bottom: 20px; }
     .niet-list { display: flex; flex-direction: column; gap: 10px; }
-    .niet-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 14px;
-      color: var(--tekst-muted);
-      line-height: 1.6;
-    }
+    .niet-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
     .niet-item i { font-size: 18px; color: #c0392b; flex-shrink: 0; margin-top: 1px; }
 
     @media (max-width: 900px) {
       .diensten-uitgelicht { grid-template-columns: 1fr; }
-      .diensten-klein { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 640px) {
       .diensten-klein { grid-template-columns: 1fr; }
+      .case-kaart { grid-template-columns: 1fr; }
+      .case-foto { min-height: 220px; }
     }
   </style>
 </head>
@@ -165,7 +99,7 @@
       <span class="huidig">Diensten</span>
     </div>
     <h1>Wat kan Stamgast voor u doen?</h1>
-    <p>Van snoeien tot ecologisch beheer — altijd vakkundig, altijd in overleg. Lode werkt enkel wat nodig is, nooit meer.</p>
+    <p>Van snoeien tot vakkundige boomzorg — altijd in overleg. Lode werkt enkel wat nodig is, nooit meer.</p>
   </div>
 </section>
 
@@ -181,7 +115,7 @@
         <div class="dienst-groot-bg"><i class="ti ti-scissors"></i></div>
         <span class="tag-wit">Populairste dienst</span>
         <h2>Snoeien</h2>
-        <p>Vakkundige snoeiwerken conform ETW-normen. Lode snoeiert enkel wat nodig is voor de gezondheid en veiligheid van uw boom — nooit puur voor het uitzicht.</p>
+        <p>Vakkundige snoeiwerken conform ETW-normen. Lode snoeiet enkel wat nodig is voor de gezondheid en veiligheid van uw boom — nooit puur voor het uitzicht.</p>
         <a href="contact.html" class="btn-wit" style="font-size:14px;padding:9px 16px;">
           <i class="ti ti-arrow-right"></i> Offerte aanvragen
         </a>
@@ -198,7 +132,7 @@
         <div class="dienst-mid">
           <div class="dienst-mid-icoon"><i class="ti ti-clipboard-list"></i></div>
           <div>
-            <h2>Advies &amp; inspectie</h2>
+            <h2>Advies, inspectie &amp; inventarisatie</h2>
             <p>Onafhankelijk advies zonder verkoopsdoeleinden. Ook als er niets hoeft te gebeuren.</p>
             <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
           </div>
@@ -206,11 +140,11 @@
       </div>
     </div>
 
-    <!-- Klein raster -->
-    <div class="diensten-klein" style="margin-bottom:48px;">
+    <!-- Klein raster — 2 kolommen -->
+    <div class="diensten-klein" style="margin-bottom:0;">
       <div class="dienst-klein">
-        <div class="dienst-klein-icoon"><i class="ti ti-plant"></i></div>
-        <span class="tag-grijs" style="margin-bottom:10px;display:inline-block;">Seizoensgebonden</span>
+        <div class="dienst-klein-icoon"><i class="ti ti-tree"></i></div>
+        <span class="tag-grijs" style="margin-bottom:10px;display:inline-block;">November t.e.m. maart</span>
         <h3>Aanplant</h3>
         <p>De juiste boom op de juiste plek. Lode kijkt naar bodemgesteldheid, groeiruimte en uw wensen.</p>
         <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
@@ -235,22 +169,37 @@
         <p>Betere groeiomstandigheden voor uw boom — bodem, ruimte, waterhuishouding.</p>
         <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
       </div>
-      <div class="dienst-klein">
-        <div class="dienst-klein-icoon"><i class="ti ti-list-check"></i></div>
-        <h3>Inventarisatie</h3>
-        <p>Overzicht van al uw bomen met toestand, prioriteiten en aanbevelingen.</p>
-        <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
-      </div>
-      <div class="dienst-klein">
-        <div class="dienst-klein-icoon"><i class="ti ti-hammer"></i></div>
-        <h3>Atelier</h3>
-        <p>Hout dat vrijkomt bij werken wordt vakkundig verwerkt. Niets gaat verloren.</p>
-        <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
+    </div>
+
+    <!-- Uitgelichte case -->
+    <div class="case-blok">
+      <div class="case-blok-label">Uit de praktijk</div>
+      <div class="case-blok-titel">Een project in de kijker</div>
+      <p class="case-blok-sub">Wat maakt Stamgast anders? Dit project laat het zien.</p>
+      <div class="case-kaart">
+        <div class="case-foto">
+          <span class="case-foto-tag">Ecologie &amp; beheer</span>
+          <i class="ti ti-photo"></i>
+          <div class="case-foto-label"><i class="ti ti-map-pin"></i> Deinze</div>
+        </div>
+        <div class="case-info">
+          <div class="case-dienst">Ecologie &amp; beheer</div>
+          <h3>Veterane beuk van 120 jaar bewaard</h3>
+          <p>Een beuk van meer dan een eeuw oud, die door een andere vakman al was opgegeven. Lode voerde een grondige inspectie uit, stelde een behandelplan op en gaf de boom een tweede leven — zonder vellen.</p>
+          <div class="case-meta">
+            <div class="case-meta-item"><i class="ti ti-map-pin"></i> Deinze</div>
+            <div class="case-meta-item"><i class="ti ti-scissors"></i> Ecologie &amp; beheer — VETCERT</div>
+            <div class="case-meta-item"><i class="ti ti-clock"></i> Uitvoering over 2 dagen</div>
+          </div>
+          <a href="referenties.html" class="btn-primair" style="align-self:flex-start;">
+            <i class="ti ti-arrow-right"></i> Bekijk meer projecten
+          </a>
+        </div>
       </div>
     </div>
 
     <!-- Niet-doen -->
-    <div class="niet-doen">
+    <div class="niet-doen" style="margin-top:56px;">
       <h3>Wat Stamgast bewust niet doet</h3>
       <p>Eerlijkheid betekent ook duidelijk zijn over wat niet past binnen onze filosofie.</p>
       <div class="niet-list">
@@ -262,7 +211,6 @@
   </div>
 </section>
 
-<!-- CTA -->
 <div class="wrapper">
   <div class="cta-balk">
     <div>
@@ -295,7 +243,7 @@
         <a href="diensten.html">Snoeien</a>
         <a href="diensten.html">Aanplant</a>
         <a href="diensten.html">Ecologie &amp; beheer</a>
-        <a href="diensten.html">Advies &amp; inspectie</a>
+        <a href="diensten.html">Advies, inspectie &amp; inventarisatie</a>
         <a href="diensten.html">Vellen &amp; demonteren</a>
         <a href="diensten.html">Stormschade</a>
       </div>
@@ -304,6 +252,7 @@
         <p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>0497 91 09 13</p>
         <p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
         <p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+        <p style="margin-top:8px;font-size:13px;">BE 0678.719.886</p>
       </div>
     </div>
     <div class="footer-bottom">
