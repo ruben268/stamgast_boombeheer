@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teksten nakijken — Stamgast Boombeheer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --groen: #2A5C3F; --groen-licht: #D8EDDF;
+      --achtergrond: #F4F7F0; --tekst: #1a1a1a;
+      --tekst-muted: #5a6672; --rand: #e2e6ea;
+      --blauw: #1a6fc4; --blauw-licht: #e8f2fc;
+    }
+    body { font-family: 'Inter', sans-serif; background: #f0f2f5; color: var(--tekst); line-height: 1.6; }
+
+    /* ---- Toolbar ---- */
+    .toolbar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--groen); color: #fff;
+      padding: 12px 24px; display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .toolbar-links { display: flex; align-items: center; gap: 8px; }
+    .toolbar-logo { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; }
+    .toolbar-logo-mark { width: 28px; height: 28px; background: rgba(255,255,255,0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+    .toolbar-logo span { color: var(--groen-licht); }
+    .toolbar p { font-size: 13px; color: rgba(255,255,255,0.75); }
+    .btn-export { background: #fff; color: var(--groen); border: none; border-radius: 7px; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+    .btn-export:hover { background: var(--groen-licht); }
+    .btn-reset { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 7px; padding: 8px 14px; font-size: 13px; cursor: pointer; }
+    .btn-reset:hover { background: rgba(255,255,255,0.25); }
+
+    /* ---- Instructies ---- */
+    .instructies {
+      background: var(--blauw-licht); border-left: 3px solid var(--blauw);
+      padding: 14px 20px; margin: 20px 24px; border-radius: 0 8px 8px 0;
+      font-size: 14px; color: #1a3a5c;
+    }
+    .instructies strong { display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--blauw); }
+
+    /* ---- Pagina-secties ---- */
+    .pagina { background: #fff; border: 1px solid var(--rand); border-radius: 14px; margin: 20px 24px; overflow: hidden; }
+    .pagina-header {
+      background: var(--achtergrond); padding: 16px 24px;
+      border-bottom: 1px solid var(--rand);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pagina-nummer { width: 28px; height: 28px; background: var(--groen); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; }
+    .pagina-naam { font-size: 15px; font-weight: 600; }
+    .pagina-url { font-size: 12px; color: var(--tekst-muted); }
+    .pagina-body { padding: 24px; }
+
+    /* ---- Tekstveld blokken ---- */
+    .veld-groep { margin-bottom: 24px; }
+    .veld-groep:last-child { margin-bottom: 0; }
+    .veld-sectie-label {
+      font-size: 10px; font-weight: 600; color: var(--groen);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 12px; padding-bottom: 6px;
+      border-bottom: 1px solid var(--groen-licht);
+    }
+    .veld { margin-bottom: 12px; }
+    .veld-label {
+      font-size: 11px; font-weight: 600; color: var(--tekst-muted);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: 4px; display: flex; align-items: center; gap: 6px;
+    }
+    .veld-type {
+      background: #f0f0f0; color: #888; border-radius: 4px;
+      padding: 1px 6px; font-size: 10px; font-weight: 400;
+      text-transform: none; letter-spacing: 0;
+    }
+
+    /* Bewerkbare tekstvelden */
+    [contenteditable] {
+      border: 1.5px solid var(--rand);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--tekst);
+      line-height: 1.6;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+      min-height: 40px;
+    }
+    [contenteditable]:focus {
+      border-color: var(--groen);
+      background: #fafffe;
+      box-shadow: 0 0 0 3px rgba(42,92,63,0.08);
+    }
+    [contenteditable].gewijzigd {
+      border-color: #f0a500;
+      background: #fffdf5;
+    }
+    [contenteditable].veld-h1 { font-size: 22px; font-weight: 600; }
+    [contenteditable].veld-h2 { font-size: 18px; font-weight: 600; }
+    [contenteditable].veld-h3 { font-size: 15px; font-weight: 600; }
+    [contenteditable].veld-tag { font-size: 12px; display: inline-block; background: var(--groen-licht); color: var(--groen); border-radius: 20px; padding: 4px 12px; min-height: auto; }
+    [contenteditable].veld-knop { font-size: 14px; display: inline-block; background: var(--groen); color: #fff; border-radius: 8px; padding: 8px 16px; min-height: auto; }
+
+    /* Wijzigingsindicator */
+    .gewijzigd-badge {
+      display: none; font-size: 10px; background: #f0a500;
+      color: #fff; border-radius: 4px; padding: 1px 6px;
+      margin-left: 6px; font-weight: 500;
+    }
+    .gewijzigd ~ .veld-label .gewijzigd-badge,
+    [contenteditable].gewijzigd + .gewijzigd-indicator { display: inline; }
+
+    /* Rij-layout voor tags/knoppen */
+    .veld-rij { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-start; }
+
+    /* Export modal */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5); z-index: 200;
+      align-items: flex-start; justify-content: center;
+      padding: 40px 20px; overflow-y: auto;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff; border-radius: 14px; width: 100%;
+      max-width: 680px; overflow: hidden;
+    }
+    .modal-header {
+      background: var(--achtergrond); padding: 16px 24px;
+      border-bottom: 1px solid var(--rand);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .modal-header h2 { font-size: 16px; font-weight: 600; }
+    .modal-sluit { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--tekst-muted); line-height: 1; }
+    .modal-body { padding: 24px; }
+    .export-tekst {
+      width: 100%; min-height: 400px; font-family: monospace;
+      font-size: 13px; line-height: 1.6; border: 1px solid var(--rand);
+      border-radius: 8px; padding: 16px; resize: vertical; color: var(--tekst);
+    }
+    .modal-footer { padding: 16px 24px; border-top: 1px solid var(--rand); display: flex; gap: 10px; justify-content: flex-end; }
+    .btn-kopieer { background: var(--groen); color: #fff; border: none; border-radius: 7px; padding: 9px 18px; font-size: 14px; font-weight: 500; cursor: pointer; }
+    .btn-sluit { background: #fff; color: var(--tekst-muted); border: 1px solid var(--rand); border-radius: 7px; padding: 9px 18px; font-size: 14px; cursor: pointer; }
+
+    /* Scheidingslijn tussen secties */
+    .sectie-divider { border: none; border-top: 1px solid var(--rand); margin: 20px 0; }
+  </style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="toolbar-links">
+    <div class="toolbar-logo">
+      <div class="toolbar-logo-mark">🌳</div>
+      <div><span>Stamgast</span> Boombeheer — Teksten nakijken</div>
+    </div>
+    <p>Klik op een tekst om hem te bewerken. Gewijzigde velden worden oranje gemarkeerd.</p>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <button class="btn-reset" onclick="resetAlles()">↺ Herstel alles</button>
+    <button class="btn-export" onclick="openExport()">📋 Exporteer wijzigingen</button>
+  </div>
+</div>
+
+<!-- INSTRUCTIES -->
+<div class="instructies">
+  <strong>Hoe werkt dit?</strong>
+  Klik op een willekeurige tekst en typ je aanpassing. Gewijzigde teksten krijgen een oranje rand. Wanneer je klaar bent, klik je op <strong>"Exporteer wijzigingen"</strong> — je krijgt dan een overzicht van alle aanpassingen die je kunt doorsturen naar Ruben.
+</div>
+
+<!-- ============================================
+     PAGINA 1: HOMEPAGE
+     ============================================ -->
+<div class="pagina" id="p-homepage">
+  <div class="pagina-header">
+    <div class="pagina-nummer">1</div>
+    <div>
+      <div class="pagina-naam">Homepage</div>
+      <div class="pagina-url">index.html — De hoofdpagina van de website</div>
+    </div>
+  </div>
+  <div class="pagina-body">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Hero — bovenaan de pagina</div>
+      <div class="veld">
+        <div class="veld-label">Badge (klein labelletje) <span class="veld-type">tag</span></div>
+        <div contenteditable="true" class="veld-tag" data-orig="ETW + VETCERT gecertificeerd">ETW + VETCERT gecertificeerd</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Hoofdtitel (H1) <span class="veld-type">grote titel</span></div>
+        <div contenteditable="true" class="veld-h1" data-orig="Bomen die mogen groeien. Met zorg én karakter.">Bomen die mogen groeien. Met zorg én karakter.</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Introtekst <span class="veld-type">paragraaf</span></div>
+        <div contenteditable="true" data-orig="Lode Jans zorgt voor uw bomen in Oost- en West-Vlaanderen — met eerlijk advies, vakkundige uitvoering en een diepgewortelde visie op duurzaam boombeheer.">Lode Jans zorgt voor uw bomen in Oost- en West-Vlaanderen — met eerlijk advies, vakkundige uitvoering en een diepgewortelde visie op duurzaam boombeheer.</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Knoppen <span class="veld-type">knoppen</span></div>
+        <div class="veld-rij">
+          <div contenteditable="true" class="veld-knop" data-orig="Vrijblijvende offerte">Vrijblijvende offerte</div>
+          <div contenteditable="true" class="veld-knop" style="background:transparent;color:var(--groen);border:1.5px solid var(--groen);" data-orig="Bekijk ons werk">Bekijk ons werk</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Trust-balk — 4 icoonlabels</div>
+      <div class="veld-rij">
+        <div style="flex:1;min-width:140px;">
+          <div class="veld-label">Label 1</div>
+          <div contenteditable="true" class="veld-h3" data-orig="ETW + VETCERT">ETW + VETCERT</div>
+          <div contenteditable="true" data-orig="Europees gecertificeerd" style="font-size:13px;">Europees gecertificeerd</div>
+        </div>
+        <div style="flex:1;min-width:140px;">
+          <div class="veld-label">Label 2</div>
+          <div contenteditable="true" class="veld-h3" data-orig="Oost- & West-Vlaanderen">Oost- &amp; West-Vlaanderen</div>
+          <div contenteditable="true" data-orig="Lokale vakman" style="font-size:13px;">Lokale vakman</div>
+        </div>
+        <div style="flex:1;min-width:140px;">
+          <div class="veld-label">Label 3</div>
+          <div contenteditable="true" class="veld-h3" data-orig="Eerlijk advies">Eerlijk advies</div>
+          <div contenteditable="true" data-orig="Geen onnodige snoei" style="font-size:13px;">Geen onnodige snoei</div>
+        </div>
+        <div style="flex:1;min-width:140px;">
+          <div class="veld-label">Label 4</div>
+          <div contenteditable="true" class="veld-h3" data-orig="Ecologisch beheer">Ecologisch beheer</div>
+          <div contenteditable="true" data-orig="Duurzame aanpak" style="font-size:13px;">Duurzame aanpak</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Diensten</div>
+      <div class="veld">
+        <div class="veld-label">Sectietitel</div>
+        <div contenteditable="true" class="veld-h2" data-orig="Wat kan Stamgast voor u doen?">Wat kan Stamgast voor u doen?</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Introductietekst</div>
+        <div contenteditable="true" data-orig="Van snoeien tot vakkundige boomzorg — altijd in overleg. Lode werkt enkel wat nodig is, nooit meer.">Van snoeien tot vakkundige boomzorg — altijd in overleg. Lode werkt enkel wat nodig is, nooit meer.</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Snoeien — beschrijving</div>
+        <div contenteditable="true" data-orig="Vakkundige snoeiwerken conform ETW-normen. Lode snoeiet enkel wat nodig is voor de gezondheid en veiligheid van uw boom — nooit puur voor het uitzicht of op vraag zonder noodzaak.">Vakkundige snoeiwerken conform ETW-normen. Lode snoeiet enkel wat nodig is voor de gezondheid en veiligheid van uw boom — nooit puur voor het uitzicht of op vraag zonder noodzaak.</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Aanplant — beschrijving</div>
+        <div contenteditable="true" data-orig="De juiste boom op de juiste plek, met aandacht voor groeiomstandigheden.">De juiste boom op de juiste plek, met aandacht voor groeiomstandigheden.</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Advies & inspectie — beschrijving</div>
+        <div contenteditable="true" data-orig="Onafhankelijk en eerlijk advies. Geen verkoopdoeleinden, wel echte expertise.">Onafhankelijk en eerlijk advies. Geen verkoopdoeleinden, wel echte expertise.</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Vellen — beschrijving</div>
+        <div contenteditable="true" data-orig="Wanneer vellen écht de beste optie is — veilig en vakkundig uitgevoerd.">Wanneer vellen écht de beste optie is — veilig en vakkundig uitgevoerd.</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Stormschade — beschrijving</div>
+        <div contenteditable="true" data-orig="Snelle interventie bij schade. Veiligheid eerst, boom redden waar mogelijk.">Snelle interventie bij schade. Veiligheid eerst, boom redden waar mogelijk.</div>
+      </div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Filosofieblok — "Boomverzorging met een geweten"</div>
+      <div class="veld">
+        <div class="veld-label">Titel</div>
+        <div contenteditable="true" class="veld-h2" data-orig="Boomverzorging met een geweten">Boomverzorging met een geweten</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Tekst</div>
+        <div contenteditable="true" data-orig="Lode gelooft dat een boom er mag staan. Onnodige snoei, te hard snoeien of waardevol groen vellen — dat past niet bij Stamgast. Die eerlijkheid is zeldzaam in de sector.">Lode gelooft dat een boom er mag staan. Onnodige snoei, te hard snoeien of waardevol groen vellen — dat past niet bij Stamgast. Die eerlijkheid is zeldzaam in de sector.</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Checklist punt 1</div>
+        <div contenteditable="true" data-orig="Geen onnodige ingrepen. Elke boom verdient een eerlijk oordeel, geen verkooppraatje.">Geen onnodige ingrepen. Elke boom verdient een eerlijk oordeel, geen verkooppraatje.</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Checklist punt 2</div>
+        <div contenteditable="true" data-orig="Langdurige oplossingen. Niet de snelle ingreep, maar wat écht goed is voor uw boom.">Langdurige oplossingen. Niet de snelle ingreep, maar wat écht goed is voor uw boom.</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Checklist punt 3</div>
+        <div contenteditable="true" data-orig="Transparante communicatie. U weet altijd waarom we iets doen — en waarom soms niet.">Transparante communicatie. U weet altijd waarom we iets doen — en waarom soms niet.</div>
+      </div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Werkwijze — 4 stappen</div>
+      <div class="veld-rij">
+        <div style="flex:1;">
+          <div class="veld-label">Stap 1</div>
+          <div contenteditable="true" class="veld-h3" data-orig="Offerte aanvragen">Offerte aanvragen</div>
+          <div contenteditable="true" data-orig="Online, per mail of telefoon — Lode reageert snel." style="font-size:13px;">Online, per mail of telefoon — Lode reageert snel.</div>
+        </div>
+        <div style="flex:1;">
+          <div class="veld-label">Stap 2</div>
+          <div contenteditable="true" class="veld-h3" data-orig="Plaatsbezoek">Plaatsbezoek</div>
+          <div contenteditable="true" data-orig="Inspectie & eerlijk advies op locatie." style="font-size:13px;">Inspectie &amp; eerlijk advies op locatie.</div>
+        </div>
+        <div style="flex:1;">
+          <div class="veld-label">Stap 3</div>
+          <div contenteditable="true" class="veld-h3" data-orig="Duidelijke offerte">Duidelijke offerte</div>
+          <div contenteditable="true" data-orig="Transparante prijs, geen verrassingen achteraf." style="font-size:13px;">Transparante prijs, geen verrassingen achteraf.</div>
+        </div>
+        <div style="flex:1;">
+          <div class="veld-label">Stap 4</div>
+          <div contenteditable="true" class="veld-h3" data-orig="Vakkundige uitvoering">Vakkundige uitvoering</div>
+          <div contenteditable="true" data-orig="Lode doet het werk zelf, met zorg en aandacht." style="font-size:13px;">Lode doet het werk zelf, met zorg en aandacht.</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Reviews — 4 klantentestimonials</div>
+      <div class="veld">
+        <div class="veld-label">Review 1 — tekst</div>
+        <div contenteditable="true" data-orig='"Lode heeft onze oude eik geïnspecteerd en besloten dat snoeien niet nodig was. Dat eerlijk advies, ook al kost hem dat werk, zegt alles over zijn aanpak."'>"Lode heeft onze oude eik geïnspecteerd en besloten dat snoeien niet nodig was. Dat eerlijk advies, ook al kost hem dat werk, zegt alles over zijn aanpak."</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Review 2 — tekst</div>
+        <div contenteditable="true" data-orig='"Vakkundig, snel en netjes. Na de stormschade was hij binnen de dag ter plaatse. De boom is gered en staat er nu beter bij dan ervoor."'>"Vakkundig, snel en netjes. Na de stormschade was hij binnen de dag ter plaatse. De boom is gered en staat er nu beter bij dan ervoor."</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Review 3 — tekst</div>
+        <div contenteditable="true" data-orig='"Eindelijk een boomverzorger die uitlegt wat hij doet en waarom. Geen overbodige snoei, gewoon goed advies en goed werk. Zeker aan te bevelen."'>"Eindelijk een boomverzorger die uitlegt wat hij doet en waarom. Geen overbodige snoei, gewoon goed advies en goed werk. Zeker aan te bevelen."</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Review 4 — tekst</div>
+        <div contenteditable="true" data-orig='"Lode heeft onze oude beuk een tweede leven gegeven. Zijn kennis van veterane bomen is indrukwekkend. Blij dat we niet te snel voor vellen kozen."'>"Lode heeft onze oude beuk een tweede leven gegeven. Zijn kennis van veterane bomen is indrukwekkend. Blij dat we niet te snel voor vellen kozen."</div>
+      </div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">CTA-blok onderaan</div>
+      <div class="veld">
+        <div class="veld-label">Titel</div>
+        <div contenteditable="true" class="veld-h2" data-orig="Klaar om uw bomen in goede handen te geven?">Klaar om uw bomen in goede handen te geven?</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Tekst</div>
+        <div contenteditable="true" data-orig="Vraag vrijblijvend een offerte aan. Lode komt langs, bekijkt uw situatie en geeft u eerlijk advies — ook als dat betekent dat er niets moet gebeuren.">Vraag vrijblijvend een offerte aan. Lode komt langs, bekijkt uw situatie en geeft u eerlijk advies — ook als dat betekent dat er niets moet gebeuren.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================
+     PAGINA 2: OVER LODE
+     ============================================ -->
+<div class="pagina" id="p-over-lode">
+  <div class="pagina-header">
+    <div class="pagina-nummer">2</div>
+    <div>
+      <div class="pagina-naam">Over Lode</div>
+      <div class="pagina-url">over-lode.html</div>
+    </div>
+  </div>
+  <div class="pagina-body">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Hero</div>
+      <div class="veld">
+        <div class="veld-label">Hoofdtitel</div>
+        <div contenteditable="true" class="veld-h1" data-orig="Een vakman met een groot hart voor bomen">Een vakman met een groot hart voor bomen</div>
+      </div>
+      <div class="veld">
+        <div class="veld-label">Introtekst</div>
+        <div contenteditable="true" data-orig="Lode Jans is gecertificeerd boomverzorger en oprichter van Stamgast Boombeheer. Zijn aanpak is eenvoudig: eerlijk advies, vakkundige uitvoering, en altijd met respect voor de boom.">Lode Jans is gecertificeerd boomverzorger en oprichter van Stamgast Boombeheer. Zijn aanpak is eenvoudig: eerlijk advies, vakkundige uitvoering, en altijd met respect voor de boom.</div>
+      </div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Tijdlijn — parcours</div>
+      <div class="veld"><div class="veld-label">Introductie sectie</div><div contenteditable="true" data-orig="Hoe Lode uitgroeide tot een van de meest gedreven boomverzorgers in de regio.">Hoe Lode uitgroeide tot een van de meest gedreven boomverzorgers in de regio.</div></div>
+      <div class="veld"><div class="veld-label">Stap 1 — titel</div><div contenteditable="true" class="veld-h3" data-orig="Eerste stappen in de sector">Eerste stappen in de sector</div></div>
+      <div class="veld"><div class="veld-label">Stap 1 — tekst</div><div contenteditable="true" data-orig="Lode bouwde jarenlange ervaring op in loondienst, waarbij hij het vak van alle kanten leerde kennen — van snoeien tot klimtechnieken op grote hoogte.">Lode bouwde jarenlange ervaring op in loondienst, waarbij hij het vak van alle kanten leerde kennen — van snoeien tot klimtechnieken op grote hoogte.</div></div>
+      <div class="veld"><div class="veld-label">Stap 2 — titel</div><div contenteditable="true" class="veld-h3" data-orig="Een jaar snoeien in Nieuw-Zeeland">Een jaar snoeien in Nieuw-Zeeland</div></div>
+      <div class="veld"><div class="veld-label">Stap 2 — tekst</div><div contenteditable="true" data-orig="Een unieke ervaring die zijn kijk op boomverzorging verbreedde en zijn technische vaardigheden op een hoger niveau bracht.">Een unieke ervaring die zijn kijk op boomverzorging verbreedde en zijn technische vaardigheden op een hoger niveau bracht.</div></div>
+      <div class="veld"><div class="veld-label">Stap 3 — titel</div><div contenteditable="true" class="veld-h3" data-orig="European Tree Worker certificaat">European Tree Worker certificaat</div></div>
+      <div class="veld"><div class="veld-label">Stap 3 — tekst</div><div contenteditable="true" data-orig="Lode behaalt het internationaal erkende ETW-certificaat — een garant voor kwalitatief en veilig werken in en rond bomen.">Lode behaalt het internationaal erkende ETW-certificaat — een garant voor kwalitatief en veilig werken in en rond bomen.</div></div>
+      <div class="veld"><div class="veld-label">Stap 4 — titel</div><div contenteditable="true" class="veld-h3" data-orig="Stamgast Boombeheer is een feit">Stamgast Boombeheer is een feit</div></div>
+      <div class="veld"><div class="veld-label">Stap 4 — tekst</div><div contenteditable="true" data-orig="Na jaren in loondienst kiest Lode het ruime sop en start hij zijn eigen zaak — met een duidelijke visie: bomen verdienen eerlijke zorg, geen overbodige ingrepen.">Na jaren in loondienst kiest Lode het ruime sop en start hij zijn eigen zaak — met een duidelijke visie: bomen verdienen eerlijke zorg, geen overbodige ingrepen.</div></div>
+      <div class="veld"><div class="veld-label">Stap 5 — titel</div><div contenteditable="true" class="veld-h3" data-orig="VETCERT — expertise voor veterane bomen">VETCERT — expertise voor veterane bomen</div></div>
+      <div class="veld"><div class="veld-label">Stap 5 — tekst</div><div contenteditable="true" data-orig="Met het VETCERT-certificaat kan Lode ook oude, waardevolle veterane bomen van de nodige specifieke zorg voorzien.">Met het VETCERT-certificaat kan Lode ook oude, waardevolle veterane bomen van de nodige specifieke zorg voorzien.</div></div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Waarden — 4 kaarten</div>
+      <div class="veld"><div class="veld-label">Waarde 1 — titel</div><div contenteditable="true" class="veld-h3" data-orig="Eerlijk advies, altijd">Eerlijk advies, altijd</div></div>
+      <div class="veld"><div class="veld-label">Waarde 1 — tekst</div><div contenteditable="true" data-orig="Ook als dat betekent dat er niets moet gebeuren. Lode verkoopt geen werk dat niet nodig is — dat is zeldzaam in de sector.">Ook als dat betekent dat er niets moet gebeuren. Lode verkoopt geen werk dat niet nodig is — dat is zeldzaam in de sector.</div></div>
+      <div class="veld"><div class="veld-label">Waarde 2 — titel</div><div contenteditable="true" class="veld-h3" data-orig="Ecologisch denken">Ecologisch denken</div></div>
+      <div class="veld"><div class="veld-label">Waarde 2 — tekst</div><div contenteditable="true" data-orig="Behoud en duurzaam beheer staan centraal. Waardevolle bomen vellen of te hard snoeien is voor Lode geen optie als het niet strikt noodzakelijk is.">Behoud en duurzaam beheer staan centraal. Waardevolle bomen vellen of te hard snoeien is voor Lode geen optie als het niet strikt noodzakelijk is.</div></div>
+      <div class="veld"><div class="veld-label">Waarde 3 — titel</div><div contenteditable="true" class="veld-h3" data-orig="Vakkundige uitvoering">Vakkundige uitvoering</div></div>
+      <div class="veld"><div class="veld-label">Waarde 3 — tekst</div><div contenteditable="true" data-orig="Lode doet het werk zelf. Geen onderaannemers, geen halve maatregelen. Wat hij belooft, levert hij.">Lode doet het werk zelf. Geen onderaannemers, geen halve maatregelen. Wat hij belooft, levert hij.</div></div>
+      <div class="veld"><div class="veld-label">Waarde 4 — titel</div><div contenteditable="true" class="veld-h3" data-orig="Heldere communicatie">Heldere communicatie</div></div>
+      <div class="veld"><div class="veld-label">Waarde 4 — tekst</div><div contenteditable="true" data-orig="U weet altijd wat er gaat gebeuren en waarom. Geen vakjargon, geen verrassingen achteraf.">U weet altijd wat er gaat gebeuren en waarom. Geen vakjargon, geen verrassingen achteraf.</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================
+     PAGINA 3: ONZE AANPAK
+     ============================================ -->
+<div class="pagina" id="p-aanpak">
+  <div class="pagina-header">
+    <div class="pagina-nummer">3</div>
+    <div>
+      <div class="pagina-naam">Onze aanpak</div>
+      <div class="pagina-url">aanpak.html</div>
+    </div>
+  </div>
+  <div class="pagina-body">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Hero</div>
+      <div class="veld"><div class="veld-label">Hoofdtitel</div><div contenteditable="true" class="veld-h1" data-orig="Vakmanschap begint met eerlijkheid">Vakmanschap begint met eerlijkheid</div></div>
+      <div class="veld"><div class="veld-label">Introductietekst</div><div contenteditable="true" data-orig="Stamgast werkt anders dan veel collega's. Geen overbodige ingrepen, geen verkoopspitch — wel een eerlijk gesprek over wat uw boom echt nodig heeft.">Stamgast werkt anders dan veel collega's. Geen overbodige ingrepen, geen verkoopspitch — wel een eerlijk gesprek over wat uw boom echt nodig heeft.</div></div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">4 werkwijze-stappen</div>
+      <div class="veld"><div class="veld-label">Stap 1 — titel</div><div contenteditable="true" class="veld-h3" data-orig="U neemt contact op">U neemt contact op</div></div>
+      <div class="veld"><div class="veld-label">Stap 1 — tekst</div><div contenteditable="true" data-orig="Bel, mail of vul het formulier in. Lode reageert snel en vraagt de nodige info op om de situatie in te schatten — zonder dat u al meteen een afspraak hoeft te maken.">Bel, mail of vul het formulier in. Lode reageert snel en vraagt de nodige info op om de situatie in te schatten — zonder dat u al meteen een afspraak hoeft te maken.</div></div>
+      <div class="veld"><div class="veld-label">Stap 2 — titel</div><div contenteditable="true" class="veld-h3" data-orig="Plaatsbezoek & eerlijk advies">Plaatsbezoek &amp; eerlijk advies</div></div>
+      <div class="veld"><div class="veld-label">Stap 2 — tekst</div><div contenteditable="true" data-orig="Lode komt ter plaatse, bekijkt uw situatie en geeft u een eerlijk oordeel. Ook als dat betekent dat er niets hoeft te gebeuren. U staat nooit voor verrassingen.">Lode komt ter plaatse, bekijkt uw situatie en geeft u een eerlijk oordeel. Ook als dat betekent dat er niets hoeft te gebeuren. U staat nooit voor verrassingen.</div></div>
+      <div class="veld"><div class="veld-label">Stap 3 — titel</div><div contenteditable="true" class="veld-h3" data-orig="Duidelijke offerte, geen kleine lettertjes">Duidelijke offerte, geen kleine lettertjes</div></div>
+      <div class="veld"><div class="veld-label">Stap 3 — tekst</div><div contenteditable="true" data-orig="U ontvangt een transparante prijsopgave. Wat erin staat, is wat u betaalt. Lode legt uit wat er zal gebeuren en waarom — zodat u een weloverwogen beslissing kunt nemen.">U ontvangt een transparante prijsopgave. Wat erin staat, is wat u betaalt. Lode legt uit wat er zal gebeuren en waarom — zodat u een weloverwogen beslissing kunt nemen.</div></div>
+      <div class="veld"><div class="veld-label">Stap 4 — titel</div><div contenteditable="true" class="veld-h3" data-orig="Vakkundige uitvoering door Lode zelf">Vakkundige uitvoering door Lode zelf</div></div>
+      <div class="veld"><div class="veld-label">Stap 4 — tekst</div><div contenteditable="true" data-orig="Lode voert het werk persoonlijk uit. Geen onderaannemers. Hij gebruikt professioneel materiaal en werkt conform ETW-normen — veilig voor u, goed voor uw boom.">Lode voert het werk persoonlijk uit. Geen onderaannemers. Hij gebruikt professioneel materiaal en werkt conform ETW-normen — veilig voor u, goed voor uw boom.</div></div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Citaat van Lode</div>
+      <div class="veld"><div class="veld-label">Citaattekst</div><div contenteditable="true" data-orig='"Het belangrijkste voor mij is om in alles wat naar buiten komt duidelijk te maken wat voor mij boomverzorging is. Onnodige snoei, te hard snoeien, waardevolle bomen vellen — dat heeft allemaal geen plaats bij mij."'>"Het belangrijkste voor mij is om in alles wat naar buiten komt duidelijk te maken wat voor mij boomverzorging is. Onnodige snoei, te hard snoeien, waardevolle bomen vellen — dat heeft allemaal geen plaats bij mij."</div></div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">FAQ — veelgestelde vragen</div>
+      <div class="veld"><div class="veld-label">Vraag 1</div><div contenteditable="true" class="veld-h3" data-orig="Moet ik een vergunning hebben om een boom te laten snoeien of vellen?">Moet ik een vergunning hebben om een boom te laten snoeien of vellen?</div></div>
+      <div class="veld"><div class="veld-label">Antwoord 1</div><div contenteditable="true" data-orig="Dat hangt af van de gemeente en de grootte van de boom. Lode bekijkt dit samen met u tijdens het plaatsbezoek en helpt u indien nodig op weg met de vergunningsaanvraag.">Dat hangt af van de gemeente en de grootte van de boom. Lode bekijkt dit samen met u tijdens het plaatsbezoek en helpt u indien nodig op weg met de vergunningsaanvraag.</div></div>
+      <div class="veld"><div class="veld-label">Vraag 2</div><div contenteditable="true" class="veld-h3" data-orig="Wanneer is het beste moment om bomen te laten snoeien?">Wanneer is het beste moment om bomen te laten snoeien?</div></div>
+      <div class="veld"><div class="veld-label">Antwoord 2</div><div contenteditable="true" data-orig="Dat verschilt per boomsoort. In het algemeen is de rustperiode (late herfst tot vroege lente) ideaal, maar sommige soorten worden beter in de zomer gesnoeid. Lode adviseert u op maat van uw specifieke situatie.">Dat verschilt per boomsoort. In het algemeen is de rustperiode (late herfst tot vroege lente) ideaal, maar sommige soorten worden beter in de zomer gesnoeid. Lode adviseert u op maat van uw specifieke situatie.</div></div>
+      <div class="veld"><div class="veld-label">Vraag 3</div><div contenteditable="true" class="veld-h3" data-orig="Geeft Stamgast ook advies zonder dat er werk uitgevoerd wordt?">Geeft Stamgast ook advies zonder dat er werk uitgevoerd wordt?</div></div>
+      <div class="veld"><div class="veld-label">Antwoord 3</div><div contenteditable="true" data-orig="Absoluut. Een eerlijk advies is soms het meest waardevolle wat Lode kan bieden — ook als dat betekent dat er geen ingreep nodig is. Het plaatsbezoek is altijd vrijblijvend.">Absoluut. Een eerlijk advies is soms het meest waardevolle wat Lode kan bieden — ook als dat betekent dat er geen ingreep nodig is. Het plaatsbezoek is altijd vrijblijvend.</div></div>
+      <div class="veld"><div class="veld-label">Vraag 4</div><div contenteditable="true" class="veld-h3" data-orig="Werkt Stamgast ook voor bedrijven, gemeentes of vzw's?">Werkt Stamgast ook voor bedrijven, gemeentes of vzw's?</div></div>
+      <div class="veld"><div class="veld-label">Antwoord 4</div><div contenteditable="true" data-orig="Ja, Lode werkt zowel voor particulieren als voor professionele klanten. Neem contact op voor een offerte op maat van uw situatie en budget.">Ja, Lode werkt zowel voor particulieren als voor professionele klanten. Neem contact op voor een offerte op maat van uw situatie en budget.</div></div>
+      <div class="veld"><div class="veld-label">Vraag 5</div><div contenteditable="true" class="veld-h3" data-orig="Hoe snel reageert Lode op een aanvraag?">Hoe snel reageert Lode op een aanvraag?</div></div>
+      <div class="veld"><div class="veld-label">Antwoord 5</div><div contenteditable="true" data-orig="Doorgaans binnen 1 werkdag. Bij dringende situaties zoals stormschade probeert Lode zo snel mogelijk te reageren en ter plaatse te komen.">Doorgaans binnen 1 werkdag. Bij dringende situaties zoals stormschade probeert Lode zo snel mogelijk te reageren en ter plaatse te komen.</div></div>
+      <div class="veld"><div class="veld-label">Vraag 6</div><div contenteditable="true" class="veld-h3" data-orig="Werkt Lode alleen of met een ploeg?">Werkt Lode alleen of met een ploeg?</div></div>
+      <div class="veld"><div class="veld-label">Antwoord 6</div><div contenteditable="true" data-orig="Lode werkt als zelfstandige en voert het werk zelf uit. Voor grotere klussen schakelt hij occasioneel een vertrouwde collega in, maar de verantwoordelijkheid en opvolging blijft altijd bij hem.">Lode werkt als zelfstandige en voert het werk zelf uit. Voor grotere klussen schakelt hij occasioneel een vertrouwde collega in, maar de verantwoordelijkheid en opvolging blijft altijd bij hem.</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================
+     PAGINA 4: DIENSTEN
+     ============================================ -->
+<div class="pagina" id="p-diensten">
+  <div class="pagina-header">
+    <div class="pagina-nummer">4</div>
+    <div>
+      <div class="pagina-naam">Diensten</div>
+      <div class="pagina-url">diensten.html</div>
+    </div>
+  </div>
+  <div class="pagina-body">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Hero</div>
+      <div class="veld"><div class="veld-label">Hoofdtitel</div><div contenteditable="true" class="veld-h1" data-orig="Wat kan Stamgast voor u doen?">Wat kan Stamgast voor u doen?</div></div>
+      <div class="veld"><div class="veld-label">Introductietekst</div><div contenteditable="true" data-orig="Van snoeien tot vakkundige boomzorg — altijd in overleg. Lode werkt enkel wat nodig is, nooit meer.">Van snoeien tot vakkundige boomzorg — altijd in overleg. Lode werkt enkel wat nodig is, nooit meer.</div></div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Diensten — beschrijvingen</div>
+      <div class="veld"><div class="veld-label">Snoeien — beschrijving</div><div contenteditable="true" data-orig="Vakkundige snoeiwerken conform ETW-normen. Lode snoeiert enkel wat nodig is voor de gezondheid en veiligheid van uw boom — nooit puur voor het uitzicht.">Vakkundige snoeiwerken conform ETW-normen. Lode snoeiert enkel wat nodig is voor de gezondheid en veiligheid van uw boom — nooit puur voor het uitzicht.</div></div>
+      <div class="veld"><div class="veld-label">Ecologie & beheer — beschrijving</div><div contenteditable="true" data-orig="Duurzame ingrepen voor waardevolle bomen. Stamgast's sterkste troef.">Duurzame ingrepen voor waardevolle bomen. Stamgast's sterkste troef.</div></div>
+      <div class="veld"><div class="veld-label">Advies, inspectie & inventarisatie — beschrijving</div><div contenteditable="true" data-orig="Onafhankelijk advies zonder verkoopsdoeleinden. Ook als er niets hoeft te gebeuren.">Onafhankelijk advies zonder verkoopsdoeleinden. Ook als er niets hoeft te gebeuren.</div></div>
+      <div class="veld"><div class="veld-label">Aanplant — beschrijving</div><div contenteditable="true" data-orig="De juiste boom op de juiste plek. Lode kijkt naar bodemgesteldheid, groeiruimte en uw wensen.">De juiste boom op de juiste plek. Lode kijkt naar bodemgesteldheid, groeiruimte en uw wensen.</div></div>
+      <div class="veld"><div class="veld-label">Vellen & demonteren — beschrijving</div><div contenteditable="true" data-orig="Wanneer vellen de enige of beste optie is — veilig en vakkundig uitgevoerd.">Wanneer vellen de enige of beste optie is — veilig en vakkundig uitgevoerd.</div></div>
+      <div class="veld"><div class="veld-label">Stormschade — beschrijving</div><div contenteditable="true" data-orig="Snelle en veilige interventie na storm of windval. Veiligheid eerst, boom redden waar mogelijk.">Snelle en veilige interventie na storm of windval. Veiligheid eerst, boom redden waar mogelijk.</div></div>
+      <div class="veld"><div class="veld-label">Standplaatsverbetering — beschrijving</div><div contenteditable="true" data-orig="Betere groeiomstandigheden voor uw boom — bodem, ruimte, waterhuishouding.">Betere groeiomstandigheden voor uw boom — bodem, ruimte, waterhuishouding.</div></div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Uitgelichte case</div>
+      <div class="veld"><div class="veld-label">Projecttitel</div><div contenteditable="true" class="veld-h2" data-orig="Veterane beuk van 120 jaar bewaard">Veterane beuk van 120 jaar bewaard</div></div>
+      <div class="veld"><div class="veld-label">Projectbeschrijving</div><div contenteditable="true" data-orig="Een beuk van meer dan een eeuw oud, die door een andere vakman al was opgegeven. Lode voerde een grondige inspectie uit, stelde een behandelplan op en gaf de boom een tweede leven — zonder vellen.">Een beuk van meer dan een eeuw oud, die door een andere vakman al was opgegeven. Lode voerde een grondige inspectie uit, stelde een behandelplan op en gaf de boom een tweede leven — zonder vellen.</div></div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Wat Stamgast bewust niet doet</div>
+      <div class="veld"><div class="veld-label">Inleidende tekst</div><div contenteditable="true" data-orig="Eerlijkheid betekent ook duidelijk zijn over wat niet past binnen onze filosofie.">Eerlijkheid betekent ook duidelijk zijn over wat niet past binnen onze filosofie.</div></div>
+      <div class="veld"><div class="veld-label">Punt 1</div><div contenteditable="true" data-orig="Onnodige snoeiwerken uitvoeren omdat de klant erom vraagt, zonder dat het de boom ten goede komt">Onnodige snoeiwerken uitvoeren omdat de klant erom vraagt, zonder dat het de boom ten goede komt</div></div>
+      <div class="veld"><div class="veld-label">Punt 2</div><div contenteditable="true" data-orig="Te hard snoeien — wat de boom verzwakt en op lange termijn meer schade aanricht">Te hard snoeien — wat de boom verzwakt en op lange termijn meer schade aanricht</div></div>
+      <div class="veld"><div class="veld-label">Punt 3</div><div contenteditable="true" data-orig="Waardevolle bomen vellen als er een goed alternatief bestaat">Waardevolle bomen vellen als er een goed alternatief bestaat</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================
+     PAGINA 5: REFERENTIES
+     ============================================ -->
+<div class="pagina" id="p-referenties">
+  <div class="pagina-header">
+    <div class="pagina-nummer">5</div>
+    <div>
+      <div class="pagina-naam">Referenties</div>
+      <div class="pagina-url">referenties.html</div>
+    </div>
+  </div>
+  <div class="pagina-body">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Hero</div>
+      <div class="veld"><div class="veld-label">Hoofdtitel</div><div contenteditable="true" class="veld-h1" data-orig="Wat klanten zeggen over Stamgast">Wat klanten zeggen over Stamgast</div></div>
+      <div class="veld"><div class="veld-label">Introductietekst</div><div contenteditable="true" data-orig="Eerlijkheid en vakkennis worden het meest gewaardeerd. Lees wat klanten uit de regio ervaren na samenwerking met Lode.">Eerlijkheid en vakkennis worden het meest gewaardeerd. Lees wat klanten uit de regio ervaren na samenwerking met Lode.</div></div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Reviews — 4 klantenervaringen</div>
+      <div class="veld"><div class="veld-label">Review 1 — naam & locatie</div><div class="veld-rij"><div contenteditable="true" class="veld-h3" data-orig="Marie V." style="min-width:120px;">Marie V.</div><div contenteditable="true" data-orig="Gent" style="font-size:13px;min-width:80px;">Gent</div></div></div>
+      <div class="veld"><div class="veld-label">Review 1 — tekst</div><div contenteditable="true" data-orig='"Lode heeft onze oude eik geïnspecteerd en besloten dat snoeien niet nodig was. Dat eerlijk advies, ook al kost hem dat werk, zegt alles over zijn aanpak."'>"Lode heeft onze oude eik geïnspecteerd en besloten dat snoeien niet nodig was. Dat eerlijk advies, ook al kost hem dat werk, zegt alles over zijn aanpak."</div></div>
+      <div class="veld"><div class="veld-label">Review 2 — naam & locatie</div><div class="veld-rij"><div contenteditable="true" class="veld-h3" data-orig="Peter D." style="min-width:120px;">Peter D.</div><div contenteditable="true" data-orig="Deinze" style="font-size:13px;min-width:80px;">Deinze</div></div></div>
+      <div class="veld"><div class="veld-label">Review 2 — tekst</div><div contenteditable="true" data-orig='"Vakkundig, snel en netjes. Na de stormschade was hij binnen de dag ter plaatse. De boom is gered en staat er nu beter bij dan ervoor."'>"Vakkundig, snel en netjes. Na de stormschade was hij binnen de dag ter plaatse. De boom is gered en staat er nu beter bij dan ervoor."</div></div>
+      <div class="veld"><div class="veld-label">Review 3 — naam & locatie</div><div class="veld-rij"><div contenteditable="true" class="veld-h3" data-orig="Karen L." style="min-width:120px;">Karen L.</div><div contenteditable="true" data-orig="Aalst" style="font-size:13px;min-width:80px;">Aalst</div></div></div>
+      <div class="veld"><div class="veld-label">Review 3 — tekst</div><div contenteditable="true" data-orig='"Eindelijk een boomverzorger die uitlegt wat hij doet en waarom. Geen overbodige snoei, gewoon goed advies en goed werk. Zeker aan te bevelen."'>"Eindelijk een boomverzorger die uitlegt wat hij doet en waarom. Geen overbodige snoei, gewoon goed advies en goed werk. Zeker aan te bevelen."</div></div>
+      <div class="veld"><div class="veld-label">Review 4 — naam & locatie</div><div class="veld-rij"><div contenteditable="true" class="veld-h3" data-orig="Johan B." style="min-width:120px;">Johan B.</div><div contenteditable="true" data-orig="Gent" style="font-size:13px;min-width:80px;">Gent</div></div></div>
+      <div class="veld"><div class="veld-label">Review 4 — tekst</div><div contenteditable="true" data-orig='"Lode heeft onze oude beuk een tweede leven gegeven. Zijn kennis van veterane bomen is indrukwekkend. Blij dat we niet te snel voor vellen kozen."'>"Lode heeft onze oude beuk een tweede leven gegeven. Zijn kennis van veterane bomen is indrukwekkend. Blij dat we niet te snel voor vellen kozen."</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================
+     PAGINA 6: CONTACT
+     ============================================ -->
+<div class="pagina" id="p-contact" style="margin-bottom:40px;">
+  <div class="pagina-header">
+    <div class="pagina-nummer">6</div>
+    <div>
+      <div class="pagina-naam">Contact & offerte</div>
+      <div class="pagina-url">contact.html</div>
+    </div>
+  </div>
+  <div class="pagina-body">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Hero</div>
+      <div class="veld"><div class="veld-label">Hoofdtitel</div><div contenteditable="true" class="veld-h1" data-orig="Neem contact op met Lode">Neem contact op met Lode</div></div>
+      <div class="veld"><div class="veld-label">Introductietekst</div><div contenteditable="true" data-orig="Vrijblijvend een offerte aanvragen, een vraag stellen of polsen of Lode in uw gemeente actief is — het kan allemaal.">Vrijblijvend een offerte aanvragen, een vraag stellen of polsen of Lode in uw gemeente actief is — het kan allemaal.</div></div>
+    </div>
+
+    <hr class="sectie-divider">
+
+    <div class="veld-groep">
+      <div class="veld-sectie-label">Na uw aanvraag — 3 stappen</div>
+      <div class="veld"><div class="veld-label">Stap 1</div><div contenteditable="true" data-orig="Lode leest uw aanvraag en neemt contact op, doorgaans binnen 3 werkdagen.">Lode leest uw aanvraag en neemt contact op, doorgaans binnen 3 werkdagen.</div></div>
+      <div class="veld"><div class="veld-label">Stap 2</div><div contenteditable="true" data-orig="Samen plannen jullie een plaatsbezoek in op een moment dat u past.">Samen plannen jullie een plaatsbezoek in op een moment dat u past.</div></div>
+      <div class="veld"><div class="veld-label">Stap 3</div><div contenteditable="true" data-orig="U krijgt eerlijk advies en, als er werk is, een duidelijke offerte zonder kleine lettertjes.">U krijgt eerlijk advies en, als er werk is, een duidelijke offerte zonder kleine lettertjes.</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- EXPORT MODAL -->
+<div class="modal-overlay" id="exportModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>📋 Overzicht wijzigingen</h2>
+      <button class="modal-sluit" onclick="sluitExport()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:14px;color:var(--tekst-muted);margin-bottom:12px;">Hieronder staan alle teksten die aangepast werden. Kopieer dit en stuur het door naar Ruben.</p>
+      <textarea class="export-tekst" id="exportTekst" readonly></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sluit" onclick="sluitExport()">Sluiten</button>
+      <button class="btn-kopieer" onclick="kopieerExport()">📋 Kopieer naar klembord</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const paginas = {
+    'p-homepage': 'Homepage (index.html)',
+    'p-over-lode': 'Over Lode (over-lode.html)',
+    'p-aanpak': 'Onze aanpak (aanpak.html)',
+    'p-diensten': 'Diensten (diensten.html)',
+    'p-referenties': 'Referenties (referenties.html)',
+    'p-contact': 'Contact (contact.html)'
+  };
+
+  document.querySelectorAll('[contenteditable]').forEach(function(el) {
+    el.addEventListener('input', function() {
+      var orig = el.getAttribute('data-orig');
+      if (el.innerText.trim() !== orig.trim()) {
+        el.classList.add('gewijzigd');
+      } else {
+        el.classList.remove('gewijzigd');
+      }
+    });
+  });
+
+  function resetAlles() {
+    if (!confirm('Alle wijzigingen herstellen naar de originele teksten?')) return;
+    document.querySelectorAll('[contenteditable]').forEach(function(el) {
+      el.innerText = el.getAttribute('data-orig');
+      el.classList.remove('gewijzigd');
+    });
+  }
+
+  function openExport() {
+    var regels = [];
+    var heeftWijzigingen = false;
+
+    Object.keys(paginas).forEach(function(paginaId) {
+      var pagina = document.getElementById(paginaId);
+      if (!pagina) return;
+      var gewijzigde = pagina.querySelectorAll('[contenteditable].gewijzigd');
+      if (gewijzigde.length === 0) return;
+
+      heeftWijzigingen = true;
+      regels.push('═══════════════════════════════════════');
+      regels.push('PAGINA: ' + paginas[paginaId]);
+      regels.push('═══════════════════════════════════════');
+
+      gewijzigde.forEach(function(el) {
+        var label = el.closest('.veld') ? el.closest('.veld').querySelector('.veld-label') : null;
+        var labelTekst = label ? label.innerText.replace(/\s+/g, ' ').trim() : 'Veld';
+        regels.push('');
+        regels.push('▸ ' + labelTekst);
+        regels.push('  ORIGINEEL: ' + el.getAttribute('data-orig'));
+        regels.push('  NIEUW:     ' + el.innerText.trim());
+      });
+      regels.push('');
+    });
+
+    if (!heeftWijzigingen) {
+      document.getElementById('exportTekst').value = 'Er zijn nog geen teksten aangepast.\n\nKlik op een tekst op de pagina om hem te bewerken.';
+    } else {
+      regels.unshift('STAMGAST BOOMBEHEER — Tekstwijzigingen');
+      regels.unshift('Gegenereerd op: ' + new Date().toLocaleDateString('nl-BE', {day:'numeric', month:'long', year:'numeric'}));
+      regels.unshift('');
+      document.getElementById('exportTekst').value = regels.join('\n');
+    }
+
+    document.getElementById('exportModal').classList.add('open');
+  }
+
+  function sluitExport() {
+    document.getElementById('exportModal').classList.remove('open');
+  }
+
+  function kopieerExport() {
+    var tekst = document.getElementById('exportTekst');
+    tekst.select();
+    document.execCommand('copy');
+    var knop = document.querySelector('.btn-kopieer');
+    knop.textContent = '✓ Gekopieerd!';
+    setTimeout(function() { knop.textContent = '📋 Kopieer naar klembord'; }, 2000);
+  }
+
+  document.getElementById('exportModal').addEventListener('click', function(e) {
+    if (e.target === this) sluitExport();
+  });
+</script>
+
+</body>
+</html>
