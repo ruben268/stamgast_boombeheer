@@ -15,56 +15,10 @@
       background: var(--achtergrond);
       padding: 72px 0 64px;
     }
-    .page-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 56px;
-      align-items: center;
-    }
     .page-hero h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
     .page-hero h1 em { color: var(--groen); font-style: normal; }
     .page-hero p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; }
 
-    .lode-kaart {
-      background: #fff;
-      border: 1px solid var(--rand);
-      border-radius: var(--radius-groot);
-      overflow: hidden;
-    }
-    .lode-foto {
-      background: var(--groen);
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .lode-foto i { font-size: 80px; color: rgba(255,255,255,0.12); }
-    .lode-foto-label {
-      position: absolute; bottom: 14px; left: 14px;
-      background: rgba(255,255,255,0.15);
-      color: #fff; border-radius: 8px;
-      padding: 7px 12px; font-size: 13px;
-    }
-    .lode-info { padding: 20px; }
-    .lode-naam { font-size: 18px; font-weight: 600; margin-bottom: 2px; }
-    .lode-titel { font-size: 13px; color: var(--tekst-muted); margin-bottom: 14px; }
-    .lode-certs { display: flex; gap: 8px; }
-    .lode-contact-blok {
-      border-top: 1px solid var(--rand);
-      padding: 16px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .contact-rij {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--tekst-muted);
-    }
-    .contact-rij i { font-size: 16px; color: var(--groen); }
 
     /* Tijdlijn */
     .tijdlijn {
@@ -134,7 +88,6 @@
     .cert-kaart p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
 
     @media (max-width: 900px) {
-      .page-hero-inner { grid-template-columns: 1fr; }
       .waarden-raster { grid-template-columns: 1fr; }
       .cert-raster { grid-template-columns: 1fr; }
     }
@@ -156,8 +109,36 @@
       <a href="contact.html">Contact</a>
     </div>
     <a href="contact.html" class="nav-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+      <i class="ti ti-menu-2" id="hamburger-icoon"></i>
+    </button>
+  </div>
+  <div class="mobiel-menu" id="mobiel-menu">
+    <a href="over-lode.html" class="actief">Over Lode</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="aanpak.html">Onze aanpak</a>
+    <a href="referenties.html">Referenties</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobiel-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
   </div>
 </nav>
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobiel-menu');
+  var icoon = document.getElementById('hamburger-icoon');
+  hamburger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    icoon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      icoon.className = 'ti ti-menu-2';
+    }
+  });
+</script>
 
 <section class="page-hero">
   <div class="wrapper">
@@ -171,23 +152,12 @@
         <h1>Een vakman met een <em>groot hart voor bomen</em></h1>
         <p>Lode Jans is gecertificeerd boomverzorger en oprichter van Stamgast Boombeheer. Zijn aanpak is eenvoudig: eerlijk advies, vakkundige uitvoering, en altijd met respect voor de boom.</p>
       </div>
-      <div class="lode-kaart">
-        <div class="lode-foto">
-          <i class="ti ti-user"></i>
-          <div class="lode-foto-label">📷 Foto van Lode in actie</div>
-        </div>
-        <div class="lode-info">
-          <div class="lode-naam">Lode Jans</div>
-          <div class="lode-titel">Oprichter &amp; gecertificeerd boomverzorger</div>
-          <div class="lode-certs">
-            <span class="tag" style="font-size:12px;">ETW sinds 2017</span>
-            <span class="tag" style="font-size:12px;">VETCERT</span>
-          </div>
-        </div>
-        <div class="lode-contact-blok">
-          <div class="contact-rij"><i class="ti ti-phone"></i> 0497 91 09 13</div>
-          <div class="contact-rij"><i class="ti ti-mail"></i> stamgastboombeheer@gmail.com</div>
-          <div class="contact-rij"><i class="ti ti-map-pin"></i> Oost- &amp; West-Vlaanderen</div>
+      <!-- FOTO: lode-in-actie.jpg — Lode aan het werk, liggend 4:3 -->
+      <div class="hero-foto">
+        <img src="afbeeldingen/lode-in-actie.jpg" alt="Lode Jans aan het werk">
+        <div class="hero-foto-label">
+          <strong>Lode Jans</strong>
+          <span>Oprichter &amp; gecertificeerd boomverzorger</span>
         </div>
       </div>
     </div>
@@ -210,13 +180,7 @@
         <div class="tl-stip"></div>
         <div class="tl-jaar">Begin</div>
         <div class="tl-titel">Eerste stappen in de sector</div>
-        <div class="tl-tekst">Lode bouwde jarenlange ervaring op in loondienst, waarbij hij het vak van alle kanten leerde kennen — van snoeien tot klimtechnieken op grote hoogte.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-stip"></div>
-        <div class="tl-jaar">Avontuur</div>
-        <div class="tl-titel">Een jaar snoeien in Nieuw-Zeeland</div>
-        <div class="tl-tekst">Een unieke ervaring die zijn kijk op boomverzorging verbreedde en zijn technische vaardigheden op een hoger niveau bracht.</div>
+        <div class="tl-tekst">Lode bouwde jarenlange ervaring op in loondienst, waarbij hij het vak van alle kanten leerde kennen — van klimmen op grote hoogtes tot onderzoek en advies.</div>
       </div>
       <div class="tl-item">
         <div class="tl-stip"></div>
@@ -226,15 +190,21 @@
       </div>
       <div class="tl-item">
         <div class="tl-stip"></div>
+        <div class="tl-jaar">Avontuur</div>
+        <div class="tl-titel">Een jaar boomverzorging in Nieuw-Zeeland</div>
+        <div class="tl-tekst">Een unieke ervaring die zijn kijk op boomverzorging verbreedde en zijn technische vaardigheden op een hoger niveau bracht.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-stip"></div>
         <div class="tl-jaar">Oprichting</div>
         <div class="tl-titel">Stamgast Boombeheer is een feit</div>
-        <div class="tl-tekst">Na jaren in loondienst kiest Lode het ruime sop en start hij zijn eigen zaak — met een duidelijke visie: bomen verdienen eerlijke zorg, geen overbodige ingrepen.</div>
+        <div class="tl-tekst">Na jaren in loondienst kiest Lode het ruime sop en start hij zijn eigen zaak — met een duidelijke visie: bomen verdienen eerlijke zorg, geen overbodige ingrepen, en de nodige groeiruimte, zowel boven als ondergronds.</div>
       </div>
       <div class="tl-item">
         <div class="tl-stip"></div>
         <div class="tl-jaar">Later</div>
-        <div class="tl-titel">VETCERT — expertise voor veterane bomen</div>
-        <div class="tl-tekst">Met het VETCERT-certificaat kan Lode ook oude, waardevolle veterane bomen van de nodige specifieke zorg voorzien.</div>
+        <div class="tl-titel">VETCERT — expertise over écht oude bomen</div>
+        <div class="tl-tekst">Het VETCERT-certificaat staat garant voor een uitgebreide kennis aangaande veterane bomen, waar we zeer voorzichtig mee dienen om te gaan.</div>
       </div>
     </div>
   </div>
@@ -250,22 +220,22 @@
       <div class="waarde-kaart">
         <div class="waarde-icoon"><i class="ti ti-heart-handshake"></i></div>
         <h3>Eerlijk advies, altijd</h3>
-        <p>Ook als dat betekent dat er niets moet gebeuren. Lode verkoopt geen werk dat niet nodig is — dat is zeldzaam in de sector.</p>
+        <p>Ook als dat betekent dat er niets moet gebeuren. Lode verkoopt geen werk dat niet nodig is — dat is zeldzaam in de sector. En je boom heeft er bovendien niets aan.</p>
       </div>
       <div class="waarde-kaart">
         <div class="waarde-icoon"><i class="ti ti-leaf"></i></div>
         <h3>Ecologisch denken</h3>
-        <p>Behoud en duurzaam beheer staan centraal. Waardevolle bomen vellen of te hard snoeien is voor Lode geen optie als het niet strikt noodzakelijk is.</p>
+        <p>Behoud en duurzaam beheer staan centraal.</p>
       </div>
       <div class="waarde-kaart">
         <div class="waarde-icoon"><i class="ti ti-tool"></i></div>
         <h3>Vakkundige uitvoering</h3>
-        <p>Lode doet het werk zelf. Geen onderaannemers, geen halve maatregelen. Wat hij belooft, levert hij.</p>
+        <p>Lode staat telkens zelf in voor de uitvoering, zodoende dat het vooropgestelde eindresultaat gegarandeerd blijft.</p>
       </div>
       <div class="waarde-kaart">
         <div class="waarde-icoon"><i class="ti ti-messages"></i></div>
         <h3>Heldere communicatie</h3>
-        <p>U weet altijd wat er gaat gebeuren en waarom. Geen vakjargon, geen verrassingen achteraf.</p>
+        <p>U weet altijd wat en waarom we iets gaan uitvoeren, met de boom telkens op de eerste plaats. Geen onaangename verrassingen.</p>
       </div>
     </div>
   </div>
@@ -298,14 +268,20 @@
 
 <!-- CTA -->
 <div class="wrapper">
-  <div class="cta-balk">
-    <div>
-      <h2>Wil u met Lode samenwerken?</h2>
-      <p>Vraag vrijblijvend een offerte aan — Lode komt langs en geeft u eerlijk advies.</p>
+  <div class="cta-balk" style="padding:0;overflow:hidden;">
+    <div class="cta-balk-inner">
+      <!-- FOTO: cta-over-lode.jpg — liggend 3:2 -->
+      <div class="cta-foto rechts">
+        <img src="afbeeldingen/cta-over-lode.jpg" alt="Lode Jans aan het werk">
+      </div>
+      <div class="cta-tekst">
+        <h2>Wil u met Lode samenwerken?</h2>
+        <p>Vraag vrijblijvend een offerte aan — Lode komt langs en geeft u eerlijk advies.</p>
+        <div>
+          <a href="contact.html" class="btn-wit" style="display:inline-flex;align-items:center;gap:8px;"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+        </div>
+      </div>
     </div>
-    <a href="contact.html" class="btn-wit" style="white-space:nowrap;flex-shrink:0;">
-      <i class="ti ti-clipboard-text"></i> Offerte aanvragen
-    </a>
   </div>
 </div>
 

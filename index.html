@@ -20,7 +20,6 @@
     .hero-knoppen { display: flex; gap: 12px; flex-wrap: wrap; }
     .hero-visual { background: var(--groen); border-radius: 16px; aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
     .hero-visual-icon { font-size: 100px; color: rgba(255,255,255,0.1); }
-    .hero-visual-label { position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); color: #fff; border-radius: 8px; padding: 8px 14px; font-size: 13px; }
     .hero-cert { position: absolute; top: 20px; right: 20px; background: #fff; border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: 600; color: var(--groen); display: flex; align-items: center; gap: 6px; }
     .trust-balk { border-top: 1px solid var(--rand); border-bottom: 1px solid var(--rand); }
     .trust-balk-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -33,25 +32,23 @@
     .dienst-kaart-breed { grid-column: span 2; }
     .dienst-kaart { border: 1px solid var(--rand); border-radius: var(--radius-groot); padding: 24px; background: #fff; transition: border-color 0.15s, box-shadow 0.15s; display: block; color: inherit; }
     .dienst-kaart:hover { border-color: var(--groen); box-shadow: 0 4px 16px rgba(42,92,63,0.1); }
-    .dienst-kaart-breed .dienst-kaart-inner { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; }
+    .dienst-kaart-breed .dienst-kaart-inner { display: block; }
     .dienst-icoon { width: 44px; height: 44px; background: var(--achtergrond); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--groen); margin-bottom: 14px; flex-shrink: 0; }
-    .dienst-kaart-breed .dienst-icoon { margin-bottom: 0; }
+    .dienst-kaart-breed .dienst-icoon { margin-bottom: 14px; }
     .dienst-kaart h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
     .dienst-kaart p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
     .dienst-subtags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
     .dienst-subtag { display: inline-flex; align-items: center; gap: 4px; background: var(--achtergrond); color: var(--tekst-muted); border-radius: 20px; padding: 3px 10px; font-size: 12px; }
     .dienst-subtag i { font-size: 12px; color: var(--groen); }
-    .filosofie { background: var(--groen); border-radius: 20px; padding: 56px; display: grid; grid-template-columns: 200px 1fr 1fr; gap: 40px; align-items: center; margin: 0 0 72px; }
-    .filosofie-illustratie { background: rgba(255,255,255,0.1); border-radius: 14px; aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 1.5px dashed rgba(255,255,255,0.25); padding: 16px; text-align: center; }
-    .filosofie-illustratie i { font-size: 40px; color: rgba(255,255,255,0.3); }
-    .filosofie-illustratie span { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.4; }
-    .filosofie h2 { font-size: 24px; font-weight: 600; color: #fff; margin-bottom: 12px; }
-    .filosofie > div:nth-child(2) p { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; }
-    .filo-items { display: flex; flex-direction: column; gap: 14px; }
-    .filo-item { display: flex; align-items: flex-start; gap: 12px; background: rgba(255,255,255,0.1); border-radius: 10px; padding: 16px; }
-    .filo-item i { font-size: 20px; color: #8FD4A8; flex-shrink: 0; margin-top: 1px; }
-    .filo-item p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; }
-    .filo-item strong { color: #fff; }
+    .filosofie { background: var(--groen); border-radius: 20px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; margin: 0 0 72px; overflow: hidden; }
+    .filosofie-tekst { padding: 56px; display: flex; flex-direction: column; justify-content: center; gap: 0; }
+    .filosofie-tekst h2 { font-size: 24px; font-weight: 600; color: #fff; margin-bottom: 14px; }
+    .filosofie-tekst p { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 24px; }
+    .filosofie-foto { position: relative; min-height: 320px; }
+    .filosofie-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .filosofie-foto-placeholder { width: 100%; height: 100%; min-height: 320px; background: rgba(255,255,255,0.08); border-left: 1.5px dashed rgba(255,255,255,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 24px; }
+    .filosofie-foto-placeholder i { font-size: 40px; color: rgba(255,255,255,0.25); }
+    .filosofie-foto-placeholder span { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.5; }
     .stappen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
     .stap { text-align: center; padding: 0 20px; position: relative; }
     .stap:not(:last-child)::after { content: ''; position: absolute; top: 22px; right: -4px; width: 50%; height: 2px; background: var(--groen-licht); }
@@ -68,30 +65,31 @@
     .t-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--groen-licht); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--groen); flex-shrink: 0; }
     .t-naam { font-size: 14px; font-weight: 600; }
     .t-locatie { font-size: 12px; color: var(--tekst-muted); }
-    .cta-balk-inner { display: grid; grid-template-columns: 160px 1fr auto; gap: 32px; align-items: center; }
-    .cta-illustratie { background: rgba(255,255,255,0.1); border-radius: 12px; aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border: 1.5px dashed rgba(255,255,255,0.25); padding: 12px; text-align: center; }
-    .cta-illustratie i { font-size: 36px; color: rgba(255,255,255,0.3); }
-    .cta-illustratie span { font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.4; }
+    .cta-balk-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; }
+    .cta-foto { border-radius: 14px 0 0 14px; overflow: hidden; }
+    .cta-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cta-tekst { padding: 40px 44px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero h1 { font-size: 32px; }
       .trust-balk-inner { grid-template-columns: 1fr 1fr; }
       .diensten-raster { grid-template-columns: 1fr 1fr; }
       .dienst-kaart-breed { grid-column: span 2; }
-      .filosofie { grid-template-columns: 1fr; padding: 36px 24px; }
-      .filosofie-illustratie { max-width: 160px; }
+      .filosofie { grid-template-columns: 1fr; }
+      .filosofie-tekst { padding: 36px 24px; }
+      .filosofie-foto { min-height: 220px; }
       .stappen { grid-template-columns: 1fr 1fr; gap: 24px; }
       .stap::after, .stap::before { display: none; }
       .testimonial-raster { grid-template-columns: 1fr; }
       .cta-balk-inner { grid-template-columns: 1fr; }
-      .cta-illustratie { display: none; }
+      .cta-foto { border-radius: 14px 14px 0 0; aspect-ratio: 3/2; }
+      .cta-tekst { padding: 28px 24px; }
     }
     @media (max-width: 640px) {
       .hero { padding: 48px 0 40px; }
       .hero h1 { font-size: 28px; }
       .diensten-raster { grid-template-columns: 1fr; }
       .dienst-kaart-breed { grid-column: span 1; }
-      .dienst-kaart-breed .dienst-kaart-inner { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -111,8 +109,36 @@
       <a href="contact.html">Contact</a>
     </div>
     <a href="contact.html" class="nav-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+      <i class="ti ti-menu-2" id="hamburger-icoon"></i>
+    </button>
+  </div>
+  <div class="mobiel-menu" id="mobiel-menu">
+    <a href="over-lode.html">Over Lode</a>
+    <a href="diensten.html">Diensten</a>
+    <a href="aanpak.html">Onze aanpak</a>
+    <a href="referenties.html">Referenties</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobiel-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
   </div>
 </nav>
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobiel-menu');
+  var icoon = document.getElementById('hamburger-icoon');
+  hamburger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    icoon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      icoon.className = 'ti ti-menu-2';
+    }
+  });
+</script>
 
 <section class="hero">
   <div class="wrapper">
@@ -120,17 +146,17 @@
       <div>
         <div class="hero-badge"><i class="ti ti-award"></i> ETW + VETCERT gecertificeerd</div>
         <h1>Bomen die <em>mogen groeien</em>.<br>Met zorg én karakter.</h1>
-        <p class="hero-sub">Lode Jans zorgt voor uw bomen in Oost- en West-Vlaanderen — met eerlijk advies, vakkundige uitvoering en een diepgewortelde visie op duurzaam boombeheer.</p>
+        <p class="hero-sub">Lode Jans zorgt voor uw bomen in Oost- en West-Vlaanderen — met eerlijk advies, vakkundige uitvoering en een diepgewortelde visie op behoud en herstel.</p>
         <div class="hero-knoppen">
           <a href="contact.html" class="btn-primair"><i class="ti ti-clipboard-text"></i> Vrijblijvende offerte</a>
           <a href="referenties.html" class="btn-secundair"><i class="ti ti-player-play"></i> Bekijk ons werk</a>
         </div>
       </div>
-      <div class="hero-visual">
-        <i class="ti ti-tree hero-visual-icon"></i>
-        <div class="hero-visual-label">📍 Gent &amp; omstreken</div>
-        <div class="hero-cert"><i class="ti ti-rosette"></i> Gecertificeerd ETW</div>
-      </div>
+      <!-- FOTO: hero-hoofdfoto.jpg — actiefoto van Lode in boom of bij werk, liggend formaat 4:3 -->
+     <div class="hero-visual">
+  		<img src="afbeeldingen/hero-hoofdfoto.jpg" alt="Lode Jans aan het werk" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div class="hero-cert" style="top:20px;left:20px;right:auto;"><i class="ti ti-map-pin"></i> Gent &amp; omstreken</div>
+	</div>
     </div>
   </div>
 </section>
@@ -140,8 +166,8 @@
     <div class="trust-balk-inner">
       <div class="trust-item"><div class="trust-icoon"><i class="ti ti-rosette"></i></div><div class="trust-tekst"><strong>ETW + VETCERT</strong><span>Europees gecertificeerd</span></div></div>
       <div class="trust-item"><div class="trust-icoon"><i class="ti ti-map-pin"></i></div><div class="trust-tekst"><strong>Oost- &amp; West-Vlaanderen</strong><span>Lokale vakman</span></div></div>
-      <div class="trust-item"><div class="trust-icoon"><i class="ti ti-heart-handshake"></i></div><div class="trust-tekst"><strong>Eerlijk advies</strong><span>Geen onnodige snoei</span></div></div>
-      <div class="trust-item"><div class="trust-icoon"><i class="ti ti-leaf"></i></div><div class="trust-tekst"><strong>Ecologisch beheer</strong><span>Duurzame aanpak</span></div></div>
+      <div class="trust-item"><div class="trust-icoon"><i class="ti ti-heart-handshake"></i></div><div class="trust-tekst"><strong>Eerlijk advies</strong><span>Geen onnodige snoei, wat is er écht nodig?</span></div></div>
+      <div class="trust-item"><div class="trust-icoon"><i class="ti ti-leaf"></i></div><div class="trust-tekst"><strong>Doordacht beheer</strong><span>Duurzame aanpak met gerichte, weloverwogen acties</span></div></div>
     </div>
   </div>
 </div>
@@ -150,7 +176,7 @@
   <div class="wrapper">
     <div class="sectie-label">Diensten</div>
     <div class="sectie-titel">Wat kan Stamgast voor u doen?</div>
-    <p class="sectie-sub">Van snoeien tot vakkundige boomzorg — altijd in overleg. Lode werkt enkel wat nodig is, nooit meer.</p>
+    <p class="sectie-sub">Van snoeiwerken tot groeiplaatsverbeteringen, met de boom op de eerste plaats. Altijd in overleg met de klant.</p>
     <div class="diensten-raster">
       <a href="diensten.html" class="dienst-kaart dienst-kaart-breed">
         <div class="dienst-kaart-inner">
@@ -160,7 +186,7 @@
               <h3 style="margin-bottom:0;">Snoeien</h3>
               <span class="tag" style="font-size:11px;">Populairste dienst</span>
             </div>
-            <p>Vakkundige snoeiwerken conform ETW-normen. Lode snoeiet enkel wat nodig is voor de gezondheid en veiligheid van uw boom — nooit puur voor het uitzicht of op vraag zonder noodzaak.</p>
+            <p>Vakkundige snoeiwerken conform de ETW-normen. Lode snoeit gericht en naar de noden van uw boom — aan esthetiek hebben bomen zelf weinig. Laat een boom boom zijn.</p>
             <div class="dienst-subtags">
               <span class="dienst-subtag"><i class="ti ti-tree"></i> Onderhoudssnoei</span>
               <span class="dienst-subtag"><i class="ti ti-alert-triangle"></i> Veiligheid</span>
@@ -170,7 +196,7 @@
           </div>
         </div>
       </a>
-      <a href="diensten.html" class="dienst-kaart"><div class="dienst-icoon"><i class="ti ti-tree"></i></div><h3>Aanplant</h3><p>De juiste boom op de juiste plek, met aandacht voor groeiomstandigheden.</p><div style="margin-top:12px;"><span class="tag-grijs">November t.e.m. maart</span></div></a>
+      <a href="diensten.html" class="dienst-kaart"><div class="dienst-icoon"><i class="ti ti-tree"></i></div><h3>Aanplant</h3><p>De juiste boom op de juiste plek, met een duidelijk eindbeeld voor ogen.</p><div style="margin-top:12px;"><span class="tag-grijs">November t.e.m. maart</span></div></a>
       <a href="diensten.html" class="dienst-kaart"><div class="dienst-icoon"><i class="ti ti-clipboard-list"></i></div><h3>Advies, inspectie &amp; inventarisatie</h3><p>Onafhankelijk en eerlijk advies. Geen verkoopdoeleinden, wel echte expertise.</p></a>
       <a href="diensten.html" class="dienst-kaart"><div class="dienst-icoon"><i class="ti ti-axe"></i></div><h3>Vellen &amp; demonteren</h3><p>Wanneer vellen écht de beste optie is — veilig en vakkundig uitgevoerd.</p><div style="margin-top:12px;"><span class="tag-waarschuwing">Enkel indien nodig</span></div></a>
       <a href="diensten.html" class="dienst-kaart"><div class="dienst-icoon"><i class="ti ti-storm"></i></div><h3>Stormschade</h3><p>Snelle interventie bij schade. Veiligheid eerst, boom redden waar mogelijk.</p><div style="margin-top:12px;"><span class="tag-grijs">Urgente interventie</span></div></a>
@@ -180,19 +206,14 @@
 
 <div class="wrapper">
   <div class="filosofie">
-    <div class="filosofie-illustratie">
-      <i class="ti ti-photo"></i>
-      <span>Illustratie toevoegen</span>
-    </div>
-    <div>
+    <div class="filosofie-tekst">
       <h2>Boomverzorging met een geweten</h2>
-      <p>Lode gelooft dat een boom er mag staan. Onnodige snoei, te hard snoeien of waardevol groen vellen — dat past niet bij Stamgast. Die eerlijkheid is zeldzaam in de sector.</p>
-      <a href="aanpak.html" class="btn-wit" style="margin-top:24px;display:inline-flex;"><i class="ti ti-arrow-right"></i> Onze aanpak</a>
+      <p>Laat een boom boom zijn. Onnodige snoei, rigoureuze ingrepen of waardevol groen vellen — dat past niet bij de visie van Stamgast Boombeheer en heeft geen plaats binnen duurzaam boombeheer.</p>
+      <a href="aanpak.html" class="btn-wit" style="display:inline-flex;align-self:flex-start;"><i class="ti ti-arrow-right"></i> Onze aanpak</a>
     </div>
-    <div class="filo-items">
-      <div class="filo-item"><i class="ti ti-circle-check"></i><p><strong>Geen onnodige ingrepen.</strong> Elke boom verdient een eerlijk oordeel, geen verkooppraatje.</p></div>
-      <div class="filo-item"><i class="ti ti-circle-check"></i><p><strong>Langdurige oplossingen.</strong> Niet de snelle ingreep, maar wat écht goed is voor uw boom.</p></div>
-      <div class="filo-item"><i class="ti ti-circle-check"></i><p><strong>Transparante communicatie.</strong> U weet altijd waarom we iets doen — en waarom soms niet.</p></div>
+    <!-- FOTO: filosofie-boom.jpg — sfeervolle foto van boom of natuur, staand of liggend formaat -->
+    <div class="filosofie-foto">
+		<img src="afbeeldingen/filosofie-boom.jpg" alt="Sfeervolle boom">
     </div>
   </div>
 </div>
@@ -238,7 +259,7 @@
       <div class="testimonial-kaart">
         <div class="t-sterren">★★★★★</div>
         <span class="t-dienst">Ecologie &amp; beheer</span>
-        <p class="t-tekst">"Lode heeft onze oude beuk een tweede leven gegeven. Zijn kennis van veterane bomen is indrukwekkend. Blij dat we niet te snel voor vellen kozen."</p>
+        <p class="t-tekst">"Lode heeft onze oude beuk een tweede leven gegeven. Zijn kennis van oude bomen is indrukwekkend. Blij dat we voor het behoud van onze boom zijn gegaan."</p>
         <div class="t-auteur"><div class="t-avatar">JB</div><div><div class="t-naam">Johan B.</div><div class="t-locatie">Gent</div></div></div>
       </div>
     </div>
@@ -246,17 +267,19 @@
 </section>
 
 <div class="wrapper">
-  <div class="cta-balk">
+  <div class="cta-balk" style="padding:0;overflow:hidden;">
     <div class="cta-balk-inner">
-      <div class="cta-illustratie">
-        <i class="ti ti-photo"></i>
-        <span>Illustratie toevoegen</span>
+      <!-- FOTO: cta-lode-inspectie.jpg — foto van Lode bij boomonderzoek, 3:2 liggend formaat -->
+      <div class="cta-foto">
+        <img src="afbeeldingen/cta-lode-inspectie.jpg" alt="Lode Jans inspecteert een boom">
       </div>
-      <div>
-        <h2>Klaar om uw bomen in goede handen te geven?</h2>
-        <p>Vraag vrijblijvend een offerte aan. Lode komt langs, bekijkt uw situatie en geeft u eerlijk advies — ook als dat betekent dat er niets moet gebeuren.</p>
+      <div class="cta-tekst">
+        <h2 style="font-size:22px;font-weight:600;color:#fff;line-height:1.3;">Klaar om uw bomen uit handen te geven?</h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">Vraag vrijblijvend een offerte aan. Lode komt langs, bekijkt uw situatie en geeft u eerlijk advies — ook als dat betekent dat er niets moet gebeuren.</p>
+        <div>
+          <a href="contact.html" class="btn-wit" style="display:inline-flex;align-items:center;gap:8px;"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+        </div>
       </div>
-      <a href="contact.html" class="btn-wit" style="white-space:nowrap;flex-shrink:0;"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
     </div>
   </div>
 </div>

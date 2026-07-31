@@ -13,7 +13,7 @@
   <style>
     .page-hero { background: var(--achtergrond); padding: 72px 0 56px; }
     .page-hero h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 14px; }
-    .page-hero p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; max-width: 540px; }
+    .page-hero p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; }
 
     /* Uitgelichte diensten */
     .diensten-uitgelicht { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
@@ -44,17 +44,17 @@
     .case-blok-titel { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
     .case-blok-sub { font-size: 15px; color: var(--tekst-muted); margin-bottom: 28px; }
     .case-kaart { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rand); border-radius: 16px; overflow: hidden; }
-    .case-foto { background: var(--groen); min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; position: relative; }
-    .case-foto i { font-size: 72px; color: rgba(255,255,255,0.15); }
-    .case-foto-label { position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); color: #fff; border-radius: 8px; padding: 8px 14px; font-size: 13px; display: flex; align-items: center; gap: 6px; }
-    .case-foto-tag { position: absolute; top: 20px; left: 20px; background: var(--groen-licht); color: var(--groen-mid); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 500; }
+    .case-foto { background: var(--groen); min-height: 320px; position: relative; overflow: hidden; }
+    .case-foto img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; }
+    .case-foto-label { z-index: 2; position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); color: #fff; border-radius: 8px; padding: 8px 14px; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+    .case-foto-tag { z-index: 2; position: absolute; top: 20px; left: 20px; background: var(--groen-licht); color: var(--groen-mid); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 500; }
     .case-info { background: #fff; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
     .case-dienst { font-size: 11px; font-weight: 600; color: var(--groen); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
     .case-info h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; line-height: 1.3; }
     .case-info p { font-size: 15px; color: var(--tekst-muted); line-height: 1.7; margin-bottom: 20px; }
     .case-meta { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
     .case-meta-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--tekst-muted); }
-    .case-meta-item i { font-size: 16px; color: var(--groen); }
+    .case-meta-item i { font-size: 13px; color: var(--groen); }
 
     /* Niet-doen blok */
     .niet-doen { background: var(--achtergrond); border-radius: 16px; padding: 40px; margin-bottom: 0; }
@@ -88,18 +88,54 @@
       <a href="contact.html">Contact</a>
     </div>
     <a href="contact.html" class="nav-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+      <i class="ti ti-menu-2" id="hamburger-icoon"></i>
+    </button>
+  </div>
+  <div class="mobiel-menu" id="mobiel-menu">
+    <a href="over-lode.html">Over Lode</a>
+    <a href="diensten.html" class="actief">Diensten</a>
+    <a href="aanpak.html">Onze aanpak</a>
+    <a href="referenties.html">Referenties</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobiel-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
   </div>
 </nav>
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobiel-menu');
+  var icoon = document.getElementById('hamburger-icoon');
+  hamburger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    icoon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      icoon.className = 'ti ti-menu-2';
+    }
+  });
+</script>
 
 <section class="page-hero">
   <div class="wrapper">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a>
-      <i class="ti ti-chevron-right" style="font-size:13px;"></i>
-      <span class="huidig">Diensten</span>
+    <div class="page-hero-inner">
+      <div>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="ti ti-chevron-right" style="font-size:13px;"></i>
+          <span class="huidig">Diensten</span>
+        </div>
+        <h1>Wat kan Stamgast voor u doen?</h1>
+        <p>Van snoeien tot echte verzorging — altijd met de boom centraal en met een voorafgaande briefing naar de klant.</p>
+      </div>
+      <!-- FOTO: diensten-hero.jpg — Lode aan het werk in de boom, liggend 4:3 -->
+      <div class="hero-foto">
+        <img src="afbeeldingen/diensten-hero.jpg" alt="Lode Jans aan het werk in de boom">
+      </div>
     </div>
-    <h1>Wat kan Stamgast voor u doen?</h1>
-    <p>Van snoeien tot vakkundige boomzorg — altijd in overleg. Lode werkt enkel wat nodig is, nooit meer.</p>
   </div>
 </section>
 
@@ -115,7 +151,7 @@
         <div class="dienst-groot-bg"><i class="ti ti-scissors"></i></div>
         <span class="tag-wit">Populairste dienst</span>
         <h2>Snoeien</h2>
-        <p>Vakkundige snoeiwerken conform ETW-normen. Lode snoeiet enkel wat nodig is voor de gezondheid en veiligheid van uw boom — nooit puur voor het uitzicht.</p>
+        <p>Vakkundige snoeiwerken conform ETW-normen. Lode snoeit in de eerste plaats in functie van de boom, en diens toekomstbeeld.</p>
         <a href="contact.html" class="btn-wit" style="font-size:14px;padding:9px 16px;">
           <i class="ti ti-arrow-right"></i> Offerte aanvragen
         </a>
@@ -133,7 +169,7 @@
           <div class="dienst-mid-icoon"><i class="ti ti-clipboard-list"></i></div>
           <div>
             <h2>Advies, inspectie &amp; inventarisatie</h2>
-            <p>Onafhankelijk advies zonder verkoopsdoeleinden. Ook als er niets hoeft te gebeuren.</p>
+            <p>Onafhankelijk advies zonder verkoopsdoeleinden. Ook als er niets hoeft te gebeuren zal Lode je dit eerlijk zeggen.</p>
             <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
           </div>
         </div>
@@ -146,7 +182,7 @@
         <div class="dienst-klein-icoon"><i class="ti ti-tree"></i></div>
         <span class="tag-grijs" style="margin-bottom:10px;display:inline-block;">November t.e.m. maart</span>
         <h3>Aanplant</h3>
-        <p>De juiste boom op de juiste plek. Lode kijkt naar bodemgesteldheid, groeiruimte en uw wensen.</p>
+        <p>De juiste boom op de juiste plek. Lode kijkt naar de groeiplaats en koppelt dit terug aan uw wensen. Zo planten we samen gericht aan, zonder zorgen nadien.</p>
         <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
       </div>
       <div class="dienst-klein">
@@ -160,13 +196,13 @@
         <div class="dienst-klein-icoon"><i class="ti ti-storm"></i></div>
         <span class="tag-grijs" style="margin-bottom:10px;display:inline-block;">Urgente interventie</span>
         <h3>Stormschade</h3>
-        <p>Snelle en veilige interventie na storm of windval. Veiligheid eerst, boom redden waar mogelijk.</p>
+        <p>Snelle en veilige interventie na storm of windval. Veiligheid eerst, en waar mogelijk trachten we de boom te behouden.</p>
         <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
       </div>
       <div class="dienst-klein">
         <div class="dienst-klein-icoon"><i class="ti ti-analyze"></i></div>
         <h3>Standplaatsverbetering</h3>
-        <p>Betere groeiomstandigheden voor uw boom — bodem, ruimte, waterhuishouding.</p>
+        <p>Goede groeiomstandigheden voor uw boom is key! Alles begint onder de grond, en net daar gaat onvoldoende aandacht naar!</p>
         <a href="contact.html" class="dienst-link"><i class="ti ti-arrow-right"></i> Meer info</a>
       </div>
     </div>
@@ -177,9 +213,10 @@
       <div class="case-blok-titel">Een project in de kijker</div>
       <p class="case-blok-sub">Wat maakt Stamgast anders? Dit project laat het zien.</p>
       <div class="case-kaart">
+        <!-- FOTO: diensten-case-beuk-deinze.jpg — voor/na foto van de veterane beuk in Deinze, liggend formaat -->
         <div class="case-foto">
+          <img src="afbeeldingen/diensten-case-beuk-deinze.jpg" alt="Veterane beuk in Deinze na behandeling">
           <span class="case-foto-tag">Ecologie &amp; beheer</span>
-          <i class="ti ti-photo"></i>
           <div class="case-foto-label"><i class="ti ti-map-pin"></i> Deinze</div>
         </div>
         <div class="case-info">
@@ -212,14 +249,20 @@
 </section>
 
 <div class="wrapper">
-  <div class="cta-balk">
-    <div>
-      <h2>Niet zeker welke dienst u nodig heeft?</h2>
-      <p>Lode komt langs, bekijkt uw situatie en geeft eerlijk advies — ook als er niets moet gebeuren.</p>
+  <div class="cta-balk" style="padding:0;overflow:hidden;">
+    <div class="cta-balk-inner">
+      <!-- FOTO: cta-diensten.jpg — liggend 3:2 -->
+      <div class="cta-foto rechts">
+        <img src="afbeeldingen/cta-diensten.jpg" alt="Lode Jans tijdens snoeiwerk">
+      </div>
+      <div class="cta-tekst">
+        <h2>Niet zeker welke dienst u nodig heeft?</h2>
+        <p>Lode komt langs, bekijkt uw situatie en geeft eerlijk advies — ook als er niets moet gebeuren.</p>
+        <div>
+          <a href="contact.html" class="btn-wit" style="display:inline-flex;align-items:center;gap:8px;"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+        </div>
+      </div>
     </div>
-    <a href="contact.html" class="btn-wit" style="white-space:nowrap;flex-shrink:0;">
-      <i class="ti ti-clipboard-text"></i> Offerte aanvragen
-    </a>
   </div>
 </div>
 
