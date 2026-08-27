@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stamgast Boombeheer — Boomverzorging Gent & omstreken</title>
+  <meta name="description" content="Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen. Eerlijk advies, vakkundige uitvoering door Lode Jans (ETW + VETCERT).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+/* ============================================
+   STAMGAST BOOMBEHEER — Gedeelde stijlen
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --groen: #2A5C3F;
+  --groen-licht: #D8EDDF;
+  --groen-mid: #1A5C35;
+  --achtergrond: #F4F7F0;
+  --wit: #ffffff;
+  --tekst: #1a1a1a;
+  --tekst-muted: #5a6672;
+  --rand: #e2e6ea;
+  --rand-licht: #eef0ec;
+  --max-breedte: 1160px;
+  --radius: 10px;
+  --radius-groot: 14px;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--tekst);
+  background: #fff;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ---- Wrapper ---- */
+.wrapper {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ---- Navigatie ---- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid var(--rand);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.nav-inner {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.nav-logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--groen);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+}
+
+.nav-brand {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--tekst);
+}
+
+.nav-brand span { color: var(--groen); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links a {
+  font-size: 14px;
+  color: var(--tekst-muted);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  background: var(--achtergrond);
+  color: var(--tekst);
+}
+
+.nav-links a.actief {
+  color: var(--groen);
+  font-weight: 500;
+  background: var(--groen-licht);
+}
+
+.nav-cta {
+  background: var(--groen);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.nav-cta:hover { background: #1e4430; }
+
+/* ---- Broodkruimel ---- */
+.breadcrumb {
+  font-size: 13px;
+  color: var(--tekst-muted);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.breadcrumb a { color: var(--tekst-muted); }
+.breadcrumb a:hover { color: var(--groen); }
+.breadcrumb .huidig { color: var(--groen); }
+
+/* ---- Sectie-labels ---- */
+.sectie-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--groen);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.sectie-titel {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.sectie-sub {
+  font-size: 16px;
+  color: var(--tekst-muted);
+  margin-bottom: 36px;
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* ---- Knoppen ---- */
+.btn-primair {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--groen);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+.btn-primair:hover { background: #1e4430; color: #fff; }
+
+.btn-secundair {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--groen);
+  border: 1.5px solid var(--groen);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+.btn-secundair:hover { background: var(--groen-licht); }
+
+.btn-wit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--groen);
+  border: none;
+  border-radius: 8px;
+  padding: 11px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.15s;
+}
+.btn-wit:hover { opacity: 0.9; }
+
+/* ---- Tag/badge ---- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--groen-licht);
+  color: var(--groen-mid);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tag-grijs {
+  background: #f0f0f0;
+  color: var(--tekst-muted);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.tag-waarschuwing {
+  background: #FEF3D8;
+  color: #8A5A00;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* ---- Kaarten ---- */
+.kaart {
+  background: #fff;
+  border: 1px solid var(--rand);
+  border-radius: var(--radius-groot);
+  padding: 24px;
+}
+
+/* ---- CTA-balk onderaan ---- */
+.cta-balk {
+  background: var(--groen);
+  border-radius: var(--radius-groot);
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin: 0 0 64px;
+}
+
+.cta-balk h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.cta-balk p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  max-width: 480px;
+}
+
+/* ---- Voettekst ---- */
+footer {
+  background: var(--achtergrond);
+  border-top: 1px solid var(--rand);
+  padding: 48px 0 32px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tekst);
+  margin-bottom: 14px;
+}
+
+.footer-col a,
+.footer-col p {
+  font-size: 14px;
+  color: var(--tekst-muted);
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.footer-col a:hover { color: var(--groen); }
+
+.footer-cert-badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.cert-badge {
+  background: var(--groen);
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.social-rij {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.social-knop {
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  border: 1px solid var(--rand);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--groen);
+  font-size: 18px;
+  transition: background 0.15s;
+}
+
+.social-knop:hover { background: var(--groen-licht); }
+
+.footer-bottom {
+  border-top: 1px solid var(--rand);
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--tekst-muted);
+}
+
+/* ---- Hulpklassen ---- */
+.sectie { padding: 72px 0; }
+.sectie-sm { padding: 48px 0; }
+.tekst-groen { color: var(--groen); }
+.achtergrond-licht { background: var(--achtergrond); }
+.achtergrond-groen { background: var(--groen); }
+.marge-onder { margin-bottom: 48px; }
+
+/* ============================================
+   HAMBURGER MENU
+   ============================================ */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: var(--tekst);
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.mobiel-menu {
+  display: none;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--rand);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  z-index: 99;
+  padding: 12px 20px 20px;
+}
+
+.mobiel-menu.open { display: block; }
+
+.mobiel-menu a {
+  display: block;
+  font-size: 15px;
+  color: var(--tekst-muted);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rand-licht);
+  transition: color 0.15s;
+}
+
+.mobiel-menu a:last-child { border-bottom: none; }
+.mobiel-menu a:hover { color: var(--groen); }
+.mobiel-menu a.actief {
+  color: var(--groen);
+  font-weight: 600;
+}
+
+.mobiel-menu .mobiel-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  background: var(--groen);
+  color: #fff !important;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: none !important;
+}
+
+/* ============================================
+   RESPONSIEF
+   ============================================ */
+@media (max-width: 900px) {
+  .wrapper { padding: 0 20px; }
+  .nav-inner { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; align-items: center; justify-content: center; }
+  .nav { position: sticky; }
+  .sectie-titel { font-size: 24px; }
+  .cta-balk { flex-direction: column; padding: 28px 24px; }
+}
+
+@media (max-width: 640px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* ============================================
+   PAGINAKOP — gedeeld grid (helft/helft)
+   Links tekst, rechts foto of kaderblok.
+   ============================================ */
+.page-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-foto {
+  position: relative;
+  background: var(--groen);
+  border-radius: 16px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder zolang de foto ontbreekt */
+.hero-foto-leeg {
+  font-size: 80px;
+  color: rgba(255,255,255,0.15);
+}
+
+/* Wit overlay-kaartje op de foto */
+.hero-foto-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+.hero-foto-label strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--tekst);
+  line-height: 1.3;
+}
+
+.hero-foto-label span {
+  font-size: 13px;
+  color: var(--tekst-muted);
+}
+
+@media (max-width: 900px) {
+  .page-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ============================================
+   CTA-BALK MET FOTO
+   Gebruik: <div class="cta-balk" style="padding:0;overflow:hidden;">
+              <div class="cta-balk-inner"> foto + tekst </div>
+            </div>
+   Voeg class "rechts" toe aan .cta-foto om het beeld
+   aan de rechterkant te zetten.
+   ============================================ */
+.cta-balk-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  width: 100%;
+}
+
+.cta-foto {
+  border-radius: 14px 0 0 14px;
+  overflow: hidden;
+}
+
+.cta-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cta-foto.rechts {
+  order: 2;
+  border-radius: 0 14px 14px 0;
+}
+
+.cta-tekst {
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cta-tekst h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.cta-tekst p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .cta-balk-inner { grid-template-columns: 1fr; }
+  .cta-foto,
+  .cta-foto.rechts { border-radius: 14px 14px 0 0; aspect-ratio: 3/2; order: 0; }
+  .cta-tekst { padding: 28px 24px; }
+}
+
+</style>
+  <style>
+    .hero { background: var(--achtergrond); padding: 80px 0 64px; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--groen-licht); color: var(--groen-mid); border-radius: 20px; padding: 5px 14px; font-size: 13px; font-weight: 500; margin-bottom: 20px; }
+    .hero h1 { font-size: 42px; font-weight: 700; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero h1 em { color: var(--groen); font-style: normal; }
+    .hero-sub { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; margin-bottom: 28px; max-width: 460px; }
+    .hero-knoppen { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-visual { background: var(--groen); border-radius: 16px; aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .hero-visual-icon { font-size: 100px; color: rgba(255,255,255,0.1); }
+    .hero-cert { position: absolute; top: 20px; right: 20px; background: #fff; border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: 600; color: var(--groen); display: flex; align-items: center; gap: 6px; }
+    .trust-balk { border-top: 1px solid var(--rand); border-bottom: 1px solid var(--rand); }
+    .trust-balk-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .trust-item { display: flex; align-items: center; gap: 14px; padding: 22px 24px; border-right: 1px solid var(--rand); }
+    .trust-item:last-child { border-right: none; }
+    .trust-icoon { width: 40px; height: 40px; background: var(--achtergrond); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; color: var(--groen); }
+    .trust-tekst strong { display: block; font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .trust-tekst span { font-size: 12px; color: var(--tekst-muted); }
+    .diensten-raster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .dienst-kaart-breed { grid-column: span 2; }
+    .dienst-kaart { border: 1px solid var(--rand); border-radius: var(--radius-groot); padding: 24px; background: #fff; transition: border-color 0.15s, box-shadow 0.15s; display: block; color: inherit; }
+    .dienst-kaart:hover { border-color: var(--groen); box-shadow: 0 4px 16px rgba(42,92,63,0.1); }
+    .dienst-kaart-breed .dienst-kaart-inner { display: block; }
+    .dienst-icoon { width: 44px; height: 44px; background: var(--achtergrond); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--groen); margin-bottom: 14px; flex-shrink: 0; }
+    .dienst-kaart-breed .dienst-icoon { margin-bottom: 14px; }
+    .dienst-kaart h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .dienst-kaart p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
+    .dienst-subtags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .dienst-subtag { display: inline-flex; align-items: center; gap: 4px; background: var(--achtergrond); color: var(--tekst-muted); border-radius: 20px; padding: 3px 10px; font-size: 12px; }
+    .dienst-subtag i { font-size: 12px; color: var(--groen); }
+    .filosofie { background: var(--groen); border-radius: 20px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; margin: 0 0 72px; overflow: hidden; }
+    .filosofie-tekst { padding: 56px; display: flex; flex-direction: column; justify-content: center; gap: 0; }
+    .filosofie-tekst h2 { font-size: 24px; font-weight: 600; color: #fff; margin-bottom: 14px; }
+    .filosofie-tekst p { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 24px; }
+    .filosofie-foto { position: relative; min-height: 320px; }
+    .filosofie-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .filosofie-foto-placeholder { width: 100%; height: 100%; min-height: 320px; background: rgba(255,255,255,0.08); border-left: 1.5px dashed rgba(255,255,255,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 24px; }
+    .filosofie-foto-placeholder i { font-size: 40px; color: rgba(255,255,255,0.25); }
+    .filosofie-foto-placeholder span { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.5; }
+    .stappen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .stap { text-align: center; padding: 0 20px; position: relative; }
+    .stap:not(:last-child)::after { content: ''; position: absolute; top: 22px; right: -4px; width: 50%; height: 2px; background: var(--groen-licht); }
+    .stap:not(:first-child)::before { content: ''; position: absolute; top: 22px; left: -4px; width: 50%; height: 2px; background: var(--groen-licht); }
+    .stap-num { width: 44px; height: 44px; background: var(--groen); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; margin: 0 auto 16px; position: relative; z-index: 1; }
+    .stap h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .stap p { font-size: 13px; color: var(--tekst-muted); line-height: 1.5; }
+    .testimonial-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .testimonial-kaart { border: 1px solid var(--rand); border-radius: var(--radius-groot); padding: 24px; background: #fff; }
+    .t-sterren { color: #F0A500; font-size: 16px; margin-bottom: 6px; }
+    .t-dienst { display: inline-block; background: var(--achtergrond); color: var(--groen); border-radius: 4px; padding: 3px 8px; font-size: 11px; font-weight: 500; margin-bottom: 10px; }
+    .t-tekst { font-size: 14px; color: var(--tekst-muted); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+    .t-auteur { display: flex; align-items: center; gap: 10px; }
+    .t-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--groen-licht); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--groen); flex-shrink: 0; }
+    .t-naam { font-size: 14px; font-weight: 600; }
+    .t-locatie { font-size: 12px; color: var(--tekst-muted); }
+    .cta-balk-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; }
+    .cta-foto { border-radius: 14px 0 0 14px; overflow: hidden; }
+    .cta-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cta-tekst { padding: 40px 44px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 32px; }
+      .trust-balk-inner { grid-template-columns: 1fr 1fr; }
+      .diensten-raster { grid-template-columns: 1fr 1fr; }
+      .dienst-kaart-breed { grid-column: span 2; }
+      .filosofie { grid-template-columns: 1fr; }
+      .filosofie-tekst { padding: 36px 24px; }
+      .filosofie-foto { min-height: 220px; }
+      .stappen { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .stap::after, .stap::before { display: none; }
+      .testimonial-raster { grid-template-columns: 1fr; }
+      .cta-balk-inner { grid-template-columns: 1fr; }
+      .cta-foto { border-radius: 14px 14px 0 0; aspect-ratio: 3/2; }
+      .cta-tekst { padding: 28px 24px; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 48px 0 40px; }
+      .hero h1 { font-size: 28px; }
+      .diensten-raster { grid-template-columns: 1fr; }
+      .dienst-kaart-breed { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index-feedback.html" class="nav-logo">
+      <div class="nav-logo-mark"><i class="ti ti-tree"></i></div>
+      <div class="nav-brand"><span>Stamgast</span> Boombeheer</div>
+    </a>
+    <div class="nav-links">
+      <a href="over-lode-feedback.html">Over Lode</a>
+      <a href="diensten-feedback.html">Diensten</a>
+      <a href="aanpak-feedback.html">Onze aanpak</a>
+      <a href="referenties-feedback.html">Referenties</a>
+      <a href="contact-feedback.html">Contact</a>
+    </div>
+    <a href="contact-feedback.html" class="nav-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+      <i class="ti ti-menu-2" id="hamburger-icoon"></i>
+    </button>
+  </div>
+  <div class="mobiel-menu" id="mobiel-menu">
+    <a href="over-lode-feedback.html">Over Lode</a>
+    <a href="diensten-feedback.html">Diensten</a>
+    <a href="aanpak-feedback.html">Onze aanpak</a>
+    <a href="referenties-feedback.html">Referenties</a>
+    <a href="contact-feedback.html">Contact</a>
+    <a href="contact-feedback.html" class="mobiel-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+  </div>
+</nav>
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobiel-menu');
+  var icoon = document.getElementById('hamburger-icoon');
+  hamburger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    icoon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      icoon.className = 'ti ti-menu-2';
+    }
+  });
+</script>
+
+<section class="hero">
+  <div class="wrapper">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><i class="ti ti-award"></i> ETW + VETCERT gecertificeerd</div>
+        <h1 class="fb" data-fb-id="hero-titel" data-fb-label="Titel bovenaan" data-fb-type="tekst">Bomen die <em>mogen groeien</em>.<br>Met zorg én karakter.</h1>
+        <p class="hero-sub fb" data-fb-id="hero-intro" data-fb-label="Introtekst bovenaan" data-fb-type="tekst">Lode Jans zorgt voor uw bomen in Oost- en West-Vlaanderen — met eerlijk advies, vakkundige uitvoering en een diepgewortelde visie op behoud en herstel.</p>
+        <div class="hero-knoppen">
+          <a href="contact-feedback.html" class="btn-primair"><i class="ti ti-clipboard-text"></i> Vrijblijvende offerte</a>
+          <a href="referenties-feedback.html" class="btn-secundair"><i class="ti ti-player-play"></i> Bekijk ons werk</a>
+        </div>
+      </div>
+      <!-- FOTO: hero-hoofdfoto.jpg — actiefoto van Lode in boom of bij werk, liggend formaat 4:3 -->
+     <div class="hero-visual fb" data-fb-id="foto-hero" data-fb-label="Lode Jans aan het werk" data-fb-type="foto">
+  		<img src="afbeeldingen/hero-hoofdfoto.jpg" alt="Lode Jans aan het werk" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div class="hero-cert" style="top:20px;left:20px;right:auto;"><i class="ti ti-map-pin"></i> Gent &amp; omstreken</div>
+	</div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-balk">
+  <div class="wrapper" style="padding:0;">
+    <div class="trust-balk-inner fb" data-fb-id="kenmerkenbalk" data-fb-label="Kenmerkenbalk (4 items)" data-fb-type="tekst">
+      <div class="trust-item"><div class="trust-icoon"><i class="ti ti-rosette"></i></div><div class="trust-tekst"><strong>ETW + VETCERT</strong><span>Europees gecertificeerd</span></div></div>
+      <div class="trust-item"><div class="trust-icoon"><i class="ti ti-map-pin"></i></div><div class="trust-tekst"><strong>Oost- &amp; West-Vlaanderen</strong><span>Lokale vakman</span></div></div>
+      <div class="trust-item"><div class="trust-icoon"><i class="ti ti-heart-handshake"></i></div><div class="trust-tekst"><strong>Eerlijk advies</strong><span>Geen onnodige snoei, wat is er écht nodig?</span></div></div>
+      <div class="trust-item"><div class="trust-icoon"><i class="ti ti-leaf"></i></div><div class="trust-tekst"><strong>Doordacht beheer</strong><span>Duurzame aanpak met gerichte, weloverwogen acties</span></div></div>
+    </div>
+  </div>
+</div>
+
+<section class="sectie">
+  <div class="wrapper">
+    <div class="sectie-label">Diensten</div>
+    <div class="sectie-titel">Wat kan Stamgast voor u doen?</div>
+    <p class="sectie-sub">Van snoeiwerken tot groeiplaatsverbeteringen, met de boom op de eerste plaats. Altijd in overleg met de klant.</p>
+    <div class="diensten-raster">
+      <a href="diensten-feedback.html" class="dienst-kaart dienst-kaart-breed fb" data-fb-id="dienst-1" data-fb-label="Snoeien" data-fb-type="tekst">
+        <div class="dienst-kaart-inner">
+          <div class="dienst-icoon"><i class="ti ti-scissors"></i></div>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <h3 style="margin-bottom:0;">Snoeien</h3>
+              <span class="tag" style="font-size:11px;">Populairste dienst</span>
+            </div>
+            <p>Vakkundige snoeiwerken conform de ETW-normen. Lode snoeit gericht en naar de noden van uw boom — aan esthetiek hebben bomen zelf weinig. Laat een boom boom zijn.</p>
+            <div class="dienst-subtags">
+              <span class="dienst-subtag"><i class="ti ti-tree"></i> Onderhoudssnoei</span>
+              <span class="dienst-subtag"><i class="ti ti-alert-triangle"></i> Veiligheid</span>
+              <span class="dienst-subtag"><i class="ti ti-leaf"></i> Vormsnoei</span>
+              <span class="dienst-subtag"><i class="ti ti-sparkles"></i> Kroonverlichting</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="diensten-feedback.html" class="dienst-kaart fb" data-fb-id="dienst-2" data-fb-label="Aanplant" data-fb-type="tekst"><div class="dienst-icoon"><i class="ti ti-tree"></i></div><h3>Aanplant</h3><p>De juiste boom op de juiste plek, met een duidelijk eindbeeld voor ogen.</p><div style="margin-top:12px;"><span class="tag-grijs">November t.e.m. maart</span></div></a>
+      <a href="diensten-feedback.html" class="dienst-kaart fb" data-fb-id="dienst-3" data-fb-label="Advies, inspectie &amp; inventarisatie" data-fb-type="tekst"><div class="dienst-icoon"><i class="ti ti-clipboard-list"></i></div><h3>Advies, inspectie &amp; inventarisatie</h3><p>Onafhankelijk en eerlijk advies. Geen verkoopdoeleinden, wel echte expertise.</p></a>
+      <a href="diensten-feedback.html" class="dienst-kaart fb" data-fb-id="dienst-4" data-fb-label="Vellen &amp; demonteren" data-fb-type="tekst"><div class="dienst-icoon"><i class="ti ti-axe"></i></div><h3>Vellen &amp; demonteren</h3><p>Wanneer vellen écht de beste optie is — veilig en vakkundig uitgevoerd.</p><div style="margin-top:12px;"><span class="tag-waarschuwing">Enkel indien nodig</span></div></a>
+      <a href="diensten-feedback.html" class="dienst-kaart fb" data-fb-id="dienst-5" data-fb-label="Stormschade" data-fb-type="tekst"><div class="dienst-icoon"><i class="ti ti-storm"></i></div><h3>Stormschade</h3><p>Snelle interventie bij schade. Veiligheid eerst, boom redden waar mogelijk.</p><div style="margin-top:12px;"><span class="tag-grijs">Urgente interventie</span></div></a>
+    </div>
+  </div>
+</section>
+
+<div class="wrapper">
+  <div class="filosofie">
+    <div class="filosofie-tekst fb" data-fb-id="filosofie-tekst" data-fb-label="Boomverzorging met een geweten" data-fb-type="tekst">
+      <h2>Boomverzorging met een geweten</h2>
+      <p>Laat een boom boom zijn. Onnodige snoei, rigoureuze ingrepen of waardevol groen vellen — dat past niet bij de visie van Stamgast Boombeheer en heeft geen plaats binnen duurzaam boombeheer.</p>
+      <a href="aanpak-feedback.html" class="btn-wit" style="display:inline-flex;align-self:flex-start;"><i class="ti ti-arrow-right"></i> Onze aanpak</a>
+    </div>
+    <!-- FOTO: filosofie-boom.jpg — sfeervolle foto van boom of natuur, staand of liggend formaat -->
+    <div class="filosofie-foto fb" data-fb-id="filosofie-foto" data-fb-label="Sfeervolle boom" data-fb-type="foto">
+		<img src="afbeeldingen/filosofie-boom.jpg" alt="Sfeervolle boom">
+    </div>
+  </div>
+</div>
+
+<section class="sectie-sm achtergrond-licht">
+  <div class="wrapper">
+    <div class="sectie-label">Werkwijze</div>
+    <div class="sectie-titel">Van aanvraag tot klus</div>
+    <p class="sectie-sub">Eenvoudig, eerlijk en altijd in overleg met u.</p>
+    <div class="stappen">
+      <div class="stap fb" data-fb-id="stap-1" data-fb-label="Offerte aanvragen" data-fb-type="tekst"><div class="stap-num">1</div><h4>Offerte aanvragen</h4><p>Online, per mail of telefoon — Lode reageert snel.</p></div>
+      <div class="stap fb" data-fb-id="stap-2" data-fb-label="Plaatsbezoek" data-fb-type="tekst"><div class="stap-num">2</div><h4>Plaatsbezoek</h4><p>Inspectie &amp; eerlijk advies op locatie.</p></div>
+      <div class="stap fb" data-fb-id="stap-3" data-fb-label="Duidelijke offerte" data-fb-type="tekst"><div class="stap-num">3</div><h4>Duidelijke offerte</h4><p>Transparante prijs, geen verrassingen achteraf.</p></div>
+      <div class="stap fb" data-fb-id="stap-4" data-fb-label="Vakkundige uitvoering" data-fb-type="tekst"><div class="stap-num">4</div><h4>Vakkundige uitvoering</h4><p>Lode doet het werk zelf, met zorg en aandacht.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie">
+  <div class="wrapper">
+    <div class="sectie-label">Referenties</div>
+    <div class="sectie-titel">Wat klanten zeggen</div>
+    <p class="sectie-sub">Eerlijkheid en vakkennis worden het meest gewaardeerd.</p>
+    <div class="testimonial-raster">
+      <div class="testimonial-kaart fb" data-fb-id="review-1" data-fb-label="Review: Marie V." data-fb-type="tekst">
+        <div class="t-sterren">★★★★★</div>
+        <span class="t-dienst">Advies &amp; snoeien</span>
+        <p class="t-tekst">"Lode heeft onze oude eik geïnspecteerd en besloten dat snoeien niet nodig was. Dat eerlijk advies, ook al kost hem dat werk, zegt alles over zijn aanpak."</p>
+        <div class="t-auteur"><div class="t-avatar">MV</div><div><div class="t-naam">Marie V.</div><div class="t-locatie">Gent</div></div></div>
+      </div>
+      <div class="testimonial-kaart fb" data-fb-id="review-2" data-fb-label="Review: Peter D." data-fb-type="tekst">
+        <div class="t-sterren">★★★★★</div>
+        <span class="t-dienst">Stormschade</span>
+        <p class="t-tekst">"Vakkundig, snel en netjes. Na de stormschade was hij binnen de dag ter plaatse. De boom is gered en staat er nu beter bij dan ervoor."</p>
+        <div class="t-auteur"><div class="t-avatar">PD</div><div><div class="t-naam">Peter D.</div><div class="t-locatie">Deinze</div></div></div>
+      </div>
+      <div class="testimonial-kaart fb" data-fb-id="review-3" data-fb-label="Review: Karen L." data-fb-type="tekst">
+        <div class="t-sterren">★★★★★</div>
+        <span class="t-dienst">Snoeien</span>
+        <p class="t-tekst">"Eindelijk een boomverzorger die uitlegt wat hij doet en waarom. Geen overbodige snoei, gewoon goed advies en goed werk. Zeker aan te bevelen."</p>
+        <div class="t-auteur"><div class="t-avatar">KL</div><div><div class="t-naam">Karen L.</div><div class="t-locatie">Aalst</div></div></div>
+      </div>
+      <div class="testimonial-kaart fb" data-fb-id="review-4" data-fb-label="Review: Johan B." data-fb-type="tekst">
+        <div class="t-sterren">★★★★★</div>
+        <span class="t-dienst">Ecologie &amp; beheer</span>
+        <p class="t-tekst">"Lode heeft onze oude beuk een tweede leven gegeven. Zijn kennis van oude bomen is indrukwekkend. Blij dat we voor het behoud van onze boom zijn gegaan."</p>
+        <div class="t-auteur"><div class="t-avatar">JB</div><div><div class="t-naam">Johan B.</div><div class="t-locatie">Gent</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrapper">
+  <div class="cta-balk" style="padding:0;overflow:hidden;">
+    <div class="cta-balk-inner">
+      <!-- FOTO: cta-lode-inspectie.jpg — foto van Lode bij boomonderzoek, 3:2 liggend formaat -->
+      <div class="cta-foto fb" data-fb-id="cta-foto" data-fb-label="Lode Jans inspecteert een boom" data-fb-type="foto">
+        <img src="afbeeldingen/cta-lode-inspectie.jpg" alt="Lode Jans inspecteert een boom">
+      </div>
+      <div class="cta-tekst fb" data-fb-id="cta-tekst" data-fb-label="Tekst onderaan (CTA)" data-fb-type="tekst">
+        <h2 style="font-size:22px;font-weight:600;color:#fff;line-height:1.3;">Klaar om uw bomen uit handen te geven?</h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">Vraag vrijblijvend een offerte aan. Lode komt langs, bekijkt uw situatie en geeft u eerlijk advies — ook als dat betekent dat er niets moet gebeuren.</p>
+        <div>
+          <a href="contact-feedback.html" class="btn-wit" style="display:inline-flex;align-items:center;gap:8px;"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrapper">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index-feedback.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;">
+          <div class="nav-logo-mark" style="width:30px;height:30px;font-size:17px;"><i class="ti ti-tree"></i></div>
+          <div class="nav-brand" style="font-size:15px;"><span>Stamgast</span> Boombeheer</div>
+        </a>
+        <p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
+        <div class="footer-cert-badges"><span class="cert-badge">ETW</span><span class="cert-badge">VETCERT</span></div>
+        <div class="social-rij">
+          <a href="https://www.facebook.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-facebook"></i></a>
+          <a href="https://www.instagram.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Diensten</h4>
+        <a href="diensten-feedback.html">Snoeien</a>
+        <a href="diensten-feedback.html">Aanplant</a>
+        <a href="diensten-feedback.html">Advies &amp; inspectie</a>
+        <a href="diensten-feedback.html">Vellen &amp; demonteren</a>
+        <a href="diensten-feedback.html">Stormschade</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>0497 91 09 13</p>
+        <p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
+        <p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+        <p style="margin-top:8px;font-size:13px;">BE 0678.719.886</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Stamgast Boombeheer — Lode Jans</span>
+      <span>Privacybeleid &nbsp;·&nbsp; Cookiebeleid</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== FEEDBACK-LAAG ===================== -->
+<style>
+  .fb-banner{background:#2A5C3F;color:#fff;padding:14px 20px;font-size:14px;line-height:1.55;
+    display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center;}
+  .fb-banner strong{font-weight:600;} .fb-banner span{max-width:780px;}
+  .fb-banner button{background:rgba(255,255,255,0.18);color:#fff;border:none;border-radius:6px;
+    padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;}
+  .fb-banner button:hover{background:rgba(255,255,255,0.32);}
+
+  .fb{position:relative;}
+  .fb-knop{position:absolute;top:8px;right:8px;z-index:20;display:inline-flex;align-items:center;gap:5px;
+    background:#fff;color:#2A5C3F;border:1px solid #2A5C3F;border-radius:20px;padding:4px 11px;
+    font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;user-select:none;
+    box-shadow:0 2px 8px rgba(0,0,0,0.14);opacity:0;transition:opacity .15s;white-space:nowrap;}
+  .fb:hover>.fb-knop{opacity:1;}
+  .fb.fb-heeft>.fb-knop{opacity:1;background:#2A5C3F;color:#fff;border-color:#2A5C3F;}
+  @media(hover:none){.fb>.fb-knop{opacity:.92;}}
+  .fb.fb-heeft{outline:2px dashed rgba(42,92,63,.55);outline-offset:3px;border-radius:6px;}
+
+  .fb-overlay{position:fixed;inset:0;background:rgba(20,30,24,.5);z-index:2000;display:none;
+    align-items:center;justify-content:center;padding:20px;}
+  .fb-overlay.open{display:flex;}
+  .fb-modal{background:#fff;border-radius:14px;max-width:460px;width:100%;padding:24px;
+    box-shadow:0 24px 70px rgba(0,0,0,.35);font-family:'Inter',sans-serif;max-height:88vh;overflow:auto;}
+  .fb-modal.breed{max-width:580px;}
+  .fb-modal h3{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#2A5C3F;margin-bottom:4px;}
+  .fb-modal .fb-titel{font-size:19px;font-weight:600;color:#1a1a1a;margin-bottom:16px;line-height:1.3;}
+  .fb-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+  .fb-chip{border:1px solid #e2e6ea;background:#fff;color:#5a6672;border-radius:20px;padding:7px 14px;
+    font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;}
+  .fb-chip.actief{background:#2A5C3F;color:#fff;border-color:#2A5C3F;}
+  .fb-modal textarea{width:100%;min-height:112px;border:1px solid #e2e6ea;border-radius:10px;
+    padding:12px 14px;font-size:14px;font-family:inherit;resize:vertical;line-height:1.55;color:#1a1a1a;}
+  .fb-modal textarea:focus{outline:none;border-color:#2A5C3F;}
+  .fb-acties{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;align-items:center;}
+  .fb-btn{border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;
+    font-family:inherit;display:inline-flex;align-items:center;gap:7px;}
+  .fb-btn-groen{background:#2A5C3F;color:#fff;} .fb-btn-groen:hover{background:#1e4430;}
+  .fb-btn-grijs{background:#f0f2ef;color:#5a6672;}
+  .fb-btn-rand{background:#fff;color:#2A5C3F;border:1px solid #2A5C3F;}
+  .fb-btn-rood{background:#fff;color:#b23b3b;border:1px solid #e6c3c3;margin-left:auto;}
+
+  .fb-fab{position:fixed;bottom:22px;right:22px;z-index:1900;background:#2A5C3F;color:#fff;border:none;
+    border-radius:30px;padding:13px 20px;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;
+    cursor:pointer;box-shadow:0 6px 22px rgba(42,92,63,.45);display:inline-flex;align-items:center;gap:9px;}
+  .fb-fab:hover{background:#1e4430;}
+  .fb-teller{background:#fff;color:#2A5C3F;border-radius:12px;min-width:22px;height:22px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;padding:0 6px;}
+
+  .fb-lijst{display:flex;flex-direction:column;gap:12px;margin:14px 0 4px;}
+  .fb-item{border:1px solid #e2e6ea;border-radius:10px;padding:14px;}
+  .fb-item-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:6px;}
+  .fb-item-label{font-size:14px;font-weight:600;color:#1a1a1a;}
+  .fb-item-type{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#2A5C3F;
+    background:#D8EDDF;border-radius:5px;padding:2px 7px;white-space:nowrap;}
+  .fb-item-actie{font-size:12px;color:#8A5A00;background:#FEF3D8;border-radius:5px;padding:2px 7px;
+    display:inline-block;margin-bottom:6px;}
+  .fb-item p{font-size:14px;color:#5a6672;line-height:1.55;white-space:pre-wrap;}
+  .fb-item-knoppen{display:flex;gap:14px;margin-top:10px;}
+  .fb-item-knoppen button{background:none;border:none;color:#5a6672;font-size:13px;cursor:pointer;
+    font-family:inherit;text-decoration:underline;padding:0;}
+  .fb-leeg{text-align:center;color:#5a6672;font-size:14px;padding:22px 0;}
+  .fb-hint{font-size:13px;color:#5a6672;line-height:1.6;margin-bottom:6px;}
+</style>
+
+<button class="fb-fab" id="fbFab" hidden>
+  <i class="ti ti-message-2"></i> Mijn feedback <span class="fb-teller" id="fbTeller">0</span>
+</button>
+
+<div class="fb-overlay" id="fbEditor">
+  <div class="fb-modal">
+    <h3>Feedback op</h3>
+    <div class="fb-titel" id="fbEditorLabel">—</div>
+    <div class="fb-chips" id="fbChips" hidden></div>
+    <textarea id="fbTekst" placeholder="Wat mag hier anders? Typ hier je opmerking…"></textarea>
+    <div class="fb-acties">
+      <button class="fb-btn fb-btn-groen" id="fbOpslaan">Opslaan</button>
+      <button class="fb-btn fb-btn-grijs" id="fbAnnuleer">Annuleren</button>
+      <button class="fb-btn fb-btn-rood" id="fbVerwijder" hidden>Verwijderen</button>
+    </div>
+  </div>
+</div>
+
+<div class="fb-overlay" id="fbPaneel">
+  <div class="fb-modal breed">
+    <h3>Overzicht</h3>
+    <div class="fb-titel">Mijn feedback op deze pagina</div>
+    <p class="fb-hint">Hieronder staat alles wat je op <strong>deze pagina</strong> hebt toegevoegd. Klik op <strong>Kopieer alles</strong> en plak het in een mailtje of WhatsApp naar Ruben — of gebruik <strong>Mail naar Ruben</strong>. Elke pagina heeft z'n eigen lijstje.</p>
+    <div class="fb-lijst" id="fbLijst"></div>
+    <div class="fb-acties">
+      <button class="fb-btn fb-btn-groen" id="fbKopieer"><i class="ti ti-copy"></i> Kopieer alles</button>
+      <button class="fb-btn fb-btn-rand" id="fbMail"><i class="ti ti-mail"></i> Mail naar Ruben</button>
+      <button class="fb-btn fb-btn-grijs" id="fbDownload">Download</button>
+      <button class="fb-btn fb-btn-grijs" id="fbSluit" style="margin-left:auto;">Sluiten</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var PAGINA = { id:'index', naam:'Home', bestand:'index-feedback.html' };
+  var RUBEN  = 'ruben@shorrt.be';
+  var SLEUTEL = 'fb_stamgast_' + PAGINA.id;
+  var FOTO_ACTIES = ['Vervangen','Aanpassen','Verwijderen','Is goed zo'];
+
+  var store = laad();
+  var actiefId = null, actieveActie = null;
+
+  function laad(){ try { return JSON.parse(localStorage.getItem(SLEUTEL)) || {}; } catch(e){ return {}; } }
+  function bewaar(){ try { localStorage.setItem(SLEUTEL, JSON.stringify(store)); } catch(e){} }
+  function tekstVan(el){ var t=(el.innerText||'').replace(/\s+/g,' ').trim(); return t.length>140?t.slice(0,140)+'…':t; }
+  function fotoVan(el){ var img=el.querySelector('img'); if(!img) return ''; return (img.getAttribute('src')||'').split('/').pop(); }
+
+  // Banner
+  if(!sessionStorage.getItem('fb_banner_weg')){
+    var b=document.createElement('div'); b.className='fb-banner';
+    b.innerHTML='<span>👋 <strong>Dag Lode</strong> — dit is jouw feedback-versie. Beweeg over een stuk tekst of een foto en klik op <strong>“Opmerking”</strong>. Als je klaar bent, klik je rechtsonder op <strong>Mijn feedback</strong> om alles naar Ruben te sturen.</span><button id="fbBannerWeg">Begrepen</button>';
+    document.body.insertBefore(b, document.body.firstChild);
+    document.getElementById('fbBannerWeg').onclick=function(){ b.remove(); try{sessionStorage.setItem('fb_banner_weg','1');}catch(e){} };
+  }
+
+  // Controls op ankers (span i.p.v. button: werkt ook binnen kaarten die zelf een link zijn)
+  var ankers = document.querySelectorAll('.fb');
+  ankers.forEach(function(el){
+    var knop=document.createElement('span');
+    knop.className='fb-knop'; knop.setAttribute('role','button'); knop.setAttribute('tabindex','0');
+    knop.innerHTML='<i class="ti ti-message-plus"></i> Opmerking';
+    var handel=function(e){ e.stopPropagation(); e.preventDefault(); openEditor(el); };
+    knop.addEventListener('click', handel);
+    knop.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') handel(e); });
+    el.appendChild(knop);
+  });
+
+  function ververs(){
+    ankers.forEach(function(el){
+      var id=el.getAttribute('data-fb-id'), heeft=!!store[id];
+      el.classList.toggle('fb-heeft', heeft);
+      el.querySelector('.fb-knop').innerHTML = heeft ? '<i class="ti ti-check"></i> Opmerking bewerken' : '<i class="ti ti-message-plus"></i> Opmerking';
+    });
+    document.getElementById('fbTeller').textContent = Object.keys(store).length;
+    document.getElementById('fbFab').hidden = false;
+  }
+
+  var editor=document.getElementById('fbEditor'), elLabel=document.getElementById('fbEditorLabel'),
+      elChips=document.getElementById('fbChips'), elTekst=document.getElementById('fbTekst'),
+      elVerwijder=document.getElementById('fbVerwijder');
+
+  function openEditor(el){
+    var id=el.getAttribute('data-fb-id'); actiefId=id;
+    var type=el.getAttribute('data-fb-type'), label=el.getAttribute('data-fb-label'), bestaand=store[id];
+    elLabel.textContent=label;
+    editor.dataset.type=type; editor.dataset.label=label;
+    editor.dataset.context = type==='foto' ? fotoVan(el) : tekstVan(el);
+    if(type==='foto'){
+      elChips.hidden=false; elChips.innerHTML=''; actieveActie = bestaand?bestaand.actie:null;
+      FOTO_ACTIES.forEach(function(a){
+        var c=document.createElement('button'); c.className='fb-chip'+(a===actieveActie?' actief':''); c.textContent=a; c.type='button';
+        c.onclick=function(){ actieveActie=a; elChips.querySelectorAll('.fb-chip').forEach(function(x){x.classList.remove('actief');}); c.classList.add('actief'); };
+        elChips.appendChild(c);
+      });
+      elTekst.placeholder='Wat is er met de foto? (bv. andere foto, techniek klopt niet, bijsnijden…)';
+    } else { elChips.hidden=true; actieveActie=null; elTekst.placeholder='Wat mag hier anders? Typ hier je opmerking…'; }
+    elTekst.value = bestaand?bestaand.opmerking:''; elVerwijder.hidden=!bestaand;
+    editor.classList.add('open'); elTekst.focus();
+  }
+  function sluitEditor(){ editor.classList.remove('open'); actiefId=null; }
+
+  document.getElementById('fbOpslaan').onclick=function(){
+    if(!actiefId) return;
+    var opm=elTekst.value.trim();
+    if(!opm && !actieveActie){ sluitEditor(); return; }
+    store[actiefId]={ label:editor.dataset.label, type:editor.dataset.type, context:editor.dataset.context, actie:actieveActie, opmerking:opm, ts:Date.now() };
+    bewaar(); ververs(); sluitEditor();
+  };
+  document.getElementById('fbAnnuleer').onclick=sluitEditor;
+  elVerwijder.onclick=function(){ if(actiefId){ delete store[actiefId]; bewaar(); ververs(); } sluitEditor(); };
+  editor.onclick=function(e){ if(e.target===editor) sluitEditor(); };
+
+  var paneel=document.getElementById('fbPaneel'), lijst=document.getElementById('fbLijst');
+  function esc(s){ return (s||'').replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+  function tekenLijst(){
+    var ids=Object.keys(store).sort(function(a,b){return store[a].ts-store[b].ts;});
+    if(!ids.length){ lijst.innerHTML='<div class="fb-leeg">Nog geen feedback toegevoegd.</div>'; return; }
+    lijst.innerHTML='';
+    ids.forEach(function(id){
+      var f=store[id], d=document.createElement('div'); d.className='fb-item';
+      var actie=f.actie?'<span class="fb-item-actie">Foto: '+f.actie+'</span>':'';
+      d.innerHTML='<div class="fb-item-top"><span class="fb-item-label">'+esc(f.label)+'</span><span class="fb-item-type">'+(f.type==='foto'?'Foto':'Tekst')+'</span></div>'+actie+(f.opmerking?'<p>'+esc(f.opmerking)+'</p>':'')+'<div class="fb-item-knoppen"><button data-bewerk="'+id+'">Bewerken</button><button data-wis="'+id+'">Verwijderen</button></div>';
+      lijst.appendChild(d);
+    });
+    lijst.querySelectorAll('[data-bewerk]').forEach(function(bn){ bn.onclick=function(){ paneel.classList.remove('open'); var el=document.querySelector('[data-fb-id="'+bn.dataset.bewerk+'"]'); if(el) openEditor(el); }; });
+    lijst.querySelectorAll('[data-wis]').forEach(function(bn){ bn.onclick=function(){ delete store[bn.dataset.wis]; bewaar(); ververs(); tekenLijst(); }; });
+  }
+  document.getElementById('fbFab').onclick=function(){ tekenLijst(); paneel.classList.add('open'); };
+  document.getElementById('fbSluit').onclick=function(){ paneel.classList.remove('open'); };
+  paneel.onclick=function(e){ if(e.target===paneel) paneel.classList.remove('open'); };
+
+  function exportTekst(){
+    var ids=Object.keys(store).sort(function(a,b){return store[a].ts-store[b].ts;});
+    var d=new Date(), dd=('0'+d.getDate()).slice(-2)+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+d.getFullYear();
+    var r=['FEEDBACK — Stamgast Boombeheer','Pagina: '+PAGINA.naam+' ('+PAGINA.bestand+')','Datum: '+dd,''];
+    if(!ids.length){ r.push('(geen opmerkingen)'); return r.join('\n'); }
+    ids.forEach(function(id,i){
+      var f=store[id];
+      r.push((i+1)+'. ['+(f.type==='foto'?'FOTO':'TEKST')+'] '+f.label);
+      if(f.context) r.push('   Huidig: '+f.context);
+      if(f.actie)   r.push('   Actie: '+f.actie);
+      if(f.opmerking) r.push('   Opmerking: '+f.opmerking);
+      r.push('   [ref: '+PAGINA.id+'/'+id+']');
+      r.push('');
+    });
+    return r.join('\n');
+  }
+
+  document.getElementById('fbKopieer').onclick=function(){
+    var t=exportTekst(), btn=this;
+    var klaar=function(){ btn.innerHTML='<i class="ti ti-check"></i> Gekopieerd!'; setTimeout(function(){ btn.innerHTML='<i class="ti ti-copy"></i> Kopieer alles'; },1800); };
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(klaar,function(){fallback(t);klaar();}); }
+    else { fallback(t); klaar(); }
+  };
+  function fallback(t){ var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.left='-9999px'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta); }
+  document.getElementById('fbMail').onclick=function(){ window.location.href='mailto:'+RUBEN+'?subject='+encodeURIComponent('Feedback website — '+PAGINA.naam)+'&body='+encodeURIComponent(exportTekst()); };
+  document.getElementById('fbDownload').onclick=function(){ var blob=new Blob([exportTekst()],{type:'text/plain;charset=utf-8'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='feedback-'+PAGINA.id+'.txt'; document.body.appendChild(a); a.click(); document.body.removeChild(a); };
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ sluitEditor(); paneel.classList.remove('open'); } });
+
+  ververs();
+})();
+</script>
+<!-- =================== EINDE FEEDBACK-LAAG =================== -->
+
+</body>
+</html>
