@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referenties — Stamgast Boombeheer</title>
+  <meta name="description" content="Wat klanten zeggen over Stamgast Boombeheer. Reviews en voorbeeldprojecten van Lode Jans.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Hero */
+    .page-hero { background: var(--groen); padding: 72px 0 56px; }
+    .page-hero .breadcrumb { color: rgba(255,255,255,0.5); }
+    .page-hero .breadcrumb a { color: rgba(255,255,255,0.5); }
+    .page-hero .breadcrumb a:hover { color: #fff; }
+    .page-hero .breadcrumb .huidig { color: rgba(255,255,255,0.9); }
+    .page-hero h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 14px; color: #fff; }
+    .page-hero p { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.7; }
+    .score-kaart { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; aspect-ratio: 4 / 3; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px; text-align: center; }
+    .score-num { font-size: 56px; font-weight: 700; color: #fff; line-height: 1; }
+    .score-sterren { color: #F0A500; font-size: 22px; margin: 8px 0; }
+    .score-label { font-size: 13px; color: rgba(255,255,255,0.6); }
+    .score-platform { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.6); }
+    .score-platform i { font-size: 16px; color: rgba(255,255,255,0.8); }
+
+    /* Recent werk */
+    .project-raster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .project-kaart { border: 1px solid var(--rand); border-radius: var(--radius-groot); overflow: hidden; background: #fff; }
+    .project-afbeelding { background: var(--groen-licht); aspect-ratio: 4/3; overflow: hidden; position: relative; cursor: zoom-in; }
+    .project-afbeelding img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+    .project-afbeelding:hover img { transform: scale(1.04); }
+
+    /* Lightbox */
+    .lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(20,28,22,0.92); display: none; align-items: center; justify-content: center; padding: 40px; cursor: zoom-out; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: 10px; cursor: default; }
+    .lightbox-sluit { position: absolute; top: 20px; right: 24px; background: none; border: none; color: #fff; font-size: 32px; line-height: 1; padding: 8px; opacity: 0.8; }
+    .lightbox-sluit:hover { opacity: 1; }
+    .lightbox-bijschrift { position: absolute; bottom: 24px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.8); font-size: 14px; }
+    .project-info { padding: 18px; }
+    .project-dienst { font-size: 11px; font-weight: 600; color: var(--groen); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+    .project-titel { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .project-loc { font-size: 12px; color: var(--tekst-muted); display: flex; align-items: center; gap: 4px; }
+    .project-loc i { font-size: 12px; }
+
+    /* Reviews */
+    .reviews-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .review-kaart { background: #fff; border: 1px solid var(--rand); border-radius: var(--radius-groot); padding: 24px; }
+    .review-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .r-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--groen-licht); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--groen); flex-shrink: 0; }
+    .r-naam { font-size: 15px; font-weight: 600; }
+    .r-meta { font-size: 12px; color: var(--tekst-muted); }
+    .r-sterren { color: #F0A500; font-size: 15px; white-space: nowrap; }
+    .review-dienst { display: inline-block; background: var(--achtergrond); color: var(--groen); border-radius: 4px; padding: 3px 8px; font-size: 11px; font-weight: 500; margin-bottom: 10px; }
+    .review-tekst { font-size: 14px; color: var(--tekst-muted); line-height: 1.7; font-style: italic; }
+
+    @media (max-width: 900px) {
+      .project-raster { grid-template-columns: 1fr 1fr; }
+      .reviews-raster { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .project-raster { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index-review.html" class="nav-logo">
+      <div class="nav-logo-mark"><i class="ti ti-tree"></i></div>
+      <div class="nav-brand"><span>Stamgast</span> Boombeheer</div>
+    </a>
+    <div class="nav-links">
+      <a href="over-lode-review.html">Over Lode</a>
+      <a href="diensten-review.html">Diensten</a>
+      <a href="aanpak-review.html">Onze aanpak</a>
+      <a href="referenties-review.html" class="actief">Referenties</a>
+      <a href="contact-review.html">Contact</a>
+    </div>
+    <a href="contact-review.html" class="nav-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+      <i class="ti ti-menu-2" id="hamburger-icoon"></i>
+    </button>
+  </div>
+  <div class="mobiel-menu" id="mobiel-menu">
+    <a href="over-lode-review.html">Over Lode</a>
+    <a href="diensten-review.html">Diensten</a>
+    <a href="aanpak-review.html">Onze aanpak</a>
+    <a href="referenties-review.html" class="actief">Referenties</a>
+    <a href="contact-review.html">Contact</a>
+    <a href="contact-review.html" class="mobiel-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+  </div>
+</nav>
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobiel-menu');
+  var icoon = document.getElementById('hamburger-icoon');
+  hamburger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    icoon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      icoon.className = 'ti ti-menu-2';
+    }
+  });
+</script>
+
+<!-- 1. HERO — Wat klanten zeggen over Stamgast -->
+<section class="page-hero">
+  <div class="wrapper">
+    <div class="page-hero-inner">
+      <div>
+        <div class="breadcrumb">
+          <a href="index-review.html">Home</a>
+          <i class="ti ti-chevron-right" style="font-size:13px;"></i>
+          <span class="huidig">Referenties</span>
+        </div>
+        <h1>Wat klanten zeggen over Stamgast</h1>
+        <p>Eerlijkheid en vakkennis worden het meest gewaardeerd. Lees wat klanten uit de regio ervaren na een samenwerking met Lode.</p>
+      </div>
+      <div class="score-kaart">
+        <div class="score-num">4.9</div>
+        <div class="score-sterren">★★★★★</div>
+        <div class="score-label">Gemiddelde beoordeling</div>
+        <div class="score-platform"><i class="ti ti-brand-google"></i> Google Reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. RECENT WERK -->
+<section class="sectie achtergrond-licht">
+  <div class="wrapper">
+    <div class="sectie-label">Projecten</div>
+    <div class="sectie-titel">Recent werk</div>
+    <p class="sectie-sub">Een greep uit de projecten die Lode de voorbije maanden uitvoerde.</p>
+    <div class="project-raster">
+      <div class="project-kaart">
+        <!-- FOTO: project-snoeien-gent.jpg — resultaatfoto snoeien lindebomen, liggend 4:3 -->
+        <div class="project-afbeelding wz-foto" data-foto="Foto is goed (blijft)"><img src="afbeeldingen/project-snoeien-gent.jpg" alt="Gesnoeide lindebomen in een tuin in Gent"></div>
+        <div class="project-info">
+          <div class="project-dienst wz" data-was="Snoeien">Aanplant</div>
+          <div class="project-titel wz" data-was="Lindebomen tuin particulier">Moerbei als karakterboom in een beschermde parktuin</div>
+          <div class="project-loc wz" data-was="Gent"><i class="ti ti-map-pin"></i> Merendree</div>
+        </div>
+      </div>
+      <div class="project-kaart">
+        <!-- FOTO: project-beuk-deinze.jpg — foto van de veterane beuk na behandeling, liggend 4:3 -->
+        <div class="project-afbeelding wz-foto" data-foto="Deze foto is goed (blijft)"><img src="afbeeldingen/project-beuk-deinze.jpg" alt="Veterane beuk in Deinze na behandeling"></div>
+        <div class="project-info">
+          <div class="project-dienst wz" data-was="Ecologie &amp; beheer">Snoeien</div>
+          <div class="project-titel wz" data-was="Veterane beuk bewaard">Uitlichten van een krulwilg in een kleinere stadstuin</div>
+          <div class="project-loc wz" data-was="Deinze"><i class="ti ti-map-pin"></i> Gentbrugge</div>
+        </div>
+      </div>
+      <div class="project-kaart">
+        <!-- FOTO: project-stormschade-aalst.jpg — foto van stormschade interventie, liggend 4:3 -->
+        <div class="project-afbeelding wz-foto" data-foto="Foto goed (blijft)"><img src="afbeeldingen/project-stormschade-aalst.jpg" alt="Spoedinterventie na stormschade in Aalst"></div>
+        <div class="project-info">
+          <div class="project-dienst wz" data-was="Stormschade">Snoeien</div>
+          <div class="project-titel wz" data-was="Spoedinterventie na storm">Onderhoudssnoei van een prachtige plataan</div>
+          <div class="project-loc wz" data-was="Aalst"><i class="ti ti-map-pin"></i> Nieuw Zeeland</div>
+        </div>
+      </div>
+      <div class="project-kaart">
+        <!-- FOTO: project-aanplant-oudenaarde.jpg — foto van nieuwe aanplant, liggend 4:3 -->
+        <div class="project-afbeelding wz-foto" data-foto="Vervangen door foto met witte telekraan (porter cranes) en boom, zonder machines. (project 4 — tekst nog niet goedgekeurd)"><img src="afbeeldingen/project-aanplant-oudenaarde.jpg" alt="Nieuwe haag en bomen in Oudenaarde"></div>
+        <div class="project-info">
+          <div class="project-dienst">Aanplant</div>
+          <div class="project-titel">Nieuwe haag &amp; bomen</div>
+          <div class="project-loc"><i class="ti ti-map-pin"></i> Oudenaarde</div>
+        </div>
+      </div>
+      <div class="project-kaart">
+        <!-- FOTO: project-advies-domein.jpg — foto van boomadvies op groot domein, liggend 4:3 -->
+        <div class="project-afbeelding wz-foto" data-foto="Vervangen - Foto Standplaatsonderzoek reclame Lode II (project 5 — tekst nog niet goedgekeurd)"><img src="afbeeldingen/project-advies-domein.jpg" alt="Boomadvies op een groot domein in Kortrijk"></div>
+        <div class="project-info">
+          <div class="project-dienst">Advies &amp; inspectie</div>
+          <div class="project-titel">Boomadvies groot domein</div>
+          <div class="project-loc"><i class="ti ti-map-pin"></i> Kortrijk</div>
+        </div>
+      </div>
+      <div class="project-kaart">
+        <!-- FOTO: project-vellen-gent.jpg — foto van veilig demonteren sierkers, liggend 4:3 -->
+        <div class="project-afbeelding wz-foto" data-foto="Vervangen door foto gebruikt bij 'onze aanpak' van uitgescheurde wilg op dak. (project 6 — tekst nog niet goedgekeurd)"><img src="afbeeldingen/project-vellen-gent.jpg" alt="Veilig demonteren van een sierkers in Gent"></div>
+        <div class="project-info">
+          <div class="project-dienst">Vellen</div>
+          <div class="project-titel">Veilig demonteren sierkers</div>
+          <div class="project-loc"><i class="ti ti-map-pin"></i> Gent</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ERVARINGEN VAN KLANTEN -->
+<section class="sectie">
+  <div class="wrapper">
+    <div class="sectie-label">Reviews</div>
+    <div class="sectie-titel">Ervaringen van klanten</div>
+    <p class="sectie-sub">Rechtstreeks overgenomen uit Google Reviews.</p>
+    <div class="reviews-raster">
+      <div class="review-kaart">
+        <div class="review-top">
+          <div class="reviewer">
+            <div class="r-avatar">MV</div>
+            <div><div class="r-naam">Marie V.</div><div class="r-meta">Gent · 2 maanden geleden</div></div>
+          </div>
+          <div class="r-sterren">★★★★★</div>
+        </div>
+        <span class="review-dienst">Advies &amp; snoeien</span>
+        <p class="review-tekst">"Lode heeft onze oude eik geïnspecteerd en besloten dat snoeien niet nodig was. Dat eerlijk advies, ook al kost hem dat werk, zegt alles over zijn aanpak."</p>
+      </div>
+      <div class="review-kaart">
+        <div class="review-top">
+          <div class="reviewer">
+            <div class="r-avatar">PD</div>
+            <div><div class="r-naam">Peter D.</div><div class="r-meta">Deinze · 3 maanden geleden</div></div>
+          </div>
+          <div class="r-sterren">★★★★★</div>
+        </div>
+        <span class="review-dienst">Stormschade</span>
+        <p class="review-tekst">"Vakkundig, snel en netjes. Na de stormschade was hij binnen de dag ter plaatse. De boom is gered en staat er nu beter bij dan ervoor."</p>
+      </div>
+      <div class="review-kaart">
+        <div class="review-top">
+          <div class="reviewer">
+            <div class="r-avatar">KL</div>
+            <div><div class="r-naam">Karen L.</div><div class="r-meta">Aalst · 1 maand geleden</div></div>
+          </div>
+          <div class="r-sterren">★★★★★</div>
+        </div>
+        <span class="review-dienst">Snoeien</span>
+        <p class="review-tekst">"Eindelijk een boomverzorger die uitlegt wat hij doet en waarom. Geen overbodige snoei, gewoon goed advies en goed werk. Zeker aan te bevelen."</p>
+      </div>
+      <div class="review-kaart">
+        <div class="review-top">
+          <div class="reviewer">
+            <div class="r-avatar">JB</div>
+            <div><div class="r-naam">Johan B.</div><div class="r-meta">Gent · 5 maanden geleden</div></div>
+          </div>
+          <div class="r-sterren">★★★★★</div>
+        </div>
+        <span class="review-dienst">Ecologie &amp; beheer</span>
+        <p class="review-tekst">"Lode heeft onze oude beuk een tweede leven gegeven. Zijn kennis van oude bomen is indrukwekkend. Blij dat we voor het behoud van onze boom zijn gegaan."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CTA -->
+<div class="wrapper">
+  <div class="cta-balk" style="padding:0;overflow:hidden;">
+    <div class="cta-balk-inner">
+      <!-- FOTO: cta-referenties.jpg — liggend 3:2 -->
+      <div class="cta-foto rechts wz-foto" data-foto="Vervangen door huidig gebruikte foto bij contact">
+        <img src="afbeeldingen/cta-referenties.jpg" alt="Lode Jans bij een afgewerkt project">
+      </div>
+      <div class="cta-tekst">
+        <h2>Zelf een samenwerking starten?</h2>
+        <p>Vraag vrijblijvend een offerte aan en ontdek wat Stamgast voor uw bomen kan doen.</p>
+        <div>
+          <a href="contact-review.html" class="btn-wit" style="display:inline-flex;align-items:center;gap:8px;"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrapper">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index-review.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;">
+          <div class="nav-logo-mark" style="width:30px;height:30px;font-size:17px;"><i class="ti ti-tree"></i></div>
+          <div class="nav-brand" style="font-size:15px;"><span>Stamgast</span> Boombeheer</div>
+        </a>
+        <p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
+        <div class="footer-cert-badges"><span class="cert-badge">ETW</span><span class="cert-badge">VETCERT</span></div>
+        <div class="social-rij">
+          <a href="https://www.facebook.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-facebook"></i></a>
+          <a href="https://www.instagram.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <a href="over-lode-review.html">Over Lode</a>
+        <a href="diensten-review.html">Diensten</a>
+        <a href="aanpak-review.html">Onze aanpak</a>
+        <a href="referenties-review.html">Referenties</a>
+        <a href="contact-review.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>0497 91 09 13</p>
+        <p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
+        <p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Stamgast Boombeheer — Lode Jans</span>
+      <span>Privacybeleid &nbsp;·&nbsp; Cookiebeleid</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vergrote foto">
+  <button class="lightbox-sluit" id="lightbox-sluit" aria-label="Sluiten">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-bijschrift" id="lightbox-bijschrift"></div>
+</div>
+<script>
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  var lbBij = document.getElementById('lightbox-bijschrift');
+
+  document.querySelectorAll('.project-afbeelding img').forEach(function(foto) {
+    foto.parentElement.addEventListener('click', function() {
+      lbImg.src = foto.src;
+      lbImg.alt = foto.alt;
+      lbBij.textContent = foto.alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function sluitLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  lightbox.addEventListener('click', sluitLightbox);
+  document.getElementById('lightbox-sluit').addEventListener('click', sluitLightbox);
+  lbImg.addEventListener('click', function(e) { e.stopPropagation(); });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') sluitLightbox();
+  });
+</script>
+
+
+<style>
+  .rv-bar{position:sticky;top:0;z-index:4000;background:#1e4430;color:#fff;font-family:'Inter',sans-serif;
+    padding:10px 16px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;font-size:13px;}
+  .rv-bar b{font-weight:600;}
+  .rv-bar .rv-leg{display:inline-flex;align-items:center;gap:6px;}
+  .rv-dot{width:12px;height:12px;border-radius:3px;display:inline-block;}
+  .rv-dot.g{background:#8fd6a5;} .rv-dot.r{background:#f0a08c;} .rv-dot.a{background:#f4c04f;}
+  .rv-bar a{color:#fff;text-decoration:underline;font-weight:600;}
+  .wz{background:rgba(143,214,165,.28);box-shadow:inset 0 0 0 1.5px #3fae6a;border-radius:3px;
+    cursor:help;position:relative;padding:0 2px;}
+  .wz-del{position:relative;outline:2px dashed #d08a7a;outline-offset:3px;border-radius:6px;opacity:.6;}
+  .wz-del::before{content:"Verwijderd";position:absolute;top:-11px;left:10px;background:#b23b3b;color:#fff;
+    font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:4px;font-family:'Inter',sans-serif;z-index:5;}
+  .wz-foto{position:relative!important;outline:2px solid #f4c04f;outline-offset:-2px;}
+  .rv-pin{position:absolute;top:8px;left:8px;z-index:30;background:#8A5A00;color:#fff;border:none;
+    border-radius:20px;padding:5px 11px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;
+    box-shadow:0 2px 8px rgba(0,0,0,.3);display:inline-flex;gap:5px;align-items:center;}
+  .rv-pop{position:fixed;inset:0;background:rgba(15,25,18,.55);z-index:5000;display:none;align-items:center;justify-content:center;padding:22px;}
+  .rv-pop.open{display:flex;}
+  .rv-card{background:#fff;color:#1a1a1a;border-radius:14px;max-width:440px;width:100%;padding:22px;font-family:'Inter',sans-serif;
+    box-shadow:0 24px 70px rgba(0,0,0,.4);}
+  .rv-card h4{font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+  .rv-card .rv-kop-foto{color:#8A5A00;} .rv-card .rv-kop-wz{color:#1e7a3f;}
+  .rv-card .rv-was{font-size:14px;color:#5a6672;line-height:1.5;white-space:pre-wrap;background:#f4f7f0;border-radius:8px;padding:12px 14px;}
+  .rv-card .rv-foto{font-size:15px;line-height:1.55;white-space:pre-wrap;}
+  .rv-card button{margin-top:16px;background:#2A5C3F;color:#fff;border:none;border-radius:8px;padding:9px 18px;
+    font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
+</style>
+<div class="rv-bar">
+  <b>Controleversie voor Lode</b>
+  <span class="rv-leg"><span class="rv-dot g"></span> gewijzigde tekst (klik = vorige)</span>
+  <span class="rv-leg"><span class="rv-dot r"></span> verwijderd</span>
+  <span class="rv-leg"><span class="rv-dot a"></span> foto-opmerking</span>
+  <a href="foto-opmerkingen.html">Alle foto-opmerkingen &rarr;</a>
+</div>
+<div class="rv-pop" id="rvPop"><div class="rv-card" id="rvCard"></div></div>
+<script>
+(function(){
+  var pop=document.getElementById('rvPop'), card=document.getElementById('rvCard');
+  function toon(html){ card.innerHTML=html+'<div><button id="rvSluit">Sluiten</button></div>'; pop.classList.add('open');
+    document.getElementById('rvSluit').onclick=function(){pop.classList.remove('open');}; }
+  pop.onclick=function(e){ if(e.target===pop) pop.classList.remove('open'); };
+  document.querySelectorAll('.wz').forEach(function(el){
+    el.addEventListener('click', function(e){ e.stopPropagation();
+      var was=el.getAttribute('data-was')||'';
+      toon('<h4 class="rv-kop-wz">Gewijzigd — vorige tekst</h4><div class="rv-was">'+(was||'(nieuw toegevoegd)')+'</div>');
+    });
+  });
+  document.querySelectorAll('.wz-foto').forEach(function(el){
+    var pin=document.createElement('button'); pin.className='rv-pin'; pin.type='button';
+    pin.innerHTML='◉ Foto-opmerking';
+    pin.addEventListener('click', function(e){ e.stopPropagation(); e.preventDefault();
+      toon('<h4 class="rv-kop-foto">Foto-opmerking van Lode</h4><div class="rv-foto">'+(el.getAttribute('data-foto')||'')+'</div>');
+    });
+    el.appendChild(pin);
+  });
+})();
+</script>
+
+</body>
+</html>

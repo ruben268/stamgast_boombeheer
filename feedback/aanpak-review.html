@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onze aanpak — Stamgast Boombeheer</title>
+  <meta name="description" content="Hoe Stamgast Boombeheer werkt: eerlijk advies, plaatsbezoek, transparante offerte en vakkundige uitvoering door Lode Jans zelf.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero { background: var(--groen); padding: 80px 0 64px; }
+    .page-hero .breadcrumb { color: rgba(255,255,255,0.5); }
+    .page-hero .breadcrumb a { color: rgba(255,255,255,0.5); }
+    .page-hero .breadcrumb a:hover { color: #fff; }
+    .page-hero .breadcrumb .huidig { color: rgba(255,255,255,0.9); }
+    .page-hero h1 { font-size: 38px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 14px; }
+    .page-hero p { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.7; }
+
+    /* Stappen groot */
+    .stap-groot { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 56px 0; border-bottom: 1px solid var(--rand); }
+    .stap-groot:last-child { border-bottom: none; }
+    .stap-groot.omgekeerd .stap-visueel { order: -1; }
+    .stap-groot-num { font-size: 72px; font-weight: 700; color: var(--groen-licht); line-height: 1; margin-bottom: 10px; }
+    .stap-groot h3 { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
+    .stap-groot p { font-size: 15px; color: var(--tekst-muted); line-height: 1.7; margin-bottom: 16px; }
+    .stap-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .stap-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--groen-licht); color: var(--groen-mid); border-radius: 20px; padding: 5px 12px; font-size: 13px; font-weight: 500; }
+    .stap-tag i { font-size: 14px; }
+    .stap-visueel { background: var(--achtergrond); border-radius: 16px; aspect-ratio: 4/3; overflow: hidden; }
+    .stap-visueel img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Citaat */
+    .citaat-blok { background: var(--groen); border-radius: 20px; padding: 52px; margin: 0 0 72px; }
+    .citaat-tekst { font-size: 20px; color: #fff; line-height: 1.65; margin-bottom: 20px; font-style: italic; max-width: 720px; }
+    .citaat-auteur { font-size: 14px; color: rgba(255,255,255,0.6); }
+    .citaat-auteur strong { color: rgba(255,255,255,0.9); }
+
+    /* Stamgast vs. de rest */
+    .vs-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .vs-kaart { background: #fff; border: 1px solid var(--rand); border-radius: var(--radius-groot); padding: 24px; }
+    .vs-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .vs-icoon { width: 40px; height: 40px; background: var(--achtergrond); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--groen); }
+    .vs-kaart h3 { font-size: 15px; font-weight: 600; }
+    .vs-rijen { display: flex; flex-direction: column; gap: 10px; }
+    .vs-rij { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; }
+    .vs-nee { color: #c0392b; flex-shrink: 0; font-size: 16px; line-height: 1.4; }
+    .vs-ja { color: var(--groen); flex-shrink: 0; font-size: 16px; line-height: 1.4; }
+    .vs-tekst { color: var(--tekst-muted); line-height: 1.5; }
+    .vs-tekst strong { color: var(--tekst); font-weight: 500; }
+
+    /* FAQ — 2-kolom layout: vragen links, afbeelding rechts */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .faq-item { border-bottom: 1px solid var(--rand); }
+    .faq-item:first-child { border-top: 1px solid var(--rand); }
+    .faq-knop {
+      width: 100%; background: none; border: none;
+      padding: 18px 0; display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+      cursor: pointer; text-align: left;
+    }
+    .faq-vraag { font-size: 15px; font-weight: 600; color: var(--tekst); line-height: 1.4; }
+    .faq-icoon { font-size: 18px; color: var(--groen); flex-shrink: 0; transition: transform 0.2s ease; }
+    .faq-item.open .faq-icoon { transform: rotate(180deg); }
+    .faq-antwoord {
+      font-size: 14px; color: var(--tekst-muted); line-height: 1.7;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.2s ease;
+    }
+    .faq-item.open .faq-antwoord { max-height: 300px; padding-bottom: 18px; }
+    .faq-afbeelding {
+      position: sticky; top: 88px;
+      background: var(--achtergrond);
+      overflow: hidden;
+      border-radius: 16px; aspect-ratio: 7/8;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .faq-afbeelding img { width: 100%; height: 100%; object-fit: cover; }
+
+    @media (max-width: 900px) {
+      .stap-groot { grid-template-columns: 1fr; gap: 24px; }
+      .stap-groot.omgekeerd .stap-visueel { order: 0; }
+      .vs-raster { grid-template-columns: 1fr; }
+      .citaat-blok { padding: 32px 24px; }
+      .citaat-tekst { font-size: 17px; }
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-afbeelding { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index-review.html" class="nav-logo">
+      <div class="nav-logo-mark"><i class="ti ti-tree"></i></div>
+      <div class="nav-brand"><span>Stamgast</span> Boombeheer</div>
+    </a>
+    <div class="nav-links">
+      <a href="over-lode-review.html">Over Lode</a>
+      <a href="diensten-review.html">Diensten</a>
+      <a href="aanpak-review.html" class="actief">Onze aanpak</a>
+      <a href="referenties-review.html">Referenties</a>
+      <a href="contact-review.html">Contact</a>
+    </div>
+    <a href="contact-review.html" class="nav-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+      <i class="ti ti-menu-2" id="hamburger-icoon"></i>
+    </button>
+  </div>
+  <div class="mobiel-menu" id="mobiel-menu">
+    <a href="over-lode-review.html">Over Lode</a>
+    <a href="diensten-review.html">Diensten</a>
+    <a href="aanpak-review.html" class="actief">Onze aanpak</a>
+    <a href="referenties-review.html">Referenties</a>
+    <a href="contact-review.html">Contact</a>
+    <a href="contact-review.html" class="mobiel-cta"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+  </div>
+</nav>
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobiel-menu');
+  var icoon = document.getElementById('hamburger-icoon');
+  hamburger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    icoon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      icoon.className = 'ti ti-menu-2';
+    }
+  });
+</script>
+
+<section class="page-hero">
+  <div class="wrapper">
+    <div class="page-hero-inner">
+      <div>
+        <div class="breadcrumb">
+          <a href="index-review.html">Home</a>
+          <i class="ti ti-chevron-right" style="font-size:13px;"></i>
+          <span class="huidig">Onze aanpak</span>
+        </div>
+        <h1>Vakmanschap begint met eerlijkheid en een diepgewortelde passie</h1>
+        <p class="wz" data-was="Een eerlijk gesprek over wat uw boom echt nodig heeft, en waarom het al dan niet belangrijk is om in te grijpen.">Een transparant gesprek over wat uw boom echt nodig heeft, en waarom het al dan niet belangrijk is om in te grijpen.</p>
+      </div>
+      <!-- FOTO: aanpak-hero.jpg — Lode in gesprek of tijdens plaatsbezoek, liggend 4:3 -->
+      <div class="hero-foto wz-foto" data-foto="Misschien foto dood hout + snoeien + boom hier">
+        <img src="afbeeldingen/aanpak-hero.jpg" alt="Lode Jans tijdens een plaatsbezoek">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAPPEN -->
+<section class="sectie">
+  <div class="wrapper">
+    <div class="sectie-label">Werkwijze</div>
+    <div class="sectie-titel">Van eerste contact tot afgewerkte klus</div>
+    <p class="sectie-sub">Elke samenwerking verloopt stap voor stap, altijd in overleg.</p>
+
+    <div class="stap-groot">
+      <div>
+        <div class="stap-groot-num">01</div>
+        <h3>U neemt contact op</h3>
+        <p>Bel, mail of vul het formulier in. Lode reageert snel en vraagt de nodige info op om de situatie in te schatten — zonder dat u al meteen een afspraak hoeft te maken.</p>
+        <div class="stap-tags">
+          <span class="stap-tag"><i class="ti ti-phone"></i> Telefonisch</span>
+          <span class="stap-tag"><i class="ti ti-mail"></i> Per mail</span>
+          <span class="stap-tag"><i class="ti ti-device-mobile"></i> Online formulier</span>
+        </div>
+      </div>
+      <!-- FOTO: stap-01-contact.jpg — liggend 4:3 -->
+      <div class="stap-visueel"><img src="afbeeldingen/stap-01-contact.jpg" alt="Lode neemt een telefonische aanvraag op"></div>
+    </div>
+
+    <div class="stap-groot omgekeerd">
+      <div>
+        <div class="stap-groot-num">02</div>
+        <h3>Plaatsbezoek &amp; eerlijk advies</h3>
+        <p>Lode komt ter plaatse, bekijkt uw situatie en geeft u een eerlijk oordeel. Ook als dat betekent dat er niets hoeft te gebeuren. U staat nooit voor verrassingen.</p>
+        <div class="stap-tags">
+          <span class="stap-tag"><i class="ti ti-map-pin"></i> Plaatsbezoek</span>
+          <span class="stap-tag"><i class="ti ti-heart-handshake"></i> Onafhankelijk advies</span>
+        </div>
+      </div>
+      <!-- FOTO: stap-02-plaatsbezoek.jpg — liggend 4:3 -->
+      <div class="stap-visueel wz-foto" data-foto="Foto 143449452_194507985734654_152.... Lode onder notelaar"><img src="afbeeldingen/stap-02-plaatsbezoek.jpg" alt="Lode inspecteert een boom tijdens een plaatsbezoek"></div>
+    </div>
+
+    <div class="stap-groot">
+      <div>
+        <div class="stap-groot-num">03</div>
+        <h3>Duidelijke offerte, geen kleine lettertjes</h3>
+        <p>U ontvangt een transparante prijsopgave. Wat erin staat, is wat u betaalt. Lode legt uit wat er zal gebeuren en waarom — zodat u een weloverwogen beslissing kunt nemen.</p>
+        <div class="stap-tags">
+          <span class="stap-tag"><i class="ti ti-file-text"></i> Schriftelijke offerte</span>
+          <span class="stap-tag"><i class="ti ti-check"></i> Geen verborgen kosten</span>
+        </div>
+      </div>
+      <!-- FOTO: stap-03-offerte.jpg — liggend 4:3 -->
+      <div class="stap-visueel wz-foto" data-foto="Foto met materiaal en karretje door bos (oorspronkelijk bij nr.02 gebruikt hier boven)"><img src="afbeeldingen/stap-03-offerte.jpg" alt="Lode overloopt de offerte met de klant"></div>
+    </div>
+
+    <div class="stap-groot omgekeerd">
+      <div>
+        <div class="stap-groot-num">04</div>
+        <h3>Vakkundige uitvoering door Lode zelf</h3>
+        <p>Lode voert het werk zelf uit, veelal met gelijkgezinde collega's. Hij gebruikt professioneel materiaal en werkt conform de ETW-normen — veilig voor u, goed voor uw boom.</p>
+        <div class="stap-tags">
+          <span class="stap-tag"><i class="ti ti-rosette"></i> ETW-gecertificeerd</span>
+          <span class="stap-tag"><i class="ti ti-tool"></i> Professioneel materiaal</span>
+        </div>
+      </div>
+      <!-- FOTO: stap-04-uitvoering.jpg — liggend 4:3 -->
+      <div class="stap-visueel wz-foto" data-foto="Foto onderhoudssnoei beuken. Huidige foto hier te gebruiken bij referenties, stormschade van uitgescheurde wilg op woning"><img src="afbeeldingen/stap-04-uitvoering.jpg" alt="Lode aan het werk in de boom"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CITAAT -->
+<div class="wrapper">
+  <div class="citaat-blok">
+    <div class="citaat-tekst wz" data-was="&quot;Het belangrijkste voor mij is om in alles wat naar buiten komt duidelijk te maken wat boomverzorging echt is. Onnodige ingrepen, waardevolle bomen vellen of ondoordachte werkzaamheden rond bomen behoren niet langer tot de opties wanneer we over duurzaam boombeheer praten. En duurzaam boombeheer is net hetgeen waar ik zo hard naar wil streven, telkens doordacht en onderbouwd.&quot;">"Het belangrijkste voor mij is om in alles wat naar buiten komt duidelijk te maken wat boomverzorging echt is. Onnodige ingrepen waar de boom zelf niets aan heeft, waardevolle bomen vellen of ondoordachte werkzaamheden rond bomen behoren niet tot mijn takenpakket wanneer we over duurzaam boombeheer praten. En duurzaam boombeheer is net hetgeen waar ik zo hard naar wil streven, telkens doordacht, onderbouwd en toekomstgericht."</div>
+    <div class="citaat-auteur">— <strong>Lode Jans</strong>, oprichter Stamgast Boombeheer</div>
+  </div>
+</div>
+
+<div class="wz-del">
+<!-- STAMGAST VS. DE REST -->
+<section class="sectie-sm achtergrond-licht">
+  <div class="wrapper">
+    <div class="sectie-label">Stamgast vs. de rest</div>
+    <div class="sectie-titel">Wat Stamgast anders maakt</div>
+    <p class="sectie-sub">Niet elke boomverzorger werkt met dezelfde principes. Dit zijn de keuzes die Lode bewust maakt.</p>
+    <div class="vs-raster">
+      <div class="vs-kaart">
+        <div class="vs-header"><div class="vs-icoon"><i class="ti ti-scissors"></i></div><h3>Snoeibeleid</h3></div>
+        <div class="vs-rijen">
+          <div class="vs-rij"><span class="vs-nee">✕</span><span class="vs-tekst"><strong>Anderen:</strong> snoeien omdat de klant erom vraagt</span></div>
+          <div class="vs-rij"><span class="vs-ja">✓</span><span class="vs-tekst"><strong>Stamgast:</strong> snoeien alleen als het de boom ten goede komt</span></div>
+        </div>
+      </div>
+      <div class="vs-kaart">
+        <div class="vs-header"><div class="vs-icoon"><i class="ti ti-tree"></i></div><h3>Vellen</h3></div>
+        <div class="vs-rijen">
+          <div class="vs-rij"><span class="vs-nee">✕</span><span class="vs-tekst"><strong>Anderen:</strong> vellen als makkelijkste of meest rendabele optie</span></div>
+          <div class="vs-rij"><span class="vs-ja">✓</span><span class="vs-tekst"><strong>Stamgast:</strong> vellen enkel als er geen goed alternatief is</span></div>
+        </div>
+      </div>
+      <div class="vs-kaart">
+        <div class="vs-header"><div class="vs-icoon"><i class="ti ti-user"></i></div><h3>Wie voert het werk uit</h3></div>
+        <div class="vs-rijen">
+          <div class="vs-rij"><span class="vs-nee">✕</span><span class="vs-tekst"><strong>Anderen:</strong> onderaannemers met wisselende kwaliteit</span></div>
+          <div class="vs-rij"><span class="vs-ja">✓</span><span class="vs-tekst"><strong>Stamgast:</strong> Lode zelf, altijd</span></div>
+        </div>
+      </div>
+      <div class="vs-kaart">
+        <div class="vs-header"><div class="vs-icoon"><i class="ti ti-messages"></i></div><h3>Advies</h3></div>
+        <div class="vs-rijen">
+          <div class="vs-rij"><span class="vs-nee">✕</span><span class="vs-tekst"><strong>Anderen:</strong> advies dat werk genereert</span></div>
+          <div class="vs-rij"><span class="vs-ja">✓</span><span class="vs-tekst"><strong>Stamgast:</strong> eerlijk advies, ook als er niets moet gebeuren</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- FAQ — 2-kolom: titel + vragen links, afbeelding rechts -->
+<section class="sectie">
+  <div class="wrapper">
+    <div class="faq-layout">
+      <!-- Linkerkolom: titel + FAQ's -->
+      <div>
+        <div class="sectie-label">Veelgestelde vragen</div>
+        <div class="sectie-titel">Wat klanten ons vragen</div>
+        <p class="sectie-sub" style="margin-bottom:28px;">De meest voorkomende vragen over onze werkwijze.</p>
+        <div class="faq-item">
+          <button class="faq-knop" onclick="toggleFaq(this)">
+            <span class="faq-vraag">Moet ik een vergunning hebben om een boom te laten snoeien of vellen?</span>
+            <i class="ti ti-chevron-down faq-icoon"></i>
+          </button>
+          <div class="faq-antwoord">Dat hangt af van de gemeente of stad waar de boom staat, alsook diens omgeving. Lode bekijkt dit samen met u tijdens het plaatsbezoek en helpt u indien nodig op weg met de vergunningsaanvraag.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-knop" onclick="toggleFaq(this)">
+            <span class="faq-vraag">Wanneer is het beste moment om bomen te laten snoeien?</span>
+            <i class="ti ti-chevron-down faq-icoon"></i>
+          </button>
+          <div class="faq-antwoord">In de regel snoeien we bomen wanneer deze actief zijn, en bijgevolg in blad staan. Elke situatie is echter verschillend, waardoor er voldoende kennis is vereist om hier goed op in te spelen en, afhankelijk van de situatie, de juiste keuze te maken. Lode adviseert u op maat van uw specifieke situatie.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-knop" onclick="toggleFaq(this)">
+            <span class="faq-vraag wz" data-was="Geeft Stamgast ook advies zonder dat er werk uitgevoerd wordt?">Kan ik ook bij jullie terecht voor enkel advies?</span>
+            <i class="ti ti-chevron-down faq-icoon"></i>
+          </button>
+          <div class="faq-antwoord wz" data-was="Absoluut. Een eerlijk advies is soms het meest waardevolle wat Lode kan bieden — ook als dat betekent dat er geen ingreep nodig is.">Absoluut! Bomen hoeven vaak niet gesnoeid te worden, waardoor het geregeld enkel en alleen bij advies blijft. U kunt bij Lode terecht voor zowat alle vragen omtrent bomen, ook als hier geen directe actie voor nodig is.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-knop" onclick="toggleFaq(this)">
+            <span class="faq-vraag">Werkt Stamgast ook voor bedrijven, gemeentes of vzw's?</span>
+            <i class="ti ti-chevron-down faq-icoon"></i>
+          </button>
+          <div class="faq-antwoord">Ja, Lode werkt zowel voor particulieren als voor professionele klanten, steden of gemeenten. Neem contact op voor een offerte op maat van uw situatie en budget.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-knop" onclick="toggleFaq(this)">
+            <span class="faq-vraag">Hoe snel reageert Lode op een aanvraag?</span>
+            <i class="ti ti-chevron-down faq-icoon"></i>
+          </button>
+          <div class="faq-antwoord">Doorgaans binnen de 48u. Bij dringende situaties zoals stormschade probeert Lode zo snel mogelijk te reageren en/of ter plaatse te komen.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-knop" onclick="toggleFaq(this)">
+            <span class="faq-vraag wz" data-was="Werkt Lode alleen of met een ploeg?">Mijn boom is te groot geworden, wat nu?</span>
+            <i class="ti ti-chevron-down faq-icoon"></i>
+          </button>
+          <div class="faq-antwoord wz" data-was="Lode werkt als zelfstandige en voert het werk zelf uit, veelal samen met gelijkgezinde, ervaren collega's. De verantwoordelijkheid en opvolging blijft altijd wel bij hem.">Er zijn vaak betere en duurzamere oplossingen om een boom kleiner of lichter te houden dan deze rigoureus te toppen. Lode bespreekt graag samen met u de opties en zoekt naar de passende snoeimethode voor uw boom</div>
+        </div>
+      </div>
+      <!-- FOTO: aanpak-sfeerbeeld.jpg — sfeervolle foto van Lode tijdens een plaatsbezoek of in gesprek met klant, staand formaat 3:4 -->
+      <div class="faq-afbeelding">
+        <img src="afbeeldingen/aanpak-sfeerbeeld.jpg" alt="Lode Jans in gesprek tijdens een plaatsbezoek">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="wrapper">
+  <div class="cta-balk" style="padding:0;overflow:hidden;">
+    <div class="cta-balk-inner">
+      <!-- FOTO: cta-aanpak.jpg — liggend 3:2 -->
+      <div class="cta-foto wz-foto" data-foto="Foto 'Lode in Linde'?">
+        <img src="afbeeldingen/cta-aanpak.jpg" alt="Lode Jans in gesprek met een klant">
+      </div>
+      <div class="cta-tekst">
+        <h2>Klaar om samen te werken?</h2>
+        <p>Vraag een vrijblijvende offerte aan — Lode komt langs en geeft u eerlijk advies.</p>
+        <div>
+          <a href="contact-review.html" class="btn-wit" style="display:inline-flex;align-items:center;gap:8px;"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrapper">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index-review.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;">
+          <div class="nav-logo-mark" style="width:30px;height:30px;font-size:17px;"><i class="ti ti-tree"></i></div>
+          <div class="nav-brand" style="font-size:15px;"><span>Stamgast</span> Boombeheer</div>
+        </a>
+        <p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
+        <div class="footer-cert-badges"><span class="cert-badge">ETW</span><span class="cert-badge">VETCERT</span></div>
+        <div class="social-rij">
+          <a href="https://www.facebook.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-facebook"></i></a>
+          <a href="https://www.instagram.com/stamgastboombeheer" target="_blank" class="social-knop"><i class="ti ti-brand-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <a href="over-lode-review.html">Over Lode</a>
+        <a href="diensten-review.html">Diensten</a>
+        <a href="aanpak-review.html">Onze aanpak</a>
+        <a href="referenties-review.html">Referenties</a>
+        <a href="contact-review.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>0497 91 09 13</p>
+        <p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
+        <p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Stamgast Boombeheer — Lode Jans</span>
+      <span>Privacybeleid &nbsp;·&nbsp; Cookiebeleid</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(knop) {
+  var item = knop.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el) {
+    el.classList.remove('open');
+  });
+  if (!wasOpen) {
+    item.classList.add('open');
+  }
+}
+</script>
+
+
+<style>
+  .rv-bar{position:sticky;top:0;z-index:4000;background:#1e4430;color:#fff;font-family:'Inter',sans-serif;
+    padding:10px 16px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;font-size:13px;}
+  .rv-bar b{font-weight:600;}
+  .rv-bar .rv-leg{display:inline-flex;align-items:center;gap:6px;}
+  .rv-dot{width:12px;height:12px;border-radius:3px;display:inline-block;}
+  .rv-dot.g{background:#8fd6a5;} .rv-dot.r{background:#f0a08c;} .rv-dot.a{background:#f4c04f;}
+  .rv-bar a{color:#fff;text-decoration:underline;font-weight:600;}
+  .wz{background:rgba(143,214,165,.28);box-shadow:inset 0 0 0 1.5px #3fae6a;border-radius:3px;
+    cursor:help;position:relative;padding:0 2px;}
+  .wz-del{position:relative;outline:2px dashed #d08a7a;outline-offset:3px;border-radius:6px;opacity:.6;}
+  .wz-del::before{content:"Verwijderd";position:absolute;top:-11px;left:10px;background:#b23b3b;color:#fff;
+    font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:4px;font-family:'Inter',sans-serif;z-index:5;}
+  .wz-foto{position:relative!important;outline:2px solid #f4c04f;outline-offset:-2px;}
+  .rv-pin{position:absolute;top:8px;left:8px;z-index:30;background:#8A5A00;color:#fff;border:none;
+    border-radius:20px;padding:5px 11px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;
+    box-shadow:0 2px 8px rgba(0,0,0,.3);display:inline-flex;gap:5px;align-items:center;}
+  .rv-pop{position:fixed;inset:0;background:rgba(15,25,18,.55);z-index:5000;display:none;align-items:center;justify-content:center;padding:22px;}
+  .rv-pop.open{display:flex;}
+  .rv-card{background:#fff;color:#1a1a1a;border-radius:14px;max-width:440px;width:100%;padding:22px;font-family:'Inter',sans-serif;
+    box-shadow:0 24px 70px rgba(0,0,0,.4);}
+  .rv-card h4{font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+  .rv-card .rv-kop-foto{color:#8A5A00;} .rv-card .rv-kop-wz{color:#1e7a3f;}
+  .rv-card .rv-was{font-size:14px;color:#5a6672;line-height:1.5;white-space:pre-wrap;background:#f4f7f0;border-radius:8px;padding:12px 14px;}
+  .rv-card .rv-foto{font-size:15px;line-height:1.55;white-space:pre-wrap;}
+  .rv-card button{margin-top:16px;background:#2A5C3F;color:#fff;border:none;border-radius:8px;padding:9px 18px;
+    font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
+</style>
+<div class="rv-bar">
+  <b>Controleversie voor Lode</b>
+  <span class="rv-leg"><span class="rv-dot g"></span> gewijzigde tekst (klik = vorige)</span>
+  <span class="rv-leg"><span class="rv-dot r"></span> verwijderd</span>
+  <span class="rv-leg"><span class="rv-dot a"></span> foto-opmerking</span>
+  <a href="foto-opmerkingen.html">Alle foto-opmerkingen &rarr;</a>
+</div>
+<div class="rv-pop" id="rvPop"><div class="rv-card" id="rvCard"></div></div>
+<script>
+(function(){
+  var pop=document.getElementById('rvPop'), card=document.getElementById('rvCard');
+  function toon(html){ card.innerHTML=html+'<div><button id="rvSluit">Sluiten</button></div>'; pop.classList.add('open');
+    document.getElementById('rvSluit').onclick=function(){pop.classList.remove('open');}; }
+  pop.onclick=function(e){ if(e.target===pop) pop.classList.remove('open'); };
+  document.querySelectorAll('.wz').forEach(function(el){
+    el.addEventListener('click', function(e){ e.stopPropagation();
+      var was=el.getAttribute('data-was')||'';
+      toon('<h4 class="rv-kop-wz">Gewijzigd — vorige tekst</h4><div class="rv-was">'+(was||'(nieuw toegevoegd)')+'</div>');
+    });
+  });
+  document.querySelectorAll('.wz-foto').forEach(function(el){
+    var pin=document.createElement('button'); pin.className='rv-pin'; pin.type='button';
+    pin.innerHTML='◉ Foto-opmerking';
+    pin.addEventListener('click', function(e){ e.stopPropagation(); e.preventDefault();
+      toon('<h4 class="rv-kop-foto">Foto-opmerking van Lode</h4><div class="rv-foto">'+(el.getAttribute('data-foto')||'')+'</div>');
+    });
+    el.appendChild(pin);
+  });
+})();
+</script>
+
+</body>
+</html>

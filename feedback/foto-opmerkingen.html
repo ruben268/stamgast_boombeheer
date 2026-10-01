@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Foto-opmerkingen — Stamgast Boombeheer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F7F0; --surface:#fff; --fg:#1a1a1a; --muted:#5a6672; --rand:#e2e6ea;
+    --groen:#2A5C3F; --groen-licht:#D8EDDF;
+    --blijft-c:#1e7a3f; --blijft-bg:#dcf0e2;
+    --verv-c:#8A5A00; --verv-bg:#FEF3D8;
+    --shift-c:#1d5a8a; --shift-bg:#dceaf6;
+    --font:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#12160f; --surface:#1b2016; --fg:#eef1e9; --muted:#9aa69a; --rand:#2d352a;
+    --groen:#7fbf95; --groen-licht:#22331f;
+    --blijft-c:#8fd6a5; --blijft-bg:#17331f;
+    --verv-c:#e6c079; --verv-bg:#3a2e12;
+    --shift-c:#8fc3ec; --shift-bg:#16303f;
+    color-scheme:dark;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#12160f; --surface:#1b2016; --fg:#eef1e9; --muted:#9aa69a; --rand:#2d352a;
+    --groen:#7fbf95; --groen-licht:#22331f;
+    --blijft-c:#8fd6a5; --blijft-bg:#17331f;
+    --verv-c:#e6c079; --verv-bg:#3a2e12;
+    --shift-c:#8fc3ec; --shift-bg:#16303f;
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--fg);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:760px;margin:0 auto;padding-block:36px 80px;padding-left:18px;padding-right:18px;}
+  a.terug{font-size:13px;color:var(--groen);font-weight:600;text-decoration:none;}
+  h1{font-size:27px;font-weight:700;line-height:1.15;margin-top:12px;letter-spacing:-.01em;}
+  .sub{color:var(--muted);font-size:15px;margin-top:8px;max-width:64ch;}
+  .verhuis{background:var(--shift-bg);color:var(--shift-c);border-radius:11px;padding:14px 16px;margin-top:20px;font-size:13.5px;line-height:1.6;}
+  .verhuis b{font-weight:700;} .verhuis ul{margin:6px 0 0 18px;} .verhuis li{margin-bottom:3px;}
+  h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--groen);margin:30px 0 10px;}
+  .item{background:var(--surface);border:1px solid var(--rand);border-radius:11px;padding:14px 16px;margin-bottom:10px;}
+  .item-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:6px;flex-wrap:wrap;}
+  .plek{font-weight:600;font-size:14.5px;}
+  .bestand{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);}
+  .chip{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:5px;padding:3px 8px;white-space:nowrap;}
+  .c-blijft{color:var(--blijft-c);background:var(--blijft-bg);}
+  .c-verv{color:var(--verv-c);background:var(--verv-bg);}
+  .c-shift{color:var(--shift-c);background:var(--shift-bg);}
+  .opm{font-size:14px;line-height:1.55;}
+  .opm .lab{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:2px;}
+  .note{font-size:12.5px;color:var(--shift-c);margin-top:6px;}
+  footer{margin-top:30px;font-size:13px;color:var(--muted);border-top:1px solid var(--rand);padding-top:16px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="terug" href="index-review.html">&larr; Terug naar de controleversie</a>
+  <h1>Foto-opmerkingen van Lode</h1>
+  <p class="sub">Alle opmerkingen over de foto's, letterlijk zoals Lode ze gaf. Nog niets hiervan is verwerkt — dit is de to-dolijst om de beelden aan te leveren of te wisselen. Houd de huidige bestanden bij: enkele verhuizen naar een andere pagina.</p>
+
+  <div class="verhuis">
+    <b>Let op — enkele foto's verhuizen (niet weggooien):</b>
+    <ul>
+      <li>Huidige <b>contactfoto</b> → wordt de CTA-foto op <b>Referenties</b>. Contact zelf krijgt IMG 5079.</li>
+      <li>Huidige foto <b>Aanpak · stap 2</b> → schuift door naar <b>Aanpak · stap 3</b>. Stap 2 krijgt de notelaar-foto.</li>
+      <li>Huidige foto <b>Aanpak · stap 4</b> → wordt gebruikt bij <b>Referenties · project 6</b> (uitgescheurde wilg). Stap 4 krijgt onderhoudssnoei beuken.</li>
+    </ul>
+  </div>
+
+  <h2>Home</h2>
+  <div class="item"><div class="item-top"><span class="plek">Hero-foto</span><span class="chip c-verv">Bewerken</span></div>
+    <div class="bestand">hero-hoofdfoto.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>De toegevoegde touwen via AI mogen verwijderd worden :)</div></div>
+  <div class="item"><div class="item-top"><span class="plek">Filosofie-blok</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">filosofie-boom.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Andere foto gebruiken, misschien die van "standplaats veterane kastanje". Tekst kan misschien ook nog wat beter, maar vertelt wel het juiste of wat ik wil uitdragen</div>
+    <div class="note">De tekst van dit blok is al apart goedgekeurd; dit gaat enkel over de foto.</div></div>
+
+  <h2>Over Lode</h2>
+  <div class="item"><div class="item-top"><span class="plek">Hero-foto</span><span class="chip c-verv">Vervangen (optioneel)</span></div>
+    <div class="bestand">lode-in-actie.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Betere foto's te vinden? Anders probeer ik deze week nog eens met Janne hier iets te trekken. Vinger staat ook wat voor de lens hier. Deze anders ook wel oke</div></div>
+  <div class="item"><div class="item-top"><span class="plek">CTA-foto onderaan</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">cta-over-lode.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Foto img 5491</div></div>
+
+  <h2>Diensten</h2>
+  <div class="item"><div class="item-top"><span class="plek">Hero-foto</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">diensten-hero.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Foto vervangen door foto boomklimmer+grote+boom</div></div>
+  <div class="item"><div class="item-top"><span class="plek">Case — veterane beuk</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">diensten-case-beuk-deinze.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Foto toevoegen van zwammen op grote beuk met twee klimmers in boom</div></div>
+
+  <h2>Onze aanpak</h2>
+  <div class="item"><div class="item-top"><span class="plek">Hero-foto</span><span class="chip c-verv">Vervangen (optioneel)</span></div>
+    <div class="bestand">aanpak-hero.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Misschien foto dood+hout+snoeien+boom hier</div></div>
+  <div class="item"><div class="item-top"><span class="plek">Stap 2 — plaatsbezoek</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">stap-02-plaatsbezoek.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Foto 143449452_194507985734654_152.... Lode onder notelaar</div></div>
+  <div class="item"><div class="item-top"><span class="plek">Stap 3 — offerte</span><span class="chip c-shift">Verschuiven</span></div>
+    <div class="bestand">stap-03-offerte.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Foto met materiaal en karretje door bos (oorspronkelijk bij nr.02 gebruikt hier boven)</div></div>
+  <div class="item"><div class="item-top"><span class="plek">Stap 4 — uitvoering</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">stap-04-uitvoering.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Foto onderhoudssnoei beuken. Huidige foto hier te gebruiken bij referenties, stormschade van uitgescheurde wilg op woning</div></div>
+  <div class="item"><div class="item-top"><span class="plek">CTA-foto onderaan</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">cta-aanpak.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Foto "Lode in Linde"?</div></div>
+
+  <h2>Referenties</h2>
+  <div class="item"><div class="item-top"><span class="plek">Project 1</span><span class="chip c-blijft">Blijft</span></div>
+    <div class="bestand">project-snoeien-gent.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Foto is goed</div></div>
+  <div class="item"><div class="item-top"><span class="plek">Project 2</span><span class="chip c-blijft">Blijft</span></div>
+    <div class="bestand">project-beuk-deinze.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Deze foto is goed</div></div>
+  <div class="item"><div class="item-top"><span class="plek">Project 3</span><span class="chip c-blijft">Blijft</span></div>
+    <div class="bestand">project-stormschade-aalst.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Foto goed</div></div>
+  <div class="item"><div class="item-top"><span class="plek">Project 4</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">project-aanplant-oudenaarde.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Vervangen door foto met witte telekraan (porter cranes) en boom, zonder machines.</div></div>
+  <div class="item"><div class="item-top"><span class="plek">Project 5</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">project-advies-domein.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Vervangen - Foto Standplaatsonderzoek reclame Lode II</div></div>
+  <div class="item"><div class="item-top"><span class="plek">Project 6</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">project-vellen-gent.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Vervangen door foto gebruikt bij 'onze aanpak' van uitgescheurde wilg op dak.</div></div>
+  <div class="item"><div class="item-top"><span class="plek">CTA-foto onderaan</span><span class="chip c-shift">Verschuiven</span></div>
+    <div class="bestand">cta-referenties.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Vervangen door huidig gebruikte foto bij contact</div></div>
+
+  <h2>Contact</h2>
+  <div class="item"><div class="item-top"><span class="plek">Hero-portret</span><span class="chip c-verv">Vervangen</span></div>
+    <div class="bestand">contact-lode-portret.jpg</div>
+    <div class="opm"><span class="lab">Opmerking van Lode</span>Vervangen door foto die jij had staan, IMG 5079</div></div>
+
+  <footer>19 foto-opmerkingen · letterlijk bewaard · nog niets verwerkt. Lever de nieuwe beelden aan (of bevestig “blijft”), dan verwerk ik ze samen met de tekst.</footer>
+</div>
+</body>
+</html>
