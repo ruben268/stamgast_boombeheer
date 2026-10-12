@@ -12,6 +12,8 @@
   --groen: #2A5C3F;
   --groen-licht: #D8EDDF;
   --groen-mid: #1A5C35;
+  --oranje: #E85F2B;
+  --oranje-donker: #B8441A;
   --achtergrond: #F4F7F0;
   --wit: #ffffff;
   --tekst: #1a1a1a;
@@ -95,6 +97,10 @@ button { font-family: inherit; cursor: pointer; }
 
 .nav-brand span { color: var(--groen); }
 
+/* Nieuw logo (woordmerk) */
+.nav-logo-img { height: 35.2px; width: auto; display: block; }
+.footer-logo-img { height: 28px; width: auto; display: block; }
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -155,7 +161,7 @@ button { font-family: inherit; cursor: pointer; }
 .sectie-label {
   font-size: 11px;
   font-weight: 600;
-  color: var(--groen);
+  color: var(--oranje);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 8px;
@@ -574,3 +580,21 @@ footer {
   .cta-foto.rechts { border-radius: 14px 14px 0 0; aspect-ratio: 3/2; order: 0; }
   .cta-tekst { padding: 28px 24px; }
 }
+
+/* ============================================
+   PASTELPALET-STIJL — gedeeld over alle pagina's
+   Palet uit de gevalideerde homepage (versie B).
+   ============================================ */
+:root{
+  --basis:#F6F5EE;        /* warme crème paginabasis */
+  --primair:#233629;      /* diepgroen accentblok */
+  --pastel-groen:#E7EFDF;
+  --terracotta:#F0DDD6;
+  --geelgroen:#E4EED6;
+  --lavendel:#E8E1F0;
+  --band2:#FCFBF5;        /* lichtere tweede tint (niet wit) */
+}
+body{ background:var(--basis); }
+.achtergrond-licht{ background:var(--band2); }
+footer{ background:var(--band2); }
+.cta-balk{ background:var(--primair); }
