@@ -181,45 +181,51 @@
 <div class="formulier-sectie">
 <h2>Vrijblijvende offerte aanvragen</h2>
 <p>Vul het formulier in en Lode neemt zo snel mogelijk contact met u op.</p>
+<form action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="a98b39d5-009b-4c31-846c-907f15b84add"/>
+<input type="hidden" name="subject" value="Nieuwe offerte-aanvraag via de website"/>
+<input type="hidden" name="from_name" value="Stamgast Boombeheer website"/>
+<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none"/>
 <div class="formulier-rij">
-<div class="formulier-groep"><label for="voornaam">Voornaam</label><input id="voornaam" placeholder="Jan" type="text"/></div>
-<div class="formulier-groep"><label for="achternaam">Achternaam</label><input id="achternaam" placeholder="Janssen" type="text"/></div>
+<div class="formulier-groep"><label for="voornaam">Voornaam</label><input id="voornaam" name="Voornaam" placeholder="Jan" type="text" required/></div>
+<div class="formulier-groep"><label for="achternaam">Achternaam</label><input id="achternaam" name="Achternaam" placeholder="Janssen" type="text"/></div>
 </div>
 <div class="formulier-rij">
-<div class="formulier-groep"><label for="telefoon">Telefoon</label><input id="telefoon" placeholder="0471 00 00 00" type="tel"/></div>
-<div class="formulier-groep"><label for="email">E-mail</label><input id="email" placeholder="jan@voorbeeld.be" type="email"/></div>
+<div class="formulier-groep"><label for="telefoon">Telefoon</label><input id="telefoon" name="Telefoon" placeholder="0471 00 00 00" type="tel"/></div>
+<div class="formulier-groep"><label for="email">E-mail</label><input id="email" name="email" placeholder="jan@voorbeeld.be" type="email" required/></div>
 </div>
 <div class="formulier-groep">
 <label for="gemeente">Gemeente</label>
-<input id="gemeente" placeholder="Gent, Aalst, Deinze..." type="text"/>
+<input id="gemeente" name="Gemeente" placeholder="Gent, Aalst, Deinze..." type="text"/>
 </div>
 <div class="formulier-groep">
 <label>Welke dienst(en) zoekt u?</label>
 <div class="dienst-checkboxes">
-<label class="dienst-checkbox"><input type="checkbox"/> Snoeien</label>
-<label class="dienst-checkbox"><input type="checkbox"/> Aanplant</label>
-<label class="dienst-checkbox"><input type="checkbox"/> Ecologie &amp; beheer</label>
-<label class="dienst-checkbox"><input type="checkbox"/> Advies &amp; inspectie</label>
-<label class="dienst-checkbox"><input type="checkbox"/> Vellen &amp; demonteren</label>
-<label class="dienst-checkbox"><input type="checkbox"/> Stormschade</label>
+<label class="dienst-checkbox"><input type="checkbox" name="Dienst" value="Snoeien"/> Snoeien</label>
+<label class="dienst-checkbox"><input type="checkbox" name="Dienst" value="Aanplant"/> Aanplant</label>
+<label class="dienst-checkbox"><input type="checkbox" name="Dienst" value="Ecologie & beheer"/> Ecologie &amp; beheer</label>
+<label class="dienst-checkbox"><input type="checkbox" name="Dienst" value="Advies & inspectie"/> Advies &amp; inspectie</label>
+<label class="dienst-checkbox"><input type="checkbox" name="Dienst" value="Vellen & demonteren"/> Vellen &amp; demonteren</label>
+<label class="dienst-checkbox"><input type="checkbox" name="Dienst" value="Stormschade"/> Stormschade</label>
 </div>
 </div>
 <div class="formulier-groep">
 <label for="beschrijving">Beschrijf kort uw situatie</label>
-<textarea id="beschrijving" placeholder="Welke boom, wat is het probleem of de vraag, zijn er bijzonderheden..."></textarea>
+<textarea id="beschrijving" name="Beschrijving" placeholder="Welke boom, wat is het probleem of de vraag, zijn er bijzonderheden..."></textarea>
 </div>
 <div class="formulier-groep">
 <label for="urgentie">Hoe urgent is de vraag?</label>
-<select id="urgentie">
+<select id="urgentie" name="Urgentie">
 <option>Niet dringend — op uw tempo</option>
 <option>Binnen de maand</option>
 <option>Dringend (stormschade, veiligheidsrisico)</option>
 </select>
 </div>
-<button class="btn-verzenden" type="button">
+<button class="btn-verzenden" type="submit">
 <i class="ti ti-send"></i> Verstuur aanvraag
         </button>
 <p class="formulier-noot"><i class="ti ti-lock"></i> Uw gegevens worden enkel gebruikt voor deze aanvraag</p>
+</form>
 </div>
 <div class="info-sectie">
 <h2>Werkgebied</h2>
