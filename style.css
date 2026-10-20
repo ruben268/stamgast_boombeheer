@@ -356,8 +356,10 @@ footer {
   justify-content: center;
   color: var(--groen);
   font-size: 18px;
+  line-height: 1;
   transition: background 0.15s;
 }
+.social-knop i, .social-knop svg { width: 18px; height: 18px; line-height: 1; display: block; }
 
 .social-knop:hover { background: var(--groen-licht); }
 

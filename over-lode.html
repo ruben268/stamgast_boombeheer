@@ -76,14 +76,11 @@
       gap: 20px;
       align-items: flex-start;
     }
-    .cert-badge-groot {
-      background: var(--groen);
-      color: #fff;
-      border-radius: 10px;
-      padding: 10px 16px;
-      font-size: 16px;
-      font-weight: 700;
+    .cert-logo {
+      width: 76px;
+      height: 76px;
       flex-shrink: 0;
+      object-fit: contain;
     }
     .cert-kaart h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
     .cert-kaart p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
@@ -251,14 +248,14 @@
 <p class="sectie-sub">Twee internationale certificaten die de kwaliteit en veiligheid van Lode's werk garanderen.</p>
 <div class="cert-raster">
 <div class="cert-kaart">
-<div class="cert-badge-groot">ETW</div>
+<img class="cert-logo" src="afbeeldingen/etw-logo.svg" alt="Logo European Tree Worker certificaat"/>
 <div>
 <h3>European Tree Worker</h3>
 <p>Internationaal erkend certificaat voor professionele boomverzorging. Garandeert technische kennis, veiligheid en kwaliteit van uitvoering. Behaald in 2017.</p>
 </div>
 </div>
 <div class="cert-kaart">
-<div class="cert-badge-groot">VET</div>
+<img class="cert-logo" src="afbeeldingen/vetcert-logo.svg" alt="Logo VETCERT certificaat"/>
 <div>
 <h3>VETCERT — veterane bomen</h3>
 <p>Specifieke expertise voor oude en waardevolle veterane bomen. Lode kan deze bijzondere bomen de gespecialiseerde zorg geven die ze verdienen.</p>
@@ -291,7 +288,7 @@
 <div class="footer-col">
 <a class="nav-logo" href="index.html" style="margin-bottom:12px;display:inline-flex;"><img alt="Stamgast Boombeheer" class="footer-logo-img" src="logo-nieuw.svg"/></a>
 <p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
-<div class="footer-cert-badges"><span class="cert-badge">ETW</span><span class="cert-badge">VETCERT</span></div>
+<div class="footer-cert-badges" style="gap:10px;"><img src="afbeeldingen/etw-logo.svg" alt="European Tree Worker certificaat" style="width:46px;height:46px;object-fit:contain;"/><img src="afbeeldingen/vetcert-logo.svg" alt="VETCERT certificaat" style="width:46px;height:46px;object-fit:contain;"/></div>
 <div class="social-rij">
 <a class="social-knop" href="https://www.facebook.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-facebook"></i></a>
 <a class="social-knop" href="https://www.instagram.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-instagram"></i></a>

@@ -225,7 +225,49 @@
 <i class="ti ti-send"></i> Verstuur aanvraag
         </button>
 <p class="formulier-noot"><i class="ti ti-lock"></i> Uw gegevens worden enkel gebruikt voor deze aanvraag</p>
+<p id="form-error" class="form-error" hidden>Er ging iets mis bij het verzenden. Probeer het opnieuw of bel ons gerust op 0497 91 09 13.</p>
 </form>
+<div id="form-success" class="form-success" role="status" aria-live="polite" hidden>
+<div class="form-success-icoon"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></div>
+<h3>Bedankt voor uw aanvraag!</h3>
+<p>Uw bericht is verstuurd. Lode neemt zo snel mogelijk contact met u op.</p>
+</div>
+<style>
+.form-success{ text-align:center; padding:40px 20px; }
+.form-success-icoon{ width:64px; height:64px; border-radius:50%; background:var(--groen-licht); color:var(--groen); display:flex; align-items:center; justify-content:center; margin:0 auto 18px; }
+.form-success h3{ font-size:20px; font-weight:600; color:var(--primair); margin-bottom:8px; }
+.form-success p{ font-size:15px; color:var(--tekst-muted); line-height:1.6; max-width:340px; margin:0 auto; }
+.form-error{ color:#b3261e; background:#fde8e6; border:1px solid #f3c7c2; border-radius:8px; padding:10px 14px; font-size:14px; margin-top:14px; }
+[hidden]{ display:none !important; }
+</style>
+<script>
+(function(){
+  var sectie = document.querySelector(".formulier-sectie");
+  if(!sectie) return;
+  var form = sectie.querySelector("form");
+  if(!form) return;
+  var success = document.getElementById("form-success");
+  var error = document.getElementById("form-error");
+  var btn = form.querySelector(".btn-verzenden");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(error) error.hidden = true;
+    if(btn){ btn.disabled = true; btn.style.opacity = "0.6"; btn.style.cursor = "default"; }
+    fetch("https://api.web3forms.com/submit", { method:"POST", headers:{ "Accept":"application/json" }, body:new FormData(form) })
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        if(res && res.success){
+          form.style.display = "none";
+          if(success){ success.hidden = false; success.scrollIntoView({behavior:"smooth", block:"center"}); }
+        } else { fail(); }
+      }).catch(fail);
+    function fail(){
+      if(btn){ btn.disabled = false; btn.style.opacity = "1"; btn.style.cursor = "pointer"; }
+      if(error) error.hidden = false;
+    }
+  });
+})();
+</script>
 </div>
 <div class="info-sectie">
 <h2>Werkgebied</h2>
@@ -322,7 +364,7 @@
 <div class="footer-col">
 <a class="nav-logo" href="index.html" style="margin-bottom:12px;display:inline-flex;"><img alt="Stamgast Boombeheer" class="footer-logo-img" src="logo-nieuw.svg"/></a>
 <p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
-<div class="footer-cert-badges"><span class="cert-badge">ETW</span><span class="cert-badge">VETCERT</span></div>
+<div class="footer-cert-badges" style="gap:10px;"><img src="afbeeldingen/etw-logo.svg" alt="European Tree Worker certificaat" style="width:46px;height:46px;object-fit:contain;"/><img src="afbeeldingen/vetcert-logo.svg" alt="VETCERT certificaat" style="width:46px;height:46px;object-fit:contain;"/></div>
 <div class="social-rij">
 <a class="social-knop" href="https://www.facebook.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-facebook"></i></a>
 <a class="social-knop" href="https://www.instagram.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-instagram"></i></a>
