@@ -345,7 +345,7 @@ footer {
   margin-top: 14px;
 }
 
-.social-knop {
+.footer-col .social-knop {
   width: 34px;
   height: 34px;
   background: #fff;
@@ -357,9 +357,10 @@ footer {
   color: var(--groen);
   font-size: 18px;
   line-height: 1;
+  margin: 0;
   transition: background 0.15s;
 }
-.social-knop i {
+.footer-col .social-knop i {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -367,14 +368,14 @@ footer {
   height: 18px;
   line-height: 1;
 }
-.social-knop svg {
-  width: 18px !important;
-  height: 18px !important;
-  display: block !important;
-  vertical-align: middle !important;
+.footer-col .social-knop svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  vertical-align: middle;
 }
 
-.social-knop:hover { background: var(--groen-licht); }
+.footer-col .social-knop:hover { background: var(--groen-licht); }
 
 .footer-bottom {
   border-top: 1px solid var(--rand);
