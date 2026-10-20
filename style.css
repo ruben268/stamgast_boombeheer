@@ -359,7 +359,20 @@ footer {
   line-height: 1;
   transition: background 0.15s;
 }
-.social-knop i, .social-knop svg { width: 18px; height: 18px; line-height: 1; display: block; }
+.social-knop i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  line-height: 1;
+}
+.social-knop svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+  vertical-align: middle !important;
+}
 
 .social-knop:hover { background: var(--groen-licht); }
 
