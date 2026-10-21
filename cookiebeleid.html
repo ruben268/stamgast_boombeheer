@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="cookies.js"></script>
+<title>Cookiebeleid — Stamgast Boombeheer</title>
+<meta content="Welke cookies de website van Stamgast Boombeheer gebruikt, waarvoor en hoe u uw keuze beheert." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+  .beleid-hero { padding: 64px 0 40px; background: var(--band2); border-bottom: 1px solid var(--rand); }
+  .beleid-hero h1 { font-size: 36px; font-weight: 600; line-height: 1.2; margin: 10px 0 12px; letter-spacing: -0.3px; }
+  .beleid-hero p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; max-width: 680px; }
+  .beleid-hero .beleid-datum { font-size: 13px; color: var(--tekst-muted); margin-top: 14px; }
+  .beleid { max-width: 760px; padding: 56px 0 80px; }
+  .beleid h2 { font-size: 21px; font-weight: 600; line-height: 1.3; margin: 40px 0 12px; color: var(--primair); }
+  .beleid h2:first-child { margin-top: 0; }
+  .beleid p, .beleid li { font-size: 16px; line-height: 1.75; }
+  .beleid p { margin-bottom: 14px; }
+  .beleid ul { margin: 0 0 16px 20px; padding: 0; }
+  .beleid li { margin-bottom: 6px; }
+  .beleid a { color: var(--groen); text-decoration: underline; text-underline-offset: 2px; }
+  .beleid-kader { background: var(--pastel-groen); border-radius: 12px; padding: 20px 24px; margin: 8px 0 20px; }
+  .beleid-kader p:last-child { margin-bottom: 0; }
+  .beleid-tabel { width: 100%; border-collapse: collapse; margin: 8px 0 20px; font-size: 15px; }
+  .beleid-tabel th, .beleid-tabel td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--rand); line-height: 1.55; }
+  .beleid-tabel th { font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--tekst-muted); }
+  @media (max-width: 640px) {
+    .beleid-hero { padding: 44px 0 28px; }
+    .beleid-hero h1 { font-size: 28px; }
+    .beleid { padding: 40px 0 56px; }
+    .beleid-tabel, .beleid-tabel tbody, .beleid-tabel tr, .beleid-tabel td { display: block; width: 100%; }
+    .beleid-tabel thead { display: none; }
+    .beleid-tabel tr { border-bottom: 1px solid var(--rand); padding: 8px 0; }
+    .beleid-tabel td { border: none; padding: 4px 0; }
+    .beleid-tabel td:first-child { font-weight: 600; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+<div class="nav-inner">
+<a class="nav-logo" href="index.html"><img alt="Stamgast Boombeheer" class="nav-logo-img" src="logo-nieuw.svg"/></a>
+<div class="nav-links">
+<a href="over-lode.html">Over Lode</a>
+<a href="diensten.html">Diensten</a>
+<a href="aanpak.html">Onze aanpak</a>
+<a href="referenties.html">Referenties</a>
+<a href="contact.html">Contact</a>
+</div>
+<a class="nav-cta" href="contact.html"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+<button aria-expanded="false" aria-label="Menu openen" class="hamburger" id="hamburger">
+<i class="ti ti-menu-2" id="hamburger-icoon"></i>
+</button>
+</div>
+<div class="mobiel-menu" id="mobiel-menu">
+<a href="over-lode.html">Over Lode</a>
+<a href="diensten.html">Diensten</a>
+<a href="aanpak.html">Onze aanpak</a>
+<a href="referenties.html">Referenties</a>
+<a href="contact.html">Contact</a>
+<a class="mobiel-cta" href="contact.html"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+</div>
+</nav>
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobiel-menu');
+  var icoon = document.getElementById('hamburger-icoon');
+  hamburger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    icoon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      icoon.className = 'ti ti-menu-2';
+    }
+  });
+</script>
+<section class="beleid-hero">
+<div class="wrapper">
+<div class="breadcrumb">
+<a href="index.html">Home</a>
+<i class="ti ti-chevron-right" style="font-size:13px;"></i>
+<span class="huidig">Cookiebeleid</span>
+</div>
+<h1>Cookiebeleid</h1>
+<p>Welke cookies we gebruiken, waarvoor, en hoe u zelf bepaalt wat u toestaat.</p>
+<p class="beleid-datum">Laatst bijgewerkt op 21 oktober 2026</p>
+</div>
+</section>
+<section>
+<div class="wrapper">
+<div class="beleid">
+<h2>Wat zijn cookies?</h2>
+<p>Cookies zijn kleine tekstbestanden die een website op uw computer, tablet of smartphone plaatst. Ze worden gebruikt om een website te laten werken, om voorkeuren te onthouden of om bezoekers te volgen voor statistieken en reclame.</p>
+
+<h2>Uw keuze</h2>
+<div class="beleid-kader">
+<p>Bij uw eerste bezoek vragen we of we cookies mogen gebruiken. <strong>Zonder uw toestemming plaatsen we geen statistiek- of marketingcookies.</strong> U kunt uw keuze altijd wijzigen of intrekken via <a href="#" data-cookie-instellingen>Cookie-instellingen</a>, ook onderaan elke pagina.</p>
+</div>
+
+<h2>Welke cookies gebruiken we?</h2>
+<table class="beleid-tabel">
+<thead><tr><th>Naam</th><th>Van wie</th><th>Waarvoor</th><th>Bewaartijd</th></tr></thead>
+<tbody>
+<tr><td>stamgast_cookies</td><td>Deze website</td><td><strong>Noodzakelijk.</strong> Onthoudt uw cookiekeuze, zodat we die niet bij elke pagina opnieuw vragen. Wordt lokaal in uw browser bewaard.</td><td>6 maanden</td></tr>
+<tr><td>_ga, _ga_*</td><td>Google Analytics</td><td><strong>Statistieken.</strong> Onderscheidt bezoekers en bezoeken, zodat we zien hoeveel mensen de website bezoeken en welke pagina's ze bekijken.</td><td>2 jaar</td></tr>
+<tr><td>_gcl_au</td><td>Google Ads</td><td><strong>Marketing.</strong> Meet of iemand na het klikken op een advertentie een aanvraag verstuurt.</td><td>3 maanden</td></tr>
+</tbody>
+</table>
+<p>Statistiek- en marketingcookies worden geplaatst via Google Tag Manager. Die dienst laden we pas in nadat u toestemming gaf. Google kan deze gegevens verwerken buiten de Europese Unie, onder de waarborgen die in ons <a href="privacybeleid.html">privacybeleid</a> staan. Meer over hoe Google met gegevens omgaat, leest u op <a href="https://policies.google.com/technologies/partner-sites?hl=nl" target="_blank" rel="noopener">policies.google.com</a>.</p>
+
+<h2>Externe diensten zonder cookies</h2>
+<p>Om de website correct weer te geven, laden we ook enkele bestanden in van externe diensten. Die plaatsen geen cookies, maar ontvangen wel technisch uw IP-adres, zoals bij elk bezoek aan een website.</p>
+<table class="beleid-tabel">
+<thead><tr><th>Dienst</th><th>Waarvoor</th></tr></thead>
+<tbody>
+<tr><td>GitHub Pages</td><td>Hosting van de website</td></tr>
+<tr><td>Google Fonts</td><td>Het lettertype van de website</td></tr>
+<tr><td>jsDelivr</td><td>De iconen op de website</td></tr>
+<tr><td>Web3Forms</td><td>Het verzenden van het contactformulier, enkel als u dat zelf invult en verstuurt</td></tr>
+</tbody>
+</table>
+
+<h2>Sociale media</h2>
+<p>De knoppen naar Facebook en Instagram zijn gewone links. Er worden geen berichten, knoppen of video's van die platformen op deze website ingeladen. Facebook en Instagram kunnen pas cookies plaatsen als u via zo'n link naar hun website gaat. Daar geldt hun eigen cookiebeleid.</p>
+
+<h2>Cookies beheren in uw browser</h2>
+<p>Naast de cookie-instellingen op deze website kunt u ook in uw browser cookies bekijken, blokkeren of verwijderen. Hoe dat werkt, verschilt per browser. Meer uitleg vindt u bij:</p>
+<ul>
+<li><a href="https://support.google.com/chrome/answer/95647?hl=nl" target="_blank" rel="noopener">Google Chrome</a></li>
+<li><a href="https://support.mozilla.org/nl/kb/cookies-verwijderen-gegevens-wissen-websites-opgeslagen" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+<li><a href="https://support.apple.com/nl-be/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+<li><a href="https://support.microsoft.com/nl-nl/microsoft-edge/cookies-verwijderen-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+</ul>
+
+<h2>Wijzigingen</h2>
+<p>Als we andere cookies gaan gebruiken, passen we dit cookiebeleid aan en vragen we u opnieuw om toestemming.</p>
+
+<h2>Vragen?</h2>
+<p>Mail gerust naar <a href="mailto:stamgastboombeheer@gmail.com">stamgastboombeheer@gmail.com</a> of bel naar 0497 91 09 13.</p>
+</div>
+</div>
+</section>
+<footer>
+<div class="wrapper">
+<div class="footer-grid">
+<div class="footer-col">
+<a class="nav-logo" href="index.html" style="margin-bottom:12px;display:inline-flex;"><img alt="Stamgast Boombeheer" class="footer-logo-img" src="logo-nieuw.svg"/></a>
+<p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
+<div class="footer-cert-badges" style="gap:10px;"><img src="afbeeldingen/etw-logo.svg" alt="European Tree Worker certificaat" style="width:46px;height:46px;object-fit:contain;"/><img src="afbeeldingen/vetcert-logo.svg" alt="VETCERT certificaat" style="width:46px;height:46px;object-fit:contain;"/></div>
+<div class="social-rij">
+<a class="social-knop" href="https://www.facebook.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-facebook"></i></a>
+<a class="social-knop" href="https://www.instagram.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-instagram"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Diensten</h4>
+<a href="diensten.html">Snoeien</a>
+<a href="diensten.html">Aanplant</a>
+<a href="diensten.html">Ecologie &amp; beheer</a>
+<a href="diensten.html">Advies, inspectie &amp; inventarisatie</a>
+<a href="diensten.html">Vellen &amp; demonteren</a>
+<a href="diensten.html">Stormschade</a>
+</div>
+<div class="footer-col">
+<h4>Contact</h4>
+<p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>0497 91 09 13</p>
+<p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
+<p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+<p style="margin-top:8px;font-size:13px;">BE 0678.719.886</p>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2025 Stamgast Boombeheer — Lode Jans</span>
+<span><a href="privacybeleid.html" style="color:inherit;">Privacybeleid</a>  ·  <a href="cookiebeleid.html" style="color:inherit;">Cookiebeleid</a>  ·  <a href="#" data-cookie-instellingen style="color:inherit;">Cookie-instellingen</a></span>
+</div>
+</div>
+</footer>
+
+
+
+
+</body>
+</html>

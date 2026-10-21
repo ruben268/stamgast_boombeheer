@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="cookies.js"></script>
+<title>Privacybeleid — Stamgast Boombeheer</title>
+<meta content="Hoe Stamgast Boombeheer omgaat met uw persoonsgegevens: welke gegevens, waarvoor, hoe lang en wat uw rechten zijn." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+  .beleid-hero { padding: 64px 0 40px; background: var(--band2); border-bottom: 1px solid var(--rand); }
+  .beleid-hero h1 { font-size: 36px; font-weight: 600; line-height: 1.2; margin: 10px 0 12px; letter-spacing: -0.3px; }
+  .beleid-hero p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; max-width: 680px; }
+  .beleid-hero .beleid-datum { font-size: 13px; color: var(--tekst-muted); margin-top: 14px; }
+  .beleid { max-width: 760px; padding: 56px 0 80px; }
+  .beleid h2 { font-size: 21px; font-weight: 600; line-height: 1.3; margin: 40px 0 12px; color: var(--primair); }
+  .beleid h2:first-child { margin-top: 0; }
+  .beleid p, .beleid li { font-size: 16px; line-height: 1.75; }
+  .beleid p { margin-bottom: 14px; }
+  .beleid ul { margin: 0 0 16px 20px; padding: 0; }
+  .beleid li { margin-bottom: 6px; }
+  .beleid a { color: var(--groen); text-decoration: underline; text-underline-offset: 2px; }
+  .beleid-kader { background: var(--pastel-groen); border-radius: 12px; padding: 20px 24px; margin: 8px 0 20px; }
+  .beleid-kader p:last-child { margin-bottom: 0; }
+  .beleid-tabel { width: 100%; border-collapse: collapse; margin: 8px 0 20px; font-size: 15px; }
+  .beleid-tabel th, .beleid-tabel td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--rand); line-height: 1.55; }
+  .beleid-tabel th { font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--tekst-muted); }
+  @media (max-width: 640px) {
+    .beleid-hero { padding: 44px 0 28px; }
+    .beleid-hero h1 { font-size: 28px; }
+    .beleid { padding: 40px 0 56px; }
+    .beleid-tabel, .beleid-tabel tbody, .beleid-tabel tr, .beleid-tabel td { display: block; width: 100%; }
+    .beleid-tabel thead { display: none; }
+    .beleid-tabel tr { border-bottom: 1px solid var(--rand); padding: 8px 0; }
+    .beleid-tabel td { border: none; padding: 4px 0; }
+    .beleid-tabel td:first-child { font-weight: 600; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+<div class="nav-inner">
+<a class="nav-logo" href="index.html"><img alt="Stamgast Boombeheer" class="nav-logo-img" src="logo-nieuw.svg"/></a>
+<div class="nav-links">
+<a href="over-lode.html">Over Lode</a>
+<a href="diensten.html">Diensten</a>
+<a href="aanpak.html">Onze aanpak</a>
+<a href="referenties.html">Referenties</a>
+<a href="contact.html">Contact</a>
+</div>
+<a class="nav-cta" href="contact.html"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+<button aria-expanded="false" aria-label="Menu openen" class="hamburger" id="hamburger">
+<i class="ti ti-menu-2" id="hamburger-icoon"></i>
+</button>
+</div>
+<div class="mobiel-menu" id="mobiel-menu">
+<a href="over-lode.html">Over Lode</a>
+<a href="diensten.html">Diensten</a>
+<a href="aanpak.html">Onze aanpak</a>
+<a href="referenties.html">Referenties</a>
+<a href="contact.html">Contact</a>
+<a class="mobiel-cta" href="contact.html"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+</div>
+</nav>
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobiel-menu');
+  var icoon = document.getElementById('hamburger-icoon');
+  hamburger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    icoon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      icoon.className = 'ti ti-menu-2';
+    }
+  });
+</script>
+<section class="beleid-hero">
+<div class="wrapper">
+<div class="breadcrumb">
+<a href="index.html">Home</a>
+<i class="ti ti-chevron-right" style="font-size:13px;"></i>
+<span class="huidig">Privacybeleid</span>
+</div>
+<h1>Privacybeleid</h1>
+<p>Hoe Stamgast Boombeheer omgaat met uw persoonsgegevens: welke gegevens we verzamelen, waarvoor we ze gebruiken, hoe lang we ze bewaren en welke rechten u heeft.</p>
+<p class="beleid-datum">Laatst bijgewerkt op 21 oktober 2026</p>
+</div>
+</section>
+<section>
+<div class="wrapper">
+<div class="beleid">
+<h2>Wie is verantwoordelijk voor uw gegevens?</h2>
+<p>Deze website is van Stamgast Boombeheer, de eenmanszaak van Lode Jans. Lode is verantwoordelijk voor de verwerking van uw persoonsgegevens, in de zin van de Algemene Verordening Gegevensbescherming (AVG of GDPR).</p>
+<div class="beleid-kader">
+<p><strong>Stamgast Boombeheer — Lode Jans</strong><br/>
+Ondernemingsnummer: BE 0678.719.886<br/>
+E-mail: <a href="mailto:stamgastboombeheer@gmail.com">stamgastboombeheer@gmail.com</a><br/>
+Telefoon: 0497 91 09 13</p>
+</div>
+
+<h2>Welke gegevens verzamelen we?</h2>
+<p>We verzamelen alleen de gegevens die u zelf aan ons geeft, en het strikt noodzakelijke om de website te laten werken.</p>
+<ul>
+<li><strong>Via het contactformulier:</strong> uw voornaam, achternaam, telefoonnummer, e-mailadres en gemeente, de diensten die u aanduidt, uw beschrijving van de situatie en hoe dringend uw vraag is.</li>
+<li><strong>Via e-mail of telefoon:</strong> de gegevens die u daarbij zelf deelt, zoals uw naam, contactgegevens, adres van de werf en foto's van de boom.</li>
+<li><strong>Bij een opdracht:</strong> de gegevens die nodig zijn voor de offerte, de uitvoering en de facturatie, zoals uw adres en, indien van toepassing, uw btw-nummer.</li>
+<li><strong>Technische gegevens:</strong> bij elk bezoek ontvangen de hostingpartij en de diensten die lettertypes en iconen leveren automatisch uw IP-adres en browsergegevens. Zonder die gegevens kan de pagina niet geladen worden.</li>
+<li><strong>Gebruik van de website:</strong> alleen als u daarvoor toestemming geeft, verzamelen Google Analytics en Google Ads via cookies gegevens over uw bezoek, zoals welke pagina's u bekijkt, hoe u op de website terechtkwam en of u na een advertentie een aanvraag verstuurde. Meer daarover in ons <a href="cookiebeleid.html">cookiebeleid</a>.</li>
+</ul>
+
+<h2>Waarvoor gebruiken we uw gegevens?</h2>
+<table class="beleid-tabel">
+<thead><tr><th>Doel</th><th>Wettelijke grond</th></tr></thead>
+<tbody>
+<tr><td>Uw vraag beantwoorden, een plaatsbezoek inplannen en een offerte opmaken</td><td>Stappen op uw verzoek vóór een overeenkomst (art. 6.1.b AVG)</td></tr>
+<tr><td>De werken uitvoeren en opvolgen</td><td>Uitvoering van de overeenkomst (art. 6.1.b AVG)</td></tr>
+<tr><td>Facturatie en boekhouding</td><td>Wettelijke verplichting (art. 6.1.c AVG)</td></tr>
+<tr><td>De website technisch laten werken en beveiligen</td><td>Gerechtvaardigd belang (art. 6.1.f AVG)</td></tr>
+<tr><td>Bezoekersstatistieken en het meten van onze advertenties</td><td>Uw toestemming (art. 6.1.a AVG), die u altijd kunt intrekken</td></tr>
+</tbody>
+</table>
+<p>We sturen geen nieuwsbrieven of reclame naar uw e-mailadres of telefoonnummer, en we verkopen of verhuren uw gegevens nooit aan derden.</p>
+
+<h2>Met wie delen we uw gegevens?</h2>
+<p>Enkel met partijen die we nodig hebben om de website en onze dienstverlening te laten werken. Zij verwerken uw gegevens alleen in onze opdracht:</p>
+<ul>
+<li><strong>Web3Forms</strong> verwerkt het contactformulier en stuurt uw aanvraag per e-mail naar Lode.</li>
+<li><strong>Google</strong> (Gmail) beheert de mailbox waarin uw aanvraag en verdere correspondentie terechtkomen. Google Fonts levert het lettertype van de website. Met uw toestemming verwerken Google Tag Manager, Google Analytics en Google Ads gegevens over uw bezoek.</li>
+<li><strong>GitHub</strong> (GitHub Pages) host de website.</li>
+<li><strong>jsDelivr</strong> levert de iconen op de website.</li>
+<li><strong>Onze boekhouder</strong> ontvangt de facturatiegegevens, als u klant wordt.</li>
+</ul>
+<p>Sommige van deze partijen zijn gevestigd buiten de Europese Unie, onder meer in de Verenigde Staten. Ze bieden passende waarborgen voor de bescherming van uw gegevens, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie.</p>
+<p>Daarnaast geven we uw gegevens alleen door als de wet ons daartoe verplicht.</p>
+
+<h2>Hoe lang bewaren we uw gegevens?</h2>
+<ul>
+<li><strong>Aanvragen zonder opdracht:</strong> tot uiterlijk één jaar na ons laatste contact, zodat we bij een eventuele nieuwe vraag weten waarover het ging.</li>
+<li><strong>Klantgegevens:</strong> zolang de samenwerking loopt en daarna zolang nodig voor opvolging en garantie.</li>
+<li><strong>Facturen en boekhoudkundige stukken:</strong> gedurende de wettelijke bewaartermijn.</li>
+</ul>
+<p>Daarna verwijderen we uw gegevens.</p>
+
+<h2>Wat zijn uw rechten?</h2>
+<p>U heeft altijd het recht om:</p>
+<ul>
+<li>te vragen welke gegevens we over u hebben (inzage);</li>
+<li>onjuiste gegevens te laten verbeteren;</li>
+<li>uw gegevens te laten verwijderen, als we ze niet meer wettelijk moeten bewaren;</li>
+<li>de verwerking te laten beperken of er bezwaar tegen te maken;</li>
+<li>uw gegevens in een gangbaar formaat te ontvangen of aan een ander te laten bezorgen (overdraagbaarheid);</li>
+<li>uw toestemming voor cookies op elk moment in te trekken via "Cookie-instellingen" onderaan elke pagina.</li>
+</ul>
+<p>Stuur daarvoor een e-mail naar <a href="mailto:stamgastboombeheer@gmail.com">stamgastboombeheer@gmail.com</a>. We antwoorden binnen de maand. Mogelijk vragen we u eerst om te bevestigen wie u bent, zodat uw gegevens niet bij iemand anders terechtkomen.</p>
+
+<h2>Een klacht indienen</h2>
+<p>Bent u niet tevreden over hoe we met uw gegevens omgaan? Laat het ons dan eerst weten, dan zoeken we samen naar een oplossing. U kunt ook altijd een klacht indienen bij de Gegevensbeschermingsautoriteit, Drukpersstraat 35, 1000 Brussel, via <a href="https://www.gegevensbeschermingsautoriteit.be" target="_blank" rel="noopener">www.gegevensbeschermingsautoriteit.be</a>.</p>
+
+<h2>Beveiliging</h2>
+<p>De website wordt beveiligd aangeboden via een versleutelde verbinding (https). We bewaren uw gegevens zorgvuldig en geven er alleen toegang toe aan wie ze nodig heeft voor uw aanvraag of opdracht.</p>
+
+<h2>Links naar sociale media</h2>
+<p>Op de website staan links naar onze pagina's op Facebook en Instagram. Pas als u op zo'n link klikt, gaat u naar die platformen. Daar geldt hun eigen privacy- en cookiebeleid.</p>
+
+<h2>Wijzigingen</h2>
+<p>We kunnen dit privacybeleid aanpassen, bijvoorbeeld als de website verandert of de wetgeving wijzigt. De datum bovenaan deze pagina toont wanneer het laatst werd bijgewerkt. Lees ook ons <a href="cookiebeleid.html">cookiebeleid</a>.</p>
+</div>
+</div>
+</section>
+<footer>
+<div class="wrapper">
+<div class="footer-grid">
+<div class="footer-col">
+<a class="nav-logo" href="index.html" style="margin-bottom:12px;display:inline-flex;"><img alt="Stamgast Boombeheer" class="footer-logo-img" src="logo-nieuw.svg"/></a>
+<p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
+<div class="footer-cert-badges" style="gap:10px;"><img src="afbeeldingen/etw-logo.svg" alt="European Tree Worker certificaat" style="width:46px;height:46px;object-fit:contain;"/><img src="afbeeldingen/vetcert-logo.svg" alt="VETCERT certificaat" style="width:46px;height:46px;object-fit:contain;"/></div>
+<div class="social-rij">
+<a class="social-knop" href="https://www.facebook.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-facebook"></i></a>
+<a class="social-knop" href="https://www.instagram.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-instagram"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Diensten</h4>
+<a href="diensten.html">Snoeien</a>
+<a href="diensten.html">Aanplant</a>
+<a href="diensten.html">Ecologie &amp; beheer</a>
+<a href="diensten.html">Advies, inspectie &amp; inventarisatie</a>
+<a href="diensten.html">Vellen &amp; demonteren</a>
+<a href="diensten.html">Stormschade</a>
+</div>
+<div class="footer-col">
+<h4>Contact</h4>
+<p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>0497 91 09 13</p>
+<p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
+<p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+<p style="margin-top:8px;font-size:13px;">BE 0678.719.886</p>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2025 Stamgast Boombeheer — Lode Jans</span>
+<span><a href="privacybeleid.html" style="color:inherit;">Privacybeleid</a>  ·  <a href="cookiebeleid.html" style="color:inherit;">Cookiebeleid</a>  ·  <a href="#" data-cookie-instellingen style="color:inherit;">Cookie-instellingen</a></span>
+</div>
+</div>
+</footer>
+
+
+
+
+</body>
+</html>
