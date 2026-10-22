@@ -47,6 +47,8 @@
     /* Formulier + info grid */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rand); border-radius: 16px; overflow: hidden; margin-bottom: 72px; }
     .formulier-sectie { padding: 48px 40px; border-right: 1px solid var(--rand); }
+    html { scroll-behavior: smooth; }
+    #offerte { scroll-margin-top: 88px; }
     .formulier-sectie h2 { font-size: 20px; font-weight: 600; margin-bottom: 6px; }
     .formulier-sectie > p { font-size: 14px; color: var(--tekst-muted); margin-bottom: 28px; line-height: 1.6; }
     .formulier-rij { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -127,7 +129,7 @@
 <a href="referenties.html">Referenties</a>
 <a class="actief" href="contact.html">Contact</a>
 </div>
-<a class="nav-cta" href="contact.html"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+<a class="nav-cta" href="contact.html#offerte"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
 <button aria-expanded="false" aria-label="Menu openen" class="hamburger" id="hamburger">
 <i class="ti ti-menu-2" id="hamburger-icoon"></i>
 </button>
@@ -138,7 +140,7 @@
 <a href="aanpak.html">Onze aanpak</a>
 <a href="referenties.html">Referenties</a>
 <a class="actief" href="contact.html">Contact</a>
-<a class="mobiel-cta" href="contact.html"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+<a class="mobiel-cta" href="contact.html#offerte"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
 </div>
 </nav>
 <script>
@@ -194,7 +196,7 @@
 <!-- FORMULIER + INFO -->
 <section class="sectie">
 <div class="wrapper">
-<div class="contact-grid">
+<div class="contact-grid" id="offerte">
 <div class="formulier-sectie">
 <h2>Vrijblijvende offerte aanvragen</h2>
 <p>Vul het formulier in en Lode neemt zo snel mogelijk contact met u op.</p>
