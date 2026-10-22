@@ -5,12 +5,27 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="cookies.js"></script>
-<title>Diensten — Stamgast Boombeheer</title>
-<meta content="Alle diensten van Stamgast Boombeheer: snoeien, aanplant, advies, vellen en stormschade. Altijd eerlijk, altijd vakkundig." name="description"/>
+<title>Bomen snoeien, vellen &amp; boomadvies in Gent — Stamgast</title>
+<meta content="Snoeien, aanplant, boomadvies, inventarisatie, vellen en stormschade in Gent en Oost-Vlaanderen. Altijd met de boom centraal en eerlijk advies vooraf." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#233629"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Stamgast Boombeheer"/>
+<meta property="og:locale" content="nl_BE"/>
+<meta property="og:url" content="https://ruben268.github.io/stamgast_boombeheer/diensten.html"/>
+<meta property="og:title" content="Bomen snoeien, vellen &amp; boomadvies in Gent — Stamgast"/>
+<meta property="og:description" content="Snoeien, aanplant, boomadvies, inventarisatie, vellen en stormschade in Gent en Oost-Vlaanderen. Altijd met de boom centraal en eerlijk advies vooraf."/>
+<meta property="og:image" content="https://ruben268.github.io/stamgast_boombeheer/afbeeldingen/og-stamgast.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Boomverzorger Lode Jans van Stamgast Boombeheer"/>
+<meta name="twitter:card" content="summary_large_image"/>
 <link href="style.css" rel="stylesheet"/>
 <style>
     .page-hero { background: var(--achtergrond); padding: 72px 0 56px; }
@@ -22,13 +37,13 @@
     .dienst-groot { background: var(--groen); border-radius: var(--radius-groot); padding: 36px; position: relative; overflow: hidden; }
     .dienst-groot-bg { position: absolute; right: -16px; bottom: -16px; font-size: 120px; color: rgba(255,255,255,0.07); }
     .dienst-groot .tag-wit { background: rgba(255,255,255,0.2); color: #fff; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 500; display: inline-block; margin-bottom: 16px; }
-    .dienst-groot h2 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 10px; }
+    .dienst-groot h3 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 10px; }
     .dienst-groot p { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 20px; }
     .diensten-mid { display: flex; flex-direction: column; gap: 16px; }
     .dienst-mid { background: #fff; border: 1px solid var(--rand); border-radius: var(--radius-groot); padding: 24px; display: flex; gap: 16px; align-items: flex-start; transition: border-color 0.15s; }
     .dienst-mid:hover { border-color: var(--groen); }
     .dienst-mid-icoon { width: 44px; height: 44px; background: var(--achtergrond); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--groen); flex-shrink: 0; }
-    .dienst-mid h2 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
+    .dienst-mid h3 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
     .dienst-mid p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
     .dienst-link { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: var(--groen); font-weight: 500; margin-top: 8px; }
 
@@ -142,7 +157,7 @@
 </div>
 <!-- FOTO: diensten-hero.jpg — Lode aan het werk in de boom, liggend 4:3 -->
 <div class="hero-foto">
-<img alt="Lode Jans aan het werk in de boom" src="afbeeldingen/diensten-hero.jpg"/>
+<img alt="Lode Jans hangt in klimtouwen hoog in de kroon van een boom" src="afbeeldingen/diensten-hero.jpg"/>
 </div>
 </div>
 </div>
@@ -150,14 +165,14 @@
 <section class="sectie">
 <div class="wrapper">
 <div class="sectie-label">Diensten</div>
-<div class="sectie-titel">Alle diensten</div>
+<h2 class="sectie-titel">Alle diensten</h2>
 <p class="sectie-sub">Klik op een dienst voor meer informatie en voorbeelden uit de praktijk.</p>
 <!-- Uitgelicht + mid -->
 <div class="diensten-uitgelicht">
 <div class="dienst-groot">
 <div class="dienst-groot-bg"><i class="ti ti-scissors"></i></div>
 <span class="tag-wit">Populairste dienst</span>
-<h2>Snoeien</h2>
+<h3>Snoeien</h3>
 <p>Vakkundige snoeiwerken conform ETW-normen. Lode snoeit in de eerste plaats in functie van de boom, en diens toekomstbeeld.</p>
 <a class="btn-wit" href="contact.html" style="font-size:14px;padding:9px 16px;">
 <i class="ti ti-arrow-right"></i> Offerte aanvragen
@@ -167,14 +182,14 @@
 <div class="dienst-mid">
 <div class="dienst-mid-icoon"><i class="ti ti-leaf"></i></div>
 <div>
-<h2>Ecologie &amp; beheer</h2>
+<h3>Ecologie &amp; beheer</h3>
 <p>Duurzame ingrepen voor waardevolle bomen. Stamgasts sterkste troef.</p>
 </div>
 </div>
 <div class="dienst-mid">
 <div class="dienst-mid-icoon"><i class="ti ti-clipboard-list"></i></div>
 <div>
-<h2>Advies, inspectie &amp; inventarisatie</h2>
+<h3>Advies, inspectie &amp; inventarisatie</h3>
 <p>Onafhankelijk advies zonder verkoopsdoeleinden. Ook als er niets hoeft te gebeuren zal Lode je dit eerlijk zeggen.</p>
 </div>
 </div>
@@ -218,7 +233,7 @@
 <div class="case-kaart">
 <!-- FOTO: diensten-case-beuk-deinze.jpg — voor/na foto van de veterane beuk in Deinze, liggend formaat -->
 <div class="case-foto">
-<img alt="Veterane beuk in Deinze na behandeling" src="afbeeldingen/diensten-case-beuk-deinze.jpg"/>
+<img loading="lazy" decoding="async" alt="Boomklimmers aan het werk in een veterane beuk in Deinze" src="afbeeldingen/diensten-case-beuk-deinze.jpg"/>
 <span class="case-foto-tag">Ecologie &amp; beheer</span>
 <div class="case-foto-label"><i class="ti ti-map-pin"></i> Deinze</div>
 </div>
@@ -259,7 +274,7 @@
 <div class="cta-balk-inner">
 <!-- FOTO: cta-diensten.jpg — liggend 3:2 -->
 <div class="cta-foto rechts">
-<img alt="Lode Jans tijdens snoeiwerk" src="afbeeldingen/cta-diensten.jpg"/>
+<img loading="lazy" decoding="async" alt="Lode Jans klimt met een touw in een boom" src="afbeeldingen/cta-diensten.jpg"/>
 </div>
 <div class="cta-tekst">
 <h2>Niet zeker welke dienst u nodig heeft?</h2>
@@ -294,14 +309,14 @@
 </div>
 <div class="footer-col">
 <h4>Contact</h4>
-<p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>0497 91 09 13</p>
+<p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i><a href="tel:+32497910913" style="color:inherit;">0497 91 09 13</a></p>
 <p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
 <p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
 <p style="margin-top:8px;font-size:13px;">BE 0678.719.886</p>
 </div>
 </div>
 <div class="footer-bottom">
-<span>© 2025 Stamgast Boombeheer — Lode Jans</span>
+<span>© 2026 Stamgast Boombeheer — Lode Jans</span>
 <span><a href="privacybeleid.html" style="color:inherit;">Privacybeleid</a>  ·  <a href="cookiebeleid.html" style="color:inherit;">Cookiebeleid</a>  ·  <a href="#" data-cookie-instellingen style="color:inherit;">Cookie-instellingen</a></span>
 </div>
 </div>
