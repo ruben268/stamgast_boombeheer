@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta name="robots" content="noindex, nofollow"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>Lode Jans, gecertificeerd boomverzorger (ETW) — Stamgast</title>
+<meta content="Maak kennis met Lode Jans: European Tree Worker en VETCERT-specialist in veterane bomen. Boomverzorging in Gent en omstreken, met eerlijkheid en passie." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#233629"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Stamgast Boombeheer"/>
+<meta property="og:locale" content="nl_BE"/>
+<meta property="og:url" content="https://www.stamgastboombeheer.be/over-lode.html"/>
+<meta property="og:title" content="Lode Jans, gecertificeerd boomverzorger (ETW) — Stamgast"/>
+<meta property="og:description" content="Maak kennis met Lode Jans: European Tree Worker en VETCERT-specialist in veterane bomen. Boomverzorging in Gent en omstreken, met eerlijkheid en passie."/>
+<meta property="og:image" content="https://www.stamgastboombeheer.be/afbeeldingen/og-stamgast.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Boomverzorger Lode Jans van Stamgast Boombeheer"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    .page-hero {
+      background: var(--achtergrond);
+      padding: 72px 0 64px;
+    }
+    .page-hero h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+    .page-hero h1 em { color: var(--groen); font-style: normal; }
+    .page-hero p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; }
+
+
+    /* Tijdlijn */
+    .tijdlijn {
+      position: relative;
+      padding-left: 32px;
+      border-left: 2px solid var(--groen-licht);
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .tl-item { position: relative; }
+    .tl-stip {
+      width: 12px; height: 12px; background: var(--groen);
+      border-radius: 50%; position: absolute;
+      left: -39px; top: 4px;
+    }
+    .tl-jaar { font-size: 12px; font-weight: 600; color: var(--groen); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .tl-titel { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .tl-tekst { font-size: 14px; color: var(--tekst-muted); line-height: 1.7; }
+
+    /* Waarden */
+    .waarden-raster {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .waarde-kaart {
+      border: 1px solid var(--rand);
+      border-radius: var(--radius-groot);
+      padding: 24px;
+      background: #fff;
+    }
+    .waarde-icoon {
+      width: 44px; height: 44px; background: var(--achtergrond);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 22px; color: var(--groen);
+      margin-bottom: 14px;
+    }
+    .waarde-kaart h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .waarde-kaart p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
+
+    /* Certificaten */
+    .cert-raster {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cert-kaart {
+      background: #fff;
+      border: 1px solid var(--rand);
+      border-radius: var(--radius-groot);
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .cert-logo {
+      width: 76px;
+      height: 76px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+    .cert-kaart h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .cert-kaart p { font-size: 14px; color: var(--tekst-muted); line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .waarden-raster { grid-template-columns: 1fr; }
+      .cert-raster { grid-template-columns: 1fr; }
+    }
+  
+    /* ====== PASTELPALET — over-lode ====== */
+    .page-hero{ background:var(--band2); }
+    .waarde-icoon{ background:#fff; color:var(--primair); box-shadow:0 1px 3px rgba(0,0,0,0.07); }
+    .waarden-raster > .waarde-kaart:nth-child(4n+1){ background:var(--pastel-groen); border-color:transparent; }
+    .waarden-raster > .waarde-kaart:nth-child(4n+2){ background:var(--terracotta); border-color:transparent; }
+    .waarden-raster > .waarde-kaart:nth-child(4n+3){ background:var(--geelgroen); border-color:transparent; }
+    .waarden-raster > .waarde-kaart:nth-child(4n+4){ background:var(--lavendel); border-color:transparent; }
+    .tl-stip{ background:var(--primair); }
+  </style>
+</head>
+<body>
+<nav class="nav">
+<div class="nav-inner">
+<a class="nav-logo" href="index-suggesties.html"><img alt="Stamgast Boombeheer" class="nav-logo-img" src="logo-nieuw.svg"/></a>
+<div class="nav-links">
+<a class="actief" href="over-lode-suggesties.html">Over Lode</a>
+<a href="diensten-suggesties.html">Diensten</a>
+<a href="aanpak-suggesties.html">Onze aanpak</a>
+<a href="referenties-suggesties.html">Referenties</a>
+<a href="contact-suggesties.html">Contact</a>
+</div>
+<a class="nav-cta" href="contact-suggesties.html"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+<button aria-expanded="false" aria-label="Menu openen" class="hamburger" id="hamburger">
+<i class="ti ti-menu-2" id="hamburger-icoon"></i>
+</button>
+</div>
+<div class="mobiel-menu" id="mobiel-menu">
+<a class="actief" href="over-lode-suggesties.html">Over Lode</a>
+<a href="diensten-suggesties.html">Diensten</a>
+<a href="aanpak-suggesties.html">Onze aanpak</a>
+<a href="referenties-suggesties.html">Referenties</a>
+<a href="contact-suggesties.html">Contact</a>
+<a class="mobiel-cta" href="contact-suggesties.html"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+</div>
+</nav>
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobiel-menu');
+  var icoon = document.getElementById('hamburger-icoon');
+  hamburger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    icoon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      icoon.className = 'ti ti-menu-2';
+    }
+  });
+</script>
+<section class="page-hero">
+<div class="wrapper">
+<div class="page-hero-inner">
+<div>
+<div class="breadcrumb">
+<a href="index-suggesties.html">Home</a>
+<i class="ti ti-chevron-right" style="font-size:13px;"></i>
+<span class="huidig">Over Lode</span>
+</div>
+<h1>Een vakman met een <em>groot hart voor bomen</em></h1>
+<p>Lode Jans is gecertificeerd boomverzorger en oprichter van Stamgast Boombeheer. Zijn aanpak is eenvoudig: eerlijk advies, vakkundige uitvoering, en altijd met de boom centraal.</p>
+</div>
+<!-- FOTO: lode-in-actie.jpg — Lode aan het werk, liggend 4:3 -->
+<div class="hero-foto">
+<img alt="Lode Jans met klimhelm en materiaaltas in het bos" src="afbeeldingen/lode-in-actie.jpg"/>
+<div class="hero-foto-label">
+<strong>Lode Jans</strong>
+<span>Oprichter &amp; gecertificeerd boomverzorger</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PARCOURS -->
+<section class="sectie">
+<div class="wrapper">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
+<div>
+<div class="sectie-label">Parcours</div>
+<h2 class="sectie-titel">Van passie tot vakmanschap</h2>
+<p class="sectie-sub"><span class="sg sg-M" data-id="S10" tabindex="0">Hoe Lode stap voor stap zijn vak leerde, en zijn eigen visie ontwikkelde.</span></p>
+</div>
+<div></div>
+</div>
+<div class="tijdlijn">
+<div class="tl-item">
+<div class="tl-stip"></div>
+<div class="tl-jaar">Begin</div>
+<div class="tl-titel">Eerste stappen in de sector</div>
+<div class="tl-tekst"><span class="sg sg-C" data-id="S11" tabindex="0">Lode bouwt jarenlange ervaring op in loondienst en leert het vak van alle kanten kennen</span> — van klimmen op grote hoogtes tot onderzoek en advies.</div>
+</div>
+<div class="tl-item">
+<div class="tl-stip"></div>
+<div class="tl-jaar">2017</div>
+<div class="tl-titel">European Tree Worker certificaat</div>
+<div class="tl-tekst">Lode behaalt het internationaal erkende ETW-certificaat — een garantie voor kwalitatief en veilig werken in en rond bomen.</div>
+</div>
+<div class="tl-item">
+<div class="tl-stip"></div>
+<div class="tl-jaar">2020</div>
+<div class="tl-titel">Een jaar boomverzorging in Nieuw-Zeeland</div>
+<div class="tl-tekst">Een unieke ervaring die zijn kijk op boomverzorging verbreedde en zijn technische vaardigheden op een hoger niveau bracht.</div>
+</div>
+<div class="tl-item">
+<div class="tl-stip"></div>
+<div class="tl-jaar">2021</div>
+<div class="tl-titel">Stamgast Boombeheer is een feit</div>
+<div class="tl-tekst">Na jaren in loondienst kiest Lode het ruime sop en start hij zijn eigen zaak — met een duidelijke visie: bomen verdienen eerlijke zorg, geen overbodige ingrepen, en de nodige groeiruimte, zowel boven- als ondergronds.</div>
+</div>
+<div class="tl-item">
+<div class="tl-stip"></div>
+<div class="tl-jaar">2023</div>
+<div class="tl-titel">VETCERT — expertise over écht oude bomen</div>
+<div class="tl-tekst"><span class="sg sg-H" data-id="S12" tabindex="0">Het VETCERT-certificaat staat garant voor grondige kennis van veterane bomen: oude, kwetsbare bomen die bijzondere zorg vragen.</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- WAARDEN -->
+<section class="sectie-sm achtergrond-licht">
+<div class="wrapper">
+<div class="sectie-label">Waarden</div>
+<h2 class="sectie-titel">Waar Stamgast voor staat</h2>
+<p class="sectie-sub">Niet elke boomverzorger werkt hetzelfde. Dit zijn de principes die Lode dagelijks in de praktijk brengt.</p>
+<div class="waarden-raster">
+<div class="waarde-kaart">
+<div class="waarde-icoon"><i class="ti ti-heart-handshake"></i></div>
+<h3>Eerlijk advies, altijd</h3>
+<p>Ook als dat betekent dat er niets hoeft te gebeuren. Onnodige snoei of ingrepen? Daar heeft een boom niets aan. <span class="sg sg-T" data-id="S13" tabindex="0">Het is een misvatting dat elke boom “verzorgd” moet worden.</span></p>
+</div>
+<div class="waarde-kaart">
+<div class="waarde-icoon"><i class="ti ti-leaf"></i></div>
+<h3>Ecologisch denken</h3>
+<p>Behoud en ecologisch beheer staan centraal, vanaf de jonge aanplant tot waardevolle dode houtstructuren of eco-vellingen. <span class="sg sg-H" data-id="S14" tabindex="0">We maken gerichte keuzes in functie van de toekomst van de boom en zijn omgeving.</span></p>
+</div>
+<div class="waarde-kaart">
+<div class="waarde-icoon"><i class="ti ti-tool"></i></div>
+<h3>Vakkundige uitvoering</h3>
+<p><span class="sg sg-H" data-id="S15" tabindex="0">Lode staat telkens zelf op de werf, zodat je krijgt wat vooraf is afgesproken.</span></p>
+</div>
+<div class="waarde-kaart">
+<div class="waarde-icoon"><i class="ti ti-messages"></i></div>
+<h3>Heldere communicatie</h3>
+<p>Je weet altijd wat we gaan uitvoeren en waarom, met de boom telkens op de eerste plaats. Geen onaangename verrassingen.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CERTIFICATEN -->
+<section class="sectie">
+<div class="wrapper">
+<div class="sectie-label">Certificaten</div>
+<h2 class="sectie-titel">Erkend vakmanschap</h2>
+<p class="sectie-sub">Twee internationale certificaten die de <span class="sg sg-T" data-id="S16" tabindex="0">kwaliteit en veiligheid van Lodes werk</span> garanderen.</p>
+<div class="cert-raster">
+<div class="cert-kaart">
+<img class="cert-logo" src="afbeeldingen/etw-logo.svg" alt="Logo European Tree Worker certificaat"/>
+<div>
+<h3>European Tree Worker</h3>
+<p>Internationaal erkend certificaat voor professionele boomverzorging. Garandeert technische kennis, veiligheid en kwaliteit van uitvoering. Behaald in 2017.</p>
+</div>
+</div>
+<div class="cert-kaart">
+<img class="cert-logo" src="afbeeldingen/vetcert-logo.svg" alt="Logo VETCERT certificaat"/>
+<div>
+<h3>VETCERT — veterane bomen</h3>
+<p><span class="sg sg-C" data-id="S17" tabindex="0">Specifieke expertise in oude, waardevolle bomen. Lode kan deze bijzondere bomen de gespecialiseerde zorg geven die ze verdienen. Behaald in 2023.</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<div class="wrapper">
+<div class="cta-balk" style="padding:0;overflow:hidden;">
+<div class="cta-balk-inner">
+<!-- FOTO: cta-over-lode.jpg — liggend 3:2 -->
+<div class="cta-foto rechts">
+<img loading="lazy" decoding="async" alt="Lode Jans snoeit in de kroon van een fruitboom" src="afbeeldingen/cta-over-lode.jpg"/>
+</div>
+<div class="cta-tekst">
+<h2>Wil je met Lode samenwerken?</h2>
+<p>Vraag vrijblijvend een offerte aan — Lode komt langs en geeft je eerlijk advies.</p>
+<div>
+<a class="btn-wit" href="contact-suggesties.html" style="display:inline-flex;align-items:center;gap:8px;"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="wrapper">
+<div class="footer-grid">
+<div class="footer-col">
+<a class="nav-logo" href="index-suggesties.html" style="margin-bottom:12px;display:inline-flex;"><img alt="Stamgast Boombeheer" class="footer-logo-img" src="logo-nieuw.svg"/></a>
+<p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
+<div class="footer-cert-badges" style="gap:10px;"><img src="afbeeldingen/etw-logo.svg" alt="European Tree Worker certificaat" style="width:46px;height:46px;object-fit:contain;"/><img src="afbeeldingen/vetcert-logo.svg" alt="VETCERT certificaat" style="width:46px;height:46px;object-fit:contain;"/></div>
+<div class="social-rij">
+<a class="social-knop" href="https://www.facebook.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-facebook"></i></a>
+<a class="social-knop" href="https://www.instagram.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-instagram"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Navigatie</h4>
+<a href="over-lode-suggesties.html">Over Lode</a>
+<a href="diensten-suggesties.html">Diensten</a>
+<a href="aanpak-suggesties.html">Onze aanpak</a>
+<a href="referenties-suggesties.html">Referenties</a>
+<a href="contact-suggesties.html">Contact</a>
+</div>
+<div class="footer-col">
+<h4>Contact</h4>
+<p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i><a href="tel:+32497910913" style="color:inherit;">0497 91 09 13</a></p>
+<p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
+<p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 Stamgast Boombeheer — Lode Jans</span>
+<span><a href="privacybeleid.html" style="color:inherit;">Privacybeleid</a>  ·  <a href="cookiebeleid.html" style="color:inherit;">Cookiebeleid</a>  ·  <a href="#" data-cookie-instellingen style="color:inherit;">Cookie-instellingen</a></span>
+</div>
+</div>
+</footer>
+
+
+
+
+<!-- ===== Suggestielaag (enkel in -suggesties.html) ===== -->
+<style>
+  .faq-antwoord{max-height:none!important;padding-bottom:18px!important}
+  .sg{background:rgba(244,192,79,.30);box-shadow:inset 0 -2px 0 #d9a21b;border-radius:3px;cursor:pointer;padding:0 2px;position:relative;
+      -webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background .15s}
+  .sg:hover,.sg:focus{background:rgba(244,192,79,.55);outline:none}
+  .sg::after{content:attr(data-id);position:relative;top:-.7em;margin-left:3px;font:700 9px/1 Inter,sans-serif;color:#fff;background:#8A5A00;
+      border-radius:3px;padding:2px 4px;letter-spacing:.02em;font-style:normal;vertical-align:baseline}
+  .sg-O{background:rgba(120,150,230,.22);box-shadow:inset 0 -2px 0 #5a7bd8}
+  .sg-O::after{background:#3b5bb5}
+  .sg.st-ok{background:rgba(63,174,106,.22);box-shadow:inset 0 -2px 0 #3fae6a}.sg.st-ok::after{background:#1e7a3f;content:attr(data-id) " ✓"}
+  .sg.st-nee{background:rgba(140,140,140,.16);box-shadow:inset 0 -2px 0 #999}.sg.st-nee::after{background:#777;content:attr(data-id) " ✗"}
+  .sg.st-eigen{background:rgba(90,123,216,.2);box-shadow:inset 0 -2px 0 #5a7bd8}.sg.st-eigen::after{background:#3b5bb5;content:attr(data-id) " ✎"}
+  .sg.st-gezien::after{content:attr(data-id) " ●"}
+  body.toon-oud .sg:not(.sg-O){background:rgba(240,160,140,.28);box-shadow:inset 0 -2px 0 #d08a7a}
+  body{padding-bottom:64px}
+  .sv-bar{position:fixed;left:0;right:0;bottom:0;z-index:4000;background:#1e3428;color:#fff;font:13px/1.3 Inter,sans-serif;
+      padding:9px 14px;display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap;box-shadow:0 -4px 18px rgba(0,0,0,.25)}
+  .sv-bar b{font-weight:600}
+  .sv-pag{display:flex;gap:4px;flex-wrap:wrap}
+  .sv-pag a{color:#cfe3d4;text-decoration:none;padding:4px 8px;border-radius:6px;white-space:nowrap}
+  .sv-pag a span{opacity:.6;font-size:11px}
+  .sv-pag a.actief,.sv-pag a:hover{background:rgba(255,255,255,.12);color:#fff}
+  .sv-ruimte{flex:1}
+  .sv-knop{background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:7px;padding:7px 12px;font:600 13px Inter,sans-serif;cursor:pointer}
+  .sv-knop:hover{background:rgba(255,255,255,.22)} .sv-knop.prim{background:#E85F2B}.sv-knop.prim:hover{background:#cf5022}
+  .sv-pop{position:fixed;inset:0;background:rgba(15,25,18,.55);z-index:5000;display:none;align-items:center;justify-content:center;padding:16px}
+  .sv-pop.open{display:flex}
+  .sv-card{background:#fff;color:#1a1a1a;border-radius:14px;max-width:560px;width:100%;max-height:calc(100vh - 32px);overflow:auto;padding:22px;
+      font:14px/1.55 Inter,sans-serif;box-shadow:0 24px 70px rgba(0,0,0,.4)}
+  .sv-kop{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .sv-id{font-weight:700;font-size:13px}
+  .sv-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:20px;background:#f4ead2;color:#8A5A00}
+  .sv-cat.O{background:#e3e9fa;color:#3b5bb5}
+  .sv-x{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:#888;line-height:1}
+  .sv-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#6b7280;margin:12px 0 5px}
+  .sv-blok{border-radius:8px;padding:10px 13px}
+  .sv-blok.oud{background:#fbeee9;color:#5b3a30}.sv-blok.nieuw{background:#eaf5ec;color:#1f3d2a}.sv-blok.waarom{background:#f5f5f2;color:#333}
+  .sv-blok del{background:#f3cfc3;text-decoration:line-through}.sv-blok ins{background:#c6e6cd;text-decoration:none;font-weight:600}
+  .sv-acties{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .sv-acties button{border:1.5px solid #d6d6d0;background:#fff;border-radius:8px;padding:8px 13px;font:600 13px Inter,sans-serif;cursor:pointer;color:#222}
+  .sv-acties button.aan[data-a=ok]{background:#2A5C3F;border-color:#2A5C3F;color:#fff}
+  .sv-acties button.aan[data-a=nee]{background:#777;border-color:#777;color:#fff}
+  .sv-acties button.aan[data-a=eigen]{background:#3b5bb5;border-color:#3b5bb5;color:#fff}
+  .sv-card textarea{width:100%;box-sizing:border-box;border:1.5px solid #d6d6d0;border-radius:8px;padding:9px 11px;font:14px/1.5 Inter,sans-serif;min-height:70px;margin-top:6px}
+  .sv-nav{display:flex;justify-content:space-between;margin-top:16px;gap:8px}
+  .sv-nav button{background:none;border:0;color:#2A5C3F;font:600 13px Inter,sans-serif;cursor:pointer;padding:4px 0}
+  .sv-export pre{white-space:pre-wrap;background:#f5f5f2;border-radius:8px;padding:12px;font:12.5px/1.5 ui-monospace,Menlo,monospace;max-height:50vh;overflow:auto}
+  @media(max-width:700px){.sv-bar{font-size:12px;padding:7px 10px;gap:6px}.sv-leg,.sv-bar>b,.sv-ruimte{display:none}
+    .sv-pag{flex-wrap:nowrap;overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch}
+    .sv-knop{flex:1;padding:7px 8px;font-size:12px}}
+</style>
+
+<div class="sv-bar" role="region" aria-label="Tekstsuggesties">
+  <b>Tekstsuggesties</b>
+  <nav class="sv-pag"><a href="index-suggesties.html" class="">Home <span>9</span></a><a href="over-lode-suggesties.html" class="actief">Over Lode <span>8</span></a><a href="diensten-suggesties.html" class="">Diensten <span>8</span></a><a href="aanpak-suggesties.html" class="">Aanpak <span>12</span></a><a href="referenties-suggesties.html" class="">Referenties <span>11</span></a><a href="contact-suggesties.html" class="">Contact <span>2</span></a></nav>
+  <span class="sv-ruimte"></span>
+  <span class="sv-leg" id="svTeller"></span>
+  <button class="sv-knop" id="svToggle" type="button">Toon huidige tekst</button>
+  <button class="sv-knop prim" id="svExport" type="button">Beslissingen exporteren</button>
+</div>
+<div class="sv-pop" id="svPop"><div class="sv-card" id="svCard"></div></div>
+
+<script>
+(function(){
+  var D={"S01": {"page": "index.html", "cat": "T", "why": "Komma tussen een stelling en een vraag leest als een losse zin. Als bewering is het sterker.", "old": "<span>Geen onnodige snoei, wat is er écht nodig?</span>", "new": "<span>Geen onnodige snoei, enkel wat écht nodig is</span>", "old_i": "Geen onnodige snoei, wat is er écht nodig?", "new_i": "Geen onnodige snoei, enkel wat écht nodig is"}, "S02": {"page": "index.html", "cat": "C", "why": "Overal elders op de site heet het 'ingrepen'; 'acties' klinkt minder vakkundig.", "old": "weloverwogen acties", "new": "weloverwogen ingrepen", "old_i": "weloverwogen acties", "new_i": "weloverwogen ingrepen"}, "S03": {"page": "index.html", "cat": "C", "why": "De dienst heet op de dienstenpagina en bij de referenties 'Standplaatsverbetering'. 'In overleg met de klant' botst met de je-vorm en staat een paar blokken verder al als 'altijd in overleg met jou'.", "old": "Van snoeiwerken tot groeiplaatsverbeteringen, met de boom op de eerste plaats. Altijd in overleg met de klant.", "new": "Van snoeien tot standplaatsverbetering, met de boom altijd op de eerste plaats.", "old_i": "Van snoeiwerken tot groeiplaatsverbeteringen, met de boom op de eerste plaats. Altijd in overleg met de klant.", "new_i": "Van snoeien tot standplaatsverbetering, met de boom altijd op de eerste plaats."}, "S04": {"page": "index.html", "cat": "M", "why": "De boodschap blijft, maar het klinkt minder belerend tegenover een klant die ook een mooie boom wil.", "old": "— aan esthetiek hebben bomen zelf weinig.", "new": "— niet louter voor het uitzicht.", "old_i": "— aan esthetiek hebben bomen zelf weinig.", "new_i": "— niet louter voor het uitzicht."}, "S05": {"page": "index.html", "cat": "T", "why": "'Onafhankelijk' moet 'onafhankelijke' zijn (+ dubbele spatie). 'Bomenbestand centraal' is vakjargon voor een particulier; zo is meteen duidelijk dat inventarisatie ook voor grote opdrachten is.", "old": "<p>Onafhankelijk expertise,  waarbij het bomenbestand centraal staat.</p>", "new": "<p>Onafhankelijke expertise, van één boom tot een volledig bomenbestand.</p>", "old_i": "Onafhankelijk expertise,  waarbij het bomenbestand centraal staat.", "new_i": "Onafhankelijke expertise, van één boom tot een volledig bomenbestand."}, "S06": {"page": "index.html", "cat": "C", "why": "Op de dienstenpagina, in het formulier en in de footer heet deze dienst gewoon 'Stormschade'. Het label 'Urgente interventie' eronder vertelt de rest al.", "old": "<h3>Interventie bij stormschade</h3>", "new": "<h3>Stormschade</h3>", "old_i": "Interventie bij stormschade", "new_i": "Stormschade"}, "S07": {"page": "index.html", "cat": "H", "why": "'Visie' staat twee keer in één zin. En 'Zo blijft je boom gezond' volgde logisch niet uit een opsomming van wat Stamgast níet doet.", "old": "dat past niet bij de visie van Stamgast Boombeheer en heeft geen plaats binnen een duurzame visie. Zo blijft je boom gezond, veilig en mooi.", "new": "dat past niet binnen de duurzame visie van Stamgast Boombeheer. Liever gerichte zorg, zodat je boom gezond, veilig en mooi blijft.", "old_i": "dat past niet bij de visie van Stamgast Boombeheer en heeft geen plaats binnen een duurzame visie. Zo blijft je boom gezond, veilig en mooi.", "new_i": "dat past niet binnen de duurzame visie van Stamgast Boombeheer. Liever gerichte zorg, zodat je boom gezond, veilig en mooi blijft."}, "S08": {"page": "index.html", "cat": "C", "why": "Stap 1 'offerte aanvragen' en stap 3 'duidelijke offerte' spreken elkaar tegen: de offerte komt pas na het plaatsbezoek. Op de aanpakpagina heet stap 1 ook 'Neem contact op'.", "old": "<h4>Offerte aanvragen</h4><p>Online, per mail of telefoon", "new": "<h4>Contact opnemen</h4><p>Online, per mail of telefoon", "old_i": "<h4>Offerte aanvragen</h4><p>Online, per mail of telefoon", "new_i": "<h4>Contact opnemen</h4><p>Online, per mail of telefoon"}, "S09": {"page": "index.html", "cat": "O", "why": "De vier reviews op de homepage (en op Referenties) zijn nog placeholders. Vervangen door echte Google-reviews vóór lancering. (In deze tekst ook: 'Dat eerlijk advies' → 'Dat eerlijke advies'.)", "old": "<p class=\"t-tekst\">\"Lode heeft onze oude eik", "new": null, "old_i": "<p class=\"t-tekst\">\"Lode heeft onze oude eik", "new_i": null}, "S10": {"page": "over-lode.html", "cat": "M", "why": "Een superlatief over jezelf past niet bij het bescheiden, eerlijke merk. De tijdlijn eronder bewijst de gedrevenheid al.", "old": "Hoe Lode uitgroeide tot een van de meest gedreven boomverzorgers in de regio.", "new": "Hoe Lode stap voor stap zijn vak leerde, en zijn eigen visie ontwikkelde.", "old_i": "Hoe Lode uitgroeide tot een van de meest gedreven boomverzorgers in de regio.", "new_i": "Hoe Lode stap voor stap zijn vak leerde, en zijn eigen visie ontwikkelde."}, "S11": {"page": "over-lode.html", "cat": "C", "why": "De rest van de tijdlijn staat in de tegenwoordige tijd ('behaalt', 'kiest', 'start'). Deze eerste stap stond als enige in de verleden tijd.", "old": "Lode bouwde jarenlange ervaring op in loondienst, waarbij hij het vak van alle kanten leerde kennen", "new": "Lode bouwt jarenlange ervaring op in loondienst en leert het vak van alle kanten kennen", "old_i": "Lode bouwde jarenlange ervaring op in loondienst, waarbij hij het vak van alle kanten leerde kennen", "new_i": "Lode bouwt jarenlange ervaring op in loondienst en leert het vak van alle kanten kennen"}, "S12": {"page": "over-lode.html", "cat": "H", "why": "'Waar we zeer voorzichtig mee om moeten gaan' is een omslachtige bijzin. Zo wordt meteen uitgelegd wat een veterane boom is.", "old": "Het VETCERT-certificaat staat garant voor een uitgebreide kennis over veterane bomen, waar we zeer voorzichtig mee om moeten gaan.", "new": "Het VETCERT-certificaat staat garant voor grondige kennis van veterane bomen: oude, kwetsbare bomen die bijzondere zorg vragen.", "old_i": "Het VETCERT-certificaat staat garant voor een uitgebreide kennis over veterane bomen, waar we zeer voorzichtig mee om moeten gaan.", "new_i": "Het VETCERT-certificaat staat garant voor grondige kennis van veterane bomen: oude, kwetsbare bomen die bijzondere zorg vragen."}, "S13": {"page": "over-lode.html", "cat": "T", "why": "Een zin die met 'Want' begint, leest los. Aanhalingstekens gelijkgetrokken met de rest van de site (“ ”).", "old": "Want het is een misvatting dat elke boom \"verzorgd\" moet worden.", "new": "Het is een misvatting dat elke boom “verzorgd” moet worden.", "old_i": "Want het is een misvatting dat elke boom \"verzorgd\" moet worden.", "new_i": "Het is een misvatting dat elke boom “verzorgd” moet worden."}, "S14": {"page": "over-lode.html", "cat": "H", "why": "Afkorting 'i.f.v.' hoort niet in webtekst, en het was een zin zonder werkwoord.", "old": "Gerichte keuzes i.f.v. de toekomst van de boom en zijn omgeving.", "new": "We maken gerichte keuzes in functie van de toekomst van de boom en zijn omgeving.", "old_i": "Gerichte keuzes i.f.v. de toekomst van de boom en zijn omgeving.", "new_i": "We maken gerichte keuzes in functie van de toekomst van de boom en zijn omgeving."}, "S15": {"page": "over-lode.html", "cat": "H", "why": "'Vooropgestelde eindresultaat gegarandeerd blijft' is formeel. 'Zelf op de werf' laat ook ruimte voor de collega's die op de aanpakpagina vermeld worden.", "old": "Lode staat telkens zelf in voor de uitvoering, zodat het vooropgestelde eindresultaat gegarandeerd blijft.", "new": "Lode staat telkens zelf op de werf, zodat je krijgt wat vooraf is afgesproken.", "old_i": "Lode staat telkens zelf in voor de uitvoering, zodat het vooropgestelde eindresultaat gegarandeerd blijft.", "new_i": "Lode staat telkens zelf op de werf, zodat je krijgt wat vooraf is afgesproken."}, "S16": {"page": "over-lode.html", "cat": "T", "why": "Spelling: na een toonloze e komt geen apostrof (Lodes, zoals ook 'Stamgasts' op de dienstenpagina).", "old": "kwaliteit en veiligheid van Lode's werk", "new": "kwaliteit en veiligheid van Lodes werk", "old_i": "kwaliteit en veiligheid van Lode's werk", "new_i": "kwaliteit en veiligheid van Lodes werk"}, "S17": {"page": "over-lode.html", "cat": "C", "why": "'Oude' en 'veterane' zeggen hetzelfde. Het ETW-certificaat vermeldt het jaartal, VETCERT nog niet (de tijdlijn zegt 2023).", "old": "Specifieke expertise voor oude en waardevolle veterane bomen. Lode kan deze bijzondere bomen de gespecialiseerde zorg geven die ze verdienen.", "new": "Specifieke expertise in oude, waardevolle bomen. Lode kan deze bijzondere bomen de gespecialiseerde zorg geven die ze verdienen. Behaald in 2023.", "old_i": "Specifieke expertise voor oude en waardevolle veterane bomen. Lode kan deze bijzondere bomen de gespecialiseerde zorg geven die ze verdienen.", "new_i": "Specifieke expertise in oude, waardevolle bomen. Lode kan deze bijzondere bomen de gespecialiseerde zorg geven die ze verdienen. Behaald in 2023."}, "S18": {"page": "diensten.html", "cat": "H", "why": "'Briefing' is bureautaal en 'de klant' botst met de je-vorm. 'Met de boom centraal' staat ook al op de Over Lode-pagina en elders. De meta-omschrijving zegt al 'eerlijk advies vooraf'.", "old": "— altijd met de boom centraal en met een voorafgaande briefing naar de klant.", "new": "— altijd met eerlijk advies vooraf.", "old_i": "— altijd met de boom centraal en met een voorafgaande briefing naar de klant.", "new_i": "— altijd met eerlijk advies vooraf."}, "S19": {"page": "diensten.html", "cat": "H", "why": "De titel noemt ook inspectie & inventarisatie, maar de tekst ging alleen over advies. 'Verkoopsdoeleinden' en de inversie 'zal Lode je dit' zijn stroef.", "old": "<p>Onafhankelijk advies zonder verkoopsdoeleinden. Ook als er niets hoeft te gebeuren zal Lode je dit eerlijk zeggen.</p>", "new": "<p>Onafhankelijk advies, zonder iets te willen verkopen. Van één boom tot een volledig bomenbestand. Moet er niets gebeuren? Dan zegt Lode je dat eerlijk.</p>", "old_i": "Onafhankelijk advies zonder verkoopsdoeleinden. Ook als er niets hoeft te gebeuren zal Lode je dit eerlijk zeggen.", "new_i": "Onafhankelijk advies, zonder iets te willen verkopen. Van één boom tot een volledig bomenbestand. Moet er niets gebeuren? Dan zegt Lode je dat eerlijk."}, "S20": {"page": "diensten.html", "cat": "H", "why": "'Terugkoppelen' betekent eigenlijk 'verslag uitbrengen'. Hier is 'afstemmen' bedoeld.", "old": "koppelt dit terug aan jouw wensen", "new": "stemt die af op jouw wensen", "old_i": "koppelt dit terug aan jouw wensen", "new_i": "stemt die af op jouw wensen"}, "S21": {"page": "diensten.html", "cat": "M", "why": "'Key' en twee uitroeptekens passen niet bij de rustige toon van de site, en de tekst legde niet uit wat de dienst inhoudt. Voorbeeld komt uit het project in Gent bij Referenties. Laat Lode checken of de omschrijving klopt.", "old": "<p>Goede groeiomstandigheden voor je boom zijn key! Alles begint onder de grond, en net daar gaat onvoldoende aandacht naar!</p>", "new": "<p>Een gezonde boom begint onder de grond, en net daar gaat vaak te weinig aandacht naar. Lode verbetert de groeiplaats, bijvoorbeeld door verharding weg te halen en de wortels meer ruimte te geven.</p>", "old_i": "Goede groeiomstandigheden voor je boom zijn key! Alles begint onder de grond, en net daar gaat onvoldoende aandacht naar!", "new_i": "Een gezonde boom begint onder de grond, en net daar gaat vaak te weinig aandacht naar. Lode verbetert de groeiplaats, bijvoorbeeld door verharding weg te halen en de wortels meer ruimte te geven."}, "S22": {"page": "diensten.html", "cat": "T", "why": "'Maar alsnog kunnen behouden' is een onvolledige zin (wie heeft hem kunnen behouden?).", "old": "Een beuk van meer dan een eeuw oud, afgeschreven door anderen, maar alsnog kunnen behouden. En de boom staat er nog steeds, gezond en veilig!", "new": "Een beuk van meer dan een eeuw oud, door anderen al afgeschreven, en toch behouden. De boom staat er vandaag nog steeds, gezond en veilig.", "old_i": "Een beuk van meer dan een eeuw oud, afgeschreven door anderen, maar alsnog kunnen behouden. En de boom staat er nog steeds, gezond en veilig!", "new_i": "Een beuk van meer dan een eeuw oud, door anderen al afgeschreven, en toch behouden. De boom staat er vandaag nog steeds, gezond en veilig."}, "S23": {"page": "diensten.html", "cat": "C", "why": "Overal elders spreekt de site over 'visie'. Eén woord aanhouden maakt het merk herkenbaarder.", "old": "binnen onze filosofie.", "new": "binnen onze visie.", "old_i": "binnen onze filosofie.", "new_i": "binnen onze visie."}, "S24": {"page": "diensten.html", "cat": "H", "why": "'Onnodig' en 'zonder dat het de boom ten goede komt' zeggen twee keer hetzelfde.", "old": "Onnodige snoeiwerken uitvoeren, zonder dat het de boom ten goede komt", "new": "Snoeien zonder dat de boom er beter van wordt", "old_i": "Onnodige snoeiwerken uitvoeren, zonder dat het de boom ten goede komt", "new_i": "Snoeien zonder dat de boom er beter van wordt"}, "S25": {"page": "diensten.html", "cat": "H", "why": "'Dienen ... te worden' en 'etc.' zijn stijf. Bouwaanvraag en omgevingsvergunning zijn in Vlaanderen vandaag hetzelfde.", "old": "Werfbegeleiding zonder vooronderzoek. Bomen dienen mee opgenomen en bekeken te worden bij bouwaanvragen, omgevingsvergunningen, etc.", "new": "Werfbegeleiding zonder vooronderzoek: bij een bouwproject of omgevingsvergunning horen bomen van bij de start mee bekeken te worden.", "old_i": "Werfbegeleiding zonder vooronderzoek. Bomen dienen mee opgenomen en bekeken te worden bij bouwaanvragen, omgevingsvergunningen, etc.", "new_i": "Werfbegeleiding zonder vooronderzoek: bij een bouwproject of omgevingsvergunning horen bomen van bij de start mee bekeken te worden."}, "S26": {"page": "aanpak.html", "cat": "H", "why": "Korter en krachtiger. 'Diepgewortelde' staat ook al in de homepage-intro.", "old": "<h1>Vakmanschap begint met eerlijkheid en een diepgewortelde passie</h1>", "new": "<h1>Vakmanschap begint met eerlijkheid</h1>", "old_i": "Vakmanschap begint met eerlijkheid en een diepgewortelde passie", "new_i": "Vakmanschap begint met eerlijkheid"}, "S27": {"page": "aanpak.html", "cat": "H", "why": "'Waarom het al dan niet belangrijk is om' is omslachtig.", "old": "en waarom het al dan niet belangrijk is om in te grijpen.", "new": "en of ingrijpen wel zinvol is.", "old_i": "en waarom het al dan niet belangrijk is om in te grijpen.", "new_i": "en of ingrijpen wel zinvol is."}, "S28": {"page": "aanpak.html", "cat": "C", "why": "De titel zegt 'door Lode zelf'; 'veelal met collega's' zwakt dat af. Zo blijft Lode de uitvoerder en zijn collega's de hulp.", "old": "Lode voert het werk zelf uit, veelal met gelijkgezinde collega's.", "new": "Lode voert het werk zelf uit, waar nodig samen met gelijkgezinde collega's.", "old_i": "Lode voert het werk zelf uit, veelal met gelijkgezinde collega's.", "new_i": "Lode voert het werk zelf uit, waar nodig samen met gelijkgezinde collega's."}, "S29": {"page": "aanpak.html", "cat": "M", "why": "'In alles wat naar buiten komt' klinkt als communicatietaal, niet als een vakman. Het is een citaat, dus laat Lode bevestigen.", "old": "Het belangrijkste voor mij is om in alles wat naar buiten komt duidelijk te maken wat boomverzorging echt is.", "new": "Het belangrijkste voor mij is dat mensen zien wat boomverzorging echt is.", "old_i": "Het belangrijkste voor mij is om in alles wat naar buiten komt duidelijk te maken wat boomverzorging echt is.", "new_i": "Het belangrijkste voor mij is dat mensen zien wat boomverzorging echt is."}, "S30": {"page": "aanpak.html", "cat": "H", "why": "Het woord 'situatie' stond er drie keer in, en de middelste zin was erg lang.", "old": "In de regel snoeien we bomen wanneer deze actief zijn, en bijgevolg in blad staan. Elke situatie is echter verschillend, waardoor er voldoende kennis is vereist om hier goed op in te spelen en, afhankelijk van de situatie, de juiste keuze te maken. Lode adviseert je op maat van jouw situatie.", "new": "Meestal snoeien we bomen wanneer ze actief zijn, dus wanneer ze in blad staan. Maar elke boom en elke situatie is anders, en de juiste keuze vraagt vakkennis. Lode adviseert je op maat.", "old_i": "In de regel snoeien we bomen wanneer deze actief zijn, en bijgevolg in blad staan. Elke situatie is echter verschillend, waardoor er voldoende kennis is vereist om hier goed op in te spelen en, afhankelijk van de situatie, de juiste keuze te maken. Lode adviseert je op maat van jouw situatie.", "new_i": "Meestal snoeien we bomen wanneer ze actief zijn, dus wanneer ze in blad staan. Maar elke boom en elke situatie is anders, en de juiste keuze vraagt vakkennis. Lode adviseert je op maat."}, "S31": {"page": "aanpak.html", "cat": "H", "why": "'Enkel en alleen' en 'geen directe actie voor nodig' zijn omslachtig.", "old": "Absoluut! Bomen hoeven vaak niet gesnoeid te worden, waardoor het geregeld enkel en alleen bij advies blijft. Je kan bij Lode terecht voor zowat alle vragen over bomen, ook als hier geen directe actie voor nodig is.", "new": "Absoluut. Vaak hoeft een boom niet gesnoeid te worden en blijft het bij advies. Je kan bij Lode terecht met zowat alle vragen over bomen, ook als er niets moet gebeuren.", "old_i": "Absoluut! Bomen hoeven vaak niet gesnoeid te worden, waardoor het geregeld enkel en alleen bij advies blijft. Je kan bij Lode terecht voor zowat alle vragen over bomen, ook als hier geen directe actie voor nodig is.", "new_i": "Absoluut. Vaak hoeft een boom niet gesnoeid te worden en blijft het bij advies. Je kan bij Lode terecht met zowat alle vragen over bomen, ook als er niets moet gebeuren."}, "S32": {"page": "aanpak.html", "cat": "C", "why": "Vraag zegt 'gemeentes', antwoord 'gemeenten'. Eén vorm aanhouden.", "old": "Werkt Stamgast ook voor bedrijven, gemeentes of vzw's?", "new": "Werkt Stamgast ook voor bedrijven, gemeenten of vzw's?", "old_i": "Werkt Stamgast ook voor bedrijven, gemeentes of vzw's?", "new_i": "Werkt Stamgast ook voor bedrijven, gemeenten of vzw's?"}, "S33": {"page": "aanpak.html", "cat": "C", "why": "De vraag noemt bedrijven en vzw's, maar het antwoord niet. Zo sluit het één op één aan.", "old": "Ja, Lode werkt zowel voor particulieren als voor professionele klanten, steden of gemeenten.", "new": "Ja. Lode werkt voor particulieren, bedrijven, vzw's, steden en gemeenten.", "old_i": "Ja, Lode werkt zowel voor particulieren als voor professionele klanten, steden of gemeenten.", "new_i": "Ja. Lode werkt voor particulieren, bedrijven, vzw's, steden en gemeenten."}, "S34": {"page": "aanpak.html", "cat": "H", "why": "'En/of' is administratieve taal.", "old": "te reageren en/of ter plaatse te komen.", "new": "te reageren en ter plaatse te komen.", "old_i": "te reageren en/of ter plaatse te komen.", "new_i": "te reageren en ter plaatse te komen."}, "S35": {"page": "aanpak.html", "cat": "H", "why": "'Deze' als verwijswoord is stijf in spreektaal-FAQ.", "old": "dan deze rigoureus te toppen.", "new": "dan hem rigoureus te toppen.", "old_i": "dan deze rigoureus te toppen.", "new_i": "dan hem rigoureus te toppen."}, "S36": {"page": "aanpak.html", "cat": "H", "why": "Idem: 'hem' is natuurlijker dan 'deze'.", "old": "Mijn boom is ziek, kunnen jullie deze verwijderen?", "new": "Mijn boom is ziek, kunnen jullie hem verwijderen?", "old_i": "Mijn boom is ziek, kunnen jullie deze verwijderen?", "new_i": "Mijn boom is ziek, kunnen jullie hem verwijderen?"}, "S37": {"page": "aanpak.html", "cat": "H", "why": "Vlotter, en 'hoeft niet omwille van zwammen te worden geveld' klonk absoluut: soms moet het wel. 'Zowel naar ... toe' is een omslachtige constructie.", "old": "Een boom wordt niet zomaar “ziek”, en hoeft niet omwille van zwammen of andere aantastingen te worden geveld. Lode beoordeelt je boom met een ruime blik en geeft je gericht advies, zowel naar veiligheid als toekomstverwachting toe.", "new": "Een boom is niet zomaar “ziek”, en een zwam of andere aantasting betekent niet automatisch dat hij geveld moet worden. Lode bekijkt je boom in zijn geheel en geeft je gericht advies over veiligheid en toekomstverwachting.", "old_i": "Een boom wordt niet zomaar “ziek”, en hoeft niet omwille van zwammen of andere aantastingen te worden geveld. Lode beoordeelt je boom met een ruime blik en geeft je gericht advies, zowel naar veiligheid als toekomstverwachting toe.", "new_i": "Een boom is niet zomaar “ziek”, en een zwam of andere aantasting betekent niet automatisch dat hij geveld moet worden. Lode bekijkt je boom in zijn geheel en geeft je gericht advies over veiligheid en toekomstverwachting."}, "S38": {"page": "referenties.html", "cat": "O", "why": "Klopt pas zodra de echte Google-reviews er staan. Met de huidige placeholders is dit een claim die niet te controleren valt.", "old": "<span><b>Google Reviews</b><br/>Elke klant gaf 5 sterren</span>", "new": null, "old_i": "<b>Google Reviews</b><br/>Elke klant gaf 5 sterren", "new_i": null}, "S39": {"page": "referenties.html", "cat": "C", "why": "Het project in Nieuw-Zeeland dateert van 2020 (zie tijdlijn Over Lode), dus 'maanden' klopt niet.", "old": "de projecten die Lode de voorbije maanden uitvoerde.", "new": "de projecten die Lode de voorbije jaren uitvoerde.", "old_i": "de projecten die Lode de voorbije maanden uitvoerde.", "new_i": "de projecten die Lode de voorbije jaren uitvoerde."}, "S40": {"page": "referenties.html", "cat": "T", "why": "Spelling met koppelteken, zoals op de Over Lode-pagina.", "old": "<i class=\"ti ti-map-pin\"></i> Nieuw Zeeland</div>", "new": "<i class=\"ti ti-map-pin\"></i> Nieuw-Zeeland</div>", "old_i": "<i class=\"ti ti-map-pin\"></i> Nieuw Zeeland</div>", "new_i": "<i class=\"ti ti-map-pin\"></i> Nieuw-Zeeland</div>"}, "S41": {"page": "referenties.html", "cat": "C", "why": "Zelfde notatie als in de alt-tekst van de foto ('Heidelberg, Duitsland').", "old": "<i class=\"ti ti-map-pin\"></i> Heidelberg – Duitsland</div>", "new": "<i class=\"ti ti-map-pin\"></i> Heidelberg, Duitsland</div>", "old_i": "<i class=\"ti ti-map-pin\"></i> Heidelberg – Duitsland</div>", "new_i": "<i class=\"ti ti-map-pin\"></i> Heidelberg, Duitsland</div>"}, "S42": {"page": "referenties.html", "cat": "C", "why": "Lidwoord toegevoegd, zoals in de andere projecttitels ('in een beschermde parktuin', 'van een krulwilg').", "old": "Dode ceder verwijderen met behulp van telekraan", "new": "Dode ceder verwijderen met een telekraan", "old_i": "Dode ceder verwijderen met behulp van telekraan", "new_i": "Dode ceder verwijderen met een telekraan"}, "S43": {"page": "referenties.html", "cat": "C", "why": "Kleine i, zoals in het formulier en de footer.", "old": "<div class=\"project-dienst\">Advies &amp; Inspectie</div>", "new": "<div class=\"project-dienst\">Advies &amp; inspectie</div>", "old_i": "Advies &amp; Inspectie", "new_i": "Advies &amp; inspectie"}, "S44": {"page": "referenties.html", "cat": "C", "why": "Telegramstijl → volledige titel, zoals de andere projecten.", "old": "Visuele boomcontrole stadspark", "new": "Visuele boomcontrole in een stadspark", "old_i": "Visuele boomcontrole stadspark", "new_i": "Visuele boomcontrole in een stadspark"}, "S45": {"page": "referenties.html", "cat": "C", "why": "Zelfde opbouw als 'Dode ceder verwijderen ...'.", "old": "Verwijderen uitgescheurde wilg na stormschade", "new": "Uitgescheurde wilg verwijderen na stormschade", "old_i": "Verwijderen uitgescheurde wilg na stormschade", "new_i": "Uitgescheurde wilg verwijderen na stormschade"}, "S46": {"page": "referenties.html", "cat": "C", "why": "Telegramstijl en een opeenstapeling van zelfstandige naamwoorden.", "old": "Veiligheidsanalyse en in kaart brengen bomenbestand schooldomein", "new": "Veiligheidsanalyse van het bomenbestand op een schooldomein", "old_i": "Veiligheidsanalyse en in kaart brengen bomenbestand schooldomein", "new_i": "Veiligheidsanalyse van het bomenbestand op een schooldomein"}, "S47": {"page": "referenties.html", "cat": "C", "why": "Lidwoord toegevoegd, zoals in de alt-tekst van de foto.", "old": "<div class=\"project-titel\">Reductie beschermde zwarte notelaar</div>", "new": "<div class=\"project-titel\">Reductie van een beschermde zwarte notelaar</div>", "old_i": "Reductie beschermde zwarte notelaar", "new_i": "Reductie van een beschermde zwarte notelaar"}, "S48": {"page": "referenties.html", "cat": "O", "why": "Belangrijk: deze zin klopt pas als de placeholder-reviews vervangen zijn door echte. Zo niet: zin weglaten tot dan.", "old": "<p class=\"sectie-sub\">Rechtstreeks overgenomen uit Google Reviews.</p>", "new": null, "old_i": "Rechtstreeks overgenomen uit Google Reviews.", "new_i": null}, "S49": {"page": "contact.html", "cat": "C", "why": "De opties zeggen 'Niet dringend' en 'Dringend', en het privacybeleid spreekt over 'hoe dringend uw vraag is'. 'Je vraag' sluit aan bij de je-vorm.", "old": "<label for=\"urgentie\">Hoe urgent is de vraag?</label>", "new": "<label for=\"urgentie\">Hoe dringend is je vraag?</label>", "old_i": "Hoe urgent is de vraag?", "new_i": "Hoe dringend is je vraag?"}, "S50": {"page": "contact.html", "cat": "C", "why": "Standplaatsverbetering staat op de dienstenpagina, maar kan niet aangevinkt worden in het formulier.", "old": "<label class=\"dienst-checkbox\"><input type=\"checkbox\" name=\"Dienst\" value=\"Stormschade\"/> Stormschade</label>", "new": "<label class=\"dienst-checkbox\"><input type=\"checkbox\" name=\"Dienst\" value=\"Stormschade\"/> Stormschade</label>\n<label class=\"dienst-checkbox\"><input type=\"checkbox\" name=\"Dienst\" value=\"Standplaatsverbetering\"/> Standplaatsverbetering</label>", "old_i": "(nieuw toegevoegd)", "new_i": "Standplaatsverbetering"}}, NAMEN={"index.html": "Home", "over-lode.html": "Over Lode", "diensten.html": "Diensten", "aanpak.html": "Aanpak", "referenties.html": "Referenties", "contact.html": "Contact"}, CATS={"T": "Taalfout", "C": "Consistentie", "H": "Helderheid", "M": "Toon & merk", "O": "Opmerking"}, TOT=50, KEY='stamgast-tekstsuggesties-2026-10';
+  var st={}; try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function bewaar(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+  var spans=[].slice.call(document.querySelectorAll('.sg')), ids=spans.map(function(s){return s.dataset.id});
+  var oud=false, pop=document.getElementById('svPop'), card=document.getElementById('svCard');
+  function txt(h){var d=document.createElement('div');d.innerHTML=h;return (d.textContent||'').replace(/\s+/g,' ').trim()}
+  function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  function woordDiff(a,b){
+    var A=a.split(/(\s+)/),B=b.split(/(\s+)/),n=A.length,m=B.length,L=[];
+    for(var i=0;i<=n;i++){L[i]=[];for(var j=0;j<=m;j++)L[i][j]=0}
+    for(i=n-1;i>=0;i--)for(j=m-1;j>=0;j--)L[i][j]=A[i]===B[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+    var o='',nw='';i=0;j=0;
+    while(i<n&&j<m){if(A[i]===B[j]){o+=esc(A[i]);nw+=esc(B[j]);i++;j++}else if(L[i+1][j]>=L[i][j+1]){o+='<del>'+esc(A[i++])+'</del>'}else{nw+='<ins>'+esc(B[j++])+'</ins>'}}
+    while(i<n)o+='<del>'+esc(A[i++])+'</del>';while(j<m)nw+='<ins>'+esc(B[j++])+'</ins>';
+    return [o.replace(/<\/del><del>/g,''),nw.replace(/<\/ins><ins>/g,'')];
+  }
+  function render(){
+    var klaar=0;
+    spans.forEach(function(s){
+      var d=D[s.dataset.id],x=st[s.dataset.id]||{};
+      s.classList.remove('st-ok','st-nee','st-eigen','st-gezien');
+      if(x.a){s.classList.add('st-'+x.a)} else if(x.opm){s.classList.add('st-gezien')}
+      if(d.new_i===null) return;
+      var h=d.new_i;
+      if(oud||x.a==='nee') h=d.old_i==='(nieuw toegevoegd)'?'<s>'+esc(d.new_i)+'</s>':d.old_i;
+      else if(x.a==='eigen'&&x.eigen) h=esc(x.eigen);
+      if(s.innerHTML!==h) s.innerHTML=h;
+    });
+    Object.keys(D).forEach(function(k){var x=st[k];if(x&&(x.a||(D[k].new_i===null&&x.opm!==undefined)))klaar++});
+    document.getElementById('svTeller').textContent=klaar+' / '+TOT+' beoordeeld (alle pagina’s)';
+  }
+  function open(id){
+    var d=D[id],x=st[id]||{},i=ids.indexOf(id), h='';
+    h+='<div class="sv-kop"><span class="sv-id">'+id+'</span><span class="sv-cat '+d.cat+'">'+CATS[d.cat]+'</span><button class="sv-x" data-k="sluit" aria-label="Sluiten">×</button></div>';
+    if(d.new_i===null){
+      h+='<div class="sv-lbl">Opmerking</div><div class="sv-blok waarom">'+esc(d.why)+'</div>';
+      h+='<div class="sv-lbl">Jouw reactie (optioneel)</div><textarea id="svOpm" placeholder="bv. ok, doe ik later / weglaten">'+esc(x.opm||'')+'</textarea>';
+      h+='<div class="sv-acties"><button data-a="gezien" class="aan">Gezien</button></div>';
+    } else {
+      var df=woordDiff(txt(d.old_i),txt(d.new_i));
+      if(d.old_i==='(nieuw toegevoegd)') df=['<i>(nog niet aanwezig)</i>','<ins>'+esc(d.new_i)+'</ins>'];
+      h+='<div class="sv-lbl">Huidige tekst</div><div class="sv-blok oud">'+df[0]+'</div>';
+      h+='<div class="sv-lbl">Voorstel</div><div class="sv-blok nieuw">'+df[1]+'</div>';
+      h+='<div class="sv-lbl">Waarom</div><div class="sv-blok waarom">'+esc(d.why)+'</div>';
+      h+='<div class="sv-acties">'+
+        '<button data-a="ok" class="'+(x.a==='ok'?'aan':'')+'">✓ Akkoord</button>'+
+        '<button data-a="nee" class="'+(x.a==='nee'?'aan':'')+'">✗ Huidige behouden</button>'+
+        '<button data-a="eigen" class="'+(x.a==='eigen'?'aan':'')+'">✎ Eigen versie</button></div>';
+      h+='<div id="svEigenW" style="display:'+(x.a==='eigen'?'block':'none')+'"><div class="sv-lbl">Eigen versie</div><textarea id="svEigen">'+esc(x.eigen||txt(d.new_i))+'</textarea></div>';
+      h+='<div class="sv-lbl">Opmerking (optioneel)</div><textarea id="svOpm" style="min-height:44px">'+esc(x.opm||'')+'</textarea>';
+    }
+    h+='<div class="sv-nav"><button data-k="vorige" '+(i<=0?'style="visibility:hidden"':'')+'>← Vorige</button><button data-k="volgende">'+(i<ids.length-1?'Volgende →':'Sluiten')+'</button></div>';
+    card.innerHTML=h; card.dataset.id=id; pop.classList.add('open');
+    var s=document.querySelector('.sg[data-id="'+id+'"]'); if(s) s.scrollIntoView({block:'center',behavior:'smooth'});
+  }
+  function opslaan(){
+    var id=card.dataset.id; if(!id||!pop.classList.contains('open'))return;
+    var x=st[id]||{}, o=document.getElementById('svOpm'), e=document.getElementById('svEigen');
+    if(o) x.opm=o.value.trim(); if(e&&x.a==='eigen') x.eigen=e.value.trim();
+    if(D[id].new_i===null && x.opm===undefined) x.opm='';
+    st[id]=x; bewaar(); render();
+  }
+  function sluit(){opslaan();pop.classList.remove('open')}
+  card.addEventListener('click',function(ev){
+    var b=ev.target.closest('button'); if(!b)return; var id=card.dataset.id, x=st[id]||{};
+    if(b.dataset.a){
+      if(b.dataset.a==='gezien'){x.opm=(document.getElementById('svOpm').value||'').trim();st[id]=x;bewaar();render();return sluit()}
+      x.a=(x.a===b.dataset.a)?undefined:b.dataset.a; st[id]=x;
+      card.querySelectorAll('.sv-acties button').forEach(function(k){k.classList.toggle('aan',k.dataset.a===x.a)});
+      document.getElementById('svEigenW').style.display=x.a==='eigen'?'block':'none';
+      opslaan(); return;
+    }
+    if(b.dataset.k==='sluit') return sluit();
+    var i=ids.indexOf(id);
+    if(b.dataset.k==='vorige'){opslaan();open(ids[i-1])}
+    if(b.dataset.k==='volgende'){opslaan(); i<ids.length-1?open(ids[i+1]):sluit()}
+  });
+  card.addEventListener('input',function(){opslaan()});
+  pop.addEventListener('click',function(e){if(e.target===pop)sluit()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&pop.classList.contains('open'))sluit()});
+  spans.forEach(function(s){
+    function act(e){e.preventDefault();e.stopPropagation();open(s.dataset.id)}
+    s.addEventListener('click',act,true);
+    s.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')act(e)});
+  });
+  document.getElementById('svToggle').onclick=function(){
+    oud=!oud; document.body.classList.toggle('toon-oud',oud);
+    this.textContent=oud?'Toon voorstellen':'Toon huidige tekst'; render();
+  };
+  document.getElementById('svExport').onclick=function(){
+    var r=[],pag='';
+    Object.keys(D).forEach(function(k){
+      var d=D[k],x=st[k]||{},l;
+      if(d.page!==pag){pag=d.page;r.push('\n## '+NAMEN[pag])}
+      if(d.new_i===null) l=k+' OPMERKING'+(x.opm!==undefined?' — gezien':' — nog niet bekeken');
+      else l=k+' '+(x.a==='ok'?'AKKOORD':x.a==='nee'?'HUIDIGE BEHOUDEN':x.a==='eigen'?'EIGEN VERSIE: "'+(x.eigen||'')+'"':'— nog niet beoordeeld');
+      if(x.opm) l+='\n    opmerking: '+x.opm;
+      r.push(l);
+    });
+    var t='Tekstsuggesties Stamgast — beslissingen'+r.join('\n');
+    card.dataset.id=''; card.innerHTML='<div class="sv-kop"><span class="sv-id">Beslissingen exporteren</span><button class="sv-x" data-k="sluit">×</button></div>'+
+      '<p style="margin:0 0 10px">Kopieer deze lijst en plak ze in de chat, dan voer ik alles door.</p><div class="sv-export"><pre id="svTxt"></pre></div>'+
+      '<div class="sv-acties"><button id="svKopieer">Kopiëren</button></div>';
+    document.getElementById('svTxt').textContent=t; pop.classList.add('open');
+    document.getElementById('svKopieer').onclick=function(){var me=this;
+      (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){me.textContent='Gekopieerd ✓'},function(){
+        var rg=document.createRange();rg.selectNodeContents(document.getElementById('svTxt'));var sl=getSelection();sl.removeAllRanges();sl.addRange(rg);me.textContent='Geselecteerd — Ctrl/Cmd+C'})};
+  };
+  render();
+})();
+</script>
+
+</body>
+</html>
