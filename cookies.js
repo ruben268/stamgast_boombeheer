@@ -132,7 +132,7 @@
     melding.setAttribute('aria-label', 'Cookietoestemming');
     melding.innerHTML =
       '<h2>Mogen we cookies gebruiken?</h2>' +
-      '<p>Met uw toestemming gebruiken we cookies van Google om te zien hoe bezoekers de website gebruiken en om onze advertenties te meten. ' +
+      '<p>Met jouw toestemming gebruiken we cookies van Google om te zien hoe bezoekers de website gebruiken en om onze advertenties te meten. ' +
       'Meer info in ons <a href="cookiebeleid.html">cookiebeleid</a>.</p>' +
       '<div class="ck-knoppen">' +
       '<button type="button" class="ck-knop ck-knop-grijs" data-ck="aanpassen">Aanpassen</button>' +
@@ -160,8 +160,8 @@
     achter.innerHTML =
       '<div class="ck-paneel" role="dialog" aria-modal="true" aria-labelledby="ck-titel">' +
       '<h2 id="ck-titel">Cookie-instellingen</h2>' +
-      '<p>Kies welke cookies u toestaat. U kunt uw keuze altijd wijzigen via "Cookie-instellingen" onderaan elke pagina.</p>' +
-      '<div class="ck-cat"><div><strong>Noodzakelijk</strong><span>Onthoudt uw cookiekeuze. Altijd actief.</span></div>' +
+      '<p>Kies welke cookies je toestaat. Je kan je keuze altijd wijzigen via "Cookie-instellingen" onderaan elke pagina.</p>' +
+      '<div class="ck-cat"><div><strong>Noodzakelijk</strong><span>Onthoudt je cookiekeuze. Altijd actief.</span></div>' +
       '<label class="ck-schakel"><input type="checkbox" checked disabled aria-label="Noodzakelijk, altijd actief"/><i></i></label></div>' +
       '<div class="ck-cat"><div><strong>Statistieken</strong><span>Google Analytics: inzicht in hoe bezoekers de website gebruiken.</span></div>' +
       '<label class="ck-schakel"><input type="checkbox" id="ck-stat" aria-label="Statistieken"' + (huidig.statistieken ? ' checked' : '') + '/><i></i></label></div>' +
