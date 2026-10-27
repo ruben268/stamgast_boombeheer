@@ -1,0 +1,166 @@
+<!-- ===== Controlelaag voor Lode (enkel in -controle.html) ===== -->
+<style>
+  .faq-antwoord{max-height:none!important;padding-bottom:18px!important}
+  .wz{background:rgba(143,214,165,.32);box-shadow:inset 0 -2px 0 #3fae6a;border-radius:3px;cursor:pointer;padding:0 2px;
+      -webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background .15s}
+  .wz:hover,.wz:focus{background:rgba(143,214,165,.6);outline:none}
+  .wz::after{content:attr(data-id);position:relative;top:-.7em;margin-left:3px;font:700 9px/1 Inter,sans-serif;color:#fff;background:#1e7a3f;
+      border-radius:3px;padding:2px 4px;font-style:normal}
+  .wz:empty::before{content:"−";font-weight:700;color:#b23b3b;padding:0 2px}
+  .wz.st-ok{background:rgba(63,174,106,.12);box-shadow:inset 0 -2px 0 #9ccfb0}.wz.st-ok::after{content:attr(data-id) " ✓";background:#5c9a74}
+  .wz.st-opm{background:rgba(90,123,216,.2);box-shadow:inset 0 -2px 0 #5a7bd8}.wz.st-opm::after{content:attr(data-id) " ✎";background:#3b5bb5}
+  body.toon-oud .wz{background:rgba(240,160,140,.3);box-shadow:inset 0 -2px 0 #d08a7a}
+  body.toon-oud .wz::after{background:#a5523f}
+  body.toon-oud .wz-nieuw{text-decoration:line-through;opacity:.55}
+  body{padding-bottom:64px}
+  .lv-bar{position:fixed;left:0;right:0;bottom:0;z-index:4000;background:#1e3428;color:#fff;font:13px/1.3 Inter,sans-serif;
+      padding:9px 14px;display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap;box-shadow:0 -4px 18px rgba(0,0,0,.25)}
+  .lv-pag{display:flex;gap:4px;flex-wrap:wrap}
+  .lv-pag a{color:#cfe3d4;text-decoration:none;padding:4px 8px;border-radius:6px;white-space:nowrap}
+  .lv-pag a span{opacity:.6;font-size:11px}
+  .lv-pag a.actief,.lv-pag a:hover{background:rgba(255,255,255,.12);color:#fff}
+  .lv-ruimte{flex:1}
+  .lv-wissel{display:inline-flex;background:rgba(255,255,255,.1);border-radius:8px;padding:3px}
+  .lv-wissel button{background:none;border:0;color:#cfe3d4;border-radius:6px;padding:6px 11px;font:600 13px Inter,sans-serif;cursor:pointer}
+  .lv-wissel button.aan{background:#fff;color:#1e3428}
+  .lv-knop{background:#E85F2B;color:#fff;border:0;border-radius:7px;padding:8px 12px;font:600 13px Inter,sans-serif;cursor:pointer}
+  .lv-knop:hover{background:#cf5022}
+  .lv-hulp{background:none;border:1.5px solid rgba(255,255,255,.35);color:#fff;border-radius:50%;width:28px;height:28px;font:700 13px Inter,sans-serif;cursor:pointer}
+  .lv-pop{position:fixed;inset:0;background:rgba(15,25,18,.55);z-index:5000;display:none;align-items:center;justify-content:center;padding:16px}
+  .lv-pop.open{display:flex}
+  .lv-card{background:#fff;color:#1a1a1a;border-radius:14px;max-width:560px;width:100%;max-height:calc(100vh - 32px);overflow:auto;padding:22px;
+      font:14px/1.55 Inter,sans-serif;box-shadow:0 24px 70px rgba(0,0,0,.4)}
+  .lv-card h3{font-size:18px;margin:0 0 10px}
+  .lv-card p{margin:0 0 10px}
+  .lv-kop{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+  .lv-id{font-weight:700;font-size:13px}
+  .lv-x{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:#888;line-height:1}
+  .lv-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#6b7280;margin:12px 0 5px}
+  .lv-blok{border-radius:8px;padding:10px 13px}
+  .lv-blok.oud{background:#fbeee9;color:#5b3a30}.lv-blok.nieuw{background:#eaf5ec;color:#1f3d2a}.lv-blok.waarom{background:#f5f5f2;color:#333}
+  .lv-blok del{background:#f3cfc3;text-decoration:line-through}.lv-blok ins{background:#c6e6cd;text-decoration:none;font-weight:600}
+  .lv-blok.waarom p{margin:0}.lv-blok.waarom p+p{margin-top:8px;padding-top:8px;border-top:1px solid #e6e6e0}
+  .lv-acties{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .lv-acties button{border:1.5px solid #d6d6d0;background:#fff;border-radius:8px;padding:8px 13px;font:600 13px Inter,sans-serif;cursor:pointer;color:#222}
+  .lv-acties button.aan{background:#2A5C3F;border-color:#2A5C3F;color:#fff}
+  .lv-card textarea{width:100%;box-sizing:border-box;border:1.5px solid #d6d6d0;border-radius:8px;padding:9px 11px;font:14px/1.5 Inter,sans-serif;min-height:60px}
+  .lv-nav{display:flex;justify-content:space-between;margin-top:16px}
+  .lv-nav button{background:none;border:0;color:#2A5C3F;font:600 13px Inter,sans-serif;cursor:pointer;padding:4px 0}
+  .lv-export pre{white-space:pre-wrap;background:#f5f5f2;border-radius:8px;padding:12px;font:12.5px/1.5 ui-monospace,Menlo,monospace;max-height:50vh;overflow:auto}
+  .lv-groen{display:inline-block;background:rgba(143,214,165,.45);box-shadow:inset 0 -2px 0 #3fae6a;padding:0 4px;border-radius:3px}
+  @media(max-width:700px){.lv-bar{font-size:12px;padding:7px 10px;gap:6px}.lv-teller,.lv-ruimte{display:none}
+    .lv-pag{flex-wrap:nowrap;overflow-x:auto;width:100%}.lv-knop{flex:1}}
+</style>
+
+<div class="lv-bar" role="region" aria-label="Wijzigingen bekijken">
+  <nav class="lv-pag">{{LINKS}}</nav>
+  <span class="lv-ruimte"></span>
+  <span class="lv-teller" id="lvTeller"></span>
+  <div class="lv-wissel" role="group" aria-label="Versie"><button type="button" data-v="oud">Oude versie</button><button type="button" data-v="nieuw" class="aan">Nieuwe versie</button></div>
+  <button class="lv-knop" id="lvExport" type="button">Reacties doorsturen</button>
+  <button class="lv-hulp" id="lvHulp" type="button" aria-label="Uitleg">?</button>
+</div>
+<div class="lv-pop" id="lvPop"><div class="lv-card" id="lvCard"></div></div>
+
+<script>
+(function(){
+  var D={{DATA}}, NAMEN={{NAMEN}}, TOT={{TOTAAL}}, KEY='stamgast-controle-lode-2026-10';
+  var st={}; try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function bewaar(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+  var spans=[].slice.call(document.querySelectorAll('.wz')), ids=spans.map(function(s){return s.dataset.id});
+  var oud=false, pop=document.getElementById('lvPop'), card=document.getElementById('lvCard');
+  function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  function woordDiff(a,b){
+    var A=a.split(/(\s+)/),B=b.split(/(\s+)/),n=A.length,m=B.length,L=[],i,j;
+    for(i=0;i<=n;i++){L[i]=[];for(j=0;j<=m;j++)L[i][j]=0}
+    for(i=n-1;i>=0;i--)for(j=m-1;j>=0;j--)L[i][j]=A[i]===B[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+    var o='',nw='';i=0;j=0;
+    while(i<n&&j<m){if(A[i]===B[j]){o+=esc(A[i]);nw+=esc(B[j]);i++;j++}else if(L[i+1][j]>=L[i][j+1]){o+='<del>'+esc(A[i++])+'</del>'}else{nw+='<ins>'+esc(B[j++])+'</ins>'}}
+    while(i<n)o+='<del>'+esc(A[i++])+'</del>';while(j<m)nw+='<ins>'+esc(B[j++])+'</ins>';
+    return [o.replace(/<\/del>(\s*)<del>/g,'$1'),nw.replace(/<\/ins>(\s*)<ins>/g,'$1')];
+  }
+  function render(){
+    spans.forEach(function(s){
+      var d=D[s.dataset.id],x=st[s.dataset.id]||{};
+      s.classList.toggle('st-ok',!!x.ok); s.classList.toggle('st-opm',!!x.opm);
+      if(d.nieuw) return;
+      var h=oud?d.oldh:d.newh; if(s.innerHTML!==h) s.innerHTML=h;
+    });
+    var k=0; Object.keys(D).forEach(function(i){var x=st[i];if(x&&(x.ok||x.opm))k++});
+    document.getElementById('lvTeller').textContent=k+' / '+TOT+' bekeken';
+  }
+  function open(id){
+    var d=D[id],x=st[id]||{},i=ids.indexOf(id),df=woordDiff(d.old,d.new),h='';
+    if(d.nieuw) df=['<i>(bestond nog niet)</i>','<ins>'+esc(d.new)+'</ins>'];
+    if(!d.new) df[1]='<i>(geschrapt)</i>';
+    h+='<div class="lv-kop"><span class="lv-id">Wijziging '+id+'</span><button class="lv-x" data-k="sluit" aria-label="Sluiten">×</button></div>';
+    h+='<div class="lv-lbl">Was</div><div class="lv-blok oud">'+df[0]+'</div>';
+    h+='<div class="lv-lbl">Wordt</div><div class="lv-blok nieuw">'+df[1]+'</div>';
+    h+='<div class="lv-lbl">Waarom</div><div class="lv-blok waarom">'+d.rs.map(function(r){return '<p>'+esc(r)+'</p>'}).join('')+'</div>';
+    h+='<div class="lv-acties"><button data-a="ok" class="'+(x.ok?'aan':'')+'">✓ Akkoord</button></div>';
+    h+='<div class="lv-lbl">Opmerking of andere formulering (optioneel)</div><textarea id="lvOpm">'+esc(x.opm||'')+'</textarea>';
+    h+='<div class="lv-nav"><button data-k="vorige" '+(i<=0?'style="visibility:hidden"':'')+'>← Vorige</button><button data-k="volgende">'+(i<ids.length-1?'Volgende →':'Sluiten')+'</button></div>';
+    card.innerHTML=h; card.dataset.id=id; pop.classList.add('open');
+    var s=document.querySelector('.wz[data-id="'+id+'"]'); if(s) s.scrollIntoView({block:'center',behavior:'smooth'});
+  }
+  function opslaan(){
+    var id=card.dataset.id,o=document.getElementById('lvOpm'); if(!id||!o)return;
+    var x=st[id]||{}; x.opm=o.value.trim(); st[id]=x; bewaar(); render();
+  }
+  function sluit(){opslaan();pop.classList.remove('open')}
+  card.addEventListener('click',function(ev){
+    var b=ev.target.closest('button'); if(!b)return; var id=card.dataset.id;
+    if(b.dataset.a==='ok'){var x=st[id]||{};x.ok=!x.ok;st[id]=x;b.classList.toggle('aan',x.ok);opslaan();return}
+    if(b.dataset.k==='sluit')return sluit();
+    var i=ids.indexOf(id);
+    if(b.dataset.k==='vorige'){opslaan();open(ids[i-1])}
+    if(b.dataset.k==='volgende'){opslaan();i<ids.length-1?open(ids[i+1]):sluit()}
+    if(b.id==='lvStart'){try{localStorage.setItem(KEY+'-intro','1')}catch(e){}pop.classList.remove('open')}
+  });
+  card.addEventListener('input',opslaan);
+  pop.addEventListener('click',function(e){if(e.target===pop)sluit()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&pop.classList.contains('open'))sluit()});
+  spans.forEach(function(s){
+    function act(e){e.preventDefault();e.stopPropagation();open(s.dataset.id)}
+    s.addEventListener('click',act,true);
+    s.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')act(e)});
+  });
+  [].forEach.call(document.querySelectorAll('.lv-wissel button'),function(b){
+    b.onclick=function(){oud=b.dataset.v==='oud';document.body.classList.toggle('toon-oud',oud);
+      [].forEach.call(document.querySelectorAll('.lv-wissel button'),function(k){k.classList.toggle('aan',k===b)});render()};
+  });
+  function intro(){
+    card.dataset.id='';
+    card.innerHTML='<div class="lv-kop"><span class="lv-id">Nieuwe teksten voor de website</span><button class="lv-x" data-k="sluit" aria-label="Sluiten">×</button></div>'+
+      '<h3>Hoi Lode</h3>'+
+      '<p>We hebben alle teksten op de website nog eens grondig nagelezen. Elke wijziging is <span class="lv-groen">groen gemarkeerd</span>.</p>'+
+      '<p><b>Klik op een markering</b> om te zien wat er stond, wat er nu staat en waarom we dat aangepast hebben. Daar kan je ook akkoord geven of een opmerking achterlaten.</p>'+
+      '<p>Met de knop <b>Oude versie / Nieuwe versie</b> onderaan wissel je de hele pagina tussen de vroegere en de nieuwe tekst. In dezelfde balk ga je naar de andere pagina’s.</p>'+
+      '<p>Klaar? Klik op <b>Reacties doorsturen</b>, kopieer de lijst en plak die in een mail naar Ruben.</p>'+
+      '<div class="lv-acties"><button id="lvStart" class="aan">Aan de slag</button></div>';
+    pop.classList.add('open');
+  }
+  document.getElementById('lvHulp').onclick=intro;
+  document.getElementById('lvExport').onclick=function(){
+    var r=[],pag='',k=0;
+    Object.keys(D).forEach(function(i){
+      var d=D[i],x=st[i]||{}; if(d.page!==pag){pag=d.page;r.push('\n## '+NAMEN[pag])}
+      var kort=(d.new||'(geschrapt)'); if(kort.length>70) kort=kort.slice(0,67)+'…';
+      var l=i+' — '+(x.ok?'akkoord':x.opm?'opmerking':'nog niet bekeken')+'  ['+kort+']';
+      if(x.opm) l+='\n    '+x.opm.replace(/\n/g,'\n    ');
+      r.push(l);
+    });
+    var t='Reacties van Lode op de nieuwe teksten'+r.join('\n');
+    card.dataset.id=''; card.innerHTML='<div class="lv-kop"><span class="lv-id">Reacties doorsturen</span><button class="lv-x" data-k="sluit">×</button></div>'+
+      '<p>Kopieer deze lijst en plak ze in een mail naar Ruben.</p><div class="lv-export"><pre id="lvTxt"></pre></div>'+
+      '<div class="lv-acties"><button id="lvKopieer" class="aan">Kopiëren</button></div>';
+    document.getElementById('lvTxt').textContent=t; pop.classList.add('open');
+    document.getElementById('lvKopieer').onclick=function(){var me=this;
+      (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){me.textContent='Gekopieerd ✓'},function(){
+        var rg=document.createRange();rg.selectNodeContents(document.getElementById('lvTxt'));var s=getSelection();s.removeAllRanges();s.addRange(rg);me.textContent='Geselecteerd — Ctrl/Cmd+C'})};
+  };
+  render();
+  var gezien=false; try{gezien=!!localStorage.getItem(KEY+'-intro')}catch(e){}
+  if(!gezien) intro();
+})();
+</script>
