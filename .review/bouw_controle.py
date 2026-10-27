@@ -48,6 +48,11 @@ why = {f"S{i:02d}": w for i, (_, _, _, _, w) in enumerate(S, 1)}
 for sid, d in done.items():
     changes.append((d["page"], d["new"], [WAAROM_LODE.get(sid, why[sid])]))
 
+from ronde3 import R3
+for page, _, new, keys in R3:
+    if keys:
+        changes.append((page, new, [JE if k == "JE" else WAAROM_LODE.get(k, why.get(k, k)) for k in keys]))
+
 def strip(h): return html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', h))).strip()
 
 data, per_page, n = {}, {p: [] for p in PAGES}, 0
