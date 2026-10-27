@@ -8,7 +8,11 @@
       border-radius:3px;padding:2px 4px;font-style:normal}
   .wz:empty::before{content:"−";font-weight:700;color:#b23b3b;padding:0 2px}
   .wz.st-ok{background:rgba(63,174,106,.12);box-shadow:inset 0 -2px 0 #9ccfb0}.wz.st-ok::after{content:attr(data-id) " ✓";background:#5c9a74}
-  .wz.st-opm{background:rgba(90,123,216,.2);box-shadow:inset 0 -2px 0 #5a7bd8}.wz.st-opm::after{content:attr(data-id) " ✎";background:#3b5bb5}
+  .wz.st-opm{background:rgba(90,123,216,.2);box-shadow:inset 0 -2px 0 #5a7bd8}.wz.st-opm::after{content:attr(data-id) " 💬";background:#3b5bb5}
+  .wz.st-nee{background:rgba(240,160,140,.25);box-shadow:inset 0 -2px 0 #d08a7a}.wz.st-nee::after{content:attr(data-id) " ✗";background:#a5523f}
+  .wz.st-eigen{background:rgba(90,123,216,.2);box-shadow:inset 0 -2px 0 #5a7bd8}.wz.st-eigen::after{content:attr(data-id) " ✎";background:#3b5bb5}
+  .lv-acties button.aan[data-a=nee]{background:#a5523f;border-color:#a5523f}
+  .lv-acties button.aan[data-a=eigen]{background:#3b5bb5;border-color:#3b5bb5}
   body.toon-oud .wz{background:rgba(240,160,140,.3);box-shadow:inset 0 -2px 0 #d08a7a}
   body.toon-oud .wz::after{background:#a5523f}
   body.toon-oud .wz-nieuw{text-decoration:line-through;opacity:.55}
@@ -66,6 +70,7 @@
 (function(){
   var D={{DATA}}, NAMEN={{NAMEN}}, TOT={{TOTAAL}}, KEY='stamgast-controle-lode-2026-10';
   var st={}; try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  Object.keys(st).forEach(function(k){if(st[k].ok&&!st[k].a){st[k].a='ok'}delete st[k].ok});
   function bewaar(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
   var spans=[].slice.call(document.querySelectorAll('.wz')), ids=spans.map(function(s){return s.dataset.id});
   var oud=false, pop=document.getElementById('lvPop'), card=document.getElementById('lvCard');
@@ -82,11 +87,14 @@
   function render(){
     spans.forEach(function(s){
       var d=D[s.dataset.id],x=st[s.dataset.id]||{};
-      s.classList.toggle('st-ok',!!x.ok); s.classList.toggle('st-opm',!!x.opm);
-      if(d.nieuw) return;
-      var h=oud?d.oldh:d.newh; if(s.innerHTML!==h) s.innerHTML=h;
+      ['ok','nee','eigen'].forEach(function(a){s.classList.toggle('st-'+a,x.a===a)});
+      s.classList.toggle('st-opm',!x.a&&!!x.opm);
+      var h=d.newh;
+      if(oud||x.a==='nee') h=d.nieuw?'<s>'+d.newh+'</s>':d.oldh;
+      else if(x.a==='eigen'&&x.eigen) h=esc(x.eigen);
+      if(s.innerHTML!==h) s.innerHTML=h;
     });
-    var k=0; Object.keys(D).forEach(function(i){var x=st[i];if(x&&(x.ok||x.opm))k++});
+    var k=0; Object.keys(D).forEach(function(i){var x=st[i];if(x&&(x.a||x.opm))k++});
     document.getElementById('lvTeller').textContent=k+' / '+TOT+' bekeken';
   }
   function open(id){
@@ -97,20 +105,29 @@
     h+='<div class="lv-lbl">Was</div><div class="lv-blok oud">'+df[0]+'</div>';
     h+='<div class="lv-lbl">Wordt</div><div class="lv-blok nieuw">'+df[1]+'</div>';
     h+='<div class="lv-lbl">Waarom</div><div class="lv-blok waarom">'+d.rs.map(function(r){return '<p>'+esc(r)+'</p>'}).join('')+'</div>';
-    h+='<div class="lv-acties"><button data-a="ok" class="'+(x.ok?'aan':'')+'">✓ Akkoord</button></div>';
-    h+='<div class="lv-lbl">Opmerking of andere formulering (optioneel)</div><textarea id="lvOpm">'+esc(x.opm||'')+'</textarea>';
+    function knop(a,t){return '<button data-a="'+a+'" class="'+(x.a===a?'aan':'')+'">'+t+'</button>'}
+    h+='<div class="lv-acties">'+knop('ok','✓ Akkoord')+knop('nee','✗ Afwijzen (oude tekst houden)')+knop('eigen','✎ Zelf een voorstel doen')+'</div>';
+    var tekst=document.createElement('div'); tekst.innerHTML=d.newh; tekst=(tekst.textContent||'').replace(/\s+/g,' ').trim();
+    h+='<div id="lvEigenW" style="display:'+(x.a==='eigen'?'block':'none')+'"><div class="lv-lbl">Jouw voorstel — pas de tekst aan zoals jij hem wil</div><textarea id="lvEigen">'+esc(x.eigen||tekst)+'</textarea></div>';
+    h+='<div class="lv-lbl">Opmerking (optioneel)</div><textarea id="lvOpm" style="min-height:44px">'+esc(x.opm||'')+'</textarea>';
     h+='<div class="lv-nav"><button data-k="vorige" '+(i<=0?'style="visibility:hidden"':'')+'>← Vorige</button><button data-k="volgende">'+(i<ids.length-1?'Volgende →':'Sluiten')+'</button></div>';
     card.innerHTML=h; card.dataset.id=id; pop.classList.add('open');
     var s=document.querySelector('.wz[data-id="'+id+'"]'); if(s) s.scrollIntoView({block:'center',behavior:'smooth'});
   }
   function opslaan(){
     var id=card.dataset.id,o=document.getElementById('lvOpm'); if(!id||!o)return;
-    var x=st[id]||{}; x.opm=o.value.trim(); st[id]=x; bewaar(); render();
+    var x=st[id]||{}, e=document.getElementById('lvEigen'); x.opm=o.value.trim();
+    if(e&&x.a==='eigen') x.eigen=e.value.trim();
+    st[id]=x; bewaar(); render();
   }
   function sluit(){opslaan();pop.classList.remove('open')}
   card.addEventListener('click',function(ev){
     var b=ev.target.closest('button'); if(!b)return; var id=card.dataset.id;
-    if(b.dataset.a==='ok'){var x=st[id]||{};x.ok=!x.ok;st[id]=x;b.classList.toggle('aan',x.ok);opslaan();return}
+    if(b.dataset.a){var x=st[id]||{};x.a=(x.a===b.dataset.a)?undefined:b.dataset.a;st[id]=x;
+      card.querySelectorAll('.lv-acties button[data-a]').forEach(function(k){k.classList.toggle('aan',k.dataset.a===x.a)});
+      document.getElementById('lvEigenW').style.display=x.a==='eigen'?'block':'none';
+      if(x.a==='eigen'){var e=document.getElementById('lvEigen');e.focus();e.setSelectionRange(e.value.length,e.value.length)}
+      opslaan();return}
     if(b.dataset.k==='sluit')return sluit();
     var i=ids.indexOf(id);
     if(b.dataset.k==='vorige'){opslaan();open(ids[i-1])}
@@ -134,7 +151,8 @@
     card.innerHTML='<div class="lv-kop"><span class="lv-id">Nieuwe teksten voor de website</span><button class="lv-x" data-k="sluit" aria-label="Sluiten">×</button></div>'+
       '<h3>Hoi Lode</h3>'+
       '<p>We hebben alle teksten op de website nog eens grondig nagelezen. Elke wijziging is <span class="lv-groen">groen gemarkeerd</span>.</p>'+
-      '<p><b>Klik op een markering</b> om te zien wat er stond, wat er nu staat en waarom we dat aangepast hebben. Daar kan je ook akkoord geven of een opmerking achterlaten.</p>'+
+      '<p><b>Klik op een markering</b> om te zien wat er stond, wat er nu staat en waarom we dat aangepast hebben. Per wijziging kies je:</p>'+
+      '<p>✓ <b>Akkoord</b> &nbsp;·&nbsp; ✗ <b>Afwijzen</b> (de oude tekst blijft) &nbsp;·&nbsp; ✎ <b>Zelf een voorstel doen</b> (je schrijft de tekst zoals jij hem wil). Een opmerking toevoegen kan altijd.</p>'+
       '<p>Met de knop <b>Oude versie / Nieuwe versie</b> onderaan wissel je de hele pagina tussen de vroegere en de nieuwe tekst. In dezelfde balk ga je naar de andere pagina’s.</p>'+
       '<p>Klaar? Klik op <b>Reacties doorsturen</b>, kopieer de lijst en plak die in een mail naar Ruben.</p>'+
       '<div class="lv-acties"><button id="lvStart" class="aan">Aan de slag</button></div>';
@@ -146,7 +164,8 @@
     Object.keys(D).forEach(function(i){
       var d=D[i],x=st[i]||{}; if(d.page!==pag){pag=d.page;r.push('\n## '+NAMEN[pag])}
       var kort=(d.new||'(geschrapt)'); if(kort.length>70) kort=kort.slice(0,67)+'…';
-      var l=i+' — '+(x.ok?'akkoord':x.opm?'opmerking':'nog niet bekeken')+'  ['+kort+']';
+      var l=i+' — '+(x.a==='ok'?'akkoord':x.a==='nee'?'AFGEWEZEN (oude tekst houden)':x.a==='eigen'?'EIGEN VOORSTEL':x.opm?'opmerking':'nog niet bekeken')+'  ['+kort+']';
+      if(x.a==='eigen') l+='\n    voorstel Lode: "'+(x.eigen||'')+'"';
       if(x.opm) l+='\n    '+x.opm.replace(/\n/g,'\n    ');
       r.push(l);
     });
