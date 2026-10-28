@@ -12,6 +12,7 @@ DONKER = {"aanpak.html", "referenties.html", "contact.html"}   # hero op diepgro
 for p, (h1, sect) in H.items():
     t = open(p, encoding="utf-8").read()
     assert t.count("<h1") == 1, p
+    # NB 2026-10-28: H1 later restyled as groene pill (zie commit) — oranje variant verlaten
     # selector .hero h1 / .page-hero h1 -> slogan-klasse
     t = re.sub(rf'\.{sect} h1\b', f'.{sect} .slogan-titel', t)
     t = re.sub(r'<h1>(.*?)</h1>', lambda m: f'<h1 class="zoekterm-h1">{h1}</h1>\n<p class="slogan-titel">{m.group(1)}</p>', t, count=1, flags=re.S)
