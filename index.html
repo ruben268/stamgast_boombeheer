@@ -97,8 +97,8 @@
     .hero { background: var(--achtergrond); padding: 80px 0 64px; }
     .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--groen-licht); color: var(--groen-mid); border-radius: 20px; padding: 5px 14px; font-size: 13px; font-weight: 500; margin-bottom: 20px; }
-    .hero h1 { font-size: 42px; font-weight: 700; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
-    .hero h1 em { color: var(--groen); font-style: normal; }
+    .hero .slogan-titel { font-size: 42px; font-weight: 700; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero .slogan-titel em { color: var(--groen); font-style: normal; }
     .hero-sub { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; margin-bottom: 28px; max-width: 460px; }
     .hero-knoppen { display: flex; gap: 12px; flex-wrap: wrap; }
     .hero-visual { background: var(--groen); border-radius: 16px; aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
@@ -154,7 +154,7 @@
     .cta-tekst { padding: 40px 44px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 32px; }
+      .hero .slogan-titel { font-size: 32px; }
       .trust-balk-inner { grid-template-columns: 1fr 1fr; }
       .diensten-raster { grid-template-columns: 1fr 1fr; }
       .dienst-kaart-breed { grid-column: span 2; }
@@ -170,7 +170,7 @@
     }
     @media (max-width: 640px) {
       .hero { padding: 48px 0 40px; }
-      .hero h1 { font-size: 28px; }
+      .hero .slogan-titel { font-size: 28px; }
       .diensten-raster { grid-template-columns: 1fr; }
       .dienst-kaart-breed { grid-column: span 1; }
     }
@@ -195,7 +195,9 @@
     .stap:nth-child(3) .stap-num{ background:var(--geelgroen); }
     .stap:nth-child(4) .stap-num{ background:var(--lavendel); }
     .filosofie{ background:var(--primair); }
-  </style>
+      .zoekterm-h1 { font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--oranje); line-height: 1.35; margin: 0 0 12px; }
+    .slogan-titel { margin-top: 0; }
+</style>
 </head>
 <body>
 <nav class="nav">
@@ -243,8 +245,8 @@
 <div class="wrapper">
 <div class="hero-inner">
 <div>
-<div class="hero-badge"><i class="ti ti-award"></i> ETW + VETCERT gecertificeerd</div>
-<h1>Bomen die <em>mogen groeien</em>.<br/>Met zorg én karakter.</h1>
+<h1 class="zoekterm-h1">Boomverzorger in Gent</h1>
+<p class="slogan-titel">Bomen die <em>mogen groeien</em>.<br/>Met zorg én karakter.</p>
 <p class="hero-sub">Lode Jans zorgt voor jouw bomen in Oost- en West-Vlaanderen — met eerlijk advies, vakkundige uitvoering en een diepgewortelde visie op behoud en herstel.</p>
 <div class="hero-knoppen">
 <a class="btn-primair" href="contact.html"><i class="ti ti-clipboard-text"></i> Vrijblijvende offerte</a>
