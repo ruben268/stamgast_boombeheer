@@ -27,6 +27,12 @@ for p in PAGES:
         m = re.search(r'(<p class="slogan-titel">.*?</p>\n<p>.*?</p>)\n', t, re.S); assert m, p
         lst = '\n<ul class="usp-lijst">' + "".join(f'<li><span class="v">{CHECK}</span><span>{x}</span></li>' for x in USP[p]) + '</ul>'
         t = t.replace(m.group(1), m.group(1) + lst, 1)
+    # offerteknoppen springen direct naar het formulier op de contactpagina
+    t = re.sub(r'(<a class="(?:nav-cta|mobiel-cta|btn-primair|btn-wit)" href=")contact\.html"', r'\1contact.html#offerte"', t)
+    if p == "contact.html":
+        anker = '<section class="sectie">\n<div class="wrapper">\n<div class="contact-grid">'
+        assert t.count(anker) == 1
+        t = t.replace(anker, anker.replace('<section class="sectie">', '<section class="sectie" id="offerte" style="scroll-margin-top:24px">'), 1)
     for q in PAGES:
         t = re.sub(rf'href="{re.escape(q)}(#[^"]*)?"', lambda mm, q=q: f'href="{q[:-5]}-optie-f.html{mm.group(1) or ""}"', t)
     t = re.sub(r'<link[^>]*rel="canonical"[^>]*/?>', '', t)
