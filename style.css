@@ -614,3 +614,12 @@ body{ background:var(--basis); }
 .achtergrond-licht{ background:var(--band2); }
 footer{ background:var(--band2); }
 .cta-balk{ background:var(--primair); }
+
+/* USP-lijst met oranje V-tjes in de page-hero (optie F, okt 2026) */
+.usp-lijst { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 12px; }
+.usp-lijst li { display: flex; align-items: center; gap: 12px; font-size: 16px; line-height: 1.4; color: var(--tekst); margin: 0; }
+.usp-lijst b { font-weight: 600; }
+.usp-lijst .v { width: 22px; height: 22px; flex-shrink: 0; color: var(--oranje); display: inline-flex; }
+.usp-lijst .v svg { width: 22px; height: 22px; }
+.page-donker .usp-lijst li { color: rgba(255,255,255,.92); }
+.page-donker .usp-lijst .v { color: #F2A27E; }
