@@ -15,7 +15,7 @@ USP = {
  "diensten.html":    ["<b>ETW-gecertificeerd</b> boomverzorger", "<b>Eerlijk advies</b> vooraf, ook als er niets moet gebeuren", "Actief in <b>Oost- en West-Vlaanderen</b>"],
  "over-lode.html":   ["<b>European Tree Worker</b> sinds 2017", "<b>VETCERT</b>-specialist in veterane bomen", "<b>Stamgast Boombeheer</b> sinds 2021"],
  "aanpak.html":      ["<b>Plaatsbezoek</b> voor een correcte prijsbepaling", "<b>Offerte</b> zonder verborgen kosten", "<b>Uitvoering door Lode zelf</b>, volgens de ETW-normen"],
- "referenties.html": ["<b>Echte reviews</b>, rechtstreeks van Google", "<b>Van snoeien tot stormschade</b>: een greep uit het werk", "<b>Projecten</b> in Oost- en West-Vlaanderen"],
+ "referenties.html": ["<b>Lode deelt graag zijn kennis</b>, zodat je er altijd iets van opsteekt", "<b>Boombeheer met respect</b> voor de natuur", "<b>Snel gereageerd</b> en altijd op de afspraak"],
 }
 DONKER = {"aanpak.html", "referenties.html"}
 PAGES = ["index.html","over-lode.html","diensten.html","aanpak.html","referenties.html","contact.html"]
