@@ -12,9 +12,9 @@ CSS = """
     .page-donker .usp-lijst .v { color: #F2A27E; }
 """
 USP = {
- "diensten.html":    ["<b>ETW-gecertificeerd</b> boomverzorger", "<b>Eerlijk advies</b> vooraf, ook als er niets moet gebeuren", "Actief in <b>Gent en omstreken</b>"],
- "over-lode.html":   ["<b>European Tree Worker</b> sinds 2017", "<b>VETCERT</b>-specialist in veterane bomen", "<b>Eigen zaak</b> sinds 2021"],
- "aanpak.html":      ["<b>Plaatsbezoek</b> en eerlijk advies ter plaatse", "<b>Schriftelijke offerte</b>, zonder verborgen kosten", "<b>Uitvoering door Lode zelf</b>, volgens de ETW-normen"],
+ "diensten.html":    ["<b>ETW-gecertificeerd</b> boomverzorger", "<b>Eerlijk advies</b> vooraf, ook als er niets moet gebeuren", "Actief in <b>Oost- en West-Vlaanderen</b>"],
+ "over-lode.html":   ["<b>European Tree Worker</b> sinds 2017", "<b>VETCERT</b>-specialist in veterane bomen", "<b>Stamgast Boombeheer</b> sinds 2021"],
+ "aanpak.html":      ["<b>Plaatsbezoek</b> voor een correcte prijsbepaling", "<b>Offerte</b> zonder verborgen kosten", "<b>Uitvoering door Lode zelf</b>, volgens de ETW-normen"],
  "referenties.html": ["<b>Echte reviews</b>, rechtstreeks van Google", "<b>Van snoeien tot stormschade</b>: een greep uit het werk", "<b>Projecten</b> in Oost- en West-Vlaanderen"],
 }
 DONKER = {"aanpak.html", "referenties.html"}
