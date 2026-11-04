@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<base href="/"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="/cookies.js"></script>
+<title>Pagina niet gevonden — Stamgast Boombeheer</title>
+<meta name="robots" content="noindex"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<meta name="theme-color" content="#233629"/>
+<link href="/style.css" rel="stylesheet"/>
+<style>
+  .nietgevonden { padding: 96px 0 112px; background: var(--band2); border-bottom: 1px solid var(--rand); }
+  .nietgevonden h1 { font-size: 40px; font-weight: 600; line-height: 1.2; margin: 10px 0 14px; letter-spacing: -0.3px; }
+  .nietgevonden p { font-size: 17px; color: var(--tekst-muted); line-height: 1.7; max-width: 620px; margin-bottom: 28px; }
+  .nietgevonden-knoppen { display: flex; flex-wrap: wrap; gap: 12px; }
+  .nietgevonden-links { margin-top: 36px; font-size: 15px; color: var(--tekst-muted); }
+  .nietgevonden-links a { color: var(--groen); text-decoration: underline; text-underline-offset: 2px; margin-right: 14px; white-space: nowrap; display: inline-block; }
+  @media (max-width: 640px) { .nietgevonden { padding: 64px 0 72px; } .nietgevonden h1 { font-size: 30px; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+<div class="nav-inner">
+<a class="nav-logo" href="/index.html"><img alt="Stamgast Boombeheer" class="nav-logo-img" src="/logo-nieuw.svg"/></a>
+<div class="nav-links">
+<a href="/over-lode.html">Over Lode</a>
+<a href="/diensten.html">Diensten</a>
+<a href="/aanpak.html">Onze aanpak</a>
+<a href="/referenties.html">Referenties</a>
+<a href="/contact.html">Contact</a>
+</div>
+<a class="nav-cta" href="/contact.html#offerte"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+<button aria-expanded="false" aria-label="Menu openen" class="hamburger" id="hamburger">
+<i class="ti ti-menu-2" id="hamburger-icoon"></i>
+</button>
+</div>
+<div class="mobiel-menu" id="mobiel-menu">
+<a href="/over-lode.html">Over Lode</a>
+<a href="/diensten.html">Diensten</a>
+<a href="/aanpak.html">Onze aanpak</a>
+<a href="/referenties.html">Referenties</a>
+<a href="/contact.html">Contact</a>
+<a class="mobiel-cta" href="/contact.html#offerte"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+</div>
+</nav>
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobiel-menu');
+  var icoon = document.getElementById('hamburger-icoon');
+  hamburger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    icoon.className = open ? 'ti ti-x' : 'ti ti-menu-2';
+  });
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      icoon.className = 'ti ti-menu-2';
+    }
+  });
+</script>
+<section class="nietgevonden">
+<div class="wrapper">
+<div class="sectie-label">Foutmelding 404</div>
+<h1>Deze pagina bestaat niet (meer)</h1>
+<p>Misschien volgde je een oude link, of zit er een tikfout in het adres. Geen zorgen: hieronder vind je snel je weg terug.</p>
+<div class="nietgevonden-knoppen">
+<a class="btn-primair" href="/index.html"><i class="ti ti-home"></i> Naar de homepage</a>
+<a class="btn-secundair" href="/contact.html#offerte"><i class="ti ti-clipboard-text"></i> Offerte aanvragen</a>
+</div>
+<p class="nietgevonden-links">Of ga rechtstreeks naar:
+<a href="/diensten.html">Diensten</a><a href="/over-lode.html">Over Lode</a><a href="/aanpak.html">Onze aanpak</a><a href="/referenties.html">Referenties</a><a href="/contact.html">Contact</a></p>
+</div>
+</section>
+<footer>
+<div class="wrapper">
+<div class="footer-grid">
+<div class="footer-col">
+<a class="nav-logo" href="/index.html" style="margin-bottom:12px;display:inline-flex;"><img alt="Stamgast Boombeheer" class="footer-logo-img" src="/logo-nieuw.svg"/></a>
+<p style="font-size:14px;color:var(--tekst-muted);">Europees gecertificeerde boomverzorging in Oost- en West-Vlaanderen.</p>
+<div class="footer-cert-badges" style="gap:10px;"><img src="/afbeeldingen/etw-logo.svg" alt="European Tree Worker certificaat" style="width:46px;height:46px;object-fit:contain;"/><img src="/afbeeldingen/vetcert-logo.svg" alt="VETCERT certificaat" style="width:46px;height:46px;object-fit:contain;"/></div>
+<div class="social-rij">
+<a class="social-knop" href="https://www.facebook.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-facebook"></i></a>
+<a class="social-knop" href="https://www.instagram.com/stamgastboombeheer" target="_blank"><i class="ti ti-brand-instagram"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Diensten</h4>
+<a href="/diensten.html">Snoeien</a>
+<a href="/diensten.html">Aanplant</a>
+<a href="/diensten.html">Ecologie &amp; beheer</a>
+<a href="/diensten.html">Advies, inspectie &amp; inventarisatie</a>
+<a href="/diensten.html">Vellen &amp; demonteren</a>
+<a href="/diensten.html">Stormschade</a>
+</div>
+<div class="footer-col">
+<h4>Contact</h4>
+<p><i class="ti ti-phone" style="font-size:14px;margin-right:6px;color:var(--groen);"></i><a href="tel:+32497910913" style="color:inherit;">0497 91 09 13</a></p>
+<p><i class="ti ti-mail" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>stamgastboombeheer@gmail.com</p>
+<p><i class="ti ti-map-pin" style="font-size:14px;margin-right:6px;color:var(--groen);"></i>Oost- &amp; West-Vlaanderen</p>
+<p style="margin-top:8px;font-size:13px;">BE 0678.719.886</p>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 Stamgast Boombeheer — Lode Jans</span>
+<span><a href="/privacybeleid.html" style="color:inherit;">Privacybeleid</a>  ·  <a href="/cookiebeleid.html" style="color:inherit;">Cookiebeleid</a>  ·  <a href="#" data-cookie-instellingen style="color:inherit;">Cookie-instellingen</a></span>
+</div>
+</div>
+</footer>
+
+
+
+
+</body>
+</html>
