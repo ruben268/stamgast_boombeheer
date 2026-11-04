@@ -1,0 +1,38 @@
+# Cloudflare Pages: redirects van de oude Squarespace-URL's naar de nieuwe site (301 = permanent)
+# /contact en /diensten hoeven hier niet: Cloudflare Pages serveert contact.html en diensten.html
+# automatisch op /contact en /diensten (een regel ervoor zou een lus geven).
+
+/home                     /              301
+/home/                    /              301
+
+/watdoenwe                /diensten      301
+/watdoenwe/               /diensten      301
+/wat-we-doen              /diensten      301
+/wat-we-doen/             /diensten      301
+
+/snoeien                  /diensten      301
+/snoeien/                 /diensten      301
+/vellen-en-demonteren     /diensten      301
+/vellen-en-demonteren/    /diensten      301
+/advies-en-beheer         /diensten      301
+/advies-en-beheer/        /diensten      301
+/inventarisatie           /diensten      301
+/inventarisatie/          /diensten      301
+/aanplant                 /diensten      301
+/aanplant/                /diensten      301
+/standplaatsverbetering   /diensten      301
+/standplaatsverbetering/  /diensten      301
+/stormschade              /diensten      301
+/stormschade/             /diensten      301
+/ecologie                 /diensten      301
+/ecologie/                /diensten      301
+/atelier                  /diensten      301
+/atelier/                 /diensten      301
+
+/overstamgastboombeheer   /over-lode     301
+/overstamgastboombeheer/  /over-lode     301
+
+/avonturen                /referenties   301
+/avonturen/               /referenties   301
+
+/cart                     /              301
