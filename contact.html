@@ -196,11 +196,11 @@
 <div class="formulier-sectie">
 <h2>Vrijblijvende offerte aanvragen</h2>
 <p>Vul het formulier in en Lode neemt zo snel mogelijk contact met je op.</p>
-<form action="https://api.web3forms.com/submit" method="POST">
+<form>
 <input type="hidden" name="access_key" value="a98b39d5-009b-4c31-846c-907f15b84add"/>
 <input type="hidden" name="subject" value="Nieuwe offerte-aanvraag via de website"/>
 <input type="hidden" name="from_name" value="Stamgast Boombeheer website"/>
-<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none"/>
+<div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;"><label for="website-veld">Laat dit veld leeg</label><input id="website-veld" type="text" name="website" tabindex="-1" autocomplete="off"/><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"/></div>
 <div class="formulier-rij">
 <div class="formulier-groep"><label for="voornaam">Voornaam</label><input id="voornaam" name="Voornaam" placeholder="Jan" type="text" required/></div>
 <div class="formulier-groep"><label for="achternaam">Achternaam</label><input id="achternaam" name="Achternaam" placeholder="Janssen" type="text"/></div>
@@ -265,11 +265,19 @@
   var success = document.getElementById("form-success");
   var error = document.getElementById("form-error");
   var btn = form.querySelector(".btn-verzenden");
+  var geladen = Date.now();
   form.addEventListener("submit", function(e){
     e.preventDefault();
     if(error) error.hidden = true;
+    // Spamfilter: verborgen veld ingevuld of binnen 3 seconden verstuurd = bot. Toon "verstuurd" maar stuur niets.
+    var lokveld = form.querySelector('input[name="website"]');
+    if((lokveld && lokveld.value) || Date.now() - geladen < 3000){
+      form.style.display = "none";
+      if(success){ success.hidden = false; }
+      return;
+    }
     if(btn){ btn.disabled = true; btn.style.opacity = "0.6"; btn.style.cursor = "default"; }
-    fetch("https://api.web3forms.com/submit", { method:"POST", headers:{ "Accept":"application/json" }, body:new FormData(form) })
+    fetch("https://api.web3forms.com/submit", { method:"POST", headers:{ "Accept":"application/json" }, body:(function(){ var d=new FormData(form); d.delete("website"); return d; })() })
       .then(function(r){ return r.json(); })
       .then(function(res){
         if(res && res.success){
