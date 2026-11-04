@@ -623,3 +623,6 @@ footer{ background:var(--band2); }
 .usp-lijst .v svg { width: 22px; height: 22px; }
 .page-donker .usp-lijst li { color: rgba(255,255,255,.92); }
 .page-donker .usp-lijst .v { color: #F2A27E; }
+
+/* footer: link binnen een p (bv. telefoonnummer) blijft naast het icoon */
+.footer-col p a { display: inline; margin-bottom: 0; font-size: inherit; }
